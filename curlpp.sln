@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "curlpp.vcproj", "{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Examples = Examples
+		Release = Release
+		Release (dynamic) = Release (dynamic)
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.Debug.ActiveCfg = Debug|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.Debug.Build.0 = Debug|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.Release.ActiveCfg = Release|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.Release.Build.0 = Release|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.Release (dynamic).ActiveCfg = Release (dynamic)|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.Release (dynamic).Build.0 = Release (dynamic)|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

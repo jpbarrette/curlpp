@@ -1,0 +1,114 @@
+Changes from version 0.6.0-pre3 to 0.6.0-pre4
+- Added some patches for MS VC++ compiling. (Giuseppe "Cowo" Corbelli)
+- Changed year of copyright
+- Added examples 10 and 11
+
+Changes from version 0.6.0-pre2 to 0.6.0-pre3
+- Fixed the missing utilspp files in the source distribution.
+
+Changes from version 0.6.0-pre1 to 0.6.0-pre2
+- Fixed the missing files in the Makefile.am
+
+Changes from version 0.5.2 to 0.6.0-pre1
+- Added Functor feature.
+- Removed the Easy::print function.
+- Added GetInfo feature.
+- Removed the cURL namespace.
+- Updated the copyright year.
+- Added the CURLOPT_COOKIELIST patch from Peter Krumins.
+  This patch need to be enabled by the --enable-maintener.
+
+Changes from version 0.5.1 to 0.5.2
+- RPM fixes.
+- Updated the documentation related to the exception safe feature.
+- cURLpp::Options::PostFieldSize is now a long, and 
+  cURLpp::Options::PostFieldSizeLarge is now a cURL::curl_off_t
+  (thanks to Nicolas Le Goff)
+- Now we can build with MinGW.
+- Improved libcURL test.
+- Added the BUILDING_CURLPP Define (DLL building). 
+
+Changes from version 0.5.0 to 0.5.1
+- cURLpp::Options::HttpGet and cURLpp::Options::CookieSession are now
+  using bool values. (thanks to Peteris Krumins)
+
+Changes from version 0.5.0-rc7 to 0.5.0
+- Removed the "string" way to handle memory.
+- Another patch to be able to compile on Sun's WorkShop C 
+  and C++ compilers, version 6. (Thanks to Ben Golding 
+  <bgg_no_spam at object dash craft dot com dot au>)
+
+Changes from version 0.5.0-rc6 to 0.5.0-rc7
+- Removed the AC_DISABLE_STATIC in configure script.
+- Added the example05.cpp
+- Now we can compile it with GCC-2.95
+- Added the cURLpp::Easy::getHandle function.
+
+Changes from version 0.5.0-rc5 to 0.5.0-rc6
+- Updated namespace problems in example04.cpp.
+- Fixed the VC++ "Release (dynamic)" configuration.
+- Patch to be able to compile on Sun's WorkShop C 
+  and C++ compilers, version 6. (Thanks to Ben Golding 
+  <bgg_no_spam at object dash craft dot com dot au>)
+- Added an option to disable gcc warnings option.
+
+Changes from version 0.5.0-rc4 to 0.5.0-rc5
+- Compilation fix for OptionSetter specialization of HTTPPOST.
+  (Thanks to Glenn <crass_no_spam at users dot berlios dot de>)
+- Compilation fix for CXXFLAGS (-0 option glitch).
+  (Thanks to Glenn <crass_no_spam at users dot berlios dot de>)
+- Fixed some presentation errors in the guide.
+- The Visual Studio .NET 2003 project is now available.
+- The MingGW cross-compiling scripts are now updated to 
+  work on debian.
+
+Changes from version 0.5.0-rc3 to 0.5.0-rc4
+- Added cross-compiling scripts for mingw.
+- Fixed a compilation error for VC++ .NET
+  (Thanks to  Hoef Jan <jan dot hoef at siemens_no_spam dot com>)
+
+Changes from version 0.5.0-rc2 to 0.5.0-rc3
+- Fixed a gcc 3.4 compilation error. 
+  (see http://www.dis.com/gnu/gcc/Name-lookup.html for more details). 
+  (Thanks to Gisle Vanem)
+
+Changes from version 0.5.0-rc1 to 0.5.0-rc2
+- Added missing EXTRA_DIST files.
+- Fixed a namespace problem in Form.hpp.
+- Added VC++ project files
+
+Changes from version 0.3.1(branch point) to 0.5.0-rc1 
+- Took the curlpp.spec.in from the 0.3.x versions.
+- Added HttpPost specialization class. 
+- Moved source files from "src/curlpp/" to "curlpp/".
+- The libcurl interface is now included in the 
+  cURL namespace.
+- Renamed the class Curl to CurlHandle.
+- Removed CurlFactory system because it wasn't thread safe.
+- Fixed the latex bug in the guide.
+- Text formating in the guide.
+- Added cURL.hpp
+- Fixed a bug in OptionList.cpp that caused and endless loop.
+- Added StorageOption class.
+- Added example04 in maintener examples.
+- Added TypeTrait.hpp
+- Patched a minor grammatical error and a spelling error in the 
+  documentation. Thanks to:
+  Jonathan Wakely <cow_no_spam at compsoc dot man dot ac dot uk>
+- Patched documentation's spelling errors. Thanks to:
+  Paul Lacy <paul dot lacy_no_spam at hsd dot com dot au>, 
+  Jonathan Wakely <cow_no_spam at compsoc dot man dot ac dot uk>
+- Removed broken examples.
+- Added example03.cpp (for verbose callback)
+- Applied a patch from Glenn Washburn <glenniii_no_spam at mail dot utexas dot edu>
+  for configure.ac
+- example02.cpp doesn't refer to example18 anymore.
+- Worked on the guide.
+- Changed the OptionContainerType policy for the std::string. 
+  It could eventually cause a memory corruption.
+- Fixed a memory leak in SList.
+- Slist is now usable for std::list< std::string > options.
+- Added some missing simple options.
+- Started to work on the new guide.
+- Added the SList class (C++ wrapper over curl_slist).
+- non_copyable class now respect naming conventions.

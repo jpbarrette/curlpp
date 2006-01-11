@@ -1,0 +1,12 @@
+# This is a comment
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+includedir=@includedir@
+
+Name: curlpp
+Description: cURLpp is a libcurl C++ wrapper
+Version: @VERSION@                           
+Libs: -L@libdir@ -lcurlpp @LDFLAGS@ @LIBS@
+Cflags: -I@includedir@ @CURLPP_CXXFLAGS@
+
+ 
