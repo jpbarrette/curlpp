@@ -1,0 +1,22 @@
+configure.in is a good example to add curlpp to your project
+
+ Example 01: This example is made to show you how you can use the Options.
+ Example 02: an upload example.
+ Example 03: verbose callback example.
+ Example 04: GetInfo example.
+ Example 05: Function functor for WriteFunction example.
+ Example 06: Method functor for WriteFunction example.
+ Example 08: verbose callback example, with exception safe handling.
+ Example 09: verbose callback example, with exception safe handling, 
+             but without raiseException function.
+ Example 11: Plain write function example.
+
+** This example rely on a patch that will be available only
+** on version 7.14.1 of libcURL.
+ Example 7: cookie interface example via getInfo.
+            Demonstrates usage of SList which example04 did not.
+ Example 10: Binded function functor for WriteFunction example.
+
+
+
+

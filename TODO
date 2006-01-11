@@ -1,0 +1,4 @@
+- Need to code the dllexport thing for MinGW
+- Need to code the exception safe part.
+- Need to add the HTTP_POST wrapping (Partly done).
+- Need to fix the OptionList::print function.
