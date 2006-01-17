@@ -6,6 +6,8 @@
 #include <ctime>
 
 #include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Infos.hpp>
 #include <curlpp/Options.hpp>
 
 using namespace cURLpp;
@@ -104,7 +106,7 @@ main(void)
 {
     try {
         Cleanup myCleanup;
-        Easy exEasy;
+        cURLpp::Easy exEasy;
         std::vector<std::string> cookieList;
 
         // a cookie as in HTTP header
@@ -126,18 +128,18 @@ main(void)
             it != cookieList.end();
             ++it)
         {
-            exEasy.setOpt(Options::CookieList(*it));
+	  exEasy.setOpt(Options::CookieList(*it));
         }
         exEasy.perform();
         
         // see what cookies we got
         //
         std::cout << "\nCookies from cookie engine:" << std::endl;
-        SList Cookies;
-        exEasy.getInfo(cURL::CURLINFO_COOKIELIST, Cookies);
+        std::list< std::string > cookies;
+        Infos::CookieList::get(exEasy, cookies);
         int i = 1;
-        for (SList::const_iterator it = Cookies.begin();
-            it != Cookies.end();
+        for (std::list< std::string >::const_iterator it = cookies.begin();
+            it != cookies.end();
             ++it, i++)
         {
             std::cout << "[" << i << "]: " << MakeCookie(*it) << std::endl;

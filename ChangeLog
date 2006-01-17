@@ -1,3 +1,7 @@
+Jean-Philippe Barrette-LaPierre (17 January 2005) version 0.6.0-pre4
+- CookieList is no longer experimental code.
+- Added example 12 (HTTP POST)
+
 Jean-Philippe Barrette-LaPierre (03 October 2005) version 0.6.0-pre3
 - Added some patches for MS VC++ compiling. (Giuseppe "Cowo" Corbelli)
 - Changed year of copyright
