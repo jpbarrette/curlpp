@@ -16,6 +16,7 @@ configure.in is a good example to add curlpp to your project
  Example 7: cookie interface example via getInfo.
             Demonstrates usage of SList which example04 did not.
  Example 10: Binded function functor for WriteFunction example.
+ Example 12: HTTP POST example.
 
 
 

@@ -1,8 +1,8 @@
 if MAINTENER_CODE
-maintener_programs = example07 example10 
+maintener_programs = example07 example10 example12
 endif
 
-noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example08 example09 example11 ${maintener_programs}
+noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example08 example09 example11  ${maintener_programs}
 
 
 
@@ -18,6 +18,8 @@ example05_SOURCES = example05.cpp
 
 example06_SOURCES = example06.cpp
 
+example07_SOURCES = example07.cpp
+
 example08_SOURCES = example08.cpp
 
 example09_SOURCES = example09.cpp
@@ -26,9 +28,8 @@ example10_SOURCES = example10.cpp
 
 example11_SOURCES = example11.cpp
 
-if MAINTENER_CODE
-example07_SOURCES = example07.cpp
-endif
+example12_SOURCES = example12.cpp
+
 
 AM_LDFLAGS = @LDFLAGS@ -L../curlpp/ -lcurlpp -static
 
