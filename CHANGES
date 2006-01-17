@@ -1,3 +1,7 @@
+Changes from version 0.6.0-pre4 to 0.6.0-pre5
+- CookieList is no longer experimental code.
+- Added example 12 (HTTP POST)
+
 Changes from version 0.6.0-pre3 to 0.6.0-pre4
 - Added some patches for MS VC++ compiling. (Giuseppe "Cowo" Corbelli)
 - Changed year of copyright

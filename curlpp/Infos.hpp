@@ -25,6 +25,9 @@
 #ifndef CURLPP_INFOS_HPP
 #define CURLPP_INFOS_HPP
 
+#include <curl/curl.h>
+#include <list>
+
 #include "Info.hpp"
 
 namespace cURLpp
@@ -57,7 +60,7 @@ namespace cURLpp
     typedef cURLpp::Info< CURLINFO_PROXYAUTH_AVAIL, long > ProxyAuthAvail;
     typedef cURLpp::Info< CURLINFO_OS_ERRNO, long > OsErrno;
     typedef cURLpp::Info< CURLINFO_NUM_CONNECTS, long > NumConnects;
-#ifdef CURLINFO_COOKIELIST
+#if LIBCURL_VERSION_NUM >= 0x070e01
     typedef cURLpp::Info< CURLINFO_COOKIELIST, std::list< std::string > > CookieList;
 #endif
   };
