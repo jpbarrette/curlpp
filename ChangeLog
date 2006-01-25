@@ -1,3 +1,10 @@
+Jean-Philippe Barrette-LaPierre (25 January 2005) version 0.6.0-pre4
+- Added win32 examples's Makefile for VC++.
+- Added README.win32.
+
+Jean-Philippe Barrette-LaPierre (18 January 2005) version 0.6.0-pre4
+- Fixed example 11 binary file "bug".
+
 Jean-Philippe Barrette-LaPierre (17 January 2005) version 0.6.0-pre4
 - CookieList is no longer experimental code.
 - Added example 12 (HTTP POST)

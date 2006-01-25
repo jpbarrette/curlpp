@@ -1,0 +1,83 @@
+#############################################################
+#
+# Makefile for building libcurlpp examples with MSVC
+# All examples are linked against curlpp release static library
+# Giuseppe "Cowo" Corbelli - cowo at lugbs dot linux dot it
+#
+# Usage: nmake -f Makefile.msvc all
+#        Should be invoked from examples/ directory
+#        Edit the LIBCURL_PATH or set LIBCURL_PATH envvar
+#
+##############################################################
+
+LIB_NAME          = libcurlpp.lib
+LIB_NAME_DEBUG    = libcurlppd.lib
+
+#############################################################
+
+!IFNDEF LIBCURL_PATH
+LIBCURL_PATH   = ../../curl/include
+!ENDIF
+
+CCNODBG    = cl.exe /MD /O2 /DNDEBUG /GR /Y-
+CCDEBUG    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GZ /GR
+CFLAGS     = /I ../ /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /nologo /W3 /GX /DWIN32 /YX /FD /c
+LNKLIB     = link.exe /INCREMENTAL:NO /OPT:NOREF
+LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)/lib" $(LIB_NAME) $(CURLLIB)
+CURLLIB    = libcurl_imp.lib
+
+CC = $(CCNODBG) $(CFLAGSLIB)
+LNK = $(LNKLIB)  $(LFLAGS)
+
+example01 : example01.o
+	$(LNK) /out:example01.exe example01.o
+
+example02 : example02.o
+	$(LNK) /out:example02.exe example02.o
+
+example03 : example03.o
+	$(LNK) /out:example03.exe example03.o
+
+example04 : example04.o
+	$(LNK) /out:example04.exe example04.o
+
+example05 : example05.o
+	$(LNK) /out:example05.exe example05.o
+
+example06 : example06.o
+	$(LNK) /out:example06.exe example06.o
+
+example07 : example07.o
+	$(LNK) /out:example07.exe example07.o
+
+example08 : example08.o
+	$(LNK) /out:example08.exe example08.o
+
+example09 : example09.o
+	$(LNK) /out:example09.exe example09.o
+
+example10 : example10.o
+	$(LNK) /out:example10.exe example10.o
+
+example11 : example11.o
+	$(LNK) /out:example11.exe example11.o
+
+TARGET = \
+	example01 \
+	example02 \
+	example03 \
+	example04 \
+	example05 \
+	example06 \
+	example07 \
+	example08 \
+	example09 \
+	example10 \
+	example11
+
+all : $(TARGET)
+
+.SUFFIXES: .cpp .o
+
+.cpp.o:
+	$(CC) $(CFLAGS) /Fo"$@"  $<

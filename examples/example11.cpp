@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
 
     FILE *file = stdout;
     if(filename != NULL) {
-      file = fopen(filename, "w");
+      file = fopen(filename, "wb");
       if(file == NULL) {
 	fprintf(stderr, strerror(errno));
 	return EXIT_FAILURE;
