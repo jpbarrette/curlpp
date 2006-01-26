@@ -25,7 +25,7 @@
 #ifndef CURLPP_HPP
 #define CURLPP_HPP
 
-#define LIBCURLPP_VERSION "0.6.0-pre4"
+#define LIBCURLPP_VERSION "0.6.0-pre5"
 #define LIBCURLPP_VERSION_NUM 0x000600
 
 #include <string>
