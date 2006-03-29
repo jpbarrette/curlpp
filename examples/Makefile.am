@@ -1,8 +1,8 @@
 if MAINTENER_CODE
-maintener_programs = example07 example10 example12
+maintener_programs = example07 example10
 endif
 
-noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example08 example09 example11  ${maintener_programs}
+noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example08 example09 example11 example12 ${maintener_programs}
 
 
 
