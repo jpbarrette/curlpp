@@ -50,6 +50,7 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::WriteFunctionFunctor, 
       CURLOPT_WRITEFUNCTION > WriteFunction;
+
     /**
      * Using this option will reset CURLOPT_WRITEFUNCTION to 
      * default callback. In fact, use only this option if you only 

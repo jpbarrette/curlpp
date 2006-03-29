@@ -47,14 +47,13 @@ cURLpp::SList::clear() {
       curl_slist_free_all( mList );
       mList = 0;
    }
-   mData.clear();
 }
 
 
 void 
 cURLpp::SList::constructFrom(curl_slist *list)
 {
-  clear();
+  mData.clear();
 
   curl_slist *c = list;
   while(c)
@@ -62,6 +61,8 @@ cURLpp::SList::constructFrom(curl_slist *list)
       mData.push_back(c->data);
       c = c->next;
     }
+
+  update();
 }
 
 void 
@@ -75,16 +76,13 @@ cURLpp::SList::set( const std::list< std::string > &list)
 void 
 cURLpp::SList::update() 
 {
-   clear();
+  clear();
 
-   for(
-         std::list< std::string >::const_iterator pos = mData.begin();
-         pos != mData.end();
-         pos++
-      )
-   {
-      mList = curl_slist_append( mList, (*pos).c_str() );
-   }
+  for(std::list< std::string >::const_iterator pos = mData.begin();
+      pos != mData.end();
+      pos++) {
+    mList = curl_slist_append( mList, (*pos).c_str() );
+  }
 }
 
 
@@ -104,7 +102,7 @@ cURLpp::SList::operator=( const std::list< std::string > &list )
 curl_slist *
 cURLpp::SList::cslist() const
 {
-   return mList;
+  return mList;
 }
 
 std::list< std::string >
