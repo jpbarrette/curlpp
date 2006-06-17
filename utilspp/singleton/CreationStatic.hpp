@@ -30,8 +30,13 @@
  * called the first time we call the utilspp::creation_static::create()
  * function.
  *
- * Note don't use this class because it's not complete, and at this time it's
- * not REALY complyant with the lifetime policy.
+ * This creation policy is very usefull since it rely on static allocation.
+ * It means that the creation is automatically thread-safe, since compilers
+ * static ensures that static allocation is thread-safe.
+ *
+ * Note don't use this class with a lifetime policy that allows revivals. 
+ * Be carefull with this policy since it won't respect the lifetime policy.
+ * It will eventually be destroyed, but at the end of the program. 
  */
 namespace utilspp
 {
