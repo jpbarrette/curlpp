@@ -24,20 +24,19 @@
 #ifndef CREATION_STATIC_INL
 #define CREATION_STATIC_INL
 
+
 template< typename T >
 T*
 utilspp::CreationStatic::create()
 {
    static T mObj;
-   return new(&mObj) T;
+   return &mObj;
 };
 
 template< typename T >
 void
-utilspp::CreationStatic::destroy( T* obj )
-{
-  obj->~T();
-}
+utilspp::CreationStatic::destroy(T*)
+{}
 
 
 #endif
