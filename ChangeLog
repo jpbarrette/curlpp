@@ -1,3 +1,7 @@
+Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.6.0
+- We require automake-1.9 for the AMD64 aclocal changes
+- Some libcURL version check added for Infos.hpp
+
 Jean-Philippe Barrette-LaPierre (17 June 2005) version 0.6.0-pre5
 - Changed to version 0.6.0
 
