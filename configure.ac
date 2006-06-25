@@ -1,7 +1,7 @@
 AC_INIT(curlpp/cURLpp.cpp)
 AM_CONFIG_HEADER(config.h)
 
-AC_PREREQ(2.50)
+AC_PREREQ(2.59)
 
 dnl
 dnl figure out the libcurl version
