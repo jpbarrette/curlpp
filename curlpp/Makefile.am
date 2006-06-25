@@ -14,6 +14,7 @@ sources = \
 	Form.cpp Form.hpp \
 	Info.cpp Info.hpp Info.inl \
 	Infos.hpp \
+	Multi.cpp Multi.hpp \
 	NonCopyable.hpp \
 	OptionBase.cpp OptionBase.hpp \
 	OptionContainer.hpp OptionContainer.inl \
@@ -43,6 +44,7 @@ pkginclude_HEADERS = \
 	Form.hpp \
 	Info.hpp Info.inl \
 	Infos.hpp \
+	Multi.hpp \
 	NonCopyable.hpp \
 	OptionBase.hpp \
 	OptionContainer.hpp OptionContainer.inl \

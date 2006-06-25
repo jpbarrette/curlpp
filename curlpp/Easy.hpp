@@ -74,7 +74,7 @@ namespace cURLpp
      * DO NOT use this, unless you REALLY know what you
      * are doing.
      */
-    CURL *getHandle();
+    CURL *getHandle() const;
 
   private:
     /**

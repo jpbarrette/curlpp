@@ -1,3 +1,6 @@
+Changes from version 0.6.1 to 0.7.0-pre1
+- Added Multi interface
+
 Changes from version 0.6.0 to 0.6.1
 - automake-1.9 is now required for the AMD64 aclocal changes
 - Some libcURL version check added for Infos.hpp 

@@ -41,7 +41,7 @@ void cURLpp::CurlHandle::perform()
 }
 
 CURL *
-cURLpp::CurlHandle::getHandle()
+cURLpp::CurlHandle::getHandle() const
 {
   return mCurl;
 }

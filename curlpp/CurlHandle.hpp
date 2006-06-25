@@ -62,7 +62,7 @@ namespace cURLpp
      * DO NOT use this, unless you REALLY know what you
      * are doing.
      */
-    CURL * CURLPPAPI getHandle();
+    CURL * CURLPPAPI getHandle() const;
 
     /**
      * Request internal information from the curl session 
