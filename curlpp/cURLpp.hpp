@@ -25,8 +25,8 @@
 #ifndef CURLPP_HPP
 #define CURLPP_HPP
 
-#define LIBCURLPP_VERSION "0.6.0"
-#define LIBCURLPP_VERSION_NUM 0x000600
+#define LIBCURLPP_VERSION "0.6.1"
+#define LIBCURLPP_VERSION_NUM 0x000601
 
 #include <string>
 #include <curl/curl.h>
