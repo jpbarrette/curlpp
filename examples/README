@@ -12,6 +12,8 @@ configure.in is a good example to add curlpp to your project
  Example 09: verbose callback example, with exception safe handling, 
              but without raiseException function.
  Example 11: Plain write function example.
+ Example 13: Simple Multi interface example.
+ Example 14: Multi interface example with info function example.
 
 ** This example rely on a patch that will be available only
 ** on version 7.14.1 of libcURL.

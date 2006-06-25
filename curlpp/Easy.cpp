@@ -37,7 +37,7 @@ cURLpp::Easy::perform()
 }
 
 CURL *
-cURLpp::Easy::getHandle()
+cURLpp::Easy::getHandle() const
 {
   return myCurl.getHandle();
 }
