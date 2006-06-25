@@ -111,6 +111,7 @@ X_OBJS= \
 	$(DIROBJ)/Easy.o \
 	$(DIROBJ)/Form.o \
 	$(DIROBJ)/Info.o \
+	$(DIROBJ)/Multi.o \
 	$(DIROBJ)/OptionBase.o \
 	$(DIROBJ)/OptionList.o \
 	$(DIROBJ)/OptionSetter.o \
