@@ -64,9 +64,9 @@ fi
 echo "buildconf: autoheader version $ah_version (ok)"
 
 #--------------------------------------------------------------------------
-# automake 1.6 or newer
+# automake 1.9 or newer
 #
-need_automake="1.6"
+need_automake="1.9"
 am_version=`${AUTOMAKE:-automake} --version 2>/dev/null|head -1| sed -e 's/^.* \([0-9]\)/\1/' -e 's/[a-z]* *$//' -e 's/\(.*\)\(-p.*\)/\1/'`
 if test -z "$am_version"; then
   echo "buildconf: automake not found."
@@ -74,7 +74,7 @@ if test -z "$am_version"; then
   exit 1
 fi
 IFS=.; set $am_version; IFS=' '
-if test "$1" = "1" -a "$2" -lt "6" || test "$1" -lt "1"; then
+if test "$1" = "1" -a "$2" -lt "9" || test "$1" -lt "1"; then
   echo "buildconf: automake version $am_version found."
   echo "            You need automake version $need_automake or newer installed."
   echo "            If you have a sufficient automake installed, but it"
