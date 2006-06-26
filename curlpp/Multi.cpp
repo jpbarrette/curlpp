@@ -44,8 +44,9 @@ cURLpp::Multi::add(const cURLpp::Easy *handle)
 {
   CURLMcode code = curl_multi_add_handle(mMultiHandle, handle->getHandle());
   if(code != CURLM_CALL_MULTI_PERFORM) {
-    runtimeAssert("Error when trying to add a handle to multi", 
-		  code == CURLM_OK);
+    if(code != CURLM_OK) {
+      throw cURLpp::RuntimeError(curl_multi_strerror(code));
+    }
   }
   mHandles.insert(std::make_pair(handle->getHandle(),handle));
 }
@@ -55,8 +56,9 @@ cURLpp::Multi::remove(const cURLpp::Easy *handle)
 {
   CURLMcode code = curl_multi_remove_handle(mMultiHandle, handle->getHandle());
   if(code != CURLM_CALL_MULTI_PERFORM) {
-    runtimeAssert("Error when trying to remove a handle from multi", 
-		  code == CURLM_OK);
+    if(code != CURLM_OK) {
+      throw cURLpp::RuntimeError(curl_multi_strerror(code));
+    }
   }
   mHandles.erase(handle->getHandle());
 }
@@ -69,8 +71,10 @@ cURLpp::Multi::perform(int *nbHandles)
     return false;
   }
 
-  runtimeAssert("Error when performing a multi request", 
-		code == CURLM_OK);
+  if(code != CURLM_OK) {
+    throw cURLpp::RuntimeError(curl_multi_strerror(code));
+  }
+
   return true;
 }
 
@@ -78,8 +82,11 @@ void
 cURLpp::Multi::fdset(fd_set *read, fd_set *write, fd_set *exc, int *max)
 {
   CURLMcode code = curl_multi_fdset(mMultiHandle, read, write, exc, max);
-  runtimeAssert("Error when retreiving fdset from multi", 
-		code == CURLM_OK);
+  if(code != CURLM_CALL_MULTI_PERFORM) {
+    if(code != CURLM_OK) {
+      throw cURLpp::RuntimeError(curl_multi_strerror(code));
+    }
+  }
 }
 
 cURLpp::Multi::Msgs
