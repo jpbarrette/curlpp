@@ -1,5 +1,6 @@
 Changes from version 0.7.0-pre1 to 0.7.0-pre2
 - Updated MSVC makefiles for new examples and for Multi integration.
+- Better Multi interface error handling.
 
 Changes from version 0.6.1 to 0.7.0-pre1
 - Added Multi interface
