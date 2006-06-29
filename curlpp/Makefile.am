@@ -1,5 +1,5 @@
 lib_LTLIBRARIES = libcurlpp.la
-
+EXTRA_DIST = Makefile.msvc
 
 if MAINTENER_CODE
 maintener_source = 
