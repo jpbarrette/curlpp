@@ -52,7 +52,7 @@ cURLpp::HttpPost::operator=(const std::list< cURLpp::FormPart * > &posts)
   return (*this);
 }
 
-curl_httppost *
+::curl_httppost *
 cURLpp::HttpPost::cHttpPost() const
 {
   return mFirst;
@@ -120,8 +120,8 @@ cURLpp::FormParts::File::clone()
 }
 
 void
-cURLpp::FormParts::File::add(curl_httppost **first, 
-			     curl_httppost **last)
+cURLpp::FormParts::File::add(::curl_httppost **first, 
+			     ::curl_httppost **last)
 {
   // One instance = One curl_httppost, so we don't
   // need to duplicate the memory.
@@ -185,8 +185,8 @@ cURLpp::FormParts::Content::clone()
 }
 
 void
-cURLpp::FormParts::Content::add(curl_httppost **first, 
-				curl_httppost **last)
+cURLpp::FormParts::Content::add(::curl_httppost **first, 
+				::curl_httppost **last)
 {
   // We uses options that will copy internally the string (c_str),
   // so we don't need to worry about the memory.

@@ -57,7 +57,7 @@ namespace cURLpp
      * Be aware that the memory return is owned by the current 
      * instance, so don't try to delete it.
      */
-    curl_httppost *cHttpPost() const;
+    ::curl_httppost *cHttpPost() const;
 
     /**
      * Free all HTTP posts.
@@ -65,8 +65,8 @@ namespace cURLpp
     void clear();
 
   private:
-    curl_httppost *mFirst;
-    curl_httppost *mLast;
+    ::curl_httppost *mFirst;
+    ::curl_httppost *mLast;
     std::list< cURLpp::FormPart *> mForms;
   };
 
@@ -97,8 +97,8 @@ namespace cURLpp
     /**
      * it will add himself to the curl_httppost *first.
      */
-    virtual void add(curl_httppost **first, 
-		     curl_httppost **last) = 0;
+    virtual void add(::curl_httppost **first, 
+		     ::curl_httppost **last) = 0;
 
     /**
      * Contain the name of the field.
@@ -154,8 +154,8 @@ namespace cURLpp
       virtual File *clone();
 
     private:
-      void add(curl_httppost **first, 
-	       curl_httppost **last);
+      void add(::curl_httppost **first, 
+	       ::curl_httppost **last);
 
     private:
       const std::string mFilename; 
@@ -209,8 +209,8 @@ namespace cURLpp
       virtual Content *clone();
 
     private:
-      void add(curl_httppost **first, 
-	       curl_httppost **last);
+      void add(::curl_httppost **first, 
+	       ::curl_httppost **last);
 
     private:
       const std::string mContent; 
