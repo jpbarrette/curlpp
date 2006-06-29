@@ -2,6 +2,8 @@ if MAINTENER_CODE
 maintener_programs = example07 example10
 endif
 
+EXTRA_DIST = Makefile.msvc
+
 noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example08 example09 example11 example12 example13 example14 ${maintener_programs}
 
 
