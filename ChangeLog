@@ -1,3 +1,10 @@
+Jean-Philippe Barrette-LaPierre (29 June 2005) version 0.7.0-pre1
+- Changed to version 0.7.0-pre2
+
+Jean-Philippe Barrette-LaPierre (29 June 2005) version 0.7.0-pre1
+- Fixed the missing msvc makefiles in source distribution.
+- Fixed some gcc 3.2 compilation fixes (MaHo)
+
 Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.7.0-pre1
 - Updated MSVC makefiles for new examples and for Multi integration.
 - Better Multi interface error handling.
