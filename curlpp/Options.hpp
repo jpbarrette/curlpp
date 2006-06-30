@@ -34,8 +34,11 @@ namespace cURLpp
      */
 #if LIBCURL_VERSION_NUM >= 0x070e01
     typedef cURLpp::OptionTrait< std::string, CURLOPT_COOKIELIST > CookieList;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    typedef cURLpp::NotAvailableOptionTrait< std::string > CookieList;
 #endif
-
+#endif
     /**
      * Behavior options.
      */

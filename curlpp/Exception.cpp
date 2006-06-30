@@ -79,6 +79,10 @@ cURLpp::UnsetOption::UnsetOption(const char *reason)
     : cURLpp::RuntimeError(reason)
 {};
 
+cURLpp::NotAvailable::NotAvailable()
+    : cURLpp::LogicError("This option was not available at compile time.")
+{};
+
 cURLpp::UnknowException::UnknowException() 
   : cURLpp::RuntimeError("An unknown exception was thrown within a callback")
 {}

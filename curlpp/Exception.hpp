@@ -116,6 +116,16 @@ namespace cURLpp
       CURLPPAPI UnsetOption(const char *reason);
     };
 
+    /**
+     * This exception is thrown we you try to instantiate an option 
+     * that isn't available for your current libcURL version.
+     */
+    class NotAvailable : public cURLpp::LogicError
+    {
+    public:
+      CURLPPAPI NotAvailable();
+    };
+
   /**
    * This exception is thrown when an exception is thrown within
    * a callback without the cURLpp::raiseException function.

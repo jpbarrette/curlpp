@@ -7,6 +7,9 @@
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
+
+#define CURLPP_ALLOW_NOT_AVAILABLE
+
 #include <curlpp/Infos.hpp>
 #include <curlpp/Options.hpp>
 

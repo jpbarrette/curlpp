@@ -63,7 +63,7 @@ pkginclude_HEADERS = \
 VERSION=-version-info 0:2:0
 
 
-AM_CXXFLAGS= -I../
+AM_CXXFLAGS= -I../ 
 pkgincludedir=$(includedir)/curlpp
 
 

@@ -177,6 +177,42 @@ namespace cURLpp
     virtual NoValueOptionTrait *clone() const;
 
   };
+
+  /**
+   * This class is used when the option is not implemented.
+   */
+  template< typename OptionType >
+  class CURLPPAPI NotAvailableOptionTrait : public Option< OptionType >
+  {
+  public:
+    /**
+     * The constructor takes the a value to set a handle.
+     */
+    NotAvailableOptionTrait(typename Option< OptionType >::ParamType value);
+
+    /**
+     * The constructor will contain an unset option value.
+     * Note that if you try to retreive the value of this option
+     * before calling the cURLpp::Option::setValue function it will
+     * throw a UnsetOption exception.
+     */
+    NotAvailableOptionTrait();
+
+    /**
+     * Return a copy of the current option. 
+     * Note that the option value is copied too.
+     */
+    virtual NotAvailableOptionTrait *clone() const;
+
+  private:
+    /**
+     * will call the actual libcurl option function with the value we got 
+     * on the handle.
+     */
+    virtual void updateHandleToMe(cURLpp::CurlHandle *handle) const;
+  };
+
+
 }
 
 #include "Option.inl"

@@ -1,4 +1,7 @@
 Changes from version 0.7.0-pre1 to 0.7.0-pre2
+- Added the NotAvailable feature. If CURLPP_ALLOW_NOT_AVAILABLE is 
+  defined, it allow us to compile code not available for the current
+  libcURL version.  
 - Added the NoValueOptionTrait. This will allow options with no values,
   as CURLOPT_SSLENGINE_DEFAULT, for instance.
 - Fixed the missing msvc makefiles in source distribution.

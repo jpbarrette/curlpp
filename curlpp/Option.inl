@@ -157,4 +157,36 @@ cURLpp::NoValueOptionTrait< option >::clone() const
   return new NoValueOptionTrait< option >();
 }
 
+template< typename OptionType >
+cURLpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait(typename cURLpp::Option< OptionType >::ParamType )
+  : Option< OptionType >(CURLOPT_URL)
+{
+  throw cURLpp::NotAvailable();
+}
+
+template< typename OptionType >
+cURLpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait()
+  : Option< OptionType >(CURLOPT_URL)
+{
+  throw cURLpp::NotAvailable();
+}
+
+
+template< typename OptionType >
+cURLpp::NotAvailableOptionTrait< OptionType > *
+cURLpp::NotAvailableOptionTrait< OptionType >::clone() const
+{
+  throw cURLpp::NotAvailable();
+}
+
+
+template< typename OptionType >
+void
+cURLpp::NotAvailableOptionTrait< OptionType >::updateHandleToMe(cURLpp::CurlHandle *) const
+{
+  throw cURLpp::NotAvailable();
+}
+
+
+
 #endif
