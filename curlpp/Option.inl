@@ -145,6 +145,16 @@ cURLpp::OptionTrait< OptionType, option >::updateHandleToMe(cURLpp::CurlHandle *
 }
 
 
+template< CURLoption option >
+cURLpp::NoValueOptionTrait< option >::NoValueOptionTrait() 
+  : OptionTrait< bool, option >(true)
+{}
 
+template< CURLoption option >
+cURLpp::NoValueOptionTrait< option > *
+cURLpp::NoValueOptionTrait< option >::clone() const
+{
+  return new NoValueOptionTrait< option >();
+}
 
 #endif

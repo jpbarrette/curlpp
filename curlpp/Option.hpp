@@ -160,6 +160,23 @@ namespace cURLpp
     virtual void updateHandleToMe(cURLpp::CurlHandle *handle) const;
   };
 
+  /**
+   * This class is just a wrapper around cURLpp::OptionTrait, in order to
+   * be able to have "No value" option, like SslDefaultEngine.
+   */
+  template< CURLoption option >
+  class CURLPPAPI NoValueOptionTrait : public OptionTrait< bool, option >
+  {
+  public:
+    NoValueOptionTrait();
+
+    /**
+     * Return a copy of the current option. 
+     * Note that the option value is copied too.
+     */
+    virtual NoValueOptionTrait *clone() const;
+
+  };
 }
 
 #include "Option.inl"

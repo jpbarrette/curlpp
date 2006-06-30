@@ -66,7 +66,6 @@ namespace cURLpp
      * Using this option will use CURLOPT_WRITEFUNCTION, so don't set
      * a callback if you want it to work. 
      */
-
     typedef cURLpp::OptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
 
     /**
@@ -243,7 +242,7 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< std::string, CURLOPT_SSLKEYTYPE > SslKeyType;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_SSLKEYPASSWD > SslKeyPasswd;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_SSLENGINE > SslEngine;
-    //SSLEngineDefault;
+    typedef cURLpp::NoValueOptionTrait< CURLOPT_SSLENGINE_DEFAULT > SslEngineDefault;
     typedef cURLpp::OptionTrait< long, CURLOPT_SSLVERSION > SslVersion;
     typedef cURLpp::OptionTrait< bool, CURLOPT_SSL_VERIFYPEER > SslVerifyPeer;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_CAINFO > CaInfo;
