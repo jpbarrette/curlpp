@@ -1,4 +1,6 @@
 Changes from version 0.7.0-pre1 to 0.7.0-pre2
+- Added the NoValueOptionTrait. This will allow options with no values,
+  as CURLOPT_SSLENGINE_DEFAULT, for instance.
 - Fixed the missing msvc makefiles in source distribution.
 - Fixed some gcc 3.2 compilation fixes (MaHo)
 - Updated MSVC makefiles for new examples and for Multi integration.

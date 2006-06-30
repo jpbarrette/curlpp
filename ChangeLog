@@ -1,3 +1,7 @@
+Jean-Philippe Barrette-LaPierre (30 June 2005) version 0.7.0-pre2
+- Added the NoValueOptionTrait. This will allow options with no values,
+  as CURLOPT_SSLENGINE_DEFAULT, for instance.
+
 Jean-Philippe Barrette-LaPierre (29 June 2005) version 0.7.0-pre1
 - Changed to version 0.7.0-pre2
 
