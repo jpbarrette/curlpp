@@ -43,6 +43,17 @@ namespace cURLpp
   };
 
   /**
+   * This class is used when an info is not available for the
+   * current libcURL version.
+   */
+  template< CURLINFO info, typename T >
+  struct CURLPPAPI NotAvailableInfo : Info< info, T >
+  {
+    static void get(cURLpp::Easy &handle, T &value);
+    static T get(cURLpp::Easy &handle);
+  };
+
+  /**
    * This is the class you need to specialize if you use
    * a special type that libcURL is not aware of. This class
    * need to call cURLpp::InfoGetter::get function. See 

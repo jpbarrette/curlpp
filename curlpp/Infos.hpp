@@ -66,10 +66,17 @@ namespace cURLpp
 #if LIBCURL_VERSION_NUM >= 0x070c03
     typedef cURLpp::Info< CURLINFO_NUM_CONNECTS, long > NumConnects;
 #endif
+
 #if LIBCURL_VERSION_NUM >= 0x070e01
     typedef cURLpp::Info< CURLINFO_COOKIELIST, std::list< std::string > > CookieList;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    // This curlinfo text must be specified, so we specify something
+    // that we know will be there.
+    typedef cURLpp::NotAvailableInfo< CURLINFO_EFFECTIVE_URL,
+				      std::list< std::string > > CookieList;
 #endif
-  };
-};
-
 #endif
+  }
+}
+#endif 

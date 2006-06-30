@@ -40,6 +40,22 @@ cURLpp::Info< info, T >::get(cURLpp::Easy &handle)
   return value;
 }
 
+template< CURLINFO info, typename T >
+void
+cURLpp::NotAvailableInfo< info, T >::get(cURLpp::Easy &, T &)
+{
+  throw cURLpp::NotAvailable();
+}
+
+template< CURLINFO info, typename T >
+T
+cURLpp::NotAvailableInfo< info, T >::get(cURLpp::Easy &)
+{
+  throw cURLpp::NotAvailable();
+}
+
+
+
 template< typename T >
 void
 cURLpp::InfoGetter::get(cURLpp::Easy &handle, 
