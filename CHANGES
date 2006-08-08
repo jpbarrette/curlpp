@@ -1,5 +1,5 @@
 Changes from version 0.7.0-pre2 to 0.7.0
-- Nothing! Just ready to be released!
+- Added example 16.
 
 Changes from version 0.7.0-pre1 to 0.7.0-pre2
 - Added the NotAvailable feature. If CURLPP_ALLOW_NOT_AVAILABLE is 
