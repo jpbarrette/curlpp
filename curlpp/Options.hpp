@@ -32,7 +32,7 @@ namespace cURLpp
     /**
      * Cookie interface.
      */
-#if LIBCURL_VERSION_NUM >= 0x070e01
+#ifdef CURLOPT_COOKIELIST
     typedef cURLpp::OptionTrait< std::string, CURLOPT_COOKIELIST > CookieList;
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE

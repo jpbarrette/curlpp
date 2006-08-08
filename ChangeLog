@@ -1,35 +1,38 @@
-Jean-Philippe Barrette-LaPierre (30 June 2005) version 0.7.0-pre2
+Jean-Philippe Barrette-LaPierre (03 August 2006) version 0.7.0-pre2
+- Changed to version 0.7.0
+	
+Jean-Philippe Barrette-LaPierre (30 June 2006) version 0.7.0-pre2
 - Added the NotAvailable feature. If CURLPP_ALLOW_NOT_AVAILABLE is 
   defined, it allow us to compile code not available for the current
   libcURL version.  
 - Added the NoValueOptionTrait. This will allow options with no values,
   as CURLOPT_SSLENGINE_DEFAULT, for instance.
 
-Jean-Philippe Barrette-LaPierre (29 June 2005) version 0.7.0-pre1
+Jean-Philippe Barrette-LaPierre (29 June 2006) version 0.7.0-pre1
 - Changed to version 0.7.0-pre2
 
-Jean-Philippe Barrette-LaPierre (29 June 2005) version 0.7.0-pre1
+Jean-Philippe Barrette-LaPierre (29 June 2006) version 0.7.0-pre1
 - Fixed the missing msvc makefiles in source distribution.
 - Fixed some gcc 3.2 compilation fixes (MaHo)
 
-Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.7.0-pre1
+Jean-Philippe Barrette-LaPierre (25 June 2006) version 0.7.0-pre1
 - Updated MSVC makefiles for new examples and for Multi integration.
 - Better Multi interface error handling.
 
-Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.6.1
+Jean-Philippe Barrette-LaPierre (25 June 2006) version 0.6.1
 - Changed to version 0.7.0-pre1
 
-Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.6.1
+Jean-Philippe Barrette-LaPierre (25 June 2006) version 0.6.1
 - Added Multi interface.
 	
-Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.6.0
+Jean-Philippe Barrette-LaPierre (25 June 2006) version 0.6.0
 - Changed to version 0.6.1
 
-Jean-Philippe Barrette-LaPierre (25 June 2005) version 0.6.0
+Jean-Philippe Barrette-LaPierre (25 June 2006) version 0.6.0
 - We require automake-1.9 for the AMD64 aclocal changes
 - Some libcURL version check added for Infos.hpp
 
-Jean-Philippe Barrette-LaPierre (17 June 2005) version 0.6.0-pre5
+Jean-Philippe Barrette-LaPierre (17 June 2006) version 0.6.0-pre5
 - Changed to version 0.6.0
 
 Jean-Philippe Barrette-LaPierre (29 March 2006) version 0.6.0-pre5
