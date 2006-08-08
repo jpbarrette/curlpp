@@ -1,3 +1,6 @@
+Changes from version 0.7.0-pre2 to 0.7.0
+- Nothing! Just ready to be released!
+
 Changes from version 0.7.0-pre1 to 0.7.0-pre2
 - Added the NotAvailable feature. If CURLPP_ALLOW_NOT_AVAILABLE is 
   defined, it allow us to compile code not available for the current

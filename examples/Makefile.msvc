@@ -71,6 +71,12 @@ example13 : example13.o
 example14 : example14.o
 	$(LNK) /out:example11.exe example11.o
 
+example15 : example15.o
+	$(LNK) /out:example11.exe example11.o
+
+example16 : example16.o
+	$(LNK) /out:example11.exe example11.o
+
 TARGET = \
 	example01 \
 	example02 \
@@ -85,7 +91,9 @@ TARGET = \
 	example11 \
 	example12 \
 	example13 \
-	example14
+	example14 \
+	example15 \
+	example16
 
 all : $(TARGET)
 
