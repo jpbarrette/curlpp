@@ -43,6 +43,11 @@ namespace cURLpp
      */
     void CURLPPAPI perform();
 
+    /**
+     * Simply calls curl_easy_reset on the handle
+     */
+    void CURLPPAPI reset();
+
     virtual CURLPPAPI ~CurlHandle();
 
     /**

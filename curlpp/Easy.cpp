@@ -61,6 +61,11 @@ cURLpp::Easy::setOpt(const cURLpp::OptionList &options)
     OptionList::setOpt(options);    
 }
 
-
+void
+cURLpp::Easy::reset ()
+{
+	myCurl.reset();
+	OptionList::setOpt(OptionList());
+}
 
 

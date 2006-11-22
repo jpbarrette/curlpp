@@ -60,6 +60,13 @@ int main(int argc, char *argv[])
 	      << cURLpp::Infos::EffectiveUrl::get(request)
 	      << std::endl;
 
+    std::cout << "Response code: " 
+	      << cURLpp::Infos::ResponseCode::get(request) 
+	      << std::endl;
+
+    std::cout << "SSL engines: " 
+	      << cURLpp::Infos::SslEngines::get(request)
+	      << std::endl;
   }
   catch ( cURLpp::LogicError & e ) {
     std::cout << e.what() << std::endl;
