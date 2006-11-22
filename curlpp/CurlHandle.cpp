@@ -30,7 +30,6 @@
 #include "cURLpp.hpp"
 #include "Exception.hpp"
 
-
 void cURLpp::CurlHandle::perform()
 {
   CURLcode code;
@@ -38,6 +37,11 @@ void cURLpp::CurlHandle::perform()
   code = curl_easy_perform( mCurl );
   throwException();
   libcurlRuntimeAssert(mErrorBuffer, code); //if we got an error
+}
+
+void cURLpp::CurlHandle::reset()
+{
+  curl_easy_reset( mCurl );
 }
 
 CURL *

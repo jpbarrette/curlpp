@@ -32,7 +32,7 @@ namespace cURLpp
   class CURLPPAPI Easy : public OptionList
   {
   public: 
-    friend class InfoGetter;
+    friend struct InfoGetter;
 
     Easy();
     virtual ~Easy();
@@ -68,6 +68,12 @@ namespace cURLpp
      * contained by * the option list passed in argument.
      */
     virtual void setOpt(const cURLpp::OptionList &options);
+
+	/*
+	 * This function empties the option collection and reset all options
+	 * to their default value
+	 */
+	virtual void reset ();
 
     /**
      * This function will return the cURL * handle.

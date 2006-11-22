@@ -170,13 +170,13 @@ case $host in
   *-*-mingw*)
     AC_DEFINE(BUILDING_CURLPP, 1, [when building cURLpp itself])
     AC_MSG_RESULT(yes)
-    AC_MSG_CHECKING([if we need CURLPP_STATICLIB])
+    AC_MSG_CHECKING([if we need CURLPP_STATICLIB])
     if test "X$enable_shared" = "Xno"
     then
       AC_DEFINE(CURLPP_STATICLIB, 1, [when not building a shared library])
       AC_MSG_RESULT(yes)
-    else
-      AC_MSG_RESULT(no)
+    else
+      AC_MSG_RESULT(no)
     fi
     ;;
   *)

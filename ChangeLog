@@ -1,6 +1,14 @@
+Armel Asselin (21 November 2006) version 0.7.0-pre2
+- Added some missing options (some unavailable CURLOPT)
+- Fixed Options for Quote/PreQuote/PostQuote (was long, now is std::list<std::string>).
+- Added cURLpp::Easy::reset.
+- Fixed wrong cURLpp::Easy::InfoGetter declaration (struct/class mix).
+- Added implementation for long and double Info.
+- cURLpp::Multi removes the easy handles remaining inside itself when destroyed (allows nice handling of exceptions when a Multi is involved).
+- Changed to version 0.7.0
+
 Jean-Philippe Barrette-LaPierre (08 August 2006) version 0.7.0-pre2
 - Added example 16
-- Changed to version 0.7.0
 	
 Jean-Philippe Barrette-LaPierre (30 June 2006) version 0.7.0-pre2
 - Added the NotAvailable feature. If CURLPP_ALLOW_NOT_AVAILABLE is 

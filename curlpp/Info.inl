@@ -66,4 +66,14 @@ cURLpp::InfoGetter::get(cURLpp::Easy &handle,
 }
 
 
+template< typename T >
+void
+cURLpp::InfoTypeConverter< T >::get(cURLpp::Easy &handle, 
+				    CURLINFO info,
+				    T &value)
+{
+  InfoGetter::get(handle, info, value);
+}
+
+
 #endif

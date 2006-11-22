@@ -87,12 +87,10 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::DebugFunctionFunctor, 
       CURLOPT_DEBUGFUNCTION > DebugFunction;
-#ifdef CURLOPT_SSL_CTX_FUNCTION
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::SslCtxFunctionFunctor,
       CURLOPT_SSL_CTX_FUNCTION > SslCtxFunction;
-#endif
-      
+    
       
     /**
      * Error options.
@@ -116,17 +114,14 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< bool, CURLOPT_DNS_USE_GLOBAL_CACHE > DnsUseGlobalCache;
     typedef cURLpp::OptionTrait< long, CURLOPT_BUFFERSIZE > BufferSize;
     typedef cURLpp::OptionTrait< long, CURLOPT_PORT > Port;
-#ifdef CURLOPT_TCP_NODELAY
-    typedef cURLpp::OptionTrait< bool, CURLOPT_TCP_NODELAY > TcpNoDelay;
-#endif
+
+	typedef cURLpp::OptionTrait< bool, CURLOPT_TCP_NODELAY > TcpNoDelay;
 
     /**
      * Names and passwords options.
      */
     typedef cURLpp::OptionTrait< long, CURLOPT_NETRC > Netrc;
-#ifdef CURLOPT_NETRC_FILE
     typedef cURLpp::OptionTrait< std::string, CURLOPT_NETRC_FILE > NetrcFile;
-#endif
     typedef cURLpp::OptionTrait< std::string, CURLOPT_USERPWD > UserPwd;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_PROXYUSERPWD > ProxyUserPwd;
     typedef cURLpp::OptionTrait< long, CURLOPT_HTTPAUTH > HttpAuth;
@@ -138,21 +133,14 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< bool, CURLOPT_AUTOREFERER > AutoReferer;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_ENCODING > Encoding;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FOLLOWLOCATION > FollowLocation;
-#ifdef CURLOPT_UNRESTRICTED_AUTH
     typedef cURLpp::OptionTrait< bool, CURLOPT_UNRESTRICTED_AUTH > UnrestrictedAuth;
-#endif
     typedef cURLpp::OptionTrait< long, CURLOPT_MAXREDIRS > MaxRedirs;
-#ifndef CURLOPT_UPLOAD
     typedef cURLpp::OptionTrait< bool, CURLOPT_PUT > Put;
-#else
-    typedef cURLpp::OptionTrait< bool, CURLOPT_UPLOAD > Put;
-#endif
+    typedef cURLpp::OptionTrait< bool, CURLOPT_UPLOAD > Upload;
     typedef cURLpp::OptionTrait< bool, CURLOPT_POST > Post;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_POSTFIELDS > PostFields;
     typedef cURLpp::OptionTrait< long, CURLOPT_POSTFIELDSIZE > PostFieldSize;
-#ifdef CURLOPT_POSTFIELDSIZE_LARGE
     typedef cURLpp::OptionTrait< curl_off_t, CURLOPT_POSTFIELDSIZE_LARGE > PostFieldSizeLarge;
-#endif
     typedef cURLpp::OptionTrait< std::list< cURLpp::FormPart * >, CURLOPT_HTTPPOST > HttpPost;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_REFERER > Referer;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_USERAGENT > UserAgent;
@@ -169,25 +157,17 @@ namespace cURLpp
      * FTP options.
      */
     typedef cURLpp::OptionTrait< std::string, CURLOPT_FTPPORT > FtpPort;
-    typedef cURLpp::OptionTrait< long, CURLOPT_QUOTE > Quote;
-    typedef cURLpp::OptionTrait< long, CURLOPT_POSTQUOTE > PostQuote;
-    typedef cURLpp::OptionTrait< long, CURLOPT_PREQUOTE > PreQuote;
+    typedef cURLpp::OptionTrait< std::list< std::string >, CURLOPT_QUOTE > Quote;
+    typedef cURLpp::OptionTrait< std::list< std::string >, CURLOPT_POSTQUOTE > PostQuote;
+    typedef cURLpp::OptionTrait< std::list< std::string >, CURLOPT_PREQUOTE > PreQuote;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTPLISTONLY > FtpListOnly;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTPAPPEND > FtpAppend;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_USE_EPSV > FtpUseEpsv;
-#ifdef CURLOPT_FTP_CREATE_MISSING_DIRS
+    typedef cURLpp::OptionTrait< long, CURLOPT_FTP_FILEMETHOD > FtpFileMethod;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_CREATE_MISSING_DIRS > FtpCreateMissingDirs;
-#endif
-#ifdef CURLOPT_FTP_RESPONSE_TIMEOUT
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_RESPONSE_TIMEOUT > FtpResponseTimeout;
-#endif
-
-#ifdef CURLOPT_FTP_SSL
     typedef cURLpp::OptionTrait< curl_ftpssl, CURLOPT_FTP_SSL > FtpSsl;
-#endif
-#ifdef CURLOPT_FTPSSLAUTH
     typedef cURLpp::OptionTrait< curl_ftpauth, CURLOPT_FTPSSLAUTH > FtpSslAuth;
-#endif
       
     /**
      * Protocol options.
@@ -196,29 +176,16 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< bool, CURLOPT_CRLF > Crlf;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_RANGE > Range;
     typedef cURLpp::OptionTrait< long, CURLOPT_RESUME_FROM > ResumeFrom;
-#ifdef CURLOPT_RESUME_FROM_LARGE
     typedef cURLpp::OptionTrait< curl_off_t, CURLOPT_RESUME_FROM_LARGE > ResumeFromLarge;
-#endif
     typedef cURLpp::OptionTrait< std::string, CURLOPT_CUSTOMREQUEST > CustomRequest;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FILETIME > FileTime;
     typedef cURLpp::OptionTrait< bool, CURLOPT_NOBODY > NoBody;
     typedef cURLpp::OptionTrait< long, CURLOPT_INFILESIZE > InfileSize;
-#ifdef CURLOPT_INFILESIZE_LARGE
     typedef cURLpp::OptionTrait< curl_off_t, CURLOPT_INFILESIZE_LARGE > InfileSizeLarge;
-#endif
-#ifdef CURLOPT_UPLOAD
-    typedef cURLpp::OptionTrait< bool, CURLOPT_UPLOAD > Upload;
-#else
-    typedef cURLpp::OptionTrait< bool, CURLOPT_PUT > Upload;
-#endif
-#ifdef CURLOPT_MAXFILESIZE
     typedef cURLpp::OptionTrait< long, CURLOPT_MAXFILESIZE > MaxFileSize;
-#endif
-#ifdef CURLOPT_MAXFILESIZE_LARGE
     typedef cURLpp::OptionTrait< curl_off_t, CURLOPT_MAXFILESIZE_LARGE > MaxFileSizeLarge;
-#endif
     typedef cURLpp::OptionTrait< bool, CURLOPT_TIMECONDITION > TimeCondition;
-    typedef cURLpp::OptionTrait< bool, CURLOPT_TIMECONDITION > TimeValue;
+    typedef cURLpp::OptionTrait< long, CURLOPT_TIMEVALUE > TimeValue;
 
     /**
      * Connection options.
@@ -231,9 +198,7 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< bool, CURLOPT_FRESH_CONNECT > FreshConnect;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FORBID_REUSE > ForbidReuse;
     typedef cURLpp::OptionTrait< long, CURLOPT_CONNECTTIMEOUT > ConnectTimeout;
-#ifdef CURLOPT_IPRESOLVE
     typedef cURLpp::OptionTrait< long, CURLOPT_IPRESOLVE > IpResolve;
-#endif
       
     /**
      * SSL and security options.
@@ -259,7 +224,7 @@ namespace cURLpp
     /**
      * Others options.
      */
-    //Private
+    typedef cURLpp::OptionTrait< void*, CURLOPT_PRIVATE > Private;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_KRB4LEVEL > Krb4Level;
     //Share;
     //TelnetOptions

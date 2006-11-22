@@ -36,6 +36,10 @@ cURLpp::Multi::Multi()
 
 cURLpp::Multi::~Multi()
 {
+  // remove all the remaining easy handles
+  while (!mHandles.empty()) {
+      remove (mHandles.begin()->second);
+  }
   curl_multi_cleanup(mMultiHandle);
 }
 
