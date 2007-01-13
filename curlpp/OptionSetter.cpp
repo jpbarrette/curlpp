@@ -42,6 +42,16 @@ size_t myWriteCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHan
   return handle->executeWriteFunctor(buffer, size, nitems);
 };
 
+size_t myStreamWriteCallback(std::ostream * stream, char *buffer, size_t size, size_t nitems)
+{
+  size_t realwrote = size * nitems;
+  stream->write(buffer, realwrote);
+  if(!(*stream))
+    realwrote = 0;
+
+  return realwrote;
+};
+
 size_t myHeaderCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHandle *handle)
 {
   return handle->executeHeaderFunctor(buffer, size, nitems);
