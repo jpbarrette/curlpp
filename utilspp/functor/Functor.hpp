@@ -148,6 +148,14 @@ namespace utilspp
       typename utilspp::PointerOnFunction< Fun >::ParamList>(fun);
   }
 
+  template< class MemFun >
+  Functor< typename PointerOnMemberFunction< MemFun >::ReturnType, 
+	   typename PointerOnMemberFunction< MemFun >::ParamList > 
+  make_functor(typename PointerOnMemberFunction< MemFun >::ClassType * obj, MemFun fun)
+  {
+    return utilspp::Functor<typename utilspp::PointerOnMemberFunction< MemFun >::ReturnType, 
+      typename utilspp::PointerOnMemberFunction< MemFun >::ParamList>(obj, fun);
+  }
 };
 
 #include "Binder.hpp"
