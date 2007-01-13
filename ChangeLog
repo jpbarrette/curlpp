@@ -1,3 +1,14 @@
+Jean-Philippe Barrette-LaPierre (13 January 2007) version 0.7.0
+- Fixed Functor arguments binding.
+- Enabled example 10.
+- Added make_functor function (see example10).
+- WriteData is now called WriteFile.
+- Disabled buggy WriteStream.
+- Added example17 (binded method functor).
+
+Jean-Philippe Barrette-LaPierre (13 January 2007) version 0.7.0-pre2
+- Changed to version 0.7.0
+
 Armel Asselin (21 November 2006) version 0.7.0-pre2
 - Added some missing options (some unavailable CURLOPT)
 - Fixed Options for Quote/PreQuote/PostQuote (was long, now is std::list<std::string>).
