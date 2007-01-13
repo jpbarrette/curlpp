@@ -31,7 +31,7 @@
 #define MAX_FILE_LENGTH 20000
 
 size_t 
-FileMemoryCallback(FILE *f, char* ptr, size_t size, size_t nmemb)
+FileCallback(FILE *f, char* ptr, size_t size, size_t nmemb)
 {
   return fwrite(ptr, size, nmemb, f);
 };
@@ -40,8 +40,8 @@ FileMemoryCallback(FILE *f, char* ptr, size_t size, size_t nmemb)
 int main(int argc, char *argv[])
 {
   if(argc != 2) {
-    std::cerr << "Example 06: Wrong number of arguments" << std::endl 
-	      << "Example 06: Usage: example06 url" 
+    std::cerr << argv[0] << ": Wrong number of arguments" << std::endl 
+	      << argv[0] << ": Usage: " << " url" 
 	      << std::endl;
 
     return EXIT_FAILURE;
@@ -54,11 +54,7 @@ int main(int argc, char *argv[])
     
     // Set the writer callback to enable cURL 
     // to write result in a memory area
-    FILE *myfd = stdout;
-    utilspp::Functor< size_t, TYPE_LIST_4(FILE *, char *, size_t, size_t) > myFunctor(&FileMemoryCallback);
-    utilspp::BindFirst(myFunctor, myfd);
-    utilspp::Functor< size_t, TYPE_LIST_3(char *, size_t, size_t) > test3(utilspp::BindFirst(myFunctor, stdout));
-    cURLpp::Types::WriteFunctionFunctor functor(utilspp::BindFirst(myFunctor, stdout));
+    cURLpp::Types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), stdout));
     cURLpp::Options::WriteFunction *test = new cURLpp::Options::WriteFunction(functor);
     request.setOpt(test);
     
