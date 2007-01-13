@@ -60,7 +60,9 @@ namespace cURLpp
      * want libcURL to use the FILE * given in argument instead 
      * of stdout. 
      */
-    typedef cURLpp::OptionTrait< FILE *, CURLOPT_WRITEDATA > WriteData;
+    typedef cURLpp::OptionTrait< FILE *, CURLOPT_WRITEDATA > WriteFile
+
+;
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ReadFunctionFunctor, 
       CURLOPT_READFUNCTION > ReadFunction;
@@ -68,8 +70,10 @@ namespace cURLpp
     /**
      * Using this option will use CURLOPT_WRITEFUNCTION, so don't set
      * a callback if you want it to work. 
+     *
+     * Note: This option is disabled because it's not yet completed.
      */
-    typedef cURLpp::OptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
+    //typedef cURLpp::OptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
 
     /**
      * Using this option will reset CURLOPT_READFUNCTION to 
@@ -78,6 +82,7 @@ namespace cURLpp
      * of stdout. 
      */
     typedef cURLpp::OptionTrait< FILE *, CURLOPT_READDATA > ReadData;
+
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ProgressFunctionFunctor, 
       CURLOPT_PROGRESSFUNCTION > ProgressFunction;
