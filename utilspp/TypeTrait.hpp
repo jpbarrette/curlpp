@@ -59,7 +59,7 @@ namespace utilspp
   public:
     typedef typename unreference< T >::type NonReference;
     typedef typename unconst< T >::type NonConst;
-    typedef typename unconst< unreference< T >::type >::type NonParam;
+    typedef typename unconst< typename unreference< T >::type >::type NonParam;
   };
 
   template< class T >
@@ -157,54 +157,6 @@ namespace utilspp
     typedef utilspp::NullType Param15Type;
 
     typedef TYPE_LIST_2(X, Y) ParamList;
-  };
-
-  template< typename V, typename W, typename X, typename Y, typename Z >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z) >
-  {
-    typedef V ClassType;
-    typedef W ReturnType;
-    typedef X ParamType;
-    typedef Y Param2Type;
-    typedef Z Param3Type;
-    typedef utilspp::NullType Param4Type;
-    typedef utilspp::NullType Param5Type;
-    typedef utilspp::NullType Param6Type;
-    typedef utilspp::NullType Param7Type;
-    typedef utilspp::NullType Param8Type;
-    typedef utilspp::NullType Param9Type;
-    typedef utilspp::NullType Param10Type;
-    typedef utilspp::NullType Param11Type;
-    typedef utilspp::NullType Param12Type;
-    typedef utilspp::NullType Param13Type;
-    typedef utilspp::NullType Param14Type;
-    typedef utilspp::NullType Param15Type;
-
-    typedef TYPE_LIST_3(X, Y, Z) ParamList;
-  };
-
-  template< typename V, typename W, typename X, typename Y, typename Z >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z) >
-  {
-    typedef V ClassType;
-    typedef W ReturnType;
-    typedef X ParamType;
-    typedef Y Param2Type;
-    typedef Z Param3Type;
-    typedef utilspp::NullType Param4Type;
-    typedef utilspp::NullType Param5Type;
-    typedef utilspp::NullType Param6Type;
-    typedef utilspp::NullType Param7Type;
-    typedef utilspp::NullType Param8Type;
-    typedef utilspp::NullType Param9Type;
-    typedef utilspp::NullType Param10Type;
-    typedef utilspp::NullType Param11Type;
-    typedef utilspp::NullType Param12Type;
-    typedef utilspp::NullType Param13Type;
-    typedef utilspp::NullType Param14Type;
-    typedef utilspp::NullType Param15Type;
-
-    typedef TYPE_LIST_3(X, Y, Z) ParamList;
   };
 
   template< typename V, typename W, typename X, typename Y, typename Z >

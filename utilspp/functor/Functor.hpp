@@ -29,6 +29,7 @@
 #include "../NullType.hpp"
 #include "../EmptyType.hpp"
 #include "../TypeList.hpp"
+#include "../TypeTrait.hpp"
 
 #include "FunctorImpl.hpp"
 #include "FunctorHandler.hpp"
@@ -40,16 +41,36 @@ namespace utilspp
   class Functor
   {
   public:
+    typedef FunctorImpl<R, TList> Impl;
+
     typedef R ResultType;
     typedef TList ParmList;
 
-    Functor(const Functor &functor);
-    Functor& operator=(const Functor &functor);
+    Functor(const Functor &functor) 
+      : mImpl(functor.mImpl->clone())
+    {}
+
+    Functor(std::auto_ptr<Impl> impl) 
+      : mImpl(impl)
+    {}
+
+    Functor& operator=(const Functor &functor)
+    {
+      mImpl = std::auto_ptr< Impl >(functor.mImpl->clone());
+      return (*this);
+    }
+
     //explicit Functor(std::auto_ptr< Impl > impl);
     template< class Fun >
-    Functor(Fun fun);
+    Functor(Fun fun)
+      : mImpl(new FunctorHandler<Functor, Fun>(fun))
+    {}
+
     template< class PointerToObj, class MemFun >
-    Functor(const PointerToObj &obj, MemFun fun);
+    Functor(const PointerToObj &obj, MemFun fun)
+      : mImpl(new MemFunHandler< Functor, PointerToObj, MemFun >(obj, fun))
+    {}
+
 
     typedef typename utilspp::tl::TypeAtNonStrict< TList, 0, utilspp::EmptyType >::Result Parm1;
     typedef typename utilspp::tl::TypeAtNonStrict< TList, 1, utilspp::EmptyType >::Result Parm2;
@@ -116,14 +137,19 @@ namespace utilspp
     {return (*mImpl)(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15);}
 
   private:
-    typedef FunctorImpl< R, TList > Impl;
     std::auto_ptr<Impl> mImpl;
   };
-
+  
+  template< typename Fun >
+  Functor< typename PointerOnFunction< Fun >::ReturnType, 
+	   typename PointerOnFunction< Fun >::ParamList > make_functor(Fun fun)
+  {
+    return utilspp::Functor<typename utilspp::PointerOnFunction< Fun >::ReturnType, 
+      typename utilspp::PointerOnFunction< Fun >::ParamList>(fun);
+  }
 
 };
 
-#include "Functor.inl"
 #include "Binder.hpp"
 
 #endif

@@ -1,10 +1,10 @@
 if MAINTENER_CODE
-maintener_programs = example10 
+maintener_programs = 
 endif
 
 EXTRA_DIST = Makefile.msvc
 
-noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example07 example08 example09 example11 example12 example13 example14 example15 example16 ${maintener_programs}
+noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example07 example08 example09 example10 example11 example12 example13 example14 example15 example16 ${maintener_programs}
 
 
 

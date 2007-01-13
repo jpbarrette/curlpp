@@ -19,7 +19,7 @@ configure.in is a good example to add curlpp to your project
  Example 15: Simple example for demonstrating the NoValueOptionTrait. 
              (SslEngineDefault)
  Example 16: HTTP POST example with HTTP Authentification.
-
+ Example 17: FILE * example.
 
 
 

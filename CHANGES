@@ -5,7 +5,7 @@ Changes from version 0.7.0-pre2 to 0.7.0
 - Fixed wrong cURLpp::Easy::InfoGetter declaration (struct/class mix). (thanks to Armel Asselin)
 - Added implementation for long and double Info. (thanks to Armel Asselin)
 - cURLpp::Multi removes the easy handles remaining inside itself when destroyed (allows nice handling of exceptions when a Multi is involved). (thanks to Armel Asselin)
-- Added example 16. (thanks to Armel Asselin)
+- Added example 16.
 
 Changes from version 0.7.0-pre1 to 0.7.0-pre2
 - Added the NotAvailable feature. If CURLPP_ALLOW_NOT_AVAILABLE is 
