@@ -22,6 +22,7 @@
  */
 
 #include <stdio.h>
+#include <string.h>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
@@ -39,14 +40,22 @@ FileCallback(FILE *f, char* ptr, size_t size, size_t nmemb)
 
 int main(int argc, char *argv[])
 {
-  if(argc != 2) {
+  if(argc != 3) {
     std::cerr << argv[0] << ": Wrong number of arguments" << std::endl 
-	      << argv[0] << ": Usage: " << " url" 
+	      << argv[0] << ": Usage: " << " url file" 
 	      << std::endl;
 
     return EXIT_FAILURE;
   }
+
   char *url = argv[1];
+  char *filename = argv[2];
+  FILE * file = fopen(filename, "w");
+  if (!file)
+  {
+    std::cerr << "Error opening " << filename << std::endl;
+    return EXIT_FAILURE;
+  }
   
   try {
     cURLpp::Cleanup cleaner;
@@ -54,7 +63,7 @@ int main(int argc, char *argv[])
     
     // Set the writer callback to enable cURL 
     // to write result in a memory area
-    cURLpp::Types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), stdout));
+    cURLpp::Types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), file));
     cURLpp::Options::WriteFunction *test = new cURLpp::Options::WriteFunction(functor);
     request.setOpt(test);
     
@@ -62,6 +71,8 @@ int main(int argc, char *argv[])
     request.setOpt(new cURLpp::Options::Url(url));
     request.setOpt(new cURLpp::Options::Verbose(true));
     request.perform();
+
+    return EXIT_SUCCESS;
   }
   catch ( cURLpp::LogicError & e ) {
     std::cout << e.what() << std::endl;
@@ -69,4 +80,6 @@ int main(int argc, char *argv[])
   catch ( cURLpp::RuntimeError & e ) {
     std::cout << e.what() << std::endl;
   }
+
+  return EXIT_FAILURE;
 }
