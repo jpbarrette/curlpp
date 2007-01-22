@@ -1,3 +1,6 @@
+Jean-Philippe Barrette-LaPierre (16 January 2007) version 0.7.0
+- Added boost.function (http://www.boost.org)  feature.
+
 Jean-Philippe Barrette-LaPierre (13 January 2007) version 0.7.0
 - Fixed Functor arguments binding.
 - Enabled example 10.

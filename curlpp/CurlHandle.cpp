@@ -51,13 +51,7 @@ cURLpp::CurlHandle::getHandle() const
 }
 
 cURLpp::CurlHandle::CurlHandle() 
-  : mWriteFunctor(NULL)
-  , mHeaderFunctor(NULL)
-  , mReadFunctor(NULL)
-  , mProgressFunctor(NULL)
-  , mDebugFunctor(NULL)
-  , mSslFunctor(NULL)
-  ,mException(NULL)
+  : mException(NULL)
 {
   mCurl = curl_easy_init();
   runtimeAssert( "Error when trying to curl_easy_init() a handle", mCurl );
@@ -82,55 +76,64 @@ cURLpp::CurlHandle::errorBuffer(char *buffer)
 size_t 
 cURLpp::CurlHandle::executeWriteFunctor(char *buffer, size_t size, size_t nitems)
 {
-  if(mWriteFunctor) {
-    try {
-      return (*mWriteFunctor)(buffer, size, nitems);
-    }
-    catch(cURLpp::CallbackExceptionBase *e) {
-      setException(e);
-    }
-    catch(...) {
-      setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
-    }
+   if(!mWriteFunctor) {
+     setException(new CallbackException< cURLpp::LogicError >(cURLpp::LogicError("Null write functor")));
+     return CURLE_ABORTED_BY_CALLBACK;
+   }
+
+  try {
+    return (mWriteFunctor)(buffer, size, nitems);
+  }
+  catch(cURLpp::CallbackExceptionBase *e) {
+    setException(e);
+  }
+  catch(...) {
+    setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
   }
   
-  return 0;
+  return CURLE_ABORTED_BY_CALLBACK;
 }
 
 size_t 
 cURLpp::CurlHandle::executeHeaderFunctor(char *buffer, size_t size, size_t nitems)
 {
-  if(mHeaderFunctor) {
-    try {
-      return (*mHeaderFunctor)(buffer, size, nitems);
-    }
-    catch(cURLpp::CallbackExceptionBase *e) {
-      setException(e);
-    }
-    catch(...) {
-      setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
-    }
+  if(!mHeaderFunctor) {
+    setException(new CallbackException< cURLpp::LogicError >(cURLpp::LogicError("Null write functor")));
+    return CURLE_ABORTED_BY_CALLBACK;
+  }
+    
+  try {
+    return mHeaderFunctor(buffer, size, nitems);
+  }
+  catch(cURLpp::CallbackExceptionBase *e) {
+    setException(e);
+  }
+  catch(...) {
+    setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
   }
   
-  return 0;
+  return CURLE_ABORTED_BY_CALLBACK;
 }
 
 size_t 
 cURLpp::CurlHandle::executeReadFunctor(char *buffer, size_t size, size_t nitems)
 {
-  if(mReadFunctor) {
-    try {
-      return (*mReadFunctor)(buffer, size, nitems);
-    }
-    catch(cURLpp::CallbackExceptionBase *e) {
-      setException(e);
-    }
-    catch(...) {
-      setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
-    }
+  if(!mReadFunctor) {
+    setException(new CallbackException< cURLpp::LogicError >(cURLpp::LogicError("Null write functor")));
+    return CURLE_ABORTED_BY_CALLBACK;
+  }
+   
+  try {
+    return mReadFunctor(buffer, size, nitems);
+  }
+  catch(cURLpp::CallbackExceptionBase *e) {
+    setException(e);
+  }
+  catch(...) {
+    setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
   }
   
-  return 0;
+  return CURLE_ABORTED_BY_CALLBACK;
 }
 
 int 
@@ -139,52 +142,61 @@ cURLpp::CurlHandle::executeProgressFunctor(double dltotal,
 					   double ultotal, 
 					   double ulnow)
 {
-  if(mProgressFunctor) {
-    try {
-      return (*mProgressFunctor)(dltotal, dlnow, ultotal, ulnow);
-    }
-    catch(cURLpp::CallbackExceptionBase *e) {
-      setException(e);
-    }
-    catch(...) {
-      setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
-    }
+  if(!mProgressFunctor) {
+    setException(new CallbackException< cURLpp::LogicError >(cURLpp::LogicError("Null write functor")));
+    return CURLE_ABORTED_BY_CALLBACK;
   }
   
-  return -1;
+  try {
+    return mProgressFunctor(dltotal, dlnow, ultotal, ulnow);
+  }
+  catch(cURLpp::CallbackExceptionBase *e) {
+    setException(e);
+  }
+  catch(...) {
+    setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
+  }
+  
+  return CURLE_ABORTED_BY_CALLBACK;
 }
 
 int 
 cURLpp::CurlHandle::executeDebugFunctor(curl_infotype info, char *buffer, size_t size)
 {
-  if(mDebugFunctor) {
-    try {
-      return (*mDebugFunctor)(info, buffer, size);
-    }
-    catch(cURLpp::CallbackExceptionBase *e) {
-      setException(e);
-    }
-    catch(...) {
-      setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
-    }
+  if(!mDebugFunctor) {
+    setException(new CallbackException< cURLpp::LogicError >(cURLpp::LogicError("Null write functor")));
+    return CURLE_ABORTED_BY_CALLBACK;
+  }
+
+  try {
+    return mDebugFunctor(info, buffer, size);
+  }
+  catch(cURLpp::CallbackExceptionBase *e) {
+    setException(e);
+  }
+  catch(...) {
+    setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
   }
   
-  return -1;
+  return CURLE_ABORTED_BY_CALLBACK;
 }
 
 CURLcode 
 cURLpp::CurlHandle::executeSslCtxFunctor(void *ssl_ctx)
 {
-  if(mSslFunctor) {
-    try {
-      return (*mSslFunctor)(ssl_ctx);
-    }
-    catch(cURLpp::CallbackExceptionBase *e) {
-      setException(e);
-    }
-    catch(...) {
-      setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
-    }
+  if(!mSslFunctor) {
+    setException(new CallbackException< cURLpp::LogicError >(cURLpp::LogicError("Null write functor")));
+    return CURLE_ABORTED_BY_CALLBACK;
+  }
+
+  try {
+    return mSslFunctor(ssl_ctx);
+  }
+  catch(cURLpp::CallbackExceptionBase *e) {
+    setException(e);
+  }
+  catch(...) {
+    setException(new CallbackException< cURLpp::UnknowException >(cURLpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
@@ -203,9 +215,8 @@ cURLpp::CurlHandle::setException(cURLpp::CallbackExceptionBase *e)
 void
 cURLpp::CurlHandle::throwException()
 {
-  if(mException) {
+  if(mException) 
     mException->throwMe();
-  }
 }
 
 

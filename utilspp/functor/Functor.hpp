@@ -50,6 +50,10 @@ namespace utilspp
       : mImpl(functor.mImpl->clone())
     {}
 
+    Functor() 
+      : mImpl()
+    {}
+
     Functor(std::auto_ptr<Impl> impl) 
       : mImpl(impl)
     {}
@@ -60,7 +64,6 @@ namespace utilspp
       return (*this);
     }
 
-    //explicit Functor(std::auto_ptr< Impl > impl);
     template< class Fun >
     Functor(Fun fun)
       : mImpl(new FunctorHandler<Functor, Fun>(fun))
@@ -71,6 +74,8 @@ namespace utilspp
       : mImpl(new MemFunHandler< Functor, PointerToObj, MemFun >(obj, fun))
     {}
 
+    bool operator!()
+    {return !mImpl.get();}
 
     typedef typename utilspp::tl::TypeAtNonStrict< TList, 0, utilspp::EmptyType >::Result Parm1;
     typedef typename utilspp::tl::TypeAtNonStrict< TList, 1, utilspp::EmptyType >::Result Parm2;
