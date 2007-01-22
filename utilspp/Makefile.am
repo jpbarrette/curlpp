@@ -11,7 +11,8 @@ libutilspp_la_SOURCES = \
 	SmartPtr.hpp \
 	ThreadingFactoryMutex.hpp ThreadingFactoryMutex.inl \
 	ThreadingSingle.hpp ThreadingSingle.inl \
-	TypeList.hpp
+	TypeList.hpp \
+	TypeTrait.hpp
 
 libutilspp_la_LIBADD = ./singleton/libsingleton.la
 
@@ -24,6 +25,7 @@ pkginclude_HEADERS = \
 	SmartPtr.hpp \
 	ThreadingFactoryMutex.hpp ThreadingFactoryMutex.inl \
 	ThreadingSingle.hpp ThreadingSingle.inl \
-	TypeList.hpp
+	TypeList.hpp \
+	TypeTrait.hpp
 
 pkgincludedir=$(includedir)/utilspp/
