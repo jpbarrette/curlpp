@@ -1,5 +1,5 @@
 AC_INIT(curlpp/cURLpp.cpp)
-AC_CONFIG_AUX_DIR(config)
+dnl AC_CONFIG_AUX_DIR(config)
 AM_CONFIG_HEADER(curlpp/config.h)
 AC_PREREQ(2.59)
 
