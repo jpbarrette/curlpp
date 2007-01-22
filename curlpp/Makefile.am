@@ -28,6 +28,7 @@ sources = \
 	Types.hpp \
 	TypeTrait.hpp \
 	autolink.h \
+	config.h \
 	config.win32.h \
 	global.h \
 	${maintener_source}

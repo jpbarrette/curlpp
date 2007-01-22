@@ -20,6 +20,7 @@ configure.in is a good example to add curlpp to your project
              (SslEngineDefault)
  Example 16: HTTP POST example with HTTP Authentification.
  Example 17: Binded method functor for WriteFunction example.
+ Example 18: Boost binded method for WriteFunction example.
 
 
 

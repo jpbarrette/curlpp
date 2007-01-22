@@ -54,18 +54,30 @@ namespace cURLpp
       cURLpp::Types::WriteFunctionFunctor, 
       CURLOPT_WRITEFUNCTION > WriteFunction;
 
+#ifdef HAVE_BOOST
+    typedef cURLpp::OptionTrait< 
+      cURLpp::Types::BoostWriteFunction, 
+      CURLOPT_WRITEFUNCTION > BoostWriteFunction;
+#endif
+
     /**
      * Using this option will reset CURLOPT_WRITEFUNCTION to 
      * default callback. In fact, use only this option if you only 
      * want libcURL to use the FILE * given in argument instead 
      * of stdout. 
      */
-    typedef cURLpp::OptionTrait< FILE *, CURLOPT_WRITEDATA > WriteFile
+    typedef cURLpp::OptionTrait< FILE *, CURLOPT_WRITEDATA > WriteFile;
 
-;
+
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ReadFunctionFunctor, 
       CURLOPT_READFUNCTION > ReadFunction;
+
+#ifdef HAVE_BOOST
+    typedef cURLpp::OptionTrait< 
+      cURLpp::Types::BoostReadFunction, 
+      CURLOPT_READFUNCTION > BoostReadFunction;
+#endif
     
     /**
      * Using this option will use CURLOPT_WRITEFUNCTION, so don't set
@@ -86,15 +98,42 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ProgressFunctionFunctor, 
       CURLOPT_PROGRESSFUNCTION > ProgressFunction;
+
+#ifdef HAVE_BOOST
+    typedef cURLpp::OptionTrait< 
+      cURLpp::Types::BoostProgressFunction, 
+      CURLOPT_PROGRESSFUNCTION > BoostProgressFunction;
+#endif
+
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::WriteFunctionFunctor, 
       CURLOPT_HEADERFUNCTION > HeaderFunction;
+
+#ifdef HAVE_BOOST
+    typedef cURLpp::OptionTrait< 
+      cURLpp::Types::BoostWriteFunction, 
+      CURLOPT_HEADERFUNCTION > BoostHeaderFunction;
+#endif
+
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::DebugFunctionFunctor, 
       CURLOPT_DEBUGFUNCTION > DebugFunction;
+
+#ifdef HAVE_BOOST
+    typedef cURLpp::OptionTrait< 
+      cURLpp::Types::BoostDebugFunction, 
+      CURLOPT_DEBUGFUNCTION > BoostDebugFunction;
+#endif
+
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::SslCtxFunctionFunctor,
       CURLOPT_SSL_CTX_FUNCTION > SslCtxFunction;
+
+#ifdef HAVE_BOOST
+    typedef cURLpp::OptionTrait< 
+      cURLpp::Types::BoostSslCtxFunction,
+      CURLOPT_SSL_CTX_FUNCTION > BoostSslCtxFunction;
+#endif
     
       
     /**

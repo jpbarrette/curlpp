@@ -79,30 +79,30 @@ namespace cURLpp
     void getInfo(CURLINFO info, T &value);
 
     size_t executeWriteFunctor(char *buffer, size_t size, size_t nitems);
-    void setWriteFunctor(cURLpp::Types::WriteFunctionFunctor *functor)
+    void setWriteFunctor(cURLpp::Types::WriteFunctionFunctor functor)
     {mWriteFunctor = functor;}
 
     size_t executeHeaderFunctor(char *buffer, size_t size, size_t nitems);
-    void setHeaderFunctor(cURLpp::Types::WriteFunctionFunctor *functor)
+    void setHeaderFunctor(cURLpp::Types::WriteFunctionFunctor functor)
     {mHeaderFunctor = functor;}
 
     size_t executeReadFunctor(char *buffer, size_t size, size_t nitems);
-    void setReadFunctor(cURLpp::Types::ReadFunctionFunctor *functor)
+    void setReadFunctor(cURLpp::Types::ReadFunctionFunctor functor)
     {mReadFunctor = functor;}
 
     int executeProgressFunctor(double dltotal, 
 			       double dlnow, 
 			       double ultotal, 
 			       double ulnow);
-    void setProgressFunctor(cURLpp::Types::ProgressFunctionFunctor *functor)
+    void setProgressFunctor(cURLpp::Types::ProgressFunctionFunctor functor)
     {mProgressFunctor = functor;}
 
     int executeDebugFunctor(curl_infotype, char *, size_t);
-    void setDebugFunctor(cURLpp::Types::DebugFunctionFunctor *functor)
+    void setDebugFunctor(cURLpp::Types::DebugFunctionFunctor functor)
     {mDebugFunctor = functor;}
 
     CURLcode executeSslCtxFunctor(void *ssl_ctx);
-    void setSslCtxFunctor(cURLpp::Types::SslCtxFunctionFunctor *functor)
+    void setSslCtxFunctor(cURLpp::Types::SslCtxFunctionFunctor functor)
     {mSslFunctor = functor;}
     
     void setException(cURLpp::CallbackExceptionBase *e);
@@ -130,13 +130,13 @@ namespace cURLpp
     char mErrorBuffer[CURL_ERROR_SIZE + 1];
 
     
-    cURLpp::Types::WriteFunctionFunctor *mWriteFunctor;
-    cURLpp::Types::WriteFunctionFunctor *mHeaderFunctor;
-    cURLpp::Types::ReadFunctionFunctor *mReadFunctor;
-    cURLpp::Types::ProgressFunctionFunctor *mProgressFunctor;
-    cURLpp::Types::DebugFunctionFunctor *mDebugFunctor;
-    cURLpp::Types::SslCtxFunctionFunctor *mSslFunctor;
-    cURLpp::CallbackExceptionBase *mException;
+    cURLpp::Types::WriteFunctionFunctor mWriteFunctor;
+    cURLpp::Types::WriteFunctionFunctor mHeaderFunctor;
+    cURLpp::Types::ReadFunctionFunctor mReadFunctor;
+    cURLpp::Types::ProgressFunctionFunctor mProgressFunctor;
+    cURLpp::Types::DebugFunctionFunctor mDebugFunctor;
+    cURLpp::Types::SslCtxFunctionFunctor mSslFunctor;
+    cURLpp::CallbackExceptionBase * mException;
   };
 }
 

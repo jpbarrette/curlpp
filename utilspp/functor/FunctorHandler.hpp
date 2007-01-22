@@ -38,7 +38,7 @@ namespace utilspp
     {return new FunctorHandler(*this);}
 
     ResultType operator()()
-    {return mFun();}
+    {return (mFun)();}
 
     ResultType operator()(typename ParentFunctor::Parm1 p1)
     {return (mFun)(p1);}

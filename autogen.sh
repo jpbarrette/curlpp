@@ -158,11 +158,12 @@ fi
 # ------------------------------------------------------------
 
 # run the correct scripts now
+aclocalinclude="-I m4 $ACLOCAL_FLAGS"
 
 echo "buildconf: running libtoolize"
 ${LIBTOOLIZE:-libtoolize} --copy --automake --force || die "The libtool command failed"
 echo "buildconf: running aclocal"
-${ACLOCAL:-aclocal} $ACLOCAL_FLAGS || die "The aclocal command line failed"
+${ACLOCAL:-aclocal} $ACLOCAL_FLAGS $aclocalinclude || die "The aclocal command line failed"
 echo "buildconf: running aclocal hack to convert all mv to mv -f"
 perl -i.bak -pe 's/\bmv +([^-\s])/mv -f $1/g' aclocal.m4
 echo "buildconf: running autoconf"

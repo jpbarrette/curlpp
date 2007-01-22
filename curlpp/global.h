@@ -25,7 +25,7 @@
 #define CURLPP_GLOBAL_H
 
 #ifdef HAVE_CONFIG_H
-#include "config.h"
+#include "curlpp/config.h"
 #else
 #include "config.win32.h"
 #endif
