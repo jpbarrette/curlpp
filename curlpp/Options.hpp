@@ -25,6 +25,8 @@
 #include "Option.hpp"
 #include "StorageOptions.hpp"
 
+#include <iostream> 
+
 namespace cURLpp
 {
   namespace Options
@@ -67,7 +69,7 @@ namespace cURLpp
      * of stdout. 
      */
     typedef cURLpp::OptionTrait< FILE *, CURLOPT_WRITEDATA > WriteFile;
-
+    typedef cURLpp::OptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
 
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ReadFunctionFunctor, 
@@ -93,7 +95,8 @@ namespace cURLpp
      * want libcURL to use the FILE * given in argument instead 
      * of stdout. 
      */
-    typedef cURLpp::OptionTrait< FILE *, CURLOPT_READDATA > ReadData;
+    typedef cURLpp::OptionTrait< FILE *, CURLOPT_READDATA > ReadFile;
+    typedef cURLpp::OptionTrait< std::istream *, CURLOPT_READDATA > ReadStream;
 
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ProgressFunctionFunctor, 

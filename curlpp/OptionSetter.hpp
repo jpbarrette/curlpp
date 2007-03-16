@@ -118,6 +118,17 @@ namespace cURLpp
   };
 
   template< >
+  class CURLPPAPI OptionSetter< std::ostream *, 
+				CURLOPT_WRITEDATA >
+  {
+  public:
+    typedef std::ostream * OptionValueType;
+    typedef cURLpp::OptionContainerType< OptionValueType >::HandleOptionType ParamType;
+    
+    static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
+  };
+
+  template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::ReadFunctionFunctor, 
 				CURLOPT_READFUNCTION >
   {
@@ -147,6 +158,17 @@ namespace cURLpp
   {
   public:
     typedef FILE * OptionValueType;
+    typedef cURLpp::OptionContainerType< OptionValueType >::HandleOptionType ParamType;
+    
+    static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
+  };
+
+  template< >
+  class CURLPPAPI OptionSetter< std::istream *, 
+				CURLOPT_READDATA >
+  {
+  public:
+    typedef std::istream * OptionValueType;
     typedef cURLpp::OptionContainerType< OptionValueType >::HandleOptionType ParamType;
     
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
