@@ -99,6 +99,16 @@ namespace cURLpp
     typedef std::list< cURLpp::FormPart * > ReturnType;
     typedef const cURLpp::HttpPost &HandleOptionType;
   };
+
+  template< >
+  struct OptionContainerType< std::ostream * >
+  {
+    typedef const std::list< cURLpp::FormPart * > &ParamType;
+    typedef cURLpp::HttpPost ValueType;
+    typedef std::list< cURLpp::FormPart * > ReturnType;
+    typedef const cURLpp::HttpPost &HandleOptionType;
+  };
+
 }
 
 

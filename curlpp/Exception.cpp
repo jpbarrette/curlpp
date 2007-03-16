@@ -28,11 +28,11 @@ cURLpp::RuntimeError::~RuntimeError() throw()
 {}
 
 cURLpp::RuntimeError::RuntimeError( const char *reason )
-    : std::runtime_error(std::string(reason))
+  : std::runtime_error(std::string(reason))
 {}
 
 cURLpp::RuntimeError::RuntimeError( const std::string &reason )
-    : std::runtime_error(reason)
+  : std::runtime_error(reason)
 {}
 
 cURLpp::LogicError::~LogicError() throw()
@@ -103,53 +103,45 @@ cURLpp::CallbackExceptionBase::CallbackExceptionBase(const CallbackExceptionBase
 
 void cURLpp::libcurlRuntimeAssert( const std::string &reason, CURLcode code )
 {
-  if ( code != CURLE_OK )
-   {
-      throw cURLpp::LibcurlRuntimeError( reason, code );
-   }
+  cURLpp::libcurlRuntimeAssert( reason.c_str(), code );
 }
 
 void cURLpp::libcurlRuntimeAssert(const char *reason, CURLcode code)
 {
-  libcurlRuntimeAssert(std::string(reason), code);
+  if ( code != CURLE_OK )
+    throw cURLpp::LibcurlRuntimeError( reason, code );
 }
 
 void cURLpp::libcurlLogicAssert( const std::string &reason, CURLcode code )
 {
-  if ( code != CURLE_OK )
-   {
-      throw cURLpp::LibcurlLogicError( reason, code );
-   }
+  libcurlLogicAssert(reason.c_str(), code);
 }
 
 void cURLpp::libcurlLogicAssert( const char *reason, CURLcode code )
 {
-    libcurlLogicAssert(std::string(reason), code);
+  if ( code != CURLE_OK )
+    throw cURLpp::LibcurlLogicError( reason, code );
 }
 
 void cURLpp::runtimeAssert( const std::string &reason, bool isOkay )
 {
-   if ( !isOkay )
-   {
-      throw cURLpp::RuntimeError( reason );
-   }
+  runtimeAssert(reason.c_str(), isOkay);
 }
 
 void cURLpp::runtimeAssert( const char *reason, bool isOkay )
 {
-    runtimeAssert(std::string(reason), isOkay);
+  if ( !isOkay )
+    throw cURLpp::RuntimeError( reason );
 }
 
 void cURLpp::logicAssert( const std::string &reason, bool isOkay )
 {
-   if ( !isOkay )
-   {
-      throw cURLpp::LogicError( reason );
-   }
+  logicAssert(reason.c_str(), isOkay);
 }
 
 void cURLpp::logicAssert( const char *reason, bool isOkay )
 {
-    logicAssert(std::string(reason), isOkay);
+   if ( !isOkay )
+     throw cURLpp::LogicError( reason );
 }
 

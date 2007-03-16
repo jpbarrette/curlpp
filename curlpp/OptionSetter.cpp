@@ -118,7 +118,16 @@ cURLpp::OptionSetter< cURLpp::Types::BoostWriteFunction,
 void
 cURLpp::OptionSetter< FILE *, 
 		      CURLOPT_WRITEDATA >::setOpt(cURLpp::CurlHandle *handle, 
-							ParamType value)
+						  ParamType value)
+{
+  handle->option(CURLOPT_WRITEFUNCTION, (void *)NULL);
+  handle->option(CURLOPT_WRITEDATA, value);
+};
+
+void
+cURLpp::OptionSetter< std::ostream *, 
+		      CURLOPT_WRITEDATA >::setOpt(cURLpp::CurlHandle *handle, 
+						  ParamType value)
 {
   handle->option(CURLOPT_WRITEFUNCTION, (void *)NULL);
   handle->option(CURLOPT_WRITEDATA, value);
@@ -152,6 +161,15 @@ void
 cURLpp::OptionSetter< FILE *, 
 		      CURLOPT_READDATA >::setOpt(cURLpp::CurlHandle *handle, 
 						       ParamType value)
+{
+  handle->option(CURLOPT_READFUNCTION, (void *)NULL);
+  handle->option(CURLOPT_READDATA, value);
+};
+
+void
+cURLpp::OptionSetter< std::istream *, 
+		      CURLOPT_READDATA >::setOpt(cURLpp::CurlHandle *handle, 
+						 ParamType value)
 {
   handle->option(CURLOPT_READFUNCTION, (void *)NULL);
   handle->option(CURLOPT_READDATA, value);
