@@ -68,7 +68,7 @@ namespace cURLpp
     typedef boost::function4< int, double, double, double, double > BoostProgressFunction;
 #endif
 
-  };
-};
+  }
+}
 
 #endif

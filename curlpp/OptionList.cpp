@@ -76,9 +76,9 @@ cURLpp::OptionList::setOpt( const cURLpp::OptionBase &option )
 
 
 void
-cURLpp::OptionList::getOpt(cURLpp::OptionBase *option)
+cURLpp::OptionList::getOpt(cURLpp::OptionBase *option) const
 {
-   mapType::iterator pos = mOptions.find(option->getOption());
+   mapType::const_iterator pos = mOptions.find(option->getOption());
    if( pos != mOptions.end() )
    {
       option->updateMeToOption((*(*pos).second));
