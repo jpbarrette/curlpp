@@ -42,6 +42,8 @@ void cURLpp::CurlHandle::perform()
 void cURLpp::CurlHandle::reset()
 {
   curl_easy_reset( mCurl );
+  memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
+  errorBuffer( mErrorBuffer );
 }
 
 CURL *
@@ -53,6 +55,7 @@ cURLpp::CurlHandle::getHandle() const
 cURLpp::CurlHandle::CurlHandle() 
   : mException(NULL)
 {
+  memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
   mCurl = curl_easy_init();
   runtimeAssert( "Error when trying to curl_easy_init() a handle", mCurl );
   errorBuffer( mErrorBuffer );

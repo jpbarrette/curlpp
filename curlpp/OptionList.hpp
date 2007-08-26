@@ -82,7 +82,7 @@ namespace cURLpp
 	 * OptionBase. Note that if the option is not set, the option passed in
 	 * parameter will be cleared. (See Option::getOpt for more details)
 	 */
-	virtual void getOpt(OptionBase *option);
+	virtual void getOpt(OptionBase *option) const;
 
 	/**
 	 * all the options contained by the class will be deleted and we will
