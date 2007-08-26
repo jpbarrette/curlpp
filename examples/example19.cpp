@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2006> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2005> <Gazihan Alankus>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -21,40 +21,46 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#ifndef OPTION_CONTAINER_INL
-#define OPTION_CONTAINER_INL
+#include <stdlib.h>
+#include <errno.h>
 
-template< class OptionType >
-cURLpp::OptionContainer< OptionType >::OptionContainer(typename cURLpp::OptionContainer< OptionType >::ParamType value) 
-: mValue(value)
-{}
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Exception.hpp>
 
-
-template< class OptionType >
-cURLpp::OptionContainer< OptionType >::OptionContainer(cURLpp::OptionContainer< OptionType > &other) 
-: mValue(other.mValue)
-{}
-
-
-template< class OptionType >
-void
-cURLpp::OptionContainer< OptionType >::setValue(typename OptionContainer< OptionType >::ParamType value)
+int main(int argc, char *argv[])
 {
-	mValue = value;
-}
+  if(argc < 2) {
+    std::cerr << argv[0] << ": Wrong number of arguments" << std::endl 
+	      << "Usage: " << argv[0] << " url"
+	      << std::endl;
+    return EXIT_FAILURE;
+  }
+  
+  char *url = argv[1];
+  
+  try {
+    cURLpp::Cleanup cleaner;
+    cURLpp::Easy request;
+    
+    request.setOpt(new cURLpp::Options::Url(url)); 
+    request.setOpt(new cURLpp::Options::Verbose(true)); 
+    
+    std::list<cURLpp::FormPart *> formParts;
+    formParts.push_back(new cURLpp::FormParts::Content("name1", "value1"));
+    formParts.push_back(new cURLpp::FormParts::Content("name2", "value2"));
 
-template< class OptionType >
-typename cURLpp::OptionContainer< OptionType >::ReturnType
-cURLpp::OptionContainer< OptionType >::getValue()
-{
-      return mValue;
-}
+    request.setOpt(new cURLpp::Options::HttpPost(formParts)); 
+    
+    request.perform(); 
+  }
+  catch ( cURLpp::LogicError & e ) {
+    std::cout << e.what() << std::endl;
+  }
+  catch ( cURLpp::RuntimeError & e ) {
+    std::cout << e.what() << std::endl;
+  }
 
-template< class OptionType >
-typename cURLpp::OptionContainer< OptionType >::HandleOptionType
-cURLpp::OptionContainer< OptionType >::getHandleOptionValue()
-{
-  return mValue;
+  return EXIT_SUCCESS;
 }
-
-#endif

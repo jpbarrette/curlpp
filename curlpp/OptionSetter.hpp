@@ -26,7 +26,7 @@
 
 #include "dllfct.h"
 
-#include "OptionContainer.hpp"
+#include "OptionContainerType.hpp"
 #include "CurlHandle.hpp"
 #include "Types.hpp"
 
@@ -39,7 +39,7 @@ namespace cURLpp
   class CURLPPAPI OptionSetter
   {
   public:
-    typedef typename OptionContainer< OptionValueType >::HandleOptionType ParamType;
+    typedef typename OptionContainerType< OptionValueType >::HandleOptionType ParamType;
 
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };

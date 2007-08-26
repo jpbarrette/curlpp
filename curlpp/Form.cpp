@@ -74,6 +74,21 @@ cURLpp::HttpPost::clear()
   mForms.clear();
 }
 
+std::list< cURLpp::FormPart *> cURLpp::HttpPost::getList()
+{
+  //I'm not sure cloning is absolutely necessary.
+  std::list< cURLpp::FormPart * > newForm;
+
+  cURLpp::FormPart *form;
+  std::list< cURLpp::FormPart * >::const_iterator pos;
+  for(pos = mForms.begin(); pos != mForms.end(); pos++) {
+    form = (*pos)->clone();
+    newForm.push_back(form);
+//     form->add(&mFirst, &mLast);
+  } 
+  return newForm;
+}
+
 cURLpp::FormPart::FormPart(const char *name)
   : mName(name)
 {}
