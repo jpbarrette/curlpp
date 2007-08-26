@@ -20,9 +20,9 @@ InfoTypeConverter< std::string >::get(cURLpp::Easy &handle,
 
 template< >
 void 
-cURLpp::InfoTypeConverter< std::list< std::string > >::get(cURLpp::Easy & handle,
-			                                   CURLINFO info,
-						           std::list< std::string > &value)
+InfoTypeConverter< std::list< std::string > >::get(cURLpp::Easy & handle,
+						   CURLINFO info,
+						   std::list< std::string > &value)
 { 
   curl_slist * tmpList = NULL;
   InfoGetter::get(handle, info, tmpList);

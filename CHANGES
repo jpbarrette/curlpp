@@ -1,3 +1,7 @@
+Changes from version 0.7.0-pre1 to 0.7.1-pre2
+- Fixed HttpPost problem (https://www.rrette.com/pipermail/curlpp/2007-February/000273.html)
+  (Thanks to Gazi Alankus)
+
 Changes from version 0.7.0 to 0.7.1-pre1
 - Fixed Functor arguments binding.
 - Enabled example 10.

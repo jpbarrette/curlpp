@@ -64,6 +64,11 @@ namespace cURLpp
      */
     void clear();
 
+    /**
+     * Get the list. 
+     */
+    std::list< cURLpp::FormPart *> getList();
+
   private:
     ::curl_httppost *mFirst;
     ::curl_httppost *mLast;
