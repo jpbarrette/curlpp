@@ -83,55 +83,6 @@ namespace cURLpp
 	 */
 	typename OptionContainer< OptionType >::ValueType mValue;
     };
-
-    template< >
-    class CURLPPAPI OptionContainer < std::list<cURLpp::FormPart *> >
-    {
-    public:
-	typedef OptionContainerType< std::list<cURLpp::FormPart *> >::ParamType ParamType;
-	typedef OptionContainerType< std::list<cURLpp::FormPart *> >::ReturnType ReturnType;
-	typedef OptionContainerType< std::list<cURLpp::FormPart *> >::ValueType ValueType;
-	typedef OptionContainerType< std::list<cURLpp::FormPart *> >::HandleOptionType HandleOptionType;
-
-	/**
-	 * Contructor. We pass the value of the option.
-	 */
-	OptionContainer(OptionContainer< std::list<cURLpp::FormPart *> >::ParamType value);
-
-	OptionContainer(OptionContainer< std::list<cURLpp::FormPart *> > &other);
-
-	/**
-	 * This function set the argument that will be passed to the 
-	 * option call for a handle. It will use the argument passed to
-	 * this function.
-	 */
-	void setValue(OptionContainer< std::list<cURLpp::FormPart *> >::ParamType value);
-
-	/**
-	 * This function get the argument that is set on the handle.
-	 */
-	OptionContainer< std::list<cURLpp::FormPart *> >::ReturnType getValue();
-
-        /** 
-	 * We call this function to have the value passed to the curl_easy_setopt.
-	 * 
-	 * Note: DO NOT USE THIS FUNCTION! It's for internal use only.
-	 */
-	OptionContainer< std::list<cURLpp::FormPart *> >::HandleOptionType getHandleOptionValue();
-
-
-    private:         
-	/**
-	 * We cannot call this constructor. We absolutely need an initial value.
-	 */
-	OptionContainer();
-
-	/**
-	 * Current value of the option.
-	 */
-	OptionContainer< std::list<cURLpp::FormPart *> >::ValueType mValue;
-    };
-
 }
 
 #include "OptionContainer.inl"

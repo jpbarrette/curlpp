@@ -97,20 +97,18 @@ template< typename OptionType >
 void
 cURLpp::Option< OptionType >::clear()
 {
-	delete mContainer;
-	mContainer = NULL;
+  delete mContainer;
+  mContainer = NULL;
 }
 
 template< typename OptionType >
 typename cURLpp::Option< OptionType >::ReturnType
 cURLpp::Option< OptionType >::getValue() const
 {
-	if(mContainer == NULL)
-	{	
+  if(mContainer == NULL)
+    throw cURLpp::UnsetOption(std::string("You are trying to retreive the value of an unset option"));
 
-		throw cURLpp::UnsetOption(std::string("You are trying to retreive the value of an unset option"));
-	}
-	return mContainer->getValue();
+  return mContainer->getValue();
 }
 
 template< typename OptionType, CURLoption option >
