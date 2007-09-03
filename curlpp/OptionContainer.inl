@@ -40,14 +40,14 @@ template< class OptionType >
 void
 cURLpp::OptionContainer< OptionType >::setValue(typename OptionContainer< OptionType >::ParamType value)
 {
-	mValue = value;
+  mValue = value;
 }
 
 template< class OptionType >
 typename cURLpp::OptionContainer< OptionType >::ReturnType
 cURLpp::OptionContainer< OptionType >::getValue()
 {
-      return mValue;
+  return mValue;
 }
 
 template< class OptionType >

@@ -1,6 +1,6 @@
 Changes from version 0.7.0-pre1 to 0.7.1
 - mErrorBuffer memset problem fixed
-  Graziano Giuliani
+  (Thanks to Graziano Giuliani)
 - Fixed HttpPost problem (https://www.rrette.com/pipermail/curlpp/2007-February/000273.html)
   (Thanks to Gazi Alankus)
 

@@ -41,7 +41,9 @@ namespace cURLpp
    */
   class CURLPPAPI HttpPost
   {
+    typedef std::list< cURLpp::FormPart * > Forms;
   public:
+    HttpPost(const Forms &posts);
     HttpPost();
     ~HttpPost();
 
@@ -49,7 +51,9 @@ namespace cURLpp
      * initialize the HTTP post with the list of forms. The Forms 
      * will be cloned.
      */
-    HttpPost &operator=(const std::list< cURLpp::FormPart * > &posts);
+    HttpPost &operator=(const Forms &posts);
+
+    operator Forms() { return getList(); }
 
     
     /**
@@ -67,12 +71,12 @@ namespace cURLpp
     /**
      * Get the list. 
      */
-    std::list< cURLpp::FormPart *> getList();
+    Forms getList();
 
   private:
     ::curl_httppost *mFirst;
     ::curl_httppost *mLast;
-    std::list< cURLpp::FormPart *> mForms;
+    Forms mForms;
   };
 
   /**

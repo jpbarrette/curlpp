@@ -25,6 +25,17 @@
 #include "Form.hpp"
 
 
+cURLpp::HttpPost::HttpPost(const Forms &posts)
+{
+  cURLpp::FormPart *form;
+  Forms::const_iterator pos;
+  for(pos = posts.begin(); pos != posts.end(); pos++) {
+    form = (*pos)->clone();
+    mForms.push_back(form);
+    form->add(&mFirst, &mLast);
+  } 
+}
+
 cURLpp::HttpPost::HttpPost()
   : mFirst(NULL)
   , mLast(NULL)
@@ -37,12 +48,12 @@ cURLpp::HttpPost::~HttpPost()
 
 
 cURLpp::HttpPost &
-cURLpp::HttpPost::operator=(const std::list< cURLpp::FormPart * > &posts)
+cURLpp::HttpPost::operator=(const Forms &posts)
 {
   clear();
 
   cURLpp::FormPart *form;
-  std::list< cURLpp::FormPart * >::const_iterator pos;
+  Forms::const_iterator pos;
   for(pos = posts.begin(); pos != posts.end(); pos++) {
     form = (*pos)->clone();
     mForms.push_back(form);
@@ -67,7 +78,7 @@ cURLpp::HttpPost::clear()
     mLast = NULL;
   }
   
-  std::list< cURLpp::FormPart * >::const_iterator pos;
+  Forms::const_iterator pos;
   for(pos = mForms.begin(); pos != mForms.end(); pos++) {
     delete (*pos);
   }
@@ -77,10 +88,10 @@ cURLpp::HttpPost::clear()
 std::list< cURLpp::FormPart *> cURLpp::HttpPost::getList()
 {
   //I'm not sure cloning is absolutely necessary.
-  std::list< cURLpp::FormPart * > newForm;
+  Forms newForm;
 
   cURLpp::FormPart *form;
-  std::list< cURLpp::FormPart * >::const_iterator pos;
+  Forms::const_iterator pos;
   for(pos = mForms.begin(); pos != mForms.end(); pos++) {
     form = (*pos)->clone();
     newForm.push_back(form);
