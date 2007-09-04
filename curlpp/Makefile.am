@@ -58,6 +58,7 @@ pkginclude_HEADERS = \
 	StorageOptions.hpp StorageOptions.inl \
 	TypeTrait.hpp \
 	Types.hpp \
+	global.h \
 	${maintener_header}
 
 
