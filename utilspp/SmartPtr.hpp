@@ -181,6 +181,6 @@ namespace utilspp
   private:
     CountingBodyPolicy * mContent;
   };
-};
+}
 
 #endif

@@ -85,8 +85,8 @@ namespace utilspp
       void operator()(T*);
       void (*mFunc)();
     };
-  };
-};
+  }
+}
 
 #include "PrivateMembers.inl"
 

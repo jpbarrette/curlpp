@@ -36,7 +36,7 @@ namespace utilspp
          static T *create();
          static void destroy( T *obj );
    };
-};
+}
 
 #include "CreationUsingNew.inl"
 

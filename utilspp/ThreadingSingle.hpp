@@ -45,7 +45,7 @@ namespace utilspp
 
          typedef T VolatileType;
       };
-};
+}
 
 #include "ThreadingSingle.inl"
 

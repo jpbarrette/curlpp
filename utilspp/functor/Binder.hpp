@@ -102,6 +102,6 @@ namespace utilspp
     return Outgoing(std::auto_ptr<typename Outgoing::Impl>(new BinderFirst<Incoming>(fun, bound)));
   }
     
-};
+}
 
 #endif

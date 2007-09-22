@@ -38,6 +38,6 @@ namespace utilspp
          non_copyable( const non_copyable& r )
          {}
    };
-};
+}
 
 #endif

@@ -37,7 +37,7 @@ namespace utilspp
 
          typedef T VolatileType;
       };
-};
+}
 
 #include "ThreadingFactoryMutex.inl"
 

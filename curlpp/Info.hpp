@@ -78,7 +78,7 @@ namespace cURLpp
     template< typename T >
     static void get(cURLpp::Easy &handle, CURLINFO info, T &value);
   };
-};
+}
 
 #include "Info.inl"
 
