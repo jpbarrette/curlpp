@@ -94,7 +94,7 @@ namespace utilspp
     PointerToObj mObj;
     PointerToMemFn mMemFn;
   };
-};
+}
 
 #endif
 

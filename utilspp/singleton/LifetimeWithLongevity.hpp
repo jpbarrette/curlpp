@@ -49,7 +49,7 @@ namespace utilspp
     static void scheduleDestruction( T *obj, void (*func)() );
     static void onDeadReference();
   };
-};
+}
 
 #include "LifetimeWithLongevity.inl"
 

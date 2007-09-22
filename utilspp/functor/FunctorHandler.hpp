@@ -88,7 +88,7 @@ namespace utilspp
   private:
     Fun mFun;
   };
-};
+}
 
 #endif
 

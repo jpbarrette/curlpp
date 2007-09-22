@@ -36,6 +36,6 @@ namespace utilspp
          NonCopyable(const NonCopyable& r)
          {}
    };
-};
+}
 
 #endif

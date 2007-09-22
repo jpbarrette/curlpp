@@ -201,6 +201,6 @@ namespace utilspp
     virtual FunctorImpl *clone() const = 0;
     virtual ~FunctorImpl(){};
   };
-};
+}
 
 #endif

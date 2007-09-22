@@ -97,7 +97,7 @@ namespace utilspp
   public:
     ~LifetimeLibraryGuard();
   };
-};
+}
 
 #include "LifetimeLibrary.inl"
 

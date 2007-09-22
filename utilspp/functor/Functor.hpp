@@ -161,7 +161,7 @@ namespace utilspp
     return utilspp::Functor<typename utilspp::PointerOnMemberFunction< MemFun >::ReturnType, 
       typename utilspp::PointerOnMemberFunction< MemFun >::ParamList>(obj, fun);
   }
-};
+}
 
 #include "Binder.hpp"
 

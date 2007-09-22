@@ -36,7 +36,7 @@ namespace utilspp
          static void scheduleDestruction( T *obj, void (*func)() );
          static void onDeadReference();
    };
-};
+}
 
 
 #endif

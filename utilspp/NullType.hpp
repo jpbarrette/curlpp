@@ -27,6 +27,6 @@
 namespace utilspp
 {
 	struct NullType;
-};
+}
 
 #endif
