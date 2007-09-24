@@ -210,7 +210,9 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTPLISTONLY > FtpListOnly;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTPAPPEND > FtpAppend;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_USE_EPSV > FtpUseEpsv;
+#ifdef CURLOPT_FTP_FILEMETHOD
     typedef cURLpp::OptionTrait< long, CURLOPT_FTP_FILEMETHOD > FtpFileMethod;
+#endif
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_CREATE_MISSING_DIRS > FtpCreateMissingDirs;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_RESPONSE_TIMEOUT > FtpResponseTimeout;
     typedef cURLpp::OptionTrait< curl_ftpssl, CURLOPT_FTP_SSL > FtpSsl;
