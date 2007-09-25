@@ -24,6 +24,7 @@ usage.
  Example 16: HTTP POST example with HTTP Authentification.
  Example 17: Binded method functor for WriteFunction example.
  Example 18: Boost binded method for WriteFunction example.
+ Example 19: Multipart/formdata HTTP POST example.
  Example 20: std::ostream usage.
  Example 21: upload example with std::istream.
  Example 22: Real easy and quick examples.
