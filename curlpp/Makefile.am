@@ -22,7 +22,7 @@ sources = \
 	OptionList.cpp OptionList.hpp \
 	OptionSetter.cpp OptionSetter.hpp OptionSetter.inl \
 	Option.hpp Option.inl \
-	Options.hpp \
+	Options.cpp Options.hpp \
 	SList.cpp SList.hpp \
 	StorageOptions.hpp StorageOptions.inl \
 	Types.hpp \

@@ -43,7 +43,7 @@ size_t myWriteCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHan
   return handle->executeWriteFunctor(buffer, size, nitems);
 };
 
-size_t myStreamWriteCallback(std::ostream * stream, char *buffer, size_t size, size_t nitems)
+size_t myStreamWriteCallback(char *buffer, size_t size, size_t nitems, std::ostream * stream)
 {
   size_t realwrote = size * nitems;
   stream->write(buffer, realwrote);
@@ -62,6 +62,15 @@ size_t myHeaderCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHa
 size_t myReadCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHandle *handle)
 {
   return handle->executeReadFunctor(buffer, size, nitems);
+};
+
+size_t myStreamReadCallback(char *buffer, size_t size, size_t nitems, std::istream *stream)
+{
+  size_t realread = stream->readsome(buffer, size * nitems);
+  if(!(*stream))
+    realread = CURL_READFUNC_ABORT;
+
+  return realread;
 };
 
 int myProgressCallback(cURLpp::CurlHandle *handle, 
@@ -129,7 +138,7 @@ cURLpp::OptionSetter< std::ostream *,
 		      CURLOPT_WRITEDATA >::setOpt(cURLpp::CurlHandle *handle, 
 						  ParamType value)
 {
-  handle->option(CURLOPT_WRITEFUNCTION, (void *)NULL);
+  handle->option(CURLOPT_WRITEFUNCTION, (void *)myStreamWriteCallback);
   handle->option(CURLOPT_WRITEDATA, value);
 };
 
@@ -171,7 +180,7 @@ cURLpp::OptionSetter< std::istream *,
 		      CURLOPT_READDATA >::setOpt(cURLpp::CurlHandle *handle, 
 						 ParamType value)
 {
-  handle->option(CURLOPT_READFUNCTION, (void *)NULL);
+  handle->option(CURLOPT_READFUNCTION, (void *)myStreamReadCallback);
   handle->option(CURLOPT_READDATA, value);
 };
 

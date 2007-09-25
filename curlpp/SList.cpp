@@ -1,5 +1,5 @@
 #include "global.h"
-#include "../config.h"
+#include "config.h"
 
 #if HAVE_OSTREAM
 #include <ostream>

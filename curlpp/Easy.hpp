@@ -97,5 +97,8 @@ namespace cURLpp
 
 }
 
+// Not quite sure if we shouldn't pass a const handle and clone
+// it instead.
+std::ostream & operator<<(std::ostream & stream, cURLpp::Easy & handle);
 
 #endif

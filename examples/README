@@ -1,5 +1,8 @@
 configure.in is a good example to add curlpp to your project
 
+Note that example 22 is contains the easiest and shorter examples of cURLpp 
+usage.
+
  Example 01: This example is made to show you how you can use the Options.
  Example 02: an upload example.
  Example 03: verbose callback example.
@@ -21,7 +24,9 @@ configure.in is a good example to add curlpp to your project
  Example 16: HTTP POST example with HTTP Authentification.
  Example 17: Binded method functor for WriteFunction example.
  Example 18: Boost binded method for WriteFunction example.
-
+ Example 20: std::ostream usage.
+ Example 21: upload example with std::istream.
+ Example 22: Real easy and quick examples.
 
 
 

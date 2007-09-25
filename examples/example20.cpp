@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2006> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2005> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -21,62 +21,47 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "global.h"
-#include "Easy.hpp"
+#include <sstream>
+#include <stdlib.h>
 
-#include "Options.hpp"
+#include <boost/bind.hpp>
+#include <curlpp/cURLpp.hpp>
+#include <curlpp/Easy.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/Exception.hpp>
 
-cURLpp::Easy::Easy()
-{}
-
-cURLpp::Easy::~Easy()
-{}
-
-void 
-cURLpp::Easy::perform()
+int main(int argc, char *argv[])
 {
-    myCurl.perform();
+  if(argc != 2) {
+    std::cerr << argv[0] << ": Wrong number of arguments" << std::endl 
+	      << argv[0] << ": Usage: " << " url " 
+	      << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  char *url = argv[1];
+  
+  try {
+    cURLpp::Cleanup cleaner;
+    cURLpp::Easy request;
+
+    // Set the writer callback to enable cURL 
+    // to write result in a memory area
+    request.setOpt(new cURLpp::Options::WriteStream(&std::cout));
+    
+    // Setting the URL to retrive.
+    request.setOpt(new cURLpp::Options::Url(url));
+
+    request.perform();
+
+    return EXIT_SUCCESS;
+  }
+  catch ( cURLpp::LogicError & e ) {
+    std::cout << e.what() << std::endl;
+  }
+  catch ( cURLpp::RuntimeError & e ) {
+    std::cout << e.what() << std::endl;
+  }
+
+  return EXIT_FAILURE;
 }
-
-CURL *
-cURLpp::Easy::getHandle() const
-{
-  return myCurl.getHandle();
-}
-
-void
-cURLpp::Easy::setOpt(const cURLpp::OptionBase &option)
-{
-    setOpt(option.clone());    
-}
-
-void
-cURLpp::Easy::setOpt(cURLpp::OptionBase *option)
-{
-    option->updateHandleToMe(&myCurl);
-    OptionList::setOpt(option);    
-}
-
-void
-cURLpp::Easy::setOpt(const cURLpp::OptionList &options)
-{
-    OptionList::setOpt(options);    
-}
-
-void
-cURLpp::Easy::reset ()
-{
-	myCurl.reset();
-	OptionList::setOpt(OptionList());
-}
-
-
-std::ostream & operator<<(std::ostream & stream, cURLpp::Easy & request)
-{
-  request.setOpt(new cURLpp::Options::WriteStream(&stream));
-  request.perform();
-
-  return stream;
-}
-
-

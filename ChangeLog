@@ -1,8 +1,14 @@
-Jean-Philippe Barrette-LaPierre (22 September 2007) version 0.7.1
+Jean-Philippe Barrette-LaPierre (24 October 2007) version 0.7.2
+- Added utility functions. (operator<< overloading for std::ostreams)
+
+Jean-Philippe Barrette-LaPierre (24 October 2007) version 0.7.1
 - Namespace semicolon fix provided by Joerg.
 - Added global.h to distribution
 - Removed config.h usage
 - Took Jeff Ye changes for the curlpp.spec
+
+Jean-Philippe Barrette-LaPierre (3 October 2007) version 0.7.0
+- Changed to version 0.7.1
 
 Jean-Philippe Barrette-LaPierre (16 January 2007) version 0.7.0
 - Added boost.function (http://www.boost.org)  feature.
