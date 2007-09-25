@@ -1,7 +1,5 @@
-Jean-Philippe Barrette-LaPierre (24 October 2007) version 0.7.2
-- Added utility functions. (operator<< overloading for std::ostreams)
-
 Jean-Philippe Barrette-LaPierre (24 October 2007) version 0.7.1
+- Added utility functions. (operator<< overloading for std::ostreams)
 - Namespace semicolon fix provided by Joerg.
 - Added global.h to distribution
 - Removed config.h usage
