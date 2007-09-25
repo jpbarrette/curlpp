@@ -8,7 +8,29 @@ endif
 
 EXTRA_DIST = Makefile.msvc
 
-noinst_PROGRAMS = example01 example02 example03 example04 example05 example06 example07 example08 example09 example10 example11 example12 example13 example14 example15 example16 example17 example19 ${maintener_programs} ${boost_programs}
+noinst_PROGRAMS = \
+	example01 \
+	example02 \
+	example03 \
+	example04 \
+	example05 \
+	example06 \
+	example07 \
+	example08 \
+	example09 \
+	example10 \
+	example11 \
+	example12 \
+	example13 \
+	example14 \
+	example15 \
+	example16 \
+	example17 \
+	example19 \
+	example20 \
+	example21 \
+	example22 \
+	${maintener_programs} ${boost_programs}
 
 
 
@@ -49,6 +71,12 @@ example17_SOURCES = example17.cpp
 example18_SOURCES = example18.cpp
 
 example19_SOURCES = example19.cpp
+
+example20_SOURCES = example20.cpp
+
+example21_SOURCES = example21.cpp
+
+example22_SOURCES = example22.cpp
 
 AM_LDFLAGS = -L../curlpp/ -lcurlpp -static 
 

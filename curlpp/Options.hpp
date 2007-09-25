@@ -23,7 +23,7 @@
 
 
 #include "Option.hpp"
-#include "StorageOptions.hpp"
+//#include "StorageOptions.hpp"
 
 #include <iostream> 
 
@@ -81,14 +81,6 @@ namespace cURLpp
       CURLOPT_READFUNCTION > BoostReadFunction;
 #endif
     
-    /**
-     * Using this option will use CURLOPT_WRITEFUNCTION, so don't set
-     * a callback if you want it to work. 
-     *
-     * Note: This option is disabled because it's not yet completed.
-     */
-    //typedef cURLpp::OptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
-
     /**
      * Using this option will reset CURLOPT_READFUNCTION to 
      * default callback. In fact, use only this option if you only 
@@ -279,3 +271,6 @@ namespace cURLpp
     //TelnetOptions
   }
 }
+
+std::ostream & operator<<(std::ostream & stream, const cURLpp::Options::Url & url);
+
