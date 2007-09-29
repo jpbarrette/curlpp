@@ -208,7 +208,7 @@ namespace utilspp
       typedef TypeList< THead, typename erase< TTail, T >::Result >
       Result;
     };
-  };
+  }
 }      
 
 
