@@ -1,3 +1,7 @@
+Jean-Philippe Barrette-LaPierre (03 January 2008) version 0.7.1
+- Fixed missing specialization declaration in InfoTypeConverter. 
+  (Thanks to Ryan Allen for bug report)
+	
 Jean-Philippe Barrette-LaPierre (24 October 2007) version 0.7.1
 - Added utility functions. (operator<< overloading for std::ostreams)
 - Namespace semicolon fix provided by Joerg.
