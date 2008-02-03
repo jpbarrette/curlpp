@@ -64,6 +64,27 @@ namespace cURLpp
   {
     static void get(cURLpp::Easy &handle, CURLINFO info, T &value);
   }; 
+
+  template< >
+  void InfoTypeConverter< std::string >::get(cURLpp::Easy &handle, 
+					     CURLINFO info,
+					     std::string &value);
+
+  template< >
+  void InfoTypeConverter< std::list< std::string > >::get(cURLpp::Easy & handle,
+							  CURLINFO info,
+							  std::list< std::string > &value);
+
+  template< >
+  void InfoTypeConverter< long >::get(cURLpp::Easy &handle, 
+				      CURLINFO info,
+				      long &value);
+
+  template< >
+  void InfoTypeConverter< double >::get(cURLpp::Easy &handle, 
+					CURLINFO info,
+					double &value);
+
     
   /**
    * This is the only class that is authorized to retreive 
