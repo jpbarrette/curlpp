@@ -27,6 +27,11 @@
 #include "Options.hpp"
 
 cURLpp::Easy::Easy()
+  : myCurl(new CurlHandle())
+{}
+
+cURLpp::Easy::Easy(std::auto_ptr< CurlHandle > handle)
+  : myCurl(handle)
 {}
 
 cURLpp::Easy::~Easy()
@@ -35,13 +40,13 @@ cURLpp::Easy::~Easy()
 void 
 cURLpp::Easy::perform()
 {
-    myCurl.perform();
+    myCurl->perform();
 }
 
 CURL *
 cURLpp::Easy::getHandle() const
 {
-  return myCurl.getHandle();
+  return myCurl->getHandle();
 }
 
 void
@@ -53,8 +58,8 @@ cURLpp::Easy::setOpt(const cURLpp::OptionBase &option)
 void
 cURLpp::Easy::setOpt(cURLpp::OptionBase *option)
 {
-    option->updateHandleToMe(&myCurl);
-    OptionList::setOpt(option);    
+  option->updateHandleToMe(myCurl.get());
+  OptionList::setOpt(option);    
 }
 
 void
@@ -66,15 +71,17 @@ cURLpp::Easy::setOpt(const cURLpp::OptionList &options)
 void
 cURLpp::Easy::reset ()
 {
-	myCurl.reset();
-	OptionList::setOpt(OptionList());
+  myCurl->reset();
+  OptionList::setOpt(OptionList());
 }
 
 
-std::ostream & operator<<(std::ostream & stream, cURLpp::Easy & request)
+std::ostream & operator<<(std::ostream & stream, const cURLpp::Easy & request)
 {
-  request.setOpt(new cURLpp::Options::WriteStream(&stream));
-  request.perform();
+  // Quick clone that doesn't copy options, only the curl handle.
+  cURLpp::Easy r(request.getCurlHandle().clone());
+  r.setOpt(new cURLpp::Options::WriteStream(&stream));
+  r.perform();
 
   return stream;
 }

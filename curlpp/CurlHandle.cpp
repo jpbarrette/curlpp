@@ -61,6 +61,25 @@ cURLpp::CurlHandle::CurlHandle()
   errorBuffer( mErrorBuffer );
 }
 
+cURLpp::CurlHandle::CurlHandle(CURL * handle) 
+  : mException(NULL)
+{
+  memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
+  mCurl = handle;
+  runtimeAssert( "Error when trying to curl_easy_init() a handle", mCurl );
+  errorBuffer( mErrorBuffer );
+}
+
+std::auto_ptr< cURLpp::CurlHandle > 
+cURLpp::CurlHandle::clone() const
+{
+  CURL * cHandle = curl_easy_duphandle(mCurl);
+  runtimeAssert("Error when trying to curl_easy_duphandle() a handle", cHandle);
+  std::auto_ptr< cURLpp::CurlHandle > newHandle(new CurlHandle(cHandle));
+  
+  return newHandle;
+}
+
 cURLpp::CurlHandle::~CurlHandle()
 {
   if(mException) {
