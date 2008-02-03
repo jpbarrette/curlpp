@@ -35,6 +35,12 @@ namespace cURLpp
     friend struct InfoGetter;
 
     Easy();
+
+    /**
+     * This allow to have a handle, which might have
+     * some option set, but we don't care about them.
+     */
+    Easy(std::auto_ptr< CurlHandle > handle);
     virtual ~Easy();
 
     /**
@@ -82,6 +88,9 @@ namespace cURLpp
      */
     CURL *getHandle() const;
 
+    CurlHandle & getCurlHandle() { return *myCurl; }
+    const CurlHandle & getCurlHandle() const { return *myCurl; }
+    
   private:
     /**
      * This is the function that cURLpp::InfoGetter will call
@@ -90,7 +99,7 @@ namespace cURLpp
     template< typename T >
     void getInfo(CURLINFO info, T &value);
       
-    cURLpp::CurlHandle myCurl;
+    std::auto_ptr< cURLpp::CurlHandle > myCurl;
   };
 
   #include "Easy.inl"
@@ -99,6 +108,6 @@ namespace cURLpp
 
 // Not quite sure if we shouldn't pass a const handle and clone
 // it instead.
-std::ostream & operator<<(std::ostream & stream, cURLpp::Easy & handle);
+std::ostream & operator<<(std::ostream & stream, const cURLpp::Easy & handle);
 
 #endif

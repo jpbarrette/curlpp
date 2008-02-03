@@ -24,6 +24,7 @@
 #ifndef CURLPP_CURLHANDLE_HPP
 #define CURLPP_CURLHANDLE_HPP
 
+#include <memory>
 #include <curl/curl.h>
 
 #include "dllfct.h"
@@ -36,6 +37,9 @@ namespace cURLpp
   {
   public:
     CURLPPAPI CurlHandle();
+    CURLPPAPI CurlHandle(CURL * handle);
+
+    std::auto_ptr< CurlHandle > CURLPPAPI clone() const;
 
     /**
      * Simply calls curl_easy_perform on the handle,

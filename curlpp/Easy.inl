@@ -24,5 +24,5 @@
 template< typename T >
 void cURLpp::Easy::getInfo(CURLINFO info, T &value)
 {
-  myCurl.getInfo(info, value);
+  myCurl->getInfo(info, value);
 }
