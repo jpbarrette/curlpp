@@ -26,6 +26,8 @@
 
 
 cURLpp::HttpPost::HttpPost(const Forms &posts)
+  : mFirst(NULL)
+  , mLast(NULL)
 {
   cURLpp::FormPart *form;
   Forms::const_iterator pos;
