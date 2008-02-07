@@ -29,19 +29,22 @@
 #include <string>
 
 #include "dllfct.h"
+#include <utilspp/clone_ptr.hpp>
 
 
 namespace cURLpp
 {
   class FormPart;
   
+  typedef std::list< utilspp::clone_ptr< cURLpp::FormPart > > Forms;
+
   /**
    * This class is used internally to wrap over curl_httppost
    * class.
    */
   class CURLPPAPI HttpPost
   {
-    typedef std::list< cURLpp::FormPart * > Forms;
+
   public:
     HttpPost(const Forms &posts);
     HttpPost();
@@ -100,7 +103,7 @@ namespace cURLpp
 
     virtual ~FormPart();
 
-    virtual FormPart *clone() = 0;
+    virtual FormPart *clone() const = 0;
 
   protected:
     /**
@@ -160,7 +163,7 @@ namespace cURLpp
       /**
        * This function will return a copy of the instance.
        */
-      virtual File *clone();
+      virtual File *clone() const;
 
     private:
       void add(::curl_httppost **first, 
@@ -215,7 +218,7 @@ namespace cURLpp
       /**
        * This function will return a copy of the instance.
        */
-      virtual Content *clone();
+      virtual Content *clone() const;
 
     private:
       void add(::curl_httppost **first, 

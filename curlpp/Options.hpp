@@ -180,7 +180,7 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< std::string, CURLOPT_POSTFIELDS > PostFields;
     typedef cURLpp::OptionTrait< long, CURLOPT_POSTFIELDSIZE > PostFieldSize;
     typedef cURLpp::OptionTrait< curl_off_t, CURLOPT_POSTFIELDSIZE_LARGE > PostFieldSizeLarge;
-    typedef cURLpp::OptionTrait< std::list< cURLpp::FormPart * >, CURLOPT_HTTPPOST > HttpPost;
+    typedef cURLpp::OptionTrait< cURLpp::Forms, CURLOPT_HTTPPOST > HttpPost;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_REFERER > Referer;
     typedef cURLpp::OptionTrait< std::string, CURLOPT_USERAGENT > UserAgent;
     typedef cURLpp::OptionTrait< std::list< std::string >, CURLOPT_HTTPHEADER > HttpHeader;
