@@ -72,11 +72,11 @@ namespace cURLpp
    * This class is used to specialize the cURLpp::HttpPost options type.
    */
   template< >
-  class CURLPPAPI OptionSetter< std::list< cURLpp::FormPart * >, 
+  class CURLPPAPI OptionSetter< cURLpp::Forms, 
 				CURLOPT_HTTPPOST >
   {
   public:
-    typedef std::list< cURLpp::FormPart * > OptionValueType;
+    typedef cURLpp::Forms OptionValueType;
     typedef cURLpp::OptionContainerType< OptionValueType >::HandleOptionType ParamType;
     
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);

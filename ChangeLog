@@ -1,3 +1,6 @@
+Jean-Philippe Barrette-LaPierre (06 January 2008) version 0.7.1
+- Fixed Forms (HttpPost) memory leak.
+	
 Jean-Philippe Barrette-LaPierre (05 January 2008) version 0.7.1
 - Fixed HttpPost crash. (Thanks to Piotr Niemcunowicz)
 	

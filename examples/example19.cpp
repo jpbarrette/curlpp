@@ -29,6 +29,8 @@
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 
+#include <fstream>
+
 int main(int argc, char *argv[])
 {
   if(argc < 2) {
@@ -45,15 +47,21 @@ int main(int argc, char *argv[])
     cURLpp::Easy request;
     
     request.setOpt(new cURLpp::Options::Url(url)); 
-    request.setOpt(new cURLpp::Options::Verbose(true)); 
+    //request.setOpt(new cURLpp::Options::Verbose(true)); 
     
-    std::list<cURLpp::FormPart *> formParts;
-    formParts.push_back(new cURLpp::FormParts::Content("name1", "value1"));
-    formParts.push_back(new cURLpp::FormParts::Content("name2", "value2"));
+    {
+      // Forms takes ownership of pointers!
+      cURLpp::Forms formParts;
+      formParts.push_back(new cURLpp::FormParts::Content("name1", "value1"));
+      formParts.push_back(new cURLpp::FormParts::Content("name2", "value2"));
+      
+      request.setOpt(new cURLpp::Options::HttpPost(formParts)); 
+    }
 
-    request.setOpt(new cURLpp::Options::HttpPost(formParts)); 
-    
-    request.perform(); 
+    // The forms have been cloned and are valid for the request, even
+    // if the original forms are out of scope.
+    std::ofstream myfile("/dev/null");
+    myfile << request << std::endl << request << std::endl;
   }
   catch ( cURLpp::LogicError & e ) {
     std::cout << e.what() << std::endl;

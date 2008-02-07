@@ -24,17 +24,17 @@
 #include "global.h"
 #include "Form.hpp"
 
+#include <iostream>
 
 cURLpp::HttpPost::HttpPost(const Forms &posts)
   : mFirst(NULL)
   , mLast(NULL)
 {
-  cURLpp::FormPart *form;
   Forms::const_iterator pos;
-  for(pos = posts.begin(); pos != posts.end(); pos++) {
-    form = (*pos)->clone();
-    mForms.push_back(form);
-    form->add(&mFirst, &mLast);
+  for(pos = posts.begin(); pos != posts.end(); pos++) 
+  {
+    mForms.push_back(*pos);
+    mForms.back()->add(&mFirst, &mLast);
   } 
 }
 
@@ -54,14 +54,13 @@ cURLpp::HttpPost::operator=(const Forms &posts)
 {
   clear();
 
-  cURLpp::FormPart *form;
   Forms::const_iterator pos;
-  for(pos = posts.begin(); pos != posts.end(); pos++) {
-    form = (*pos)->clone();
-    mForms.push_back(form);
-    form->add(&mFirst, &mLast);
+  for(pos = posts.begin(); pos != posts.end(); pos++) 
+  {
+    mForms.push_back(*pos);
+    mForms.back()->add(&mFirst, &mLast);
   } 
-  
+
   return (*this);
 }
 
@@ -80,25 +79,18 @@ cURLpp::HttpPost::clear()
     mLast = NULL;
   }
   
-  Forms::const_iterator pos;
-  for(pos = mForms.begin(); pos != mForms.end(); pos++) {
-    delete (*pos);
-  }
   mForms.clear();
 }
 
-std::list< cURLpp::FormPart *> cURLpp::HttpPost::getList()
+cURLpp::Forms cURLpp::HttpPost::getList()
 {
   //I'm not sure cloning is absolutely necessary.
   Forms newForm;
 
-  cURLpp::FormPart *form;
   Forms::const_iterator pos;
-  for(pos = mForms.begin(); pos != mForms.end(); pos++) {
-    form = (*pos)->clone();
-    newForm.push_back(form);
-//     form->add(&mFirst, &mLast);
-  } 
+  for(pos = mForms.begin(); pos != mForms.end(); pos++) 
+    newForm.push_back(*pos);
+
   return newForm;
 }
 
@@ -142,7 +134,7 @@ cURLpp::FormParts::File::File(const std::string &name,
 {}
 
 cURLpp::FormParts::File *
-cURLpp::FormParts::File::clone() 
+cURLpp::FormParts::File::clone() const
 {
    return new cURLpp::FormParts::File(*this);
 }
@@ -207,7 +199,7 @@ cURLpp::FormParts::Content::Content(const std::string &name,
 {}
 
 cURLpp::FormParts::Content *
-cURLpp::FormParts::Content::clone() 
+cURLpp::FormParts::Content::clone() const
 {
    return new cURLpp::FormParts::Content(*this);
 }

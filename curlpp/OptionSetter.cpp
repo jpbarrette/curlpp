@@ -30,7 +30,7 @@
 #include "OptionSetter.hpp"
 
 void
-cURLpp::OptionSetter< std::list< cURLpp::FormPart * >, 
+cURLpp::OptionSetter< cURLpp::Forms, 
 		      CURLOPT_HTTPPOST >::setOpt(cURLpp::CurlHandle *handle, 
 						 ParamType value)
 {
