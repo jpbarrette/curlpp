@@ -1,3 +1,7 @@
+Jean-Philippe Barrette-LaPierre (10 January 2008) version 0.7.1
+- Fixed utilspp::clone_ptr bug (Thanks to Piotr Niemcunowicz)
+- Fixed cURLpp::Multi bug (Thanks to Piotr Niemcunowicz)
+
 Jean-Philippe Barrette-LaPierre (09 January 2008) version 0.7.1
 - Fixed missing entry in utilspp/Makefile.am.
 
