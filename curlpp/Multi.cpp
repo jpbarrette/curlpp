@@ -37,9 +37,13 @@ cURLpp::Multi::Multi()
 cURLpp::Multi::~Multi()
 {
   // remove all the remaining easy handles
-  while (!mHandles.empty()) {
-      remove (mHandles.begin()->second);
+  while (!mHandles.empty()) 
+  {
+    std::map< CURL *, const cURLpp::Easy *>::iterator handle = mHandles.begin();
+    curl_multi_remove_handle(mMultiHandle, handle->second->getHandle());
+    mHandles.erase(handle);
   }
+
   curl_multi_cleanup(mMultiHandle);
 }
 

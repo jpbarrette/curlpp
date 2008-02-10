@@ -24,6 +24,7 @@
 #ifndef UTILSPP_CLONEPTR_HPP
 #define UTILSPP_CLONEPTR_HPP
 
+#include <cassert>
 #include <stdexcept>
 
 namespace utilspp
@@ -69,10 +70,9 @@ namespace utilspp
 
     const T * operator->() const
     {
-      if (value_)
-	return value_;
-      
-      throw std::runtime_error("using a null clone_ptr");
+      assert(value_);
+
+      return value_;
     }
 
     T * get() { return value_; }
@@ -84,6 +84,8 @@ namespace utilspp
     { 
       T * r = value_; 
       value_ = NULL;
+
+      return r;
     }
 
   private:
