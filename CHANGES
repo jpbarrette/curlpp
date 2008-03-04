@@ -1,8 +1,20 @@
-Changes from version 0.7.0-pre1 to 0.7.1
+Changes from version 0.7.1 to 0.7.2
+- Added utility functions. (operator<< overloading for std::ostreams)
+- Added global.h to distribution
+- Removed config.h usage
+- Took Jeff Ye changes for the curlpp.spec
+- Namespace semicolon fix provided by Joerg.
 - mErrorBuffer memset problem fixed
   (Thanks to Graziano Giuliani)
 - Fixed HttpPost problem (https://www.rrette.com/pipermail/curlpp/2007-February/000273.html)
   (Thanks to Gazi Alankus)
+- Fixed utilspp::clone_ptr bug (Thanks to Piotr Niemcunowicz)
+- Fixed cURLpp::Multi bug (Thanks to Piotr Niemcunowicz)
+- Fixed missing entry in utilspp/Makefile.am.
+- Fixed Forms (HttpPost) memory leak.
+- Fixed missing specialization declaration in InfoTypeConverter. 
+  (Thanks to Ryan Allen for bug report)
+- Fixed possible memory corruption for Easy::operator<< function.
 
 Changes from version 0.7.0 to 0.7.1-pre1
 - Fixed Functor arguments binding.
