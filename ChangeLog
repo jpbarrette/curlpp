@@ -1,3 +1,6 @@
+Jean-Philippe Barrette-LaPierre (3 March 2008) version 0.7.1
+- Changed to version 0.7.2
+
 Jean-Philippe Barrette-LaPierre (10 January 2008) version 0.7.1
 - Fixed utilspp::clone_ptr bug (Thanks to Piotr Niemcunowicz)
 - Fixed cURLpp::Multi bug (Thanks to Piotr Niemcunowicz)
