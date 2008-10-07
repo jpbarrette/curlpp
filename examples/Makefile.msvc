@@ -10,8 +10,8 @@
 #
 ##############################################################
 
-LIB_NAME          = libcurlpp.lib
-LIB_NAME_DEBUG    = libcurlppd.lib
+CURLPP_LIB_NAME        = curlpp.lib
+CURL_LIB_NAME          = libcurl.lib
 
 #############################################################
 
@@ -21,10 +21,9 @@ LIBCURL_PATH   = ../../curl/include
 
 CCNODBG    = cl.exe /MD /O2 /DNDEBUG /GR /Y-
 CCDEBUG    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GZ /GR
-CFLAGS     = /I ../ /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /nologo /W3 /GX /DWIN32 /YX /FD /c
+CFLAGS     = /I ../ /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /D_CRT_SECURE_NO_DEPRECATE /nologo /W3 /DWIN32 /FD /c
 LNKLIB     = link.exe /INCREMENTAL:NO /OPT:NOREF
-LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)/lib" $(LIB_NAME) $(CURLLIB)
-CURLLIB    = libcurl_imp.lib
+LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)\lib" $(CURLPP_LIB_NAME) $(CURL_LIB_NAME)
 
 CC = $(CCNODBG) $(CFLAGSLIB)
 LNK = $(LNKLIB)  $(LFLAGS)

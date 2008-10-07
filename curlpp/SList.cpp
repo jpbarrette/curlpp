@@ -1,5 +1,7 @@
 #include "global.h"
+#ifndef WIN32
 #include "config.h"
+#endif
 
 #if HAVE_OSTREAM
 #include <ostream>

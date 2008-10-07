@@ -81,7 +81,7 @@ namespace cURLpp
     
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
-
+#if 0
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::WriteFunctionFunctor, 
 				CURLOPT_WRITEFUNCTION >
@@ -105,6 +105,7 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 #endif
+#endif // 0
 
   template< >
   class CURLPPAPI OptionSetter< FILE *, 
@@ -117,6 +118,7 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 
+#if 0
   template< >
   class CURLPPAPI OptionSetter< std::ostream *, 
 				CURLOPT_WRITEDATA >
@@ -127,7 +129,7 @@ namespace cURLpp
     
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
-
+ 
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::ReadFunctionFunctor, 
 				CURLOPT_READFUNCTION >
@@ -138,7 +140,7 @@ namespace cURLpp
     
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
-
+   
 #ifdef HAVE_BOOST
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::BoostReadFunction, 
@@ -151,6 +153,7 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 #endif
+#endif // 0
 
   template< >
   class CURLPPAPI OptionSetter< FILE *, 
@@ -222,6 +225,7 @@ namespace cURLpp
   };
 #endif
 
+#if 0
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::DebugFunctionFunctor, 
 				CURLOPT_DEBUGFUNCTION >
@@ -245,6 +249,8 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 #endif
+
+#endif // 0
 
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::SslCtxFunctionFunctor, 

@@ -1,139 +1,295 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="7.10"
+	Version="8,00"
 	Name="curlpp"
 	ProjectGUID="{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
-	Keyword="Win32Proj">
+	RootNamespace="curlpp"
+	Keyword="Win32Proj"
+	>
 	<Platforms>
 		<Platform
-			Name="Win32"/>
+			Name="Win32"
+		/>
 	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
 	<Configurations>
 		<Configuration
-			Name="Debug|Win32"
-			OutputDirectory="Debug"
-			IntermediateDirectory="Debug"
-			ConfigurationType="2"
-			CharacterSet="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				Optimization="0"
-				AdditionalIncludeDirectories="..\libcurl\include"
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
-				MinimalRebuild="TRUE"
-				BasicRuntimeChecks="3"
-				RuntimeLibrary="1"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="4"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="..\libcurl\lib\libcurl.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCWebDeploymentTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Release|Win32"
-			OutputDirectory="Release"
-			IntermediateDirectory="Release"
-			ConfigurationType="4"
-			CharacterSet="2">
-			<Tool
-				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\libcurl\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="0"
-				UsePrecompiledHeader="0"
-				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
-			<Tool
-				Name="VCCustomBuildTool"/>
-			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)/curlpp.lib"/>
-			<Tool
-				Name="VCMIDLTool"/>
-			<Tool
-				Name="VCPostBuildEventTool"/>
-			<Tool
-				Name="VCPreBuildEventTool"/>
-			<Tool
-				Name="VCPreLinkEventTool"/>
-			<Tool
-				Name="VCResourceCompilerTool"/>
-			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
-			<Tool
-				Name="VCXMLDataGeneratorTool"/>
-			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
-			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
-		</Configuration>
-		<Configuration
-			Name="Release (dynamic)|Win32"
+			Name="DebugDynamic|Win32"
 			OutputDirectory="$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
-			CharacterSet="2">
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="..\libcurl\include"
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
-				RuntimeLibrary="0"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\"
+				PreprocessorDefinitions="WIN32;_DEBUG;_LIB"
+				MinimalRebuild="true"
+				BasicRuntimeChecks="3"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
-				Detect64BitPortabilityProblems="TRUE"
-				DebugInformationFormat="3"/>
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4275;4251"
+			/>
 			<Tool
-				Name="VCCustomBuildTool"/>
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libcurl.lib"
-				AdditionalLibraryDirectories="../libcurl/lib"/>
+				AdditionalLibraryDirectories="$(LIBCURL_PATH)\lib"
+				OptimizeReferences="0"
+				EnableCOMDATFolding="0"
+			/>
 			<Tool
-				Name="VCMIDLTool"/>
+				Name="VCALinkTool"
+			/>
 			<Tool
-				Name="VCPostBuildEventTool"/>
+				Name="VCManifestTool"
+			/>
 			<Tool
-				Name="VCPreBuildEventTool"/>
+				Name="VCXDCMakeTool"
+			/>
 			<Tool
-				Name="VCPreLinkEventTool"/>
+				Name="VCBscMakeTool"
+			/>
 			<Tool
-				Name="VCResourceCompilerTool"/>
+				Name="VCFxCopTool"
+			/>
 			<Tool
-				Name="VCWebServiceProxyGeneratorTool"/>
+				Name="VCAppVerifierTool"
+			/>
 			<Tool
-				Name="VCXMLDataGeneratorTool"/>
+				Name="VCWebDeploymentTool"
+			/>
 			<Tool
-				Name="VCWebDeploymentTool"/>
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="ReleaseStatic|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
 			<Tool
-				Name="VCManagedWrapperGeneratorTool"/>
+				Name="VCPreBuildEventTool"
+			/>
 			<Tool
-				Name="VCAuxiliaryManagedWrapperGeneratorTool"/>
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;CURLPP_STATICLIB"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/curlpp.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="ReleaseDynamic|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="2"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\"
+				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				RuntimeLibrary="2"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+				DisableSpecificWarnings="4275;4251"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLinkerTool"
+				AdditionalDependencies="libcurl.lib"
+				AdditionalLibraryDirectories="$(LIBCURL_PATH)\lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCManifestTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCAppVerifierTool"
+			/>
+			<Tool
+				Name="VCWebDeploymentTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
+		</Configuration>
+		<Configuration
+			Name="DebugStatic|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="4"
+			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
+			CharacterSet="2"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCXMLDataGeneratorTool"
+			/>
+			<Tool
+				Name="VCWebServiceProxyGeneratorTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCCLCompilerTool"
+				Optimization="0"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\"
+				PreprocessorDefinitions="WIN32;DEBUG;_LIB;CURLPP_STATICLIB"
+				RuntimeLibrary="3"
+				UsePrecompiledHeader="0"
+				WarningLevel="3"
+				Detect64BitPortabilityProblems="true"
+				DebugInformationFormat="3"
+			/>
+			<Tool
+				Name="VCManagedResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCResourceCompilerTool"
+			/>
+			<Tool
+				Name="VCPreLinkEventTool"
+			/>
+			<Tool
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)/curlpp.lib"
+			/>
+			<Tool
+				Name="VCALinkTool"
+			/>
+			<Tool
+				Name="VCXDCMakeTool"
+			/>
+			<Tool
+				Name="VCBscMakeTool"
+			/>
+			<Tool
+				Name="VCFxCopTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+			/>
 		</Configuration>
 	</Configurations>
 	<References>
@@ -142,107 +298,152 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx"
-			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}">
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
+			>
 			<File
-				RelativePath="curlpp\CurlHandle.cpp">
+				RelativePath="curlpp\CurlHandle.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\cURLpp.cpp">
+				RelativePath="curlpp\cURLpp.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Easy.cpp">
+				RelativePath="curlpp\Easy.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Exception.cpp">
+				RelativePath="curlpp\Exception.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Form.cpp">
+				RelativePath="curlpp\Form.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionBase.cpp">
+				RelativePath=".\curlpp\Info.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionList.cpp">
+				RelativePath="curlpp\OptionBase.cpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\SList.cpp">
+				RelativePath="curlpp\OptionList.cpp"
+				>
+			</File>
+			<File
+				RelativePath="curlpp\SList.cpp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc;xsd"
-			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
+			>
 			<File
-				RelativePath="curlpp\cURL.hpp">
+				RelativePath="curlpp\CurlHandle.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\CurlHandle.hpp">
+				RelativePath="curlpp\CurlHandle.inl"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\CurlHandle.inl">
+				RelativePath="curlpp\cURLpp.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\cURLpp.hpp">
+				RelativePath="curlpp\Easy.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Easy.hpp">
+				RelativePath="curlpp\Exception.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Exception.hpp">
+				RelativePath="curlpp\Form.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Form.hpp">
+				RelativePath=".\curlpp\Info.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\NonCopyable.hpp">
+				RelativePath=".\curlpp\Info.inl"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Option.hpp">
+				RelativePath=".\curlpp\Infos.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Option.inl">
+				RelativePath="curlpp\NonCopyable.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionBase.hpp">
+				RelativePath="curlpp\Option.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionContainer.hpp">
+				RelativePath="curlpp\Option.inl"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionContainer.inl">
+				RelativePath="curlpp\OptionBase.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionContainerType.hpp">
+				RelativePath="curlpp\OptionContainer.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionList.hpp">
+				RelativePath="curlpp\OptionContainer.inl"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\Options.hpp">
+				RelativePath="curlpp\OptionContainerType.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionSetter.hpp">
+				RelativePath="curlpp\OptionList.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionSetter.inl">
+				RelativePath="curlpp\Options.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\SList.hpp">
+				RelativePath="curlpp\OptionSetter.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\StorageOptions.hpp">
+				RelativePath="curlpp\OptionSetter.inl"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\StorageOptions.inl">
+				RelativePath="curlpp\SList.hpp"
+				>
 			</File>
 			<File
-				RelativePath="curlpp\TypeTrait.hpp">
+				RelativePath="curlpp\StorageOptions.hpp"
+				>
+			</File>
+			<File
+				RelativePath="curlpp\StorageOptions.inl"
+				>
+			</File>
+			<File
+				RelativePath="curlpp\TypeTrait.hpp"
+				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx"
-			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}">
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
+			>
 		</Filter>
 	</Files>
 	<Globals>

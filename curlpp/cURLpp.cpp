@@ -30,7 +30,7 @@ std::string
 cURLpp::escape( const std::string &url )
 {
    std::string buffer;
-   char* p = curl_escape(url.c_str(), url.size());
+   char* p = curl_escape(url.c_str(), (int)url.size());
    if(!p) {
       throw std::runtime_error( "unable to escape the string" ); //we got an error
    }
@@ -45,7 +45,7 @@ std::string
 cURLpp::unescape( const std::string &url )
 {
    std::string buffer;
-   char* p = curl_unescape( url.c_str(), url.size() );
+   char* p = curl_unescape( url.c_str(), (int)url.size() );
    if ( !p )
    {
       throw RuntimeError( "unable to escape the string" ); //we got an error
