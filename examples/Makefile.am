@@ -3,7 +3,7 @@ maintener_programs =
 endif
 
 if HAVE_BOOST
-boost_programs = example18
+boost_programs = example18 example20
 endif
 
 EXTRA_DIST = Makefile.msvc
@@ -27,7 +27,6 @@ noinst_PROGRAMS = \
 	example16 \
 	example17 \
 	example19 \
-	example20 \
 	example21 \
 	example22 \
 	${maintener_programs} ${boost_programs}

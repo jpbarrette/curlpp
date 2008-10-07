@@ -27,6 +27,19 @@
 
 #include <iostream> 
 
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+#define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef cURLpp::NotAvailableOptionTrait< type, option > name;
+#endif
+
+// #begin define OPTION(version,type,option,name) 
+// #if LIBCURL_VERSION_NUM >= version 
+//   typedef cURLpp::OptionTrait< type, option > name;
+// #else
+// DEF_IF_ALLOW_AVAILABLE(type,option,name)
+// #endif
+// #end
+
+
 namespace cURLpp
 {
   namespace Options
@@ -34,7 +47,7 @@ namespace cURLpp
     /**
      * Cookie interface.
      */
-#ifdef CURLOPT_COOKIELIST
+#if LIBCURL_VERSION_NUM >= 0x070d01
     typedef cURLpp::OptionTrait< std::string, CURLOPT_COOKIELIST > CookieList;
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
@@ -46,7 +59,14 @@ namespace cURLpp
      */
     typedef cURLpp::OptionTrait< bool, CURLOPT_VERBOSE > Verbose;
     typedef cURLpp::OptionTrait< bool, CURLOPT_HEADER > Header;
+#if LIBCURL_VERSION_NUM >= 0x070A00
     typedef cURLpp::OptionTrait< bool, CURLOPT_NOSIGNAL > NoSignal;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    typedef cURLpp::NotAvailableOptionTrait< bool > NoSignal;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
     typedef cURLpp::OptionTrait< bool, CURLOPT_NOPROGRESS > NoProgress;
     
     /**
@@ -68,9 +88,18 @@ namespace cURLpp
      * want libcURL to use the FILE * given in argument instead 
      * of stdout. 
      */
+#if LIBCURL_VERSION_NUM >= 0x070907
     typedef cURLpp::OptionTrait< FILE *, CURLOPT_WRITEDATA > WriteFile;
     typedef cURLpp::OptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    typedef cURLpp::NotAvailableOptionTrait< FILE *, CURLOPT_WRITEDATA > WriteFile;
+    typedef cURLpp::NotAvailableOptionTrait< std::ostream *, CURLOPT_WRITEDATA > WriteStream;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
 
+
+#if LIBCURL_VERSION_NUM >= 0x070c01
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ReadFunctionFunctor, 
       CURLOPT_READFUNCTION > ReadFunction;
@@ -80,15 +109,35 @@ namespace cURLpp
       cURLpp::Types::BoostReadFunction, 
       CURLOPT_READFUNCTION > BoostReadFunction;
 #endif
-    
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    typedef cURLpp::NotAvailableOptionTrait< 
+      cURLpp::Types::ReadFunctionFunctor, 
+      CURLOPT_READFUNCTION > ReadFunction;
+
+#ifdef HAVE_BOOST
+    typedef cURLpp::NotAvailableOptionTrait< 
+      cURLpp::Types::BoostReadFunction, 
+      CURLOPT_READFUNCTION > BoostReadFunction;
+#endif // HAVE_BOOST
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
     /**
      * Using this option will reset CURLOPT_READFUNCTION to 
      * default callback. In fact, use only this option if you only 
      * want libcURL to use the FILE * given in argument instead 
      * of stdout. 
      */
+#if LIBCURL_VERSION_NUM >= 0x070907
     typedef cURLpp::OptionTrait< FILE *, CURLOPT_READDATA > ReadFile;
     typedef cURLpp::OptionTrait< std::istream *, CURLOPT_READDATA > ReadStream;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    typedef cURLpp::NotAvailableOptionTrait< FILE *, CURLOPT_READDATA > ReadFile;
+    typedef cURLpp::NotAvailableOptionTrait< std::istream *, CURLOPT_READDATA > ReadStream;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
 
     typedef cURLpp::OptionTrait< 
       cURLpp::Types::ProgressFunctionFunctor, 
@@ -202,9 +251,7 @@ namespace cURLpp
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTPLISTONLY > FtpListOnly;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTPAPPEND > FtpAppend;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_USE_EPSV > FtpUseEpsv;
-#ifdef CURLOPT_FTP_FILEMETHOD
     typedef cURLpp::OptionTrait< long, CURLOPT_FTP_FILEMETHOD > FtpFileMethod;
-#endif
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_CREATE_MISSING_DIRS > FtpCreateMissingDirs;
     typedef cURLpp::OptionTrait< bool, CURLOPT_FTP_RESPONSE_TIMEOUT > FtpResponseTimeout;
     typedef cURLpp::OptionTrait< curl_ftpssl, CURLOPT_FTP_SSL > FtpSsl;
