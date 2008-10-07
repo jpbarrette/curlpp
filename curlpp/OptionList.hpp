@@ -88,7 +88,7 @@ namespace cURLpp
 	 * all the options contained by the class will be deleted and we will
 	 * clone the rhs option_container and store them in the class.
 	 */
-	OptionList &operator=( const OptionList &rhs );
+	//OptionList &operator=( const OptionList &rhs );
 
 	typedef std::map< CURLoption, cURLpp::OptionBase * > mapType;
 	

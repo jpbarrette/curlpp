@@ -6,36 +6,36 @@ support and fixes won't likely come as easily as on Unixes.
 
 Information contained in this file does not apply to cygwin builds.
 
-So far the only supported/tested compiler is Microsoft Visual C++ 7.1 (2003), 
+curlpp has been tested on Microsoft Visual C++ 7.1 (2003) / Microsoft Visual C++ 8.0 (2005), 
 but any modern C++ compiler should do the job.
 
-*) Building curlpp with MSVC 7.1
-The preferred way to build curlpp with msvc7.1 is by using the supplied
-makefiles and nmake.
+*) Building curlpp with MSVC 
+Either build curlpp from MS Visual Studio IDE or use msbuild tool to build curlpp from command line.
 Steps to build curlpp:
 	Open a command prompt where curlpp sources are
+
 	set LIBCURL_PATH=/where/curl/is/installed
-	cd curlpp/
-	nmake -f Makefile.msvc CFG=<Configuration>
+	msbuild curlpp.sln /t:Rebuild /p:Configuration=<Configuration>
 		where <Configuration> is one of
-		- release
-		- release-dll
-		- debug
-		- debug-dll
+		- ReleaseDynamic
+		- ReleaseStatic
+		- DebugDynamic
+		- DebugStatic
 	output files will be in <Configuration> directory.
 	
-	DLL configurations will build a .dll library file and a .lib library import
-	file; static configurations will build the .lib library only.
+	ReleaseDynamic/DebugDynamic configurations will build a .dll library file and a .lib library import
+	file; ReleaseStatic/DebugStatic configurations will build the .lib inline library.
 
 Building examples:
 	Use the Makefile.msvc in the examples/ directory.
-	To build example XY use
+	To build all examples use
+	nmake -f Makefile.msvc all
+        To build example XY use
 	nmake -f Makefile.msvc exampleXY
-	
+
 	The makefile requires the libcurlpp.lib file to be in the examples/ 
-	directory; after building curlpp copy it here.
-	Some of the examples won't compile. Maybe this will be fixed in a future
-	release.
+	directory; after building curlpp copy it here. 
 <---
 
 Giuseppe "Cowo" Corbelli, cowo at lugbs dot linux dot it
+Andrei Korostelev, andrei at korostelev dot net
