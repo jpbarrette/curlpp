@@ -34,7 +34,7 @@ cURLpp::OptionSetter< OptionValueType,
 		      optionType >::setOpt(cURLpp::CurlHandle *handle, 
 					   ParamType value)
 {
-   handle->option(optionType, value);
+  handle->option(optionType, value);
 }
 
 
