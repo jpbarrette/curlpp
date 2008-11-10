@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "global.h"
 #include "cURLpp.hpp"
 #include "Exception.hpp"

@@ -23,6 +23,7 @@
 
 #include <string>
 #include <iostream>
+#include <string.h>
 
 #include "global.h"
 #include "CurlHandle.hpp"

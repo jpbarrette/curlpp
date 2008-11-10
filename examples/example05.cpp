@@ -22,6 +22,7 @@
  */
 
 #include <stdlib.h>
+#include <string.h>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>

@@ -23,6 +23,8 @@
 
 #include <iostream>
 
+#include <stdlib.h>
+
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Multi.hpp>
@@ -59,7 +61,7 @@ int main(int argc, char *argv[])
     requests.add(&request2);
     
     /* we start some action by calling perform right away */
-    while(!requests.perform(&nbLeft));
+    while(!requests.perform(&nbLeft)) ;
     
     while(nbLeft) {
       struct timeval timeout;
@@ -94,7 +96,7 @@ int main(int argc, char *argv[])
       default:
 	/* one or more of curl's file descriptors say there's data to read
 	   or write */
-	while(!requests.perform(&nbLeft));
+	while(!requests.perform(&nbLeft)) ;
 	break;
       }
     }
