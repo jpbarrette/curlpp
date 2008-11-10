@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "curlpp.vcproj", "{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "curlpp.VC8.vcproj", "{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

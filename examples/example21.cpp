@@ -25,13 +25,19 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
  
+/*
+   anonymous namespace to prevent name clash in case other examples using the same global entities
+   would be compiled in the same project
+*/
+namespace
+{
+
 char *data = NULL;
 
 size_t readData(char *buffer, size_t size, size_t nitems)
@@ -39,6 +45,8 @@ size_t readData(char *buffer, size_t size, size_t nitems)
   strncpy(buffer, data, size * nitems);
   return size * nitems;
 }
+
+} // namespace
 
 int main(int argc, char *argv[])
 {

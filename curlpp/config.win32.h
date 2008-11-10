@@ -1,7 +1,7 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* when building cURLpp itself */
-#define BUILDING_CURLPP 1
+/* Define when building cURLpp itself */
+//#define BUILDING_CURLPP
 
 /* Define to 1 if you have the <curl/curl.h> header file. */
 #define HAVE_CURL_CURL_H 1
@@ -61,4 +61,4 @@
 #define STDC_HEADERS
 
 /* Version number of package */
-//#define VERSION 0.6.0-pre3
+#define VERSION 0.7.2
