@@ -23,6 +23,7 @@
 
 #include <stdlib.h>
 #include <errno.h>
+#include <string.h>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>

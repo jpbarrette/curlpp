@@ -1,3 +1,5 @@
+#include <algorithm>
+
 template< typename T, typename TDestroyer >
 void
 utilspp::setLongevity( T *obj, unsigned int longevity, TDestroyer d )

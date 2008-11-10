@@ -23,6 +23,8 @@
 
 #include <iostream>
 
+#include <stdlib.h>
+
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Multi.hpp>
@@ -59,7 +61,7 @@ int main(int argc, char *argv[])
     requests.add(&request2);
     
     /* we start some action by calling perform right away */
-    while(!requests.perform(&nbLeft));
+    while(!requests.perform(&nbLeft)) ;
     
     while(nbLeft) {
       struct timeval timeout;
@@ -92,7 +94,7 @@ int main(int argc, char *argv[])
       case 0:
       default:
 	/* timeout or readable/writable sockets */
-	while(!requests.perform(&nbLeft));
+	while(!requests.perform(&nbLeft)) ;
 	break;
       }
     }

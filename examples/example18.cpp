@@ -82,8 +82,10 @@ int main(int argc, char *argv[])
 
     // Set the writer callback to enable cURL 
     // to write result in a memory area
+#ifdef HAVE_BOOST
     cURLpp::Options::BoostWriteFunction *test = new cURLpp::Options::BoostWriteFunction(boost::bind(&MethodClass::write, &mObject, &request, _1, _2, _3));
     request.setOpt(test);
+#endif /* HAVE_BOOST */
     
     // Setting the URL to retrive.
     request.setOpt(new cURLpp::Options::Url(url));
