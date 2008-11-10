@@ -50,7 +50,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4275;4251"
+				DisableSpecificWarnings="4275;4251;4996"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -125,6 +125,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4996"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -187,7 +188,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
-				DisableSpecificWarnings="4275;4251"
+				DisableSpecificWarnings="4275;4251;4996"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -261,6 +262,7 @@
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="true"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4996"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -330,6 +332,10 @@
 			</File>
 			<File
 				RelativePath="curlpp\OptionList.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\curlpp\OptionSetter.cpp"
 				>
 			</File>
 			<File

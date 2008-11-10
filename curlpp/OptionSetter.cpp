@@ -46,7 +46,7 @@ size_t myWriteCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHan
 size_t myStreamWriteCallback(char *buffer, size_t size, size_t nitems, std::ostream * stream)
 {
   size_t realwrote = size * nitems;
-  stream->write(buffer, realwrote);
+  stream->write(buffer, static_cast<std::streamsize>(realwrote));
   if(!(*stream))
     realwrote = 0;
 
@@ -66,7 +66,7 @@ size_t myReadCallback(char *buffer, size_t size, size_t nitems, cURLpp::CurlHand
 
 size_t myStreamReadCallback(char *buffer, size_t size, size_t nitems, std::istream *stream)
 {
-  size_t realread = stream->readsome(buffer, size * nitems);
+  size_t realread = stream->readsome(buffer, static_cast<std::streamsize>(size * nitems));
   if(!(*stream))
     realread = CURL_READFUNC_ABORT;
 
