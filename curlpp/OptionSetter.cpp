@@ -165,11 +165,10 @@ cURLpp::OptionSetter< cURLpp::Types::BoostReadFunction,
 };
 #endif
 
-
 void
 cURLpp::OptionSetter< FILE *, 
 		      CURLOPT_READDATA >::setOpt(cURLpp::CurlHandle *handle, 
-						       ParamType value)
+						 ParamType value)
 {
   handle->option(CURLOPT_READFUNCTION, (void *)NULL);
   handle->option(CURLOPT_READDATA, value);
@@ -187,7 +186,7 @@ cURLpp::OptionSetter< std::istream *,
 void
 cURLpp::OptionSetter< cURLpp::Types::ProgressFunctionFunctor, 
 		      CURLOPT_PROGRESSFUNCTION >::setOpt(cURLpp::CurlHandle *handle, 
-							       ParamType value)
+							 ParamType value)
 {
   handle->option(CURLOPT_PROGRESSFUNCTION, myProgressCallback);
   handle->option(CURLOPT_PROGRESSDATA, handle);
@@ -250,6 +249,7 @@ cURLpp::OptionSetter< cURLpp::Types::BoostDebugFunction,
   handle->setDebugFunctor(value);
 };
 #endif
+
 
 void
 cURLpp::OptionSetter< 

@@ -14,7 +14,7 @@
  *    
  *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
  *    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- *    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+ *    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
  *    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
  *    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
  *    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
@@ -81,7 +81,7 @@ namespace cURLpp
     
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
-#if 0
+
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::WriteFunctionFunctor, 
 				CURLOPT_WRITEFUNCTION >
@@ -105,7 +105,6 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 #endif
-#endif // 0
 
   template< >
   class CURLPPAPI OptionSetter< FILE *, 
@@ -118,7 +117,6 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 
-#if 0
   template< >
   class CURLPPAPI OptionSetter< std::ostream *, 
 				CURLOPT_WRITEDATA >
@@ -153,9 +151,8 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 #endif
-#endif // 0
 
-  template< >
+  template <>
   class CURLPPAPI OptionSetter< FILE *, 
 				CURLOPT_READDATA >
   {
@@ -225,7 +222,6 @@ namespace cURLpp
   };
 #endif
 
-#if 0
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::DebugFunctionFunctor, 
 				CURLOPT_DEBUGFUNCTION >
@@ -249,8 +245,6 @@ namespace cURLpp
     static void setOpt(cURLpp::CurlHandle *handle, ParamType value);
   };
 #endif
-
-#endif // 0
 
   template< >
   class CURLPPAPI OptionSetter< cURLpp::Types::SslCtxFunctionFunctor, 
