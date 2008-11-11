@@ -7,7 +7,7 @@
 	<Tool
 		Name="VCCLCompilerTool"
 		AdditionalIncludeDirectories="&quot;$(CURLPP_PATH)&quot;;&quot;$(LIBCURL_PATH)\include&quot;;&quot;$(OPENSSL_PATH)\include&quot;;&quot;$(BOOST_PATH)\include&quot;"
-		PreprocessorDefinitions="BUILDING_CURLPP"
+		PreprocessorDefinitions="WIN32; _WIN32;WINDOWS;_LIB;BUILDING_CURLPP"
 		WarningLevel="4"
 	/>
 	<Tool

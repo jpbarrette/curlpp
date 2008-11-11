@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
+﻿Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "curlpp.VC9.vcproj", "{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
 EndProject
