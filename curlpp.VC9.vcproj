@@ -43,7 +43,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;"
+				PreprocessorDefinitions="_DEBUG;_LIB;"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -123,7 +123,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				PreprocessorDefinitions="NDEBUG;_LIB"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
@@ -196,7 +196,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB"
+				PreprocessorDefinitions="NDEBUG;_LIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
@@ -272,7 +272,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;DEBUG;_LIB"
+				PreprocessorDefinitions="DEBUG;_LIB"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
@@ -347,7 +347,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;CURL_STATICLIB"
+				PreprocessorDefinitions="_DEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -414,7 +414,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;DEBUG;_LIB;CURL_STATICLIB"
+				PreprocessorDefinitions="DEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
@@ -478,7 +478,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;CURL_STATICLIB"
+				PreprocessorDefinitions="NDEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
@@ -541,7 +541,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;CURL_STATICLIB"
+				PreprocessorDefinitions="NDEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
 				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
@@ -647,6 +647,10 @@
 			</File>
 			<File
 				RelativePath="curlpp\cURLpp.hpp"
+				>
+			</File>
+			<File
+				RelativePath=".\curlpp\dllfct.h"
 				>
 			</File>
 			<File
