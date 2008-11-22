@@ -28,7 +28,7 @@
 
 namespace utilspp
 {
-   class CURLPPAPI non_copyable
+   class non_copyable
    {
       public:
          non_copyable()

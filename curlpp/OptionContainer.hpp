@@ -37,7 +37,7 @@ namespace cURLpp
      * This class is used to set an option to a handle and to keep it's value.
      */
     template< class OptionType >
-    class CURLPPAPI OptionContainer
+    class OptionContainer
     {
     public:
 	typedef typename OptionContainerType< OptionType >::ParamType ParamType;
