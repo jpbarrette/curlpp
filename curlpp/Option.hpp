@@ -39,7 +39,7 @@ namespace cURLpp
    * the declaration of an option object.
    */
   template<  typename OptionType >
-  class CURLPPAPI Option : public cURLpp::OptionBase
+  class Option : public cURLpp::OptionBase
   {
   public:
 
@@ -128,7 +128,7 @@ namespace cURLpp
    * be able to typedef Options. 
    */
   template< typename OptionType, CURLoption option >
-  class CURLPPAPI OptionTrait : public Option< OptionType >
+  class OptionTrait : public Option< OptionType >
   {
     friend class Easy;
 
@@ -165,7 +165,7 @@ namespace cURLpp
    * be able to have "No value" option, like SslDefaultEngine.
    */
   template< CURLoption option >
-  class CURLPPAPI NoValueOptionTrait : public OptionTrait< bool, option >
+  class NoValueOptionTrait : public OptionTrait< bool, option >
   {
   public:
     NoValueOptionTrait();
@@ -182,7 +182,7 @@ namespace cURLpp
    * This class is used when the option is not implemented.
    */
   template< typename OptionType >
-  class CURLPPAPI NotAvailableOptionTrait : public Option< OptionType >
+  class NotAvailableOptionTrait : public Option< OptionType >
   {
   public:
     /**

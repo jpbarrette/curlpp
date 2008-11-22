@@ -36,7 +36,7 @@ namespace cURLpp
    * This class is used to specialize some option settings.
    */
   template< typename OptionValueType, CURLoption optionType >
-  class CURLPPAPI OptionSetter
+  class OptionSetter
   {
   public:
     typedef typename OptionContainerType< OptionValueType >::HandleOptionType ParamType;
@@ -48,7 +48,7 @@ namespace cURLpp
    * This class is used to specialize the std::string options type.
    */
   template< CURLoption optionType >
-  class CURLPPAPI OptionSetter< std::string, optionType >
+  class OptionSetter< std::string, optionType >
   {
   public:
     typedef cURLpp::OptionContainerType< std::string >::HandleOptionType ParamType;
@@ -59,7 +59,7 @@ namespace cURLpp
    * This class is used to specialize the cURLpp::SList options type.
    */
   template< CURLoption optionType >
-  class CURLPPAPI OptionSetter< std::list< std::string >, optionType >
+  class OptionSetter< std::list< std::string >, optionType >
   {
   public:
     typedef std::list< std::string > OptionValueType;
@@ -247,7 +247,7 @@ namespace cURLpp
 #endif
 
   template< >
-  class CURLPPAPI OptionSetter< cURLpp::Types::SslCtxFunctionFunctor, 
+  class OptionSetter< cURLpp::Types::SslCtxFunctionFunctor, 
 				CURLOPT_SSL_CTX_FUNCTION >
   {
   public:
@@ -259,7 +259,7 @@ namespace cURLpp
 
 #ifdef HAVE_BOOST
   template< >
-  class CURLPPAPI OptionSetter< cURLpp::Types::BoostSslCtxFunction, 
+  class OptionSetter< cURLpp::Types::BoostSslCtxFunction, 
 				CURLOPT_SSL_CTX_FUNCTION >
   {
   public:

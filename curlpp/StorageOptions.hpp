@@ -37,7 +37,7 @@ namespace cURLpp
 	      typename DataType, 
 	      CURLoption CallbackOptionValue,
 	      CURLoption DataOptionValue >
-    class CURLPPAPI StorageOption :  public cURLpp::OptionList
+    class StorageOption :  public cURLpp::OptionList
     {
     public:
       void setCallback(CallbackType callback);

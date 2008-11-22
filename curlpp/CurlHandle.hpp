@@ -33,26 +33,26 @@
 
 namespace cURLpp
 {
-  class CurlHandle
+  class CURLPPAPI CurlHandle
   {
   public:
-    CURLPPAPI CurlHandle();
-    CURLPPAPI CurlHandle(CURL * handle);
+    CurlHandle();
+    CurlHandle(CURL * handle);
 
-    std::auto_ptr< CurlHandle > CURLPPAPI clone() const;
+    std::auto_ptr< CurlHandle > clone() const;
 
     /**
      * Simply calls curl_easy_perform on the handle,
      * but throws exceptions on errors.
      */
-    void CURLPPAPI perform();
+    void perform();
 
     /**
      * Simply calls curl_easy_reset on the handle
      */
-    void CURLPPAPI reset();
+    void reset();
 
-    virtual CURLPPAPI ~CurlHandle();
+    virtual ~CurlHandle();
 
     /**
      * Calls curl_easy_setopt on the option.
@@ -71,7 +71,7 @@ namespace cURLpp
      * DO NOT use this, unless you REALLY know what you
      * are doing.
      */
-   CURLPPAPI CURL *  getHandle() const;
+   CURL *  getHandle() const;
 
     /**
      * Request internal information from the curl session 
@@ -113,8 +113,8 @@ namespace cURLpp
     void throwException();
 
   private:
-    CURLPPAPI CurlHandle(const CurlHandle &other);
-    CURLPPAPI CurlHandle& operator=(const CurlHandle &other);
+    CurlHandle(const CurlHandle &other);
+    CurlHandle& operator=(const CurlHandle &other);
 
     /**
      * Pass a char * to a buffer that the libcURL may store
@@ -125,7 +125,7 @@ namespace cURLpp
      * buffer may not have been touched. Do not rely on the
      * contents in those cases.
      */
-    void CURLPPAPI errorBuffer(char* buffer);
+    void errorBuffer(char* buffer);
     
     
   private:

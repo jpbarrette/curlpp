@@ -36,7 +36,7 @@ namespace cURLpp
    * so.
    */
   template< CURLINFO info, typename T >
-  struct CURLPPAPI Info 
+  struct Info 
   {
     static void get(cURLpp::Easy &handle, T &value);
     static T get(cURLpp::Easy &handle);
@@ -47,7 +47,7 @@ namespace cURLpp
    * current libcURL version.
    */
   template< CURLINFO info, typename T >
-  struct CURLPPAPI NotAvailableInfo : Info< info, T >
+  struct NotAvailableInfo : Info< info, T >
   {
     static void get(cURLpp::Easy &handle, T &value);
     static T get(cURLpp::Easy &handle);
@@ -60,7 +60,7 @@ namespace cURLpp
    * cURLpp::InfoGetter for more information.
    */
   template< typename T >
-  struct CURLPPAPI InfoTypeConverter
+  struct InfoTypeConverter
   {
     static void get(cURLpp::Easy &handle, CURLINFO info, T &value);
   }; 
@@ -94,7 +94,7 @@ namespace cURLpp
    * as a proxy, just to be sure that nobody access cURLpp::Easy's 
    * private data.
    */
-  struct CURLPPAPI InfoGetter
+  struct InfoGetter
   {
     template< typename T >
     static void get(cURLpp::Easy &handle, CURLINFO info, T &value);

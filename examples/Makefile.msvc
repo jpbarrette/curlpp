@@ -19,8 +19,8 @@ CURL_LIB_NAME          = libcurl.lib
 LIBCURL_PATH   = ../../curl/include
 !ENDIF
 
-CCNODBG    = cl.exe /MD /O2 /DNDEBUG /GR /Y-
-CCDEBUG    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GZ /GR
+CCNODBG    = cl.exe /MD /O2 /DNDEBUG /GR /Y- /EHsc
+CCDEBUG    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GZ /GR /EHsc
 CFLAGS     = /I ../ /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /D_CRT_SECURE_NO_DEPRECATE /nologo /W3 /DWIN32 /FD /c
 LNKLIB     = link.exe /INCREMENTAL:NO /OPT:NOREF
 LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)\lib" $(CURLPP_LIB_NAME) $(CURL_LIB_NAME)
