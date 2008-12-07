@@ -23,8 +23,9 @@
 
 #include <sstream>
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>

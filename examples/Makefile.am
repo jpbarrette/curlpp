@@ -77,7 +77,9 @@ example21_SOURCES = example21.cpp
 
 example22_SOURCES = example22.cpp
 
-AM_LDFLAGS = -L../curlpp/ -lcurlpp -static 
+AM_LDFLAGS = -L../src/curlpp/ -lcurlpp -static 
 
-AM_CXXFLAGS=-I../ 
+INCLUDES = -I$(top_builddir)/include
+
+
 

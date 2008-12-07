@@ -21,15 +21,15 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <errno.h>
+#include <fstream>
+
+#include <cstdlib>
+#include <cerrno>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
-
-#include <fstream>
 
 int main(int argc, char *argv[])
 {

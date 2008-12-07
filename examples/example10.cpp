@@ -21,14 +21,20 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+
+using namespace std;
+
+using namespace cURLpp;
+using namespace cURLpp::Options;
+
 
 #define MAX_FILE_LENGTH 20000
 
@@ -42,9 +48,9 @@ FileCallback(FILE *f, char* ptr, size_t size, size_t nmemb)
 int main(int argc, char *argv[])
 {
   if(argc != 3) {
-    std::cerr << argv[0] << ": Wrong number of arguments" << std::endl 
+    cerr << argv[0] << ": Wrong number of arguments" << endl 
 	      << argv[0] << ": Usage: " << " url file" 
-	      << std::endl;
+	      << endl;
 
     return EXIT_FAILURE;
   }
@@ -54,32 +60,32 @@ int main(int argc, char *argv[])
   FILE * file = fopen(filename, "w");
   if (!file)
   {
-    std::cerr << "Error opening " << filename << std::endl;
+    cerr << "Error opening " << filename << endl;
     return EXIT_FAILURE;
   }
   
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    Cleanup cleaner;
+    Easy request;
     
     // Set the writer callback to enable cURL 
     // to write result in a memory area
-    cURLpp::Types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), file));
-    cURLpp::Options::WriteFunction *test = new cURLpp::Options::WriteFunction(functor);
+    Types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), file));
+    WriteFunction *test = new WriteFunction(functor);
     request.setOpt(test);
     
     // Setting the URL to retrive.
-    request.setOpt(new cURLpp::Options::Url(url));
-    request.setOpt(new cURLpp::Options::Verbose(true));
+    request.setOpt(new Url(url));
+    request.setOpt(new Verbose(true));
     request.perform();
 
     return EXIT_SUCCESS;
   }
-  catch ( cURLpp::LogicError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( LogicError & e ) {
+    cout << e.what() << endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( RuntimeError & e ) {
+    cout << e.what() << endl;
   }
 
   return EXIT_FAILURE;

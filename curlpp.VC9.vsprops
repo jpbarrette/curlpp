@@ -3,11 +3,15 @@
 	ProjectType="Visual C++"
 	Version="8.00"
 	Name="curlpp.VC9"
+	OutputDirectory="$(CURLPP_LIB_PATH)\"
+	IntermediateDirectory="$(CURLPP_LIB_PATH)\$(ConfigurationName)"
 	>
 	<Tool
 		Name="VCCLCompilerTool"
-		AdditionalIncludeDirectories="&quot;$(CURLPP_PATH)&quot;;&quot;$(LIBCURL_PATH)\include&quot;;&quot;$(OPENSSL_PATH)\include&quot;;&quot;$(BOOST_PATH)\include&quot;"
-		PreprocessorDefinitions="WIN32; _WIN32;WINDOWS;_LIB;BUILDING_CURLPP"
+		AdditionalIncludeDirectories="&quot;$(CURLPP_INCLUDE_PATH)\&quot;;&quot;$(LIBCURL_PATH)\include&quot;;&quot;$(OPENSSL_PATH)\include&quot;;&quot;$(BOOST_PATH)\include&quot;"
+		PreprocessorDefinitions="LIB;_LIB;BUILDING_CURLPP;HAVE_BOOST;_SCL_SECURE_NO_WARNINGS"
+		ProgramDataBaseFileName="$(OutDir)\$(TargetName).pdb"
+		BrowseInformation="1"
 		WarningLevel="4"
 	/>
 	<Tool
@@ -17,23 +21,9 @@
 	/>
 	<Tool
 		Name="VCLinkerTool"
+		OutputFile=""
 		AdditionalLibraryDirectories="&quot;$(LIBCURL_PATH)\lib&quot;;&quot;$(OPENSSL_PATH)\lib&quot;"
+		ManifestFile="$(IntDir)\$(TargetFileName).manifest"
 		ProfileGuidedDatabase=""
-	/>
-	<UserMacro
-		Name="CURLPP_PATH"
-		Value=".\"
-	/>
-	<UserMacro
-		Name="LIBCURL_PATH"
-		Value="C:\Program Files (x86)\libs\libcurl\"
-	/>
-	<UserMacro
-		Name="OPENSSL_PATH"
-		Value="C:\Program Files (x86)\libs\OpenSSL"
-	/>
-	<UserMacro
-		Name="BOOST_PATH"
-		Value="C:\Program Files (x86)\libs\boost"
 	/>
 </VisualStudioPropertySheet>
