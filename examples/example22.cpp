@@ -22,7 +22,8 @@
  */
 
 #include <sstream>
-#include <stdlib.h>
+
+#include <cstdlib>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>

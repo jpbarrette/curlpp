@@ -21,7 +21,7 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
@@ -29,13 +29,18 @@
 #include <curlpp/Exception.hpp>
  
 
+using namespace std;
+
+using namespace cURLpp;
+
+
 class MyWindow
 {
 public:
   int writeDebug(curl_infotype, char *, size_t)
   {
-    cURLpp::raiseException(std::runtime_error("This is our exception."));
-    std::cout << "We never reach this line." << std::endl;
+    raiseException(runtime_error("This is our exception."));
+    cout << "We never reach this line." << endl;
     return 0;
   }
 };
@@ -43,34 +48,34 @@ public:
 int main(int argc, char *argv[])
 {
   if(argc != 2) {
-    std::cerr << "Example 8: Wrong number of arguments" << std::endl 
+    cerr << "Example 8: Wrong number of arguments" << endl 
 	      << "Example 8: Usage: example8 url" 
-	      << std::endl;
+	      << endl;
     return EXIT_FAILURE;
   }
   char *url = argv[1];
      
   MyWindow myWindow;
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    Cleanup cleaner;
+    Easy request;
     
-    using namespace cURLpp::Options;
+    using namespace Options;
     request.setOpt(Verbose(true));
-    request.setOpt(DebugFunction(cURLpp::Types::DebugFunctionFunctor(&myWindow, 
+    request.setOpt(DebugFunction(Types::DebugFunctionFunctor(&myWindow, 
 								     &MyWindow::writeDebug)));
     request.setOpt(Url(url));
     
     request.perform();
   }
-  catch ( cURLpp::LogicError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( LogicError & e ) {
+    cout << e.what() << endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( RuntimeError & e ) {
+    cout << e.what() << endl;
   }
-  catch ( std::runtime_error &e ) {
-    std::cout << e.what() << std::endl;
+  catch ( runtime_error &e ) {
+    cout << e.what() << endl;
   }
   
   return 0;

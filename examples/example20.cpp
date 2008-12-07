@@ -22,7 +22,8 @@
  */
 
 #include <sstream>
-#include <stdlib.h>
+
+#include <cstdlib>
 
 #include <boost/bind.hpp>
 #include <curlpp/cURLpp.hpp>

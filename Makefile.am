@@ -1,5 +1,5 @@
 ACLOCAL_AMFLAGS = -I m4
-SUBDIRS = utilspp curlpp examples doc 
+SUBDIRS = src include examples doc 
 EXTRA_DIST = curlpp.vcproj curlpp.sln CHANGES curlpp.spec
 
 pkgconfigdir = $(libdir)/pkgconfig

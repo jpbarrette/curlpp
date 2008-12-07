@@ -18,10 +18,8 @@
 	<Configurations>
 		<Configuration
 			Name="DynamicLibDebugDynamicRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="2"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -43,13 +41,11 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="_DEBUG;_LIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="DEBUG"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
-				BrowseInformation="1"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -66,7 +62,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="libcurlMDd.lib"
-				OutputFile="$(OutDir)\$(ProjectName)MDd.dll"
+				OutputFile="$(CURLPP_LIB_PATH)\$(ProjectName)MDd.dll"
 				AdditionalLibraryDirectories=""
 				OptimizeReferences="0"
 				EnableCOMDATFolding="0"
@@ -99,10 +95,8 @@
 		</Configuration>
 		<Configuration
 			Name="DynamicLibReleaseStaticRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="2"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -123,10 +117,10 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="NDEBUG;_LIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="NDEBUG"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
+				ObjectFile="$(IntDir)\"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -172,10 +166,8 @@
 		</Configuration>
 		<Configuration
 			Name="DynamicLibReleaseDynamicRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="2"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -196,10 +188,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="NDEBUG;_LIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="NDEBUG"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -247,10 +238,8 @@
 		</Configuration>
 		<Configuration
 			Name="DynamicLibDebugStaticRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="2"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -272,11 +261,9 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="DEBUG;_LIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="DEBUG"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
-				BrowseInformation="1"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -322,10 +309,8 @@
 		</Configuration>
 		<Configuration
 			Name="StaticLibDebugDynamicRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -347,13 +332,11 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="_DEBUG;CURL_STATICLIB;CURLPP_STATICLIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="DEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
-				BrowseInformation="1"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -369,7 +352,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\$(ProjectName)MDd.lib"
+				OutputFile="$(OutDir)\$(ProjectName)staticMDd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -389,10 +372,8 @@
 		</Configuration>
 		<Configuration
 			Name="StaticLibDebugStaticRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -414,11 +395,9 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="DEBUG;CURL_STATICLIB;CURLPP_STATICLIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="DEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				RuntimeLibrary="1"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
-				BrowseInformation="1"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="3"
@@ -434,7 +413,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\$(ProjectName)MTd.lib"
+				OutputFile="$(OutDir)\$(ProjectName)staticMTd.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -454,10 +433,8 @@
 		</Configuration>
 		<Configuration
 			Name="StaticLibReleaseDynamicRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -478,10 +455,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="NDEBUG;CURL_STATICLIB;CURLPP_STATICLIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="NDEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -497,7 +473,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\$(ProjectName)MD.lib"
+				OutputFile="$(OutDir)\$(ProjectName)staticMD.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -517,10 +493,8 @@
 		</Configuration>
 		<Configuration
 			Name="StaticLibReleaseStaticRTL|Win32"
-			OutputDirectory="$(ConfigurationName)"
-			IntermediateDirectory="$(ConfigurationName)\intermediate"
 			ConfigurationType="4"
-			InheritedPropertySheets=".\curlpp.VC9.vsprops"
+			InheritedPropertySheets=".\curlpp.common.VC9.vsprops;.\curlpp.VC9.vsprops"
 			CharacterSet="2"
 			>
 			<Tool
@@ -541,10 +515,9 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalIncludeDirectories=""
-				PreprocessorDefinitions="NDEBUG;CURL_STATICLIB;CURLPP_STATICLIB;BUILDING_CURLPP"
+				PreprocessorDefinitions="NDEBUG;CURL_STATICLIB;CURLPP_STATICLIB"
 				RuntimeLibrary="0"
 				UsePrecompiledHeader="0"
-				ProgramDataBaseFileName="$(OutDir)\$(TargetName)"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="false"
 				DebugInformationFormat="0"
@@ -560,7 +533,7 @@
 			/>
 			<Tool
 				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\$(ProjectName)MT.lib"
+				OutputFile="$(OutDir)\$(ProjectName)staticMT.lib"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -588,45 +561,494 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="curlpp\CurlHandle.cpp"
+				RelativePath=".\src\curlpp\CurlHandle.cpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\cURLpp.cpp"
+				RelativePath=".\include\curlpp\CurlHandle.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\cURLpp.cpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Easy.cpp"
+				RelativePath=".\src\curlpp\Easy.cpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Exception.cpp"
+				RelativePath=".\include\curlpp\Easy.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Easy.ins"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Form.cpp"
+				RelativePath=".\src\curlpp\Exception.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\curlpp\Info.cpp"
+				RelativePath=".\src\curlpp\Exception.ins"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionBase.cpp"
+				RelativePath=".\src\curlpp\Form.cpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionList.cpp"
+				RelativePath=".\src\curlpp\Info.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\curlpp\OptionSetter.cpp"
+				RelativePath=".\include\curlpp\Info.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Infos.cpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\SList.cpp"
+				RelativePath=".\src\curlpp\Infos.ins"
 				>
 			</File>
+			<File
+				RelativePath=".\src\curlpp\Multi.cpp"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+						DisableSpecificWarnings="4251;4275"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Option.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\include\curlpp\Option.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Option.ins"
+				>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\OptionBase.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\include\curlpp\OptionContainer.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\OptionList.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Options.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Options.ins"
+				>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\OptionSetter.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\include\curlpp\OptionSetter.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\SList.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\Storage.cpp"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibReleaseDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibDebugStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibReleaseDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\include\curlpp\StorageOptions.inl"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\StorageTrait.cpp"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibReleaseDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibDebugStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibReleaseDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\src\curlpp\StreamTrait.cpp"
+				>
+				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibReleaseDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="DynamicLibDebugStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibReleaseDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<Filter
+				Name="utilspp"
+				>
+				<File
+					RelativePath=".\include\utilspp\ThreadingFactoryMutex.inl"
+					>
+					<FileConfiguration
+						Name="DynamicLibDebugDynamicRTL|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingSingle.inl"
+					>
+					<FileConfiguration
+						Name="DynamicLibDebugDynamicRTL|Win32"
+						ExcludedFromBuild="true"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+						/>
+					</FileConfiguration>
+				</File>
+				<Filter
+					Name="singleton"
+					>
+					<File
+						RelativePath=".\include\utilspp\singleton\CreationStatic.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\CreationUsingNew.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\LifetimeDefault.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath=".\src\utilspp\singleton\LifetimeLibrary.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\LifetimeLibrary.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\LifetimeWithLongevity.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath=".\src\utilspp\singleton\PrivateMembers.cpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\PrivateMembers.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\SingletonHolder.inl"
+						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							ExcludedFromBuild="true"
+							>
+							<Tool
+								Name="VCCustomBuildTool"
+							/>
+						</FileConfiguration>
+					</File>
+				</Filter>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -634,109 +1056,213 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\curlpp\config.win32.h"
+				RelativePath=".\include\curlpp\buildconfig.h"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\CurlHandle.hpp"
+				RelativePath=".\include\curlpp\config.win32.h"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\CurlHandle.inl"
+				RelativePath=".\include\curlpp\CurlHandle.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\cURLpp.hpp"
+				RelativePath=".\include\curlpp\cURLpp.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\curlpp\dllfct.h"
+				RelativePath=".\include\curlpp\Easy.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Easy.hpp"
+				RelativePath=".\include\curlpp\Exception.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Exception.hpp"
+				RelativePath=".\include\curlpp\FileTrait.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Form.hpp"
+				RelativePath=".\include\curlpp\Form.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\curlpp\Info.hpp"
+				RelativePath=".\include\curlpp\global.h"
 				>
 			</File>
 			<File
-				RelativePath=".\curlpp\Info.inl"
+				RelativePath=".\include\curlpp\Handle.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\curlpp\Infos.hpp"
+				RelativePath=".\include\curlpp\Info.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\NonCopyable.hpp"
+				RelativePath=".\include\curlpp\Infos.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Option.hpp"
+				RelativePath=".\include\curlpp\Multi.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Option.inl"
+				RelativePath=".\include\curlpp\Option.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionBase.hpp"
+				RelativePath=".\include\curlpp\OptionBase.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionContainer.hpp"
+				RelativePath=".\include\curlpp\OptionContainer.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionContainer.inl"
+				RelativePath=".\include\curlpp\OptionContainerType.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionContainerType.hpp"
+				RelativePath=".\include\curlpp\OptionList.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionList.hpp"
+				RelativePath=".\include\curlpp\Options.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\Options.hpp"
+				RelativePath=".\include\curlpp\OptionSetter.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionSetter.hpp"
+				RelativePath=".\include\curlpp\SList.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\OptionSetter.inl"
+				RelativePath=".\include\curlpp\Storage.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\SList.hpp"
+				RelativePath=".\include\curlpp\StorageOptions.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\StorageOptions.hpp"
+				RelativePath=".\include\curlpp\StorageTrait.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\StorageOptions.inl"
+				RelativePath=".\include\curlpp\StreamTrait.hpp"
 				>
 			</File>
 			<File
-				RelativePath="curlpp\TypeTrait.hpp"
+				RelativePath=".\include\curlpp\Types.hpp"
 				>
 			</File>
+			<File
+				RelativePath=".\include\curlpp\TypeTrait.hpp"
+				>
+			</File>
+			<Filter
+				Name="utilspp"
+				>
+				<File
+					RelativePath=".\include\utilspp\clone_ptr.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\EmptyType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\Functors.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\NonCopyable.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\NullType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\Singleton.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\SmartPtr.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingFactoryMutex.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingSingle.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\TypeList.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\TypeTrait.hpp"
+					>
+				</File>
+				<Filter
+					Name="singleton"
+					>
+					<File
+						RelativePath=".\include\utilspp\singleton\CreationStatic.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\CreationUsingNew.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\LifetimeLibrary.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\LifetimeWithLongevity.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\PrivateMembers.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\singleton\SingletonHolder.hpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="functor"
+					>
+					<File
+						RelativePath=".\include\utilspp\functor\Binder.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\functor\Functor.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\functor\FunctorHandler.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\functor\FunctorImpl.hpp"
+						>
+					</File>
+					<File
+						RelativePath=".\include\utilspp\functor\MemFunHandler.hpp"
+						>
+					</File>
+				</Filter>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -744,6 +1270,10 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 		</Filter>
+		<File
+			RelativePath=".\README.win32"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

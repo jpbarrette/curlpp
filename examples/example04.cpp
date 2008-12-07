@@ -21,7 +21,7 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
@@ -29,50 +29,55 @@
 #include <curlpp/Exception.hpp>
 #include <curlpp/Infos.hpp>
  
+using namespace std;
+
+using namespace cURLpp;
+using namespace cURLpp::Infos;
+
 
 int main(int argc, char *argv[])
 {
   if(argc != 2) {
-    std::cerr << "Example 04: Wrong number of arguments" << std::endl 
+    cerr << "Example 04: Wrong number of arguments" << endl 
 	      << "Example 04: Usage: example04 url" 
-	      << std::endl;
+	      << endl;
     return EXIT_FAILURE;
   }
   char *url = argv[1];
   
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    Cleanup cleaner;
+    Easy request;
     
-    using namespace cURLpp::Options;
+    using namespace Options;
     request.setOpt(Verbose(true));
     request.setOpt(Url(url));
     
     request.perform();
     
-    std::string effURL;
-    cURLpp::Infos::EffectiveUrl::get(request, effURL);
-    std::cout << "Effective URL: " << effURL << std::endl;
+    string effURL;
+    EffectiveUrl::get(request, effURL);
+    cout << "Effective URL: " << effURL << endl;
 
     //other way to retreive URL
-    std::cout << std::endl 
+    cout << endl 
 	      << "Effective URL: " 
-	      << cURLpp::Infos::EffectiveUrl::get(request)
-	      << std::endl;
+	      << EffectiveUrl::get(request)
+	      << endl;
 
-    std::cout << "Response code: " 
-	      << cURLpp::Infos::ResponseCode::get(request) 
-	      << std::endl;
+    cout << "Response code: " 
+	      << ResponseCode::get(request) 
+	      << endl;
 
-    std::cout << "SSL engines: " 
-	      << cURLpp::Infos::SslEngines::get(request)
-	      << std::endl;
+    cout << "SSL engines: " 
+	      << SslEngines::get(request)
+	      << endl;
   }
-  catch ( cURLpp::LogicError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( LogicError & e ) {
+    cout << e.what() << endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( RuntimeError & e ) {
+    cout << e.what() << endl;
   }
   
   return 0;

@@ -6,7 +6,7 @@
 #
 # Usage: nmake -f Makefile.msvc all
 #        Should be invoked from examples/ directory
-#        Edit the LIBCURL_PATH or set LIBCURL_PATH envvar
+#        Edit the LIBCURL_PATH/BOOST_PATH or set LIBCURL_PATH/BOOST_PATH env vars
 #
 ##############################################################
 
@@ -19,62 +19,88 @@ CURL_LIB_NAME          = libcurl.lib
 LIBCURL_PATH   = ../../curl/include
 !ENDIF
 
-CCNODBG    = cl.exe /MD /O2 /DNDEBUG /GR /Y- /EHsc
-CCDEBUG    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GZ /GR /EHsc
-CFLAGS     = /I ../ /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /D_CRT_SECURE_NO_DEPRECATE /nologo /W3 /DWIN32 /FD /c
-LNKLIB     = link.exe /INCREMENTAL:NO /OPT:NOREF
-LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)\lib" $(CURLPP_LIB_NAME) $(CURL_LIB_NAME)
+!IF "$(cfg)"=="DebugStatic" || "$(cfg)"=="DebugDynamic"
+CC    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GR /EHsc
+!ELSE
+CC    = cl.exe /MD /O2 /DNDEBUG /GR /Y- /EHsc
+!ENDIF
 
-CC = $(CCNODBG) $(CFLAGSLIB)
+CFLAGS     = /I ../include /I ../include/curlpp /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /D_CRT_SECURE_NO_DEPRECATE /nologo /W3 /DWIN32 /FD /c
+!IFDEF BOOST_PATH
+CFLAGS = /I $(BOOST_PATH) $(CFLAGS) 
+!ENDIF
+
+LNKLIB     = link.exe /INCREMENTAL:NO /OPT:NOREF
+LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)\lib" /LIBPATH:"..\$(cfg)" $(CURLPP_LIB_NAME) $(CURL_LIB_NAME)
+
 LNK = $(LNKLIB)  $(LFLAGS)
 
-example01 : example01.o
-	$(LNK) /out:example01.exe example01.o
+example01 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example02 : example02.o
-	$(LNK) /out:example02.exe example02.o
+example02 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example03 : example03.o
-	$(LNK) /out:example03.exe example03.o
+example03 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example04 : example04.o
-	$(LNK) /out:example04.exe example04.o
+example04 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example05 : example05.o
-	$(LNK) /out:example05.exe example05.o
+example05 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example06 : example06.o
-	$(LNK) /out:example06.exe example06.o
+example06 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example07 : example07.o
-	$(LNK) /out:example07.exe example07.o
+example07 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example08 : example08.o
-	$(LNK) /out:example08.exe example08.o
+example08 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example09 : example09.o
-	$(LNK) /out:example09.exe example09.o
+example09 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example10 : example10.o
-	$(LNK) /out:example10.exe example10.o
+example10 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example11 : example11.o
-	$(LNK) /out:example11.exe example11.o
+example11 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example12 : example12.o
-	$(LNK) /out:example11.exe example11.o
+example12 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example13 : example13.o
-	$(LNK) /out:example11.exe example11.o
+example13 : $$(@B).o
+	$(LNK) Ws2_32.lib /out:$@.exe $**
 
-example14 : example14.o
-	$(LNK) /out:example11.exe example11.o
+example14 : $$(@B).o
+	$(LNK) Ws2_32.lib /out:$@.exe $**
 
-example15 : example15.o
-	$(LNK) /out:example11.exe example11.o
+example15 : $$(@B).o
+	$(LNK) /out:$@.exe $**
 
-example16 : example16.o
-	$(LNK) /out:example11.exe example11.o
+example16 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example17 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example18 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example19 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example20 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example21 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example22 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
 
 TARGET = \
 	example01 \
@@ -92,11 +118,30 @@ TARGET = \
 	example13 \
 	example14 \
 	example15 \
-	example16
+	example16 \
+	example17 \
+	example18 \
+	example19 \
+	example20 \
+	example21 \
+	example22
 
-all : $(TARGET)
+all : $(TARGET) copy_curlpp
+
+rebuild: clean all
+  
+clean:
+  @echo Cleaning...
+  del *.o *.exe  >NUL 2>&1
+
+copy_curlpp:
+!IF "$(cfg)"=="DebugDynamic" || "$(cfg)"=="ReleaseDynamic"
+  copy ..\$(cfg)\curlpp.dll .\
+!ENDIF
 
 .SUFFIXES: .cpp .o
 
 .cpp.o:
 	$(CC) $(CFLAGS) /Fo"$@"  $<
+
+

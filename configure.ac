@@ -1,11 +1,11 @@
-AC_INIT(curlpp/cURLpp.cpp)
+AC_INIT(src/curlpp/cURLpp.cpp)
 dnl AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(curlpp/config.h)
+AM_CONFIG_HEADER(include/curlpp/config.h)
 AC_PREREQ(2.59)
 
 dnl
 dnl figure out the libcurl version
-VERSION=`sed -ne 's/^#define LIBCURLPP_VERSION "\(.*\)"/\1/p' ${srcdir}/curlpp/cURLpp.hpp`
+VERSION=`sed -ne 's/^#define LIBCURLPP_VERSION "\(.*\)"/\1/p' ${srcdir}/include/curlpp/cURLpp.hpp`
 AM_INIT_AUTOMAKE(curlpp,$VERSION)
 AC_SUBST(VERSION)
 
@@ -15,7 +15,7 @@ AC_SUBST(RPM_VERSION)
 LIBS="$LIBS -lstdc++"
 dnl
 dnl we extract the numerical version for curl-config only
-VERSIONNUM=`sed -ne 's/^#define LIBCURLPP_VERSION_NUM 0x\(\\d\)/\1/p' ${srcdir}/curlpp/cURLpp.hpp`
+VERSIONNUM=`sed -ne 's/^#define LIBCURLPP_VERSION_NUM 0x\(\\d\)/\1/p' ${srcdir}/include/curlpp/cURLpp.hpp`
 AC_SUBST(VERSIONNUM)
 
 dnl
@@ -195,10 +195,15 @@ curlpp-config \
 curlpp.spec \
 curlpp.pc \
 Makefile \
-curlpp/Makefile \
 examples/Makefile \
-utilspp/Makefile \
-utilspp/functor/Makefile \
-utilspp/singleton/Makefile \
+src/Makefile \
+src/curlpp/Makefile \
+src/utilspp/Makefile \
+src/utilspp/singleton/Makefile \
+include/Makefile \
+include/curlpp/Makefile \
+include/utilspp/Makefile \
+include/utilspp/functor/Makefile \
+include/utilspp/singleton/Makefile \
 doc/Makefile 
 )

@@ -21,12 +21,17 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+
+using namespace std;
+
+using namespace cURLpp;
+using namespace cURLpp::Options;
  
 
 class MyWindow
@@ -43,31 +48,31 @@ public:
 int main(int argc, char *argv[])
 {
   if(argc != 2) {
-    std::cerr << "Example 3: Wrong number of arguments" << std::endl 
+    cerr << "Example 3: Wrong number of arguments" << endl 
 	      << "Example 3: Usage: example3 url" 
-	      << std::endl;
+	      << endl;
     return EXIT_FAILURE;
   }
   char *url = argv[1];
      
   MyWindow myWindow;
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    Cleanup cleaner;
+    Easy request;
     
-    using namespace cURLpp::Options;
+    using namespace Options;
     request.setOpt(Verbose(true));
-    request.setOpt(DebugFunction(cURLpp::Types::DebugFunctionFunctor(&myWindow, 
+    request.setOpt(DebugFunction(Types::DebugFunctionFunctor(&myWindow, 
 								     &MyWindow::writeDebug)));
     request.setOpt(Url(url));
     
     request.perform();
   }
-  catch ( cURLpp::LogicError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( LogicError & e ) {
+    cout << e.what() << endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( RuntimeError & e ) {
+    cout << e.what() << endl;
   }
   
   return 0;

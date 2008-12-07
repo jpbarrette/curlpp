@@ -28,8 +28,15 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
-#define MY_PORT 8080
+using namespace std;
 
+using namespace cURLpp;
+using namespace cURLpp::Options;
+
+namespace
+{
+	const long MyPort = 80;
+}
 
 /** 
  * This example is made to show you how you can use the Options.
@@ -38,23 +45,22 @@ int main(int, char **)
 {
   try
     {
-      cURLpp::Cleanup myCleanup;
+      Cleanup myCleanup;
 
       // Creation of the URL option.
-      cURLpp::Options::Url myUrl(std::string("http://example.com"));
+      Url myUrl(string("http://example.com"));
       
       // Copy construct from the other URL.
-      cURLpp::Options::Url myUrl2(myUrl);
+      Url myUrl2(myUrl);
 
       // Creation of the port option.
-      cURLpp::Options::Port myPort(MY_PORT);
+      Port myPort(MyPort);
 
       // Creation of the request.
-      cURLpp::Easy myRequest;
-
+      Easy myRequest;
 
       // Creation of an option that contain a copy of the URL option.
-      cURLpp::OptionBase *mytest = myUrl.clone();
+      OptionBase *mytest = myUrl.clone();
       myRequest.setOpt(*mytest);
 
       // You can reuse the base option for other type of option
@@ -68,7 +74,7 @@ int main(int, char **)
 
       // You can clone an option directly to the same type of 
       // option.
-      cURLpp::Options::Url *myUrl3 = myUrl.clone();
+      Url *myUrl3 = myUrl.clone();
       myRequest.setOpt(myUrl3);
       // Now myUrl3 is owned by the request we will NOT use 
       // it anymore.
@@ -76,14 +82,14 @@ int main(int, char **)
 
       // You don't need to declare an option if you just want 
       // to use it once.
-      myRequest.setOpt(cURLpp::Options::Url("example.com"));
+      myRequest.setOpt(Url("example.com"));
       
 
       // Note that the previous line wasn't really efficient
       // because we create the option, this option is duplicated
       // for the request and then the option destructor is called.
       // You can use this instead:
-      myRequest.setOpt(new cURLpp::Options::Url("example.com"));
+      myRequest.setOpt(new Url("example.com"));
       // Note that with this the request will use directly this
       // instance we just created. Be aware that if you pass an
       // Option pointer to the setOpt function, it will consider
@@ -97,18 +103,18 @@ int main(int, char **)
 
       
       // You can retreive the value of a specific option.
-      std::cout << myUrl2.getValue() << std::endl;
+      cout << myUrl2.getValue() << endl;
 
       // Perform the transaction with the options set.
       myRequest.perform();
     }
-  catch( cURLpp::RuntimeError &e )
+  catch( RuntimeError &e )
     {
-      std::cout << e.what() << std::endl;
+      cout << e.what() << endl;
     }
   catch( cURLpp::LogicError &e )
     {
-      std::cout << e.what() << std::endl;
+      cout << e.what() << endl;
     }
     
   return 0;

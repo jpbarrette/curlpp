@@ -21,8 +21,9 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>

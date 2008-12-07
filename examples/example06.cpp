@@ -21,13 +21,18 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <string.h>
+#include <cstdlib>
+#include <cstring>
 
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+
+using namespace std;
+
+using namespace cURLpp;
+using namespace cURLpp::Options;
 
 #define MAX_FILE_LENGTH 20000
 
@@ -81,8 +86,8 @@ public:
 
   void print() 
   {
-    std::cout << "Size: " << m_Size << std::endl;
-    std::cout << "Content: " << std::endl << m_pBuffer << std::endl;
+    cout << "Size: " << m_Size << endl;
+    cout << "Content: " << endl << m_pBuffer << endl;
   }
 
   // Public member vars
@@ -94,37 +99,37 @@ public:
 int main(int argc, char *argv[])
 {
   if(argc != 2) {
-    std::cerr << "Example 06: Wrong number of arguments" << std::endl 
+    cerr << "Example 06: Wrong number of arguments" << endl 
 	      << "Example 06: Usage: example06 url" 
-	      << std::endl;
+	      << endl;
     return EXIT_FAILURE;
   }
   char *url = argv[1];
   
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    Cleanup cleaner;
+    Easy request;
     
     WriterMemoryClass mWriterChunk;
     
     // Set the writer callback to enable cURL 
     // to write result in a memory area
-    cURLpp::Types::WriteFunctionFunctor functor(&mWriterChunk, 
+    Types::WriteFunctionFunctor functor(&mWriterChunk, 
 						&WriterMemoryClass::WriteMemoryCallback);
-    cURLpp::Options::WriteFunction *test = new cURLpp::Options::WriteFunction(functor);
+    WriteFunction *test = new WriteFunction(functor);
     request.setOpt(test);
     
     // Setting the URL to retrive.
-    request.setOpt(new cURLpp::Options::Url(url));
-    request.setOpt(new cURLpp::Options::Verbose(true));
+    request.setOpt(new Url(url));
+    request.setOpt(new Verbose(true));
     request.perform();
 
     mWriterChunk.print();
   }
-  catch ( cURLpp::LogicError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( LogicError & e ) {
+    cout << e.what() << endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
-    std::cout << e.what() << std::endl;
+  catch ( RuntimeError & e ) {
+    cout << e.what() << endl;
   }
 }
