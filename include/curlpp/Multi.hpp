@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -29,7 +29,7 @@
 
 #include <curl/multi.h>
 
-namespace cURLpp
+namespace curlpp
 {
 
   class Easy;
@@ -47,8 +47,8 @@ namespace cURLpp
     Multi();
     ~Multi();
 
-    void add(const cURLpp::Easy *handle);
-    void remove(const cURLpp::Easy *handle);
+    void add(const curlpp::Easy *handle);
+    void remove(const curlpp::Easy *handle);
 
     bool perform(int *nbHandles);
     void fdset(fd_set *read_fd_set,
@@ -56,14 +56,16 @@ namespace cURLpp
 	       fd_set *exc_fd_set,
 	       int *max_fd);
 
-    typedef std::list< std::pair< const cURLpp::Easy *, Multi::Info > > Msgs;
+    typedef std::list< std::pair< const curlpp::Easy *, Multi::Info > > Msgs;
     Msgs info();
 
   private:
     CURLM *mMultiHandle;
-    std::map< CURL *, const cURLpp::Easy *> mHandles;
+    std::map< CURL *, const curlpp::Easy *> mHandles;
   };
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_MULTI_HPP

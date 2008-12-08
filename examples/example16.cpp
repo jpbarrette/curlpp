@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -24,7 +24,7 @@
 #include <cstdlib>
 #include <cerrno>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
@@ -41,28 +41,28 @@ int main(int argc, char *argv[])
   char *url = argv[1];
   
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    curlpp::Cleanup cleaner;
+    curlpp::Easy request;
     
-    request.setOpt(new cURLpp::Options::Url(url)); 
-    request.setOpt(new cURLpp::Options::Verbose(true)); 
+    request.setOpt(new curlpp::options::Url(url)); 
+    request.setOpt(new curlpp::options::Verbose(true)); 
     
     std::list<std::string> header; 
     header.push_back("Content-Type: application/octet-stream"); 
     
-    request.setOpt(new cURLpp::Options::HttpHeader(header)); 
+    request.setOpt(new curlpp::options::HttpHeader(header)); 
     
-    request.setOpt(new cURLpp::Options::PostFields("abcd"));
-    request.setOpt(new cURLpp::Options::PostFieldSize(5));
+    request.setOpt(new curlpp::options::PostFields("abcd"));
+    request.setOpt(new curlpp::options::PostFieldSize(5));
 
-    request.setOpt(new cURLpp::Options::UserPwd("user:password"));
+    request.setOpt(new curlpp::options::UserPwd("user:password"));
     
     request.perform(); 
   }
-  catch ( cURLpp::LogicError & e ) {
+  catch ( curlpp::LogicError & e ) {
     std::cout << e.what() << std::endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
+  catch ( curlpp::RuntimeError & e ) {
     std::cout << e.what() << std::endl;
   }
 

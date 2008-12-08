@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -29,13 +29,13 @@
 #include "buildconfig.h"
 
 
-namespace cURLpp
+namespace curlpp
 {
 
   class CurlHandle;
 
   /**
-   * This is the parent of the cURLpp::option class. This is only used to be
+   * This is the parent of the curlpp::option class. This is only used to be
    * able to stock a list of options.
    */
   class CURLPPAPI OptionBase
@@ -49,7 +49,7 @@ namespace cURLpp
     virtual ~OptionBase();
          
     /**
-     * See cURLpp::option::operator< for documentation.
+     * See curlpp::option::operator< for documentation.
      */
     virtual bool operator<( const OptionBase &rhs ) const;
 
@@ -73,7 +73,7 @@ namespace cURLpp
      * will call the actual libcurl option function with the value we got 
      * on the handle.
      */
-    virtual void updateHandleToMe(cURLpp::CurlHandle *handle) const = 0;
+    virtual void updateHandleToMe(curlpp::CurlHandle *handle) const = 0;
 
     /**
      * this function will reset the option value.
@@ -84,6 +84,8 @@ namespace cURLpp
     CURLoption mOption;
   };
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
    
 #endif // #ifndef CURLPP_OPTION_BASE_HPP

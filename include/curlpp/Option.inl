@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -30,7 +30,7 @@
 
 
 template< typename OptionType >
-cURLpp::Option< OptionType >::Option(CURLoption option, typename cURLpp::Option< OptionType >::ParamType value)
+curlpp::Option< OptionType >::Option(CURLoption option, typename curlpp::Option< OptionType >::ParamType value)
 : OptionBase(option),
 mContainer(NULL)
 {
@@ -39,13 +39,13 @@ mContainer(NULL)
 
 
 template< typename OptionType >
-cURLpp::Option< OptionType >::Option(CURLoption option)
+curlpp::Option< OptionType >::Option(CURLoption option)
 : OptionBase(option),
 mContainer(NULL)
 {}
 
 template< typename OptionType >
-cURLpp::Option< OptionType >::Option(const cURLpp::Option< OptionType > &other)
+curlpp::Option< OptionType >::Option(const curlpp::Option< OptionType > &other)
   : OptionBase(other)
   , mContainer(NULL)
 {
@@ -57,7 +57,7 @@ cURLpp::Option< OptionType >::Option(const cURLpp::Option< OptionType > &other)
 
 
 template< typename OptionType >
-cURLpp::Option< OptionType >::~Option()
+curlpp::Option< OptionType >::~Option()
 {
 	delete mContainer;
 	mContainer = NULL;
@@ -68,7 +68,7 @@ cURLpp::Option< OptionType >::~Option()
 
 template< typename OptionType >
 void
-cURLpp::Option< OptionType >::setValue(typename cURLpp::Option< OptionType >::ParamType value)
+curlpp::Option< OptionType >::setValue(typename curlpp::Option< OptionType >::ParamType value)
 {
 	if(mContainer == NULL)
 	{	
@@ -83,9 +83,9 @@ cURLpp::Option< OptionType >::setValue(typename cURLpp::Option< OptionType >::Pa
 
 template< typename OptionType >
 void
-cURLpp::Option< OptionType >::updateMeToOption(const cURLpp::OptionBase &other)
+curlpp::Option< OptionType >::updateMeToOption(const curlpp::OptionBase &other)
 {
-	const cURLpp::Option< OptionType > *option = dynamic_cast< const cURLpp::Option< OptionType > * >(&other);
+	const curlpp::Option< OptionType > *option = dynamic_cast< const curlpp::Option< OptionType > * >(&other);
 	if(option == NULL)
 	{
 		throw UnsetOption("You are trying to update an option to an incompatible option");
@@ -95,36 +95,36 @@ cURLpp::Option< OptionType >::updateMeToOption(const cURLpp::OptionBase &other)
 
 template< typename OptionType >
 void
-cURLpp::Option< OptionType >::clear()
+curlpp::Option< OptionType >::clear()
 {
   delete mContainer;
   mContainer = NULL;
 }
 
 template< typename OptionType >
-typename cURLpp::Option< OptionType >::ReturnType
-cURLpp::Option< OptionType >::getValue() const
+typename curlpp::Option< OptionType >::ReturnType
+curlpp::Option< OptionType >::getValue() const
 {
   if(mContainer == NULL)
-    throw cURLpp::UnsetOption(std::string("You are trying to retreive the value of an unset option"));
+    throw curlpp::UnsetOption(std::string("You are trying to retreive the value of an unset option"));
 
   return mContainer->getValue();
 }
 
 template< typename OptionType, CURLoption option >
-cURLpp::OptionTrait< OptionType, option >::OptionTrait(typename cURLpp::Option< OptionType >::ParamType value)
+curlpp::OptionTrait< OptionType, option >::OptionTrait(typename curlpp::Option< OptionType >::ParamType value)
 : Option< OptionType >(option, value)
 {}
 
 template< typename OptionType, CURLoption option >
-cURLpp::OptionTrait< OptionType, option >::OptionTrait()
+curlpp::OptionTrait< OptionType, option >::OptionTrait()
 : Option< OptionType >(option)
 {}
 
 
 template< typename OptionType, CURLoption option >
-cURLpp::OptionTrait< OptionType, option > *
-cURLpp::OptionTrait< OptionType, option >::clone() const
+curlpp::OptionTrait< OptionType, option > *
+curlpp::OptionTrait< OptionType, option >::clone() const
 {
   return new OptionTrait< OptionType, option >(this->getValue());
 }
@@ -132,7 +132,7 @@ cURLpp::OptionTrait< OptionType, option >::clone() const
 
 template< typename OptionType, CURLoption option >
 void
-cURLpp::OptionTrait< OptionType, option >::updateHandleToMe(cURLpp::CurlHandle *handle) const
+curlpp::OptionTrait< OptionType, option >::updateHandleToMe(curlpp::CurlHandle *handle) const
 {
 	if(this->mContainer == NULL)
 	{
@@ -144,45 +144,45 @@ cURLpp::OptionTrait< OptionType, option >::updateHandleToMe(cURLpp::CurlHandle *
 
 
 template< CURLoption option >
-cURLpp::NoValueOptionTrait< option >::NoValueOptionTrait() 
+curlpp::NoValueOptionTrait< option >::NoValueOptionTrait() 
   : OptionTrait< bool, option >(true)
 {}
 
 template< CURLoption option >
-cURLpp::NoValueOptionTrait< option > *
-cURLpp::NoValueOptionTrait< option >::clone() const
+curlpp::NoValueOptionTrait< option > *
+curlpp::NoValueOptionTrait< option >::clone() const
 {
   return new NoValueOptionTrait< option >();
 }
 
 template< typename OptionType >
-cURLpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait(typename cURLpp::Option< OptionType >::ParamType )
+curlpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait(typename curlpp::Option< OptionType >::ParamType )
   : Option< OptionType >(CURLOPT_URL)
 {
-  throw cURLpp::NotAvailable();
+  throw curlpp::NotAvailable();
 }
 
 template< typename OptionType >
-cURLpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait()
+curlpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait()
   : Option< OptionType >(CURLOPT_URL)
 {
-  throw cURLpp::NotAvailable();
+  throw curlpp::NotAvailable();
 }
 
 
 template< typename OptionType >
-cURLpp::NotAvailableOptionTrait< OptionType > *
-cURLpp::NotAvailableOptionTrait< OptionType >::clone() const
+curlpp::NotAvailableOptionTrait< OptionType > *
+curlpp::NotAvailableOptionTrait< OptionType >::clone() const
 {
-  throw cURLpp::NotAvailable();
+  throw curlpp::NotAvailable();
 }
 
 
 template< typename OptionType >
 void
-cURLpp::NotAvailableOptionTrait< OptionType >::updateHandleToMe(cURLpp::CurlHandle *) const
+curlpp::NotAvailableOptionTrait< OptionType >::updateHandleToMe(curlpp::CurlHandle *) const
 {
-  throw cURLpp::NotAvailable();
+  throw curlpp::NotAvailable();
 }
 
 

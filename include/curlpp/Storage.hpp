@@ -27,7 +27,7 @@
 
 #include "curlpp/buildconfig.h"
 
-namespace cURLpp
+namespace curlpp
 {
   /**
    * This is the base class used to manage the writing of the ouput, headers, 
@@ -50,12 +50,12 @@ namespace cURLpp
     * By default this class is using the "stdoutTrait" trait.
     */
   template< typename TraitType >
-  CURLPPAPI class WriteStorage : public StorageBase< cURLpp::curl_write_callback, TraitType >
+  CURLPPAPI class WriteStorage : public StorageBase< curlpp::curl_write_callback, TraitType >
   {
   public:
-    WriteStorage(TraitType *trait, cURLpp::curl_write_callback func);
+    WriteStorage(TraitType *trait, curlpp::curl_write_callback func);
     virtual void stream(TraitType *trait);
-    virtual void func(cURLpp::curl_write_callback func);
+    virtual void func(curlpp::curl_write_callback func);
 
   private:
     static size_t writeCallback(void *buffer,
@@ -190,7 +190,7 @@ namespace cURLpp
       private:
          static int debug_callback(
                CURL *handle,
-               cURLpp::debug::Type info,
+               curlpp::debug::Type info,
                char *buffer,
                size_t len,
                void *ptr
@@ -236,5 +236,8 @@ namespace cURLpp
       };
 #endif
 
-};
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 #endif

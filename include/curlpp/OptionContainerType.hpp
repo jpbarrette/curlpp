@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -31,7 +31,7 @@
 #include "Form.hpp"
 #include "Types.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
 
   template< typename OptionType >
@@ -87,29 +87,31 @@ namespace cURLpp
   {
   public:
     typedef const std::list< std::string > &ParamType;
-    typedef cURLpp::SList ValueType;
+    typedef curlpp::SList ValueType;
     typedef std::list< std::string > ReturnType;
-    typedef const cURLpp::SList &HandleOptionType;
+    typedef const curlpp::SList &HandleOptionType;
   };
 
   template< >
-  struct OptionContainerType< cURLpp::Forms >
+  struct OptionContainerType< curlpp::Forms >
   {
     typedef const Forms &ParamType;
-    typedef cURLpp::HttpPost ValueType;
+    typedef curlpp::HttpPost ValueType;
     typedef Forms ReturnType;
-    typedef const cURLpp::HttpPost &HandleOptionType;
+    typedef const curlpp::HttpPost &HandleOptionType;
   };
 
 //   template< >
 //   struct OptionContainerType< std::ostream * >
 //   {
-//     typedef const std::list< cURLpp::FormPart * > &ParamType;
-//     typedef cURLpp::HttpPost ValueType;
-//     typedef std::list< cURLpp::FormPart * > ReturnType;
-//     typedef const cURLpp::HttpPost &HandleOptionType;
+//     typedef const std::list< curlpp::FormPart * > &ParamType;
+//     typedef curlpp::HttpPost ValueType;
+//     typedef std::list< curlpp::FormPart * > ReturnType;
+//     typedef const curlpp::HttpPost &HandleOptionType;
 //   };
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_OPTION_CONTAINER_TYPE_HPP

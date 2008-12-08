@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -28,61 +28,61 @@
 
 #include "curlpp/Options.hpp"
 
-cURLpp::Easy::Easy()
+curlpp::Easy::Easy()
   : myCurl(new CurlHandle())
 {}
 
-cURLpp::Easy::Easy(std::auto_ptr< CurlHandle > handle)
+curlpp::Easy::Easy(std::auto_ptr< CurlHandle > handle)
   : myCurl(handle)
 {}
 
-cURLpp::Easy::~Easy()
+curlpp::Easy::~Easy()
 {}
 
 void 
-cURLpp::Easy::perform()
+curlpp::Easy::perform()
 {
     myCurl->perform();
 }
 
 CURL *
-cURLpp::Easy::getHandle() const
+curlpp::Easy::getHandle() const
 {
   return myCurl->getHandle();
 }
 
 void
-cURLpp::Easy::setOpt(const cURLpp::OptionBase &option)
+curlpp::Easy::setOpt(const curlpp::OptionBase &option)
 {
     setOpt(option.clone());    
 }
 
 void
-cURLpp::Easy::setOpt(cURLpp::OptionBase *option)
+curlpp::Easy::setOpt(curlpp::OptionBase *option)
 {
   option->updateHandleToMe(myCurl.get());
   OptionList::setOpt(option);    
 }
 
 void
-cURLpp::Easy::setOpt(const cURLpp::OptionList &options)
+curlpp::Easy::setOpt(const curlpp::OptionList &options)
 {
     OptionList::setOpt(options);    
 }
 
 void
-cURLpp::Easy::reset ()
+curlpp::Easy::reset ()
 {
   myCurl->reset();
   OptionList::setOpt(OptionList());
 }
 
 
-std::ostream & operator<<(std::ostream & stream, const cURLpp::Easy & request)
+std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & request)
 {
   // Quick clone that doesn't copy options, only the curl handle.
-  cURLpp::Easy r(request.getCurlHandle().clone());
-  r.setOpt(new cURLpp::Options::WriteStream(&stream));
+  curlpp::Easy r(request.getCurlHandle().clone());
+  r.setOpt(new curlpp::options::WriteStream(&stream));
   r.perform();
 
   return stream;

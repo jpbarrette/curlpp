@@ -26,7 +26,7 @@
 
 #include <iostream>
 
-cURLpp::HttpPost::HttpPost(const Forms &posts)
+curlpp::HttpPost::HttpPost(const Forms &posts)
   : mFirst(NULL)
   , mLast(NULL)
 {
@@ -38,19 +38,19 @@ cURLpp::HttpPost::HttpPost(const Forms &posts)
   } 
 }
 
-cURLpp::HttpPost::HttpPost()
+curlpp::HttpPost::HttpPost()
   : mFirst(NULL)
   , mLast(NULL)
 {}
 
-cURLpp::HttpPost::~HttpPost()
+curlpp::HttpPost::~HttpPost()
 {
   clear();
 }
 
 
-cURLpp::HttpPost &
-cURLpp::HttpPost::operator=(const Forms &posts)
+curlpp::HttpPost &
+curlpp::HttpPost::operator=(const Forms &posts)
 {
   clear();
 
@@ -65,13 +65,13 @@ cURLpp::HttpPost::operator=(const Forms &posts)
 }
 
 ::curl_httppost *
-cURLpp::HttpPost::cHttpPost() const
+curlpp::HttpPost::cHttpPost() const
 {
   return mFirst;
 }
 
 void
-cURLpp::HttpPost::clear()
+curlpp::HttpPost::clear()
 {
   if(mFirst != NULL) {
     ::curl_formfree(mFirst);
@@ -82,7 +82,7 @@ cURLpp::HttpPost::clear()
   mForms.clear();
 }
 
-cURLpp::Forms cURLpp::HttpPost::getList()
+curlpp::Forms curlpp::HttpPost::getList()
 {
   //I'm not sure cloning is absolutely necessary.
   Forms newForm;
@@ -94,38 +94,38 @@ cURLpp::Forms cURLpp::HttpPost::getList()
   return newForm;
 }
 
-cURLpp::FormPart::FormPart(const char *name)
+curlpp::FormPart::FormPart(const char *name)
   : mName(name)
 {}
 
-cURLpp::FormPart::~FormPart()
+curlpp::FormPart::~FormPart()
 {}
 
-cURLpp::FormPart::FormPart(const std::string &name)
+curlpp::FormPart::FormPart(const std::string &name)
   : mName(name)
 {}
 
-cURLpp::FormParts::File::File(const char *name, const char *filename)
+curlpp::FormParts::File::File(const char *name, const char *filename)
   : FormPart(name)
   , mFilename(filename)
 {}
 
-cURLpp::FormParts::File::~File()
+curlpp::FormParts::File::~File()
 {}
 
-cURLpp::FormParts::File::File(const char *name, const char *filename, const char *contentType)
+curlpp::FormParts::File::File(const char *name, const char *filename, const char *contentType)
   : FormPart(name)
   , mFilename(filename)
   , mContentType(contentType)
 {}
 
-cURLpp::FormParts::File::File(const std::string &name, 
+curlpp::FormParts::File::File(const std::string &name, 
 			      const std::string &filename)
   : FormPart(name)
   , mFilename(filename)
 {}
   
-cURLpp::FormParts::File::File(const std::string &name, 
+curlpp::FormParts::File::File(const std::string &name, 
 			      const std::string &filename,
 			      const std::string &contentType)
   : FormPart(name)
@@ -133,14 +133,14 @@ cURLpp::FormParts::File::File(const std::string &name,
   , mContentType(contentType)
 {}
 
-cURLpp::FormParts::File *
-cURLpp::FormParts::File::clone() const
+curlpp::FormParts::File *
+curlpp::FormParts::File::clone() const
 {
-   return new cURLpp::FormParts::File(*this);
+   return new curlpp::FormParts::File(*this);
 }
 
 void
-cURLpp::FormParts::File::add(::curl_httppost **first, 
+curlpp::FormParts::File::add(::curl_httppost **first, 
 			     ::curl_httppost **last)
 {
   // One instance = One curl_httppost, so we don't
@@ -168,29 +168,29 @@ cURLpp::FormParts::File::add(::curl_httppost **first,
 }
 
 
-cURLpp::FormParts::Content::Content(const char *name, 
+curlpp::FormParts::Content::Content(const char *name, 
 				    const char *content)
   : FormPart(name)
   , mContent(content)
 {}
 
-cURLpp::FormParts::Content::~Content()
+curlpp::FormParts::Content::~Content()
 {}
 
-cURLpp::FormParts::Content::Content(const char *name, 
+curlpp::FormParts::Content::Content(const char *name, 
 				    const char *content, const char *contentType)
   : FormPart(name)
   , mContent(content)
   , mContentType(contentType)
 {}
 
-cURLpp::FormParts::Content::Content(const std::string &name, 
+curlpp::FormParts::Content::Content(const std::string &name, 
 				    const std::string &content)
   : FormPart(name)
   , mContent(content)
 {}
 
-cURLpp::FormParts::Content::Content(const std::string &name, 
+curlpp::FormParts::Content::Content(const std::string &name, 
 				    const std::string &content,
 				    const std::string &contentType)
   : FormPart(name)
@@ -198,14 +198,14 @@ cURLpp::FormParts::Content::Content(const std::string &name,
   , mContentType(contentType)
 {}
 
-cURLpp::FormParts::Content *
-cURLpp::FormParts::Content::clone() const
+curlpp::FormParts::Content *
+curlpp::FormParts::Content::clone() const
 {
-   return new cURLpp::FormParts::Content(*this);
+   return new curlpp::FormParts::Content(*this);
 }
 
 void
-cURLpp::FormParts::Content::add(::curl_httppost **first, 
+curlpp::FormParts::Content::add(::curl_httppost **first, 
 				::curl_httppost **last)
 {
   // We uses options that will copy internally the string (c_str),

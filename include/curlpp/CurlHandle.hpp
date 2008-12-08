@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -31,7 +31,7 @@
 #include "Exception.hpp"
 #include "Types.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
 
   class CURLPPAPI CurlHandle
@@ -84,33 +84,33 @@ namespace cURLpp
     void getInfo(CURLINFO info, T &value);
 
     size_t executeWriteFunctor(char *buffer, size_t size, size_t nitems);
-    void setWriteFunctor(cURLpp::Types::WriteFunctionFunctor functor)
+    void setWriteFunctor(curlpp::types::WriteFunctionFunctor functor)
     {mWriteFunctor = functor;}
 
     size_t executeHeaderFunctor(char *buffer, size_t size, size_t nitems);
-    void setHeaderFunctor(cURLpp::Types::WriteFunctionFunctor functor)
+    void setHeaderFunctor(curlpp::types::WriteFunctionFunctor functor)
     {mHeaderFunctor = functor;}
 
     size_t executeReadFunctor(char *buffer, size_t size, size_t nitems);
-    void setReadFunctor(cURLpp::Types::ReadFunctionFunctor functor)
+    void setReadFunctor(curlpp::types::ReadFunctionFunctor functor)
     {mReadFunctor = functor;}
 
     int executeProgressFunctor(double dltotal, 
 			       double dlnow, 
 			       double ultotal, 
 			       double ulnow);
-    void setProgressFunctor(cURLpp::Types::ProgressFunctionFunctor functor)
+    void setProgressFunctor(curlpp::types::ProgressFunctionFunctor functor)
     {mProgressFunctor = functor;}
 
     int executeDebugFunctor(curl_infotype, char *, size_t);
-    void setDebugFunctor(cURLpp::Types::DebugFunctionFunctor functor)
+    void setDebugFunctor(curlpp::types::DebugFunctionFunctor functor)
     {mDebugFunctor = functor;}
 
     CURLcode executeSslCtxFunctor(void *ssl_ctx);
-    void setSslCtxFunctor(cURLpp::Types::SslCtxFunctionFunctor functor)
+    void setSslCtxFunctor(curlpp::types::SslCtxFunctionFunctor functor)
     {mSslFunctor = functor;}
     
-    void setException(cURLpp::CallbackExceptionBase *e);
+    void setException(curlpp::CallbackExceptionBase *e);
     void throwException();
 
   private:
@@ -135,18 +135,20 @@ namespace cURLpp
     char mErrorBuffer[CURL_ERROR_SIZE + 1];
 
     
-    cURLpp::Types::WriteFunctionFunctor mWriteFunctor;
-    cURLpp::Types::WriteFunctionFunctor mHeaderFunctor;
-    cURLpp::Types::ReadFunctionFunctor mReadFunctor;
-    cURLpp::Types::ProgressFunctionFunctor mProgressFunctor;
-    cURLpp::Types::DebugFunctionFunctor mDebugFunctor;
-    cURLpp::Types::SslCtxFunctionFunctor mSslFunctor;
-    cURLpp::CallbackExceptionBase * mException;
+    curlpp::types::WriteFunctionFunctor mWriteFunctor;
+    curlpp::types::WriteFunctionFunctor mHeaderFunctor;
+    curlpp::types::ReadFunctionFunctor mReadFunctor;
+    curlpp::types::ProgressFunctionFunctor mProgressFunctor;
+    curlpp::types::DebugFunctionFunctor mDebugFunctor;
+    curlpp::types::SslCtxFunctionFunctor mSslFunctor;
+    curlpp::CallbackExceptionBase * mException;
   };
-}
+} // namespace curlpp
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "CurlHandle.inl"
 #endif
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_CURL_HANDLE_HPP

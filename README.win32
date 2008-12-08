@@ -30,7 +30,7 @@ Building from IDE
            Choose configuration with DynamicLib or StaticLib prefix.
         2. Weather you want to build debug or release version of the library.
            Choose configuration with Debug or Release infix.
-        3. Weather you want static runtime library (RTL) to be used by cURLpp or dynamic one.
+        3. Weather you want static runtime library (RTL) to be used by curlpp or dynamic one.
            Choose configuration with StaticRTL or DynamicRTL suffix.
        
         Names' suffixes of output .lib and .dll files depend on the all three choices.
@@ -49,9 +49,9 @@ Building from IDE
 
     Setting include directory
     
-        If you are building cURLpp using the original directory structure then you don't need to set value of user macro 
+        If you are building curlpp using the original directory structure then you don't need to set value of user macro 
         CURLPP_INCLUDE_PATH (by default ".\include"). If however you modified the original directory structure you have
-        to set value of this macro to the path, where you have cURLpp source files.
+        to set value of this macro to the path, where you have curlpp source files.
 		
 	Setting output directory
 	
@@ -93,11 +93,11 @@ Building from command line
     
     All versions of this library need libcurl (c library) include files to compile and lib file to link successfully.
     To compile libcurl in VC9 (2008) you can use solution file libcurl.VC9.sln which you can find in this distribution.
-    To build cURLpp you first have to set value of LIBCURL_PATH user macro to your installation of libcurl.
+    To build curlpp you first have to set value of LIBCURL_PATH user macro to your installation of libcurl.
     This macro is used in the project file for VC9 to find include and lib files of libcurl.
     Steps to set user macro. Select View/Property Manager, double-click curlpp property sheet, go to
     Common Properties/User Macros/, double-click name of macro you want to modify, modify it and click OK.
-    Filename of libcurl's lib file should be in the form libcurlX.lib where X denotes build category chosen for cURLpp.
+    Filename of libcurl's lib file should be in the form libcurlX.lib where X denotes build category chosen for curlpp.
     (see Linking with RTL)
     If it has different name you have to change .lib filename in
     Project properties\Librarian\Additional Dependencies (when building static library)
@@ -111,37 +111,37 @@ Building from command line
     linking to static version of libcurl you have to define preprocessor symbol CURL_STATICLIB. You can do it in
     Project/Properties/C/C++/Preprocessor/Preprocessor Definitions.
     By default all StaticLib* configurations define this symbol. If for some reason you would like to build static
-    cURLpp library which links do dynamic libcurl library you have to remove CURL_STATICLIB define.
+    curlpp library which links do dynamic libcurl library you have to remove CURL_STATICLIB define.
 
     
     Linking with RTL
     
-    You have to link with libcurl which uses RTL in the same way as you are going to use RTL in cURLpp lib.
-    Refering to build categories defined earlier in section "Choosing configuration" both libcurl and cURLpp
+    You have to link with libcurl which uses RTL in the same way as you are going to use RTL in curlpp lib.
+    Refering to build categories defined earlier in section "Choosing configuration" both libcurl and curlpp
     must have the same build category.
     If you are going to use dynamic RTL in curlpp (MD[x]), use libcurl which also uses dynamic RTL (MD[x]).
     If you are going to use static RTL in curlpp (MT[x]), use libcurl which also uses static RTL (MT[x]).
-    You can use debug build of libcurl (MDd or MTd) in the release build of cURLpp (MD or MT) and
-    you can use release build of libcurl (MD or MT) in the debug build of cURLpp (MDd or MTd).
+    You can use debug build of libcurl (MDd or MTd) in the release build of curlpp (MD or MT) and
+    you can use release build of libcurl (MD or MT) in the debug build of curlpp (MDd or MTd).
     However you shouldn't do this.
 
 	Building self-contained version of the library
 	
-	cURLpp is mostly a template library. For this reason during build of it, only non template entities are placed in the
+	curlpp is mostly a template library. For this reason during build of it, only non template entities are placed in the
 	.lib and .dll files. Most of the library's features used in your application causes code generation during compilation
 	of _your project_ and the code is placed in your executable. This is often not desirable. If you want to build 
-	the cURLpp as self-contained library (one which has all code called by clients in its .lib and .dll files) you can
-	define preprocesor symbol CURL_SELF_CONTAINED. In this case cURLpp uses explicit template instantiation (all such
+	the curlpp as self-contained library (one which has all code called by clients in its .lib and .dll files) you can
+	define preprocesor symbol CURL_SELF_CONTAINED. In this case curlpp uses explicit template instantiation (all such
 	instantiantions are placed in separte .ins files) to force generating code into .lib and .dll files. You have to
 	define this preprocesor symbol during build of your application to avoid including templates' definitions as they
-	are not needed in this phase. If you get linker errors connected with cURLpp features when using self-contained 
+	are not needed in this phase. If you get linker errors connected with curlpp features when using self-contained 
 	version of the library it's because there are some missing explicit instantiantions. Please let us know if it happens.
 
     
-    Using cURLpp in .NET applications 
+    Using curlpp in .NET applications 
     
-    If you are going to use cURLpp library in a .NET project you have to use dynamic RTL.
-    This is because all .NET applications must use dynamic RTL and if your application uses cURLpp,
+    If you are going to use curlpp library in a .NET project you have to use dynamic RTL.
+    This is because all .NET applications must use dynamic RTL and if your application uses curlpp,
     the library itself has to use dynamic RTL as well.
 
     
@@ -155,16 +155,16 @@ Building from command line
     
     Linking with OpenSSL
     
-    If you have libcurl compiled with OpenSSL support and want to have support for OpenSSL in cURLpp as well
-    you have to set value of OPENSSL_PATH user macro to your installation of OpenSSL before building cURLpp.
+    If you have libcurl compiled with OpenSSL support and want to have support for OpenSSL in curlpp as well
+    you have to set value of OPENSSL_PATH user macro to your installation of OpenSSL before building curlpp.
     This variable is used in the project file for VC9 to find include and lib files of OpenSSL.
     Steps to set user macro. Select View/Property Manager, double-click curlpp property sheet, go to
     Common Properties/User Macros/, double-click name of macro you want to modify, modify it and click OK.
-    You have to link with OpenSSL which uses RTL in the same way as you are going to use RTL in cURLpp lib.
-    Refering to build categories defined earlier in section "Choosing configuration" both OpenSSL and cURLpp
+    You have to link with OpenSSL which uses RTL in the same way as you are going to use RTL in curlpp lib.
+    Refering to build categories defined earlier in section "Choosing configuration" both OpenSSL and curlpp
     must have the same build category.
     Filenames of OpenSSL lib files should be in the form libeay32X.lib and ssleay32X.lib, where X denotes
-    build category chosen for cURLpp. You have to add both this filenames to
+    build category chosen for curlpp. You have to add both this filenames to
     Project properties\Librarian\Additional Dependencies (when building static library)
     or
     Project properties\Linker\Input\Additional Dependencies (when building dynamic library).
@@ -176,8 +176,8 @@ Building from command line
     
     Building with Boost
     
-    cURLpp has ability to use some features from the Boost library. If you want to build cURLpp with support for Boost
-    you have to set value of BOOST_PATH user macro to your installation of Boost before building cURLpp.
+    curlpp has ability to use some features from the Boost library. If you want to build curlpp with support for Boost
+    you have to set value of BOOST_PATH user macro to your installation of Boost before building curlpp.
     This variable is used in the project file for VC9 to find include files of Boost.
     You also have to define preprocessor symbol HAVE_BOOST. You can do it in
     Project/Properties/C/C++/Preprocessor/Preprocessor Definitions.

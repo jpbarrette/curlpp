@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -26,9 +26,9 @@
 
 #include "curlpp/buildconfig.h"
 #include "curlpp/OptionList.hpp"
-#include "curlpp/cURLpp.hpp"
+#include "curlpp/curlpp.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
 
 	CURLPPAPI class Handle : public OptionList
@@ -43,6 +43,8 @@ namespace cURLpp
 	Curl myCurl;
     };
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_HANDLE_HPP

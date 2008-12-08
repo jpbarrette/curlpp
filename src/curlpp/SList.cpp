@@ -10,36 +10,36 @@
 
 #include "curlpp/SList.hpp"
 
-cURLpp::SList::SList(const SList &rhs) 
+curlpp::SList::SList(const SList &rhs) 
   : mList( 0 )
   , mData(rhs.mData)
 {
   update();
 }
 
-cURLpp::SList::SList(curl_slist *list)
+curlpp::SList::SList(curl_slist *list)
   : mList(NULL)
 {
   constructFrom(list);
 }
 
-cURLpp::SList::SList(const std::list< std::string > &rhs)
+curlpp::SList::SList(const std::list< std::string > &rhs)
   : mList(0)
   , mData(rhs)
 {
   update();
 }
 
-cURLpp::SList::SList() : mList( 0 )
+curlpp::SList::SList() : mList( 0 )
 {}
 
-cURLpp::SList::~SList()
+curlpp::SList::~SList()
 {
    clear();
 }
 
 void
-cURLpp::SList::clear() {
+curlpp::SList::clear() {
    if( mList != 0 )
    {
       curl_slist_free_all( mList );
@@ -49,7 +49,7 @@ cURLpp::SList::clear() {
 
 
 void 
-cURLpp::SList::constructFrom(curl_slist *list)
+curlpp::SList::constructFrom(curl_slist *list)
 {
   mData.clear();
 
@@ -64,7 +64,7 @@ cURLpp::SList::constructFrom(curl_slist *list)
 }
 
 void 
-cURLpp::SList::set( const std::list< std::string > &list) 
+curlpp::SList::set( const std::list< std::string > &list) 
 {
   mData = list;
   update();
@@ -72,7 +72,7 @@ cURLpp::SList::set( const std::list< std::string > &list)
 
 
 void 
-cURLpp::SList::update() 
+curlpp::SList::update() 
 {
   clear();
 
@@ -84,27 +84,27 @@ cURLpp::SList::update()
 }
 
 
-cURLpp::SList::operator std::list< std::string > ()
+curlpp::SList::operator std::list< std::string > ()
 {
   return list();
 }
 
 
-cURLpp::SList &
-cURLpp::SList::operator=( const std::list< std::string > &list )
+curlpp::SList &
+curlpp::SList::operator=( const std::list< std::string > &list )
 {
   set(list);
   return (*this);
 }
 
 curl_slist *
-cURLpp::SList::cslist() const
+curlpp::SList::cslist() const
 {
   return mList;
 }
 
 std::list< std::string >
-cURLpp::SList::list() 
+curlpp::SList::list() 
 {
   return mData;
 }

@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -28,7 +28,7 @@
 #include "buildconfig.h"
 #include "Easy.hpp"
 
-namespace cURLpp 
+namespace curlpp 
 {
 
   /**
@@ -39,8 +39,8 @@ namespace cURLpp
   template< CURLINFO info, typename T >
   struct CURLPPAPI Info 
   {
-    static void get(cURLpp::Easy &handle, T &value);
-    static T get(cURLpp::Easy &handle);
+    static void get(curlpp::Easy &handle, T &value);
+    static T get(curlpp::Easy &handle);
   };
 
   /**
@@ -50,60 +50,62 @@ namespace cURLpp
   template< CURLINFO info, typename T >
   struct CURLPPAPI NotAvailableInfo : Info< info, T >
   {
-    static void get(cURLpp::Easy &handle, T &value);
-    static T get(cURLpp::Easy &handle);
+    static void get(curlpp::Easy &handle, T &value);
+    static T get(curlpp::Easy &handle);
   };
 
   /**
    * This is the class you need to specialize if you use
    * a special type that libcURL is not aware of. This class
-   * need to call cURLpp::InfoGetter::get function. See 
-   * cURLpp::InfoGetter for more information.
+   * need to call curlpp::InfoGetter::get function. See 
+   * curlpp::InfoGetter for more information.
    */
   template< typename T >
   struct CURLPPAPI InfoTypeConverter
   {
-    static void get(cURLpp::Easy &handle, CURLINFO info, T &value);
+    static void get(curlpp::Easy &handle, CURLINFO info, T &value);
   }; 
 
   template< >
-  void InfoTypeConverter< std::string >::get(cURLpp::Easy &handle, 
+  void InfoTypeConverter< std::string >::get(curlpp::Easy &handle, 
 					     CURLINFO info,
 					     std::string &value);
 
   template< >
-  void InfoTypeConverter< std::list< std::string > >::get(cURLpp::Easy & handle,
+  void InfoTypeConverter< std::list< std::string > >::get(curlpp::Easy & handle,
 							  CURLINFO info,
 							  std::list< std::string > &value);
 
   template< >
-  void InfoTypeConverter< long >::get(cURLpp::Easy &handle, 
+  void InfoTypeConverter< long >::get(curlpp::Easy &handle, 
 				      CURLINFO info,
 				      long &value);
 
   template< >
-  void InfoTypeConverter< double >::get(cURLpp::Easy &handle, 
+  void InfoTypeConverter< double >::get(curlpp::Easy &handle, 
 					CURLINFO info,
 					double &value);
 
     
   /**
    * This is the only class that is authorized to retreive 
-   * info from a cURLpp::Easy class. So, this is the class
+   * info from a curlpp::Easy class. So, this is the class
    * you need to use when you specialize the class
-   * cURLpp::InfoTypeConverter. This class is in fact used
-   * as a proxy, just to be sure that nobody access cURLpp::Easy's 
+   * curlpp::InfoTypeConverter. This class is in fact used
+   * as a proxy, just to be sure that nobody access curlpp::Easy's 
    * private data.
    */
   struct CURLPPAPI InfoGetter
   {
     template< typename T >
-    static void get(cURLpp::Easy &handle, CURLINFO info, T &value);
+    static void get(curlpp::Easy &handle, CURLINFO info, T &value);
   };
-}
+} // namespace curlpp
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "Info.inl"
 #endif
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_INFO_HPP

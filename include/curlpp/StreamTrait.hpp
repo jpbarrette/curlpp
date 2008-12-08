@@ -27,7 +27,7 @@
 #include "buildconfig.h"
 #include "StorageTrait.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
 
    /**
@@ -68,7 +68,9 @@ namespace cURLpp
          std::ostream* mFile;
    };
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_STREAM_TRAIT_HPP
 

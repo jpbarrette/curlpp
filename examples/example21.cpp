@@ -3,7 +3,7 @@
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
-*    (cURLpp), to deal in the Software without restriction, 
+*    (curlpp), to deal in the Software without restriction, 
 *    including without limitation the rights to use, copy, modify, merge,
 *    publish, distribute, sublicense, and/or sell copies of the Software,
 *    and to permit persons to whom the Software is furnished to do so, 
@@ -27,7 +27,7 @@
 #include <cstdio>
 #include <cstring>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
@@ -65,15 +65,15 @@ int main(int argc, char *argv[])
   char buf[50];
    try
    {
-      cURLpp::Cleanup cleaner;
-      cURLpp::Easy request;
+      curlpp::Cleanup cleaner;
+      curlpp::Easy request;
 
       std::list< std::string > headers;
       headers.push_back("Content-Type: text/*"); 
       sprintf(buf, "Content-Length: %d", size); 
       headers.push_back(buf);
       
-      using namespace cURLpp::Options;
+      using namespace curlpp::Options;
       request.setOpt(new Verbose(true));
       request.setOpt(new ReadStream(&myStream));
       request.setOpt(new InfileSize(size));
@@ -83,11 +83,11 @@ int main(int argc, char *argv[])
        
       request.perform();
    }
-   catch ( cURLpp::LogicError & e )
+   catch ( curlpp::LogicError & e )
      {
        std::cout << e.what() << std::endl;
      }
-   catch ( cURLpp::RuntimeError & e )
+   catch ( curlpp::RuntimeError & e )
      {
        std::cout << e.what() << std::endl;
      }

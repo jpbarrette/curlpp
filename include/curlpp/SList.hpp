@@ -30,7 +30,7 @@
 #include "buildconfig.h"
 
 
-namespace cURLpp
+namespace curlpp
 {
 
   /**
@@ -68,8 +68,10 @@ namespace cURLpp
     std::list< std::string > mData;
   };
 
-}
+} // namespace curlpp
 
 std::ostream CURLPPAPI &operator<<(std::ostream &stream, const std::list< std::string > &value);
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_SLIST_HPP

@@ -3,7 +3,7 @@
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
-*    (cURLpp), to deal in the Software without restriction, 
+*    (curlpp), to deal in the Software without restriction, 
 *    including without limitation the rights to use, copy, modify, merge,
 *    publish, distribute, sublicense, and/or sell copies of the Software,
 *    and to permit persons to whom the Software is furnished to do so, 
@@ -23,57 +23,65 @@
 
 #include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 
-using namespace std;
-using namespace cURLpp;
-
 
 class MyWindow
 {
+
 public:
-  int writeDebug(curl_infotype, char *, size_t)
+
+	int writeDebug(curl_infotype, char *, size_t)
   {
-    throw runtime_error("This is the unknown exception.");
-    cout << "We never reach this line." << endl;
+		throw std::runtime_error("This is the unknown exception.");
+    std::cout << "We never reach this line." << std::endl;
     return 0;
   }
 };
 
+
 int main(int argc, char *argv[])
 {
-  if(argc != 2) {
-    cerr << "Example 9: Wrong number of arguments" << endl 
+  if(argc != 2)
+	{
+    std::cerr << "Example 9: Wrong number of arguments" << std::endl 
 	      << "Example 9: Usage: example9 url" 
-	      << endl;
+	      << std::endl;
     return EXIT_FAILURE;
   }
   char *url = argv[1];
      
   MyWindow myWindow;
-  try {
-    Cleanup cleaner;
-    Easy request;
+  try
+	{
+		curlpp::Cleanup cleaner;
+		curlpp::Easy request;
     
-    using namespace Options;
+		using namespace curlpp::Options;
     request.setOpt(Verbose(true));
-    request.setOpt(DebugFunction(Types::DebugFunctionFunctor(&myWindow, 
+		request.setOpt(DebugFunction(curlpp::types::DebugFunctionFunctor(&myWindow, 
 								     &MyWindow::writeDebug)));
     request.setOpt(Url(url));
     
     request.perform();
   }
-  catch ( LogicError & e ) {
-    cout << e.what() << endl;
+
+	catch ( curlpp::LogicError & e )
+	{
+    std::cout << e.what() << std::endl;
   }
-  catch ( RuntimeError & e ) {
-    cout << e.what() << endl;
+
+	catch ( curlpp::RuntimeError & e )
+	{
+    std::cout << e.what() << std::endl;
   }
-  catch ( runtime_error &e ) {
-    cout << e.what() << endl;
+
+	catch ( std::runtime_error &e )
+	{
+    std::cout << e.what() << std::endl;
   }
   
   return 0;

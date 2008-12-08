@@ -8,7 +8,7 @@
 		Name="VCCLCompilerTool"
 		AdditionalIncludeDirectories="$(BOOST_PATH)\include"
 		PreprocessorDefinitions="WIN32;_WIN32;CURLPP_SELF_CONTAINED"
-		DisableSpecificWarnings="4251; 4275;  4512; 4661"
+		DisableSpecificWarnings="4251; 4275;  4512; 4661; 4996"
 	/>
 	<Tool
 		Name="VCLinkerTool"

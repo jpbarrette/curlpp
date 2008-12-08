@@ -1,7 +1,7 @@
 /*
  * Use 
  * Find what: "typedef.*?\n?.*?\n?.*>\s*(.*);" regex and
- * Replace with: "template CURLPPAPI void Easy::setOpt<Options::$1>(Options::$1::ParamType);" regex
+ * Replace with: "template CURLPPAPI void Easy::setOpt<options::$1>(options::$1::ParamType);" regex
  * to generate this file from Options.hpp header file.
  */
 
@@ -11,19 +11,19 @@
 #include "curlpp/Options.hpp"
 
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
-#define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef cURLpp::NotAvailableOptionTrait< type, option > name;
+#define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef curlpp::NotAvailableOptionTrait< type, option > name;
 #endif
 
 // #begin define OPTION(version,type,option,name) 
 // #if LIBCURL_VERSION_NUM >= version 
-//   typedef cURLpp::OptionTrait< type, option > name;
+//   typedef curlpp::OptionTrait< type, option > name;
 // #else
 // DEF_IF_ALLOW_AVAILABLE(type,option,name)
 // #endif
 // #end
 
 
-namespace cURLpp
+namespace curlpp
 {
 
 	/**
@@ -32,11 +32,11 @@ namespace cURLpp
 
 #if LIBCURL_VERSION_NUM >= 0x070d01
 	template
-	CURLPPAPI void Easy::setOpt<Options::CookieList>(Options::CookieList::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CookieList>(options::CookieList::ParamType);
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template
-	CURLPPAPI void Easy::setOpt<Options::CookieList>(Options::CookieList::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CookieList>(options::CookieList::ParamType);
 #endif
 #endif
 
@@ -45,32 +45,32 @@ namespace cURLpp
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::Verbose>(Options::Verbose::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Verbose>(options::Verbose::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Header>(Options::Header::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Header>(options::Header::ParamType);
 #if LIBCURL_VERSION_NUM >= 0x070A00
     template 
-	CURLPPAPI void Easy::setOpt<Options::NoSignal>(Options::NoSignal::ParamType);
+	CURLPPAPI void Easy::setOpt<options::NoSignal>(options::NoSignal::ParamType);
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template 
-	CURLPPAPI void Easy::setOpt<Options::NoSignal>(Options::NoSignal::ParamType);
+	CURLPPAPI void Easy::setOpt<options::NoSignal>(options::NoSignal::ParamType);
 #endif // CURLPP_ALLOW_NOT_AVAILABLE
 #endif // LIBCURL_VERSION_NUM
 
     template 
-CURLPPAPI void Easy::setOpt<Options::NoProgress>(Options::NoProgress::ParamType);
+CURLPPAPI void Easy::setOpt<options::NoProgress>(options::NoProgress::ParamType);
     
     /**
      * Callback options. 
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::WriteFunction>(Options::WriteFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::WriteFunction>(options::WriteFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostWriteFunction>(Options::BoostWriteFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostWriteFunction>(options::BoostWriteFunction::ParamType);
 #endif
 
     /**
@@ -82,35 +82,35 @@ CURLPPAPI void Easy::setOpt<Options::NoProgress>(Options::NoProgress::ParamType)
 
 #if LIBCURL_VERSION_NUM >= 0x070907
     template 
-	CURLPPAPI void Easy::setOpt<Options::WriteFile>(Options::WriteFile::ParamType);
+	CURLPPAPI void Easy::setOpt<options::WriteFile>(options::WriteFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::WriteStream>(Options::WriteStream::ParamType);
+	CURLPPAPI void Easy::setOpt<options::WriteStream>(options::WriteStream::ParamType);
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template 
-CURLPPAPI void Easy::setOpt<Options::WriteFile>(Options::WriteFile::ParamType);
+CURLPPAPI void Easy::setOpt<options::WriteFile>(options::WriteFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::WriteStream>(Options::WriteStream::ParamType);
+	CURLPPAPI void Easy::setOpt<options::WriteStream>(options::WriteStream::ParamType);
 #endif // CURLPP_ALLOW_NOT_AVAILABLE
 #endif // LIBCURL_VERSION_NUM
 
 
 #if LIBCURL_VERSION_NUM >= 0x070c01
     template 
-	CURLPPAPI void Easy::setOpt<Options::ReadFunction>(Options::ReadFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ReadFunction>(options::ReadFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostReadFunction>(Options::BoostReadFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostReadFunction>(options::BoostReadFunction::ParamType);
 #endif
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template 
-	CURLPPAPI void Easy::setOpt<Options::ReadFunction>(Options::ReadFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ReadFunction>(options::ReadFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostReadFunction>(Options::BoostReadFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostReadFunction>(options::BoostReadFunction::ParamType);
 #endif // HAVE_BOOST
 #endif // CURLPP_ALLOW_NOT_AVAILABLE
 #endif // LIBCURL_VERSION_NUM
@@ -124,48 +124,48 @@ CURLPPAPI void Easy::setOpt<Options::WriteFile>(Options::WriteFile::ParamType);
 
 #if LIBCURL_VERSION_NUM >= 0x070907
     template 
-	CURLPPAPI void Easy::setOpt<Options::ReadFile>(Options::ReadFile::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ReadFile>(options::ReadFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ReadStream>(Options::ReadStream::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ReadStream>(options::ReadStream::ParamType);
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template 
-	CURLPPAPI void Easy::setOpt<Options::ReadFile>(Options::ReadFile::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ReadFile>(options::ReadFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ReadStream>(Options::ReadStream::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ReadStream>(options::ReadStream::ParamType);
 #endif // CURLPP_ALLOW_NOT_AVAILABLE
 #endif // LIBCURL_VERSION_NUM
 
     template 
-	CURLPPAPI void Easy::setOpt<Options::ProgressFunction>(Options::ProgressFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ProgressFunction>(options::ProgressFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostProgressFunction>(Options::BoostProgressFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostProgressFunction>(options::BoostProgressFunction::ParamType);
 #endif
 
     template 
-	CURLPPAPI void Easy::setOpt<Options::HeaderFunction>(Options::HeaderFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HeaderFunction>(options::HeaderFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostHeaderFunction>(Options::BoostHeaderFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostHeaderFunction>(options::BoostHeaderFunction::ParamType);
 #endif
 
     template 
-	CURLPPAPI void Easy::setOpt<Options::DebugFunction>(Options::DebugFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::DebugFunction>(options::DebugFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostDebugFunction>(Options::BoostDebugFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostDebugFunction>(options::BoostDebugFunction::ParamType);
 #endif
 
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslCtxFunction>(Options::SslCtxFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslCtxFunction>(options::SslCtxFunction::ParamType);
 
 #ifdef HAVE_BOOST
     template 
-	CURLPPAPI void Easy::setOpt<Options::BoostSslCtxFunction>(Options::BoostSslCtxFunction::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BoostSslCtxFunction>(options::BoostSslCtxFunction::ParamType);
 #endif
     
       
@@ -174,244 +174,244 @@ CURLPPAPI void Easy::setOpt<Options::WriteFile>(Options::WriteFile::ParamType);
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::ErrorBuffer>(Options::ErrorBuffer::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ErrorBuffer>(options::ErrorBuffer::ParamType);
 
 #ifdef FILE
     template 
-	CURLPPAPI void Easy::setOpt<Options::StdErr>(Options::StdErr::ParamType);
+	CURLPPAPI void Easy::setOpt<options::StdErr>(options::StdErr::ParamType);
 #endif
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::FailOnError>(Options::FailOnError::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FailOnError>(options::FailOnError::ParamType);
 
     /**
      * Network options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::Url>(Options::Url::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Url>(options::Url::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Proxy>(Options::Proxy::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Proxy>(options::Proxy::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ProxyPort>(Options::ProxyPort::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ProxyPort>(options::ProxyPort::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ProxyType>(Options::ProxyType::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ProxyType>(options::ProxyType::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::HttpProxyTunnel>(Options::HttpProxyTunnel::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HttpProxyTunnel>(options::HttpProxyTunnel::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Interface>(Options::Interface::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Interface>(options::Interface::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::DnsCacheTimeout>(Options::DnsCacheTimeout::ParamType);
+	CURLPPAPI void Easy::setOpt<options::DnsCacheTimeout>(options::DnsCacheTimeout::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::DnsUseGlobalCache>(Options::DnsUseGlobalCache::ParamType);
+	CURLPPAPI void Easy::setOpt<options::DnsUseGlobalCache>(options::DnsUseGlobalCache::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::BufferSize>(Options::BufferSize::ParamType);
+	CURLPPAPI void Easy::setOpt<options::BufferSize>(options::BufferSize::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Port>(Options::Port::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Port>(options::Port::ParamType);
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::TcpNoDelay>(Options::TcpNoDelay::ParamType);
+	CURLPPAPI void Easy::setOpt<options::TcpNoDelay>(options::TcpNoDelay::ParamType);
 
     /**
      * Names and passwords options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::Netrc>(Options::Netrc::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Netrc>(options::Netrc::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::NetrcFile>(Options::NetrcFile::ParamType);
+	CURLPPAPI void Easy::setOpt<options::NetrcFile>(options::NetrcFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::UserPwd>(Options::UserPwd::ParamType);
+	CURLPPAPI void Easy::setOpt<options::UserPwd>(options::UserPwd::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ProxyUserPwd>(Options::ProxyUserPwd::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ProxyUserPwd>(options::ProxyUserPwd::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::HttpAuth>(Options::HttpAuth::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HttpAuth>(options::HttpAuth::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ProxyAuth>(Options::ProxyAuth::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ProxyAuth>(options::ProxyAuth::ParamType);
 
     /**
      * HTTP options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::AutoReferer>(Options::AutoReferer::ParamType);
+	CURLPPAPI void Easy::setOpt<options::AutoReferer>(options::AutoReferer::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Encoding>(Options::Encoding::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Encoding>(options::Encoding::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FollowLocation>(Options::FollowLocation::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FollowLocation>(options::FollowLocation::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::UnrestrictedAuth>(Options::UnrestrictedAuth::ParamType);
+	CURLPPAPI void Easy::setOpt<options::UnrestrictedAuth>(options::UnrestrictedAuth::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::MaxRedirs>(Options::MaxRedirs::ParamType);
+	CURLPPAPI void Easy::setOpt<options::MaxRedirs>(options::MaxRedirs::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Put>(Options::Put::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Put>(options::Put::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Upload>(Options::Upload::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Upload>(options::Upload::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Post>(Options::Post::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Post>(options::Post::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::PostFields>(Options::PostFields::ParamType);
+	CURLPPAPI void Easy::setOpt<options::PostFields>(options::PostFields::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::PostFieldSize>(Options::PostFieldSize::ParamType);
+	CURLPPAPI void Easy::setOpt<options::PostFieldSize>(options::PostFieldSize::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::PostFieldSizeLarge>(Options::PostFieldSizeLarge::ParamType);
+	CURLPPAPI void Easy::setOpt<options::PostFieldSizeLarge>(options::PostFieldSizeLarge::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::HttpPost>(Options::HttpPost::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HttpPost>(options::HttpPost::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Referer>(Options::Referer::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Referer>(options::Referer::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::UserAgent>(Options::UserAgent::ParamType);
+	CURLPPAPI void Easy::setOpt<options::UserAgent>(options::UserAgent::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::HttpHeader>(Options::HttpHeader::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HttpHeader>(options::HttpHeader::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Http200Aliases>(Options::Http200Aliases::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Http200Aliases>(options::Http200Aliases::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Cookie>(Options::Cookie::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Cookie>(options::Cookie::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::CookieFile>(Options::CookieFile::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CookieFile>(options::CookieFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::CookieJar>(Options::CookieJar::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CookieJar>(options::CookieJar::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::CookieSession>(Options::CookieSession::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CookieSession>(options::CookieSession::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::HttpGet>(Options::HttpGet::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HttpGet>(options::HttpGet::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::HttpVersion>(Options::HttpVersion::ParamType);
+	CURLPPAPI void Easy::setOpt<options::HttpVersion>(options::HttpVersion::ParamType);
 
     /**
      * FTP options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::FtpPort>(Options::FtpPort::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpPort>(options::FtpPort::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Quote>(Options::Quote::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Quote>(options::Quote::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::PostQuote>(Options::PostQuote::ParamType);
+	CURLPPAPI void Easy::setOpt<options::PostQuote>(options::PostQuote::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::PreQuote>(Options::PreQuote::ParamType);
+	CURLPPAPI void Easy::setOpt<options::PreQuote>(options::PreQuote::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpListOnly>(Options::FtpListOnly::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpListOnly>(options::FtpListOnly::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpAppend>(Options::FtpAppend::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpAppend>(options::FtpAppend::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpUseEpsv>(Options::FtpUseEpsv::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpUseEpsv>(options::FtpUseEpsv::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpFileMethod>(Options::FtpFileMethod::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpFileMethod>(options::FtpFileMethod::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpCreateMissingDirs>(Options::FtpCreateMissingDirs::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpCreateMissingDirs>(options::FtpCreateMissingDirs::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpResponseTimeout>(Options::FtpResponseTimeout::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpResponseTimeout>(options::FtpResponseTimeout::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpSsl>(Options::FtpSsl::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpSsl>(options::FtpSsl::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FtpSslAuth>(Options::FtpSslAuth::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FtpSslAuth>(options::FtpSslAuth::ParamType);
       
     /**
      * Protocol options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::TransferText>(Options::TransferText::ParamType);
+	CURLPPAPI void Easy::setOpt<options::TransferText>(options::TransferText::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Crlf>(Options::Crlf::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Crlf>(options::Crlf::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Range>(Options::Range::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Range>(options::Range::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ResumeFrom>(Options::ResumeFrom::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ResumeFrom>(options::ResumeFrom::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ResumeFromLarge>(Options::ResumeFromLarge::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ResumeFromLarge>(options::ResumeFromLarge::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::CustomRequest>(Options::CustomRequest::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CustomRequest>(options::CustomRequest::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FileTime>(Options::FileTime::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FileTime>(options::FileTime::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::NoBody>(Options::NoBody::ParamType);
+	CURLPPAPI void Easy::setOpt<options::NoBody>(options::NoBody::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::InfileSize>(Options::InfileSize::ParamType);
+	CURLPPAPI void Easy::setOpt<options::InfileSize>(options::InfileSize::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::InfileSizeLarge>(Options::InfileSizeLarge::ParamType);
+	CURLPPAPI void Easy::setOpt<options::InfileSizeLarge>(options::InfileSizeLarge::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::MaxFileSize>(Options::MaxFileSize::ParamType);
+	CURLPPAPI void Easy::setOpt<options::MaxFileSize>(options::MaxFileSize::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::MaxFileSizeLarge>(Options::MaxFileSizeLarge::ParamType);
+	CURLPPAPI void Easy::setOpt<options::MaxFileSizeLarge>(options::MaxFileSizeLarge::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::TimeCondition>(Options::TimeCondition::ParamType);
+	CURLPPAPI void Easy::setOpt<options::TimeCondition>(options::TimeCondition::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::TimeValue>(Options::TimeValue::ParamType);
+	CURLPPAPI void Easy::setOpt<options::TimeValue>(options::TimeValue::ParamType);
 
     /**
      * Connection options.
      */
     
 	template 
-	CURLPPAPI void Easy::setOpt<Options::Timeout>(Options::Timeout::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Timeout>(options::Timeout::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::LowSpeedLimit>(Options::LowSpeedLimit::ParamType);
+	CURLPPAPI void Easy::setOpt<options::LowSpeedLimit>(options::LowSpeedLimit::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::LowSpeedTime>(Options::LowSpeedTime::ParamType);
+	CURLPPAPI void Easy::setOpt<options::LowSpeedTime>(options::LowSpeedTime::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::MaxConnects>(Options::MaxConnects::ParamType);
+	CURLPPAPI void Easy::setOpt<options::MaxConnects>(options::MaxConnects::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ClosePolicy>(Options::ClosePolicy::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ClosePolicy>(options::ClosePolicy::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::FreshConnect>(Options::FreshConnect::ParamType);
+	CURLPPAPI void Easy::setOpt<options::FreshConnect>(options::FreshConnect::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ForbidReuse>(Options::ForbidReuse::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ForbidReuse>(options::ForbidReuse::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::ConnectTimeout>(Options::ConnectTimeout::ParamType);
+	CURLPPAPI void Easy::setOpt<options::ConnectTimeout>(options::ConnectTimeout::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::IpResolve>(Options::IpResolve::ParamType);
+	CURLPPAPI void Easy::setOpt<options::IpResolve>(options::IpResolve::ParamType);
       
     /**
      * SSL and security options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::SslCert>(Options::SslCert::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslCert>(options::SslCert::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslCertType>(Options::SslCertType::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslCertType>(options::SslCertType::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslCertPasswd>(Options::SslCertPasswd::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslCertPasswd>(options::SslCertPasswd::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslKey>(Options::SslKey::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslKey>(options::SslKey::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslKeyType>(Options::SslKeyType::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslKeyType>(options::SslKeyType::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslKeyPasswd>(Options::SslKeyPasswd::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslKeyPasswd>(options::SslKeyPasswd::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslEngine>(Options::SslEngine::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslEngine>(options::SslEngine::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslEngineDefault>(Options::SslEngineDefault::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslEngineDefault>(options::SslEngineDefault::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslVersion>(Options::SslVersion::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslVersion>(options::SslVersion::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslVerifyPeer>(Options::SslVerifyPeer::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslVerifyPeer>(options::SslVerifyPeer::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::CaInfo>(Options::CaInfo::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CaInfo>(options::CaInfo::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::CaPath>(Options::CaPath::ParamType);
+	CURLPPAPI void Easy::setOpt<options::CaPath>(options::CaPath::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::RandomFile>(Options::RandomFile::ParamType);
+	CURLPPAPI void Easy::setOpt<options::RandomFile>(options::RandomFile::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::EgdSocket>(Options::EgdSocket::ParamType);
+	CURLPPAPI void Easy::setOpt<options::EgdSocket>(options::EgdSocket::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslVerifyHost>(Options::SslVerifyHost::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslVerifyHost>(options::SslVerifyHost::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::SslCipherList>(Options::SslCipherList::ParamType);
+	CURLPPAPI void Easy::setOpt<options::SslCipherList>(options::SslCipherList::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Krb4Level>(Options::Krb4Level::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Krb4Level>(options::Krb4Level::ParamType);
 
     /**
      * Others options.
      */
 
 	template 
-	CURLPPAPI void Easy::setOpt<Options::Private>(Options::Private::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Private>(options::Private::ParamType);
     template 
-	CURLPPAPI void Easy::setOpt<Options::Krb4Level>(Options::Krb4Level::ParamType);
+	CURLPPAPI void Easy::setOpt<options::Krb4Level>(options::Krb4Level::ParamType);
 
 	//Share;
     //TelnetOptions
 
-} // namespace cURLpp
+} // namespace curlpp

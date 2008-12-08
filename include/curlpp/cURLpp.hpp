@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -34,12 +34,12 @@
 #include "buildconfig.h"
 
 
-namespace cURLpp
+namespace curlpp
 {
 
    /**
-    * This function takes care of initializing cURLpp ( also libcURL). If you want 
-    * to cleanup cURL before your application quits just call cURLpp::terminate().
+    * This function takes care of initializing curlpp ( also libcURL). If you want 
+    * to cleanup cURL before your application quits just call curlpp::terminate().
     * This function should only be called once (no matter how many threads or 
     * libcurl sessions that'll be used) by every application that uses libcurl, 
     * it will throw a logic_error if you call it twice.
@@ -64,10 +64,10 @@ namespace cURLpp
   void CURLPPAPI initialize(long flags = CURL_GLOBAL_ALL);
    
   /**
-   * This function takes care of cleaning up cURLpp ( also libcURL). See 
-   * cURLpp::initialize( long flags ) for more documentation.
+   * This function takes care of cleaning up curlpp ( also libcURL). See 
+   * curlpp::initialize( long flags ) for more documentation.
    * 
-   * NOTE: you cannot call this function if cURLpp is not loaded, or if you already
+   * NOTE: you cannot call this function if curlpp is not loaded, or if you already
    * called in once; it will throw a logic_error if you do otherwise.
    */
   void CURLPPAPI terminate();
@@ -75,20 +75,20 @@ namespace cURLpp
   /**
    * This is an obsolete class. DO NOT use it. The only reason it's still there,
    * is to be sure that it is backward compatible. This class was taking care of 
-   * initialization and cleaning up cURLpp ( also libcURL ) (it was calling 
-   * cURLpp:terminate() in his destructor). However, from now on, you do not need
+   * initialization and cleaning up curlpp ( also libcURL ) (it was calling 
+   * curlpp:terminate() in his destructor). However, from now on, you do not need
    * this class. Note that the removal of this class was done because it was 
    * raising some threading issues. 
    *
    * Old documentation of that class: 
    *
-   *   If you want to be sure that cURLpp is cleaned up after you reached 
-   *   the end of scope of a specific function using cURLpp, instantiate 
-   *   this class. This function call cURLpp::initialize() in his 
+   *   If you want to be sure that curlpp is cleaned up after you reached 
+   *   the end of scope of a specific function using curlpp, instantiate 
+   *   this class. This function call curlpp::initialize() in his 
    *   constructor, so you don't have to call it by yourself, when you have 
    *   decided to use it.
    *
-   * See cURLpp::initialize( long flags ) and cURLpp:terminate() for more documentation.
+   * See curlpp::initialize( long flags ) and curlpp:terminate() for more documentation.
    */
   class CURLPPAPI Cleanup
   {
@@ -194,6 +194,8 @@ namespace cURLpp
    */
   time_t CURLPPAPI getdate( const std::string&date, time_t *now = 0 );
  
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_CURLPP_HPP

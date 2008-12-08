@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -30,8 +30,8 @@
 template< typename OptionValueType, 
 	  CURLoption optionType >
 void
-cURLpp::OptionSetter< OptionValueType, 
-		      optionType >::setOpt(cURLpp::CurlHandle *handle, 
+curlpp::OptionSetter< OptionValueType, 
+		      optionType >::setOpt(curlpp::CurlHandle *handle, 
 					   ParamType value)
 {
   handle->option(optionType, value);
@@ -40,8 +40,8 @@ cURLpp::OptionSetter< OptionValueType,
 
 template< CURLoption optionType >
 void
-cURLpp::OptionSetter< std::string, 
-		      optionType >::setOpt(cURLpp::CurlHandle *handle, 
+curlpp::OptionSetter< std::string, 
+		      optionType >::setOpt(curlpp::CurlHandle *handle, 
 		                           ParamType value)
 {
 	handle->option(optionType, (void *)value.c_str());
@@ -49,8 +49,8 @@ cURLpp::OptionSetter< std::string,
 
 template< CURLoption optionType >
 void
-cURLpp::OptionSetter< std::list< std::string >, 
-		      optionType >::setOpt(cURLpp::CurlHandle *handle, 
+curlpp::OptionSetter< std::list< std::string >, 
+		      optionType >::setOpt(curlpp::CurlHandle *handle, 
 					   ParamType value)
 {
 	handle->option(optionType, (void *)value.cslist());

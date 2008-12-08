@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -25,7 +25,7 @@
 
 #include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
@@ -42,25 +42,25 @@ int main(int argc, char *argv[])
   char *url = argv[1];
   
   try {
-    cURLpp::Cleanup cleaner;
-    cURLpp::Easy request;
+    curlpp::Cleanup cleaner;
+    curlpp::Easy request;
 
     // Setting the URL to retrive.
-    request.setOpt(new cURLpp::Options::Url(url));
+    request.setOpt(new curlpp::options::Url(url));
 
     std::cout << request << std::endl;
 
     // Even easier version. It does the same thing 
     // but if you need to download only an url,
     // this is the easiest way to do it.
-    std::cout << cURLpp::Options::Url(url) << std::endl;
+    std::cout << curlpp::options::Url(url) << std::endl;
 
     return EXIT_SUCCESS;
   }
-  catch ( cURLpp::LogicError & e ) {
+  catch ( curlpp::LogicError & e ) {
     std::cout << e.what() << std::endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
+  catch ( curlpp::RuntimeError & e ) {
     std::cout << e.what() << std::endl;
   }
 

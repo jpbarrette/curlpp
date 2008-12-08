@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -29,7 +29,7 @@
 #include "buildconfig.h"
 #include "OptionBase.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
    
     /**
@@ -90,16 +90,18 @@ namespace cURLpp
 	 */
 	//OptionList &operator=( const OptionList &rhs );
 
-	typedef std::map< CURLoption, cURLpp::OptionBase * > mapType;
+	typedef std::map< CURLoption, curlpp::OptionBase * > mapType;
 	
     private:
-	cURLpp::OptionList::mapType mOptions;
+	curlpp::OptionList::mapType mOptions;
 
-	void insert( const cURLpp::OptionList::mapType &other );
+	void insert( const curlpp::OptionList::mapType &other );
 
 
     };
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_OPTION_LIST_HPP

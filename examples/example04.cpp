@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -23,63 +23,60 @@
 
 #include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 #include <curlpp/Infos.hpp>
  
-using namespace std;
-
-using namespace cURLpp;
-using namespace cURLpp::Infos;
-
 
 int main(int argc, char *argv[])
 {
-  if(argc != 2) {
-    cerr << "Example 04: Wrong number of arguments" << endl 
-	      << "Example 04: Usage: example04 url" 
-	      << endl;
-    return EXIT_FAILURE;
-  }
-  char *url = argv[1];
-  
-  try {
-    Cleanup cleaner;
-    Easy request;
-    
-    using namespace Options;
-    request.setOpt(Verbose(true));
-    request.setOpt(Url(url));
-    
-    request.perform();
-    
-    string effURL;
-    EffectiveUrl::get(request, effURL);
-    cout << "Effective URL: " << effURL << endl;
+	if(argc != 2)
+	{
+		std::cerr << "Example 04: Wrong number of arguments" << std::endl 
+			<< "Example 04: Usage: example04 url" 
+			<< std::endl;
+		return EXIT_FAILURE;
+	}
+	char *url = argv[1];
 
-    //other way to retreive URL
-    cout << endl 
-	      << "Effective URL: " 
-	      << EffectiveUrl::get(request)
-	      << endl;
+	try 
+	{
+		curlpp::Cleanup cleaner;
+		curlpp::Easy request;
 
-    cout << "Response code: " 
-	      << ResponseCode::get(request) 
-	      << endl;
+		using namespace curlpp::Options;
+		request.setOpt(Verbose(true));
+		request.setOpt(Url(url));
 
-    cout << "SSL engines: " 
-	      << SslEngines::get(request)
-	      << endl;
-  }
-  catch ( LogicError & e ) {
-    cout << e.what() << endl;
-  }
-  catch ( RuntimeError & e ) {
-    cout << e.what() << endl;
-  }
-  
-  return 0;
+		request.perform();
+
+		std::string effURL;
+		curlpp::infos::EffectiveUrl::get(request, effURL);
+		std::cout << "Effective URL: " << effURL << std::endl;
+
+		//other way to retreive URL
+		std::cout << std::endl 
+			<< "Effective URL: " 
+			<< curlpp::infos::EffectiveUrl::get(request)
+			<< std::endl;
+
+		std::cout << "Response code: " 
+			<< curlpp::infos::ResponseCode::get(request) 
+			<< std::endl;
+
+		std::cout << "SSL engines: " 
+			<< curlpp::infos::SslEngines::get(request)
+			<< std::endl;
+	}
+	catch ( curlpp::LogicError & e ) {
+		std::cout << e.what() << std::endl;
+	}
+	catch ( curlpp::RuntimeError & e ) {
+		std::cout << e.what() << std::endl;
+	}
+
+	return 0;
 }
 

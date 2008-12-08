@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -29,7 +29,7 @@
 #include "OptionList.hpp"
 #include "CurlHandle.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
   
   class CURLPPAPI Easy : public OptionList
@@ -57,30 +57,30 @@ namespace cURLpp
      * handle. 
      *
      * Note: be carefull when using this function, see 
-     * cURLpp::OptionList::setOpt(OptionBase *option) function for more
+     * curlpp::OptionList::setOpt(OptionBase *option) function for more
      * details.
      */
-    virtual void setOpt(cURLpp::OptionBase *option);
+    virtual void setOpt(curlpp::OptionBase *option);
 
     /**
      * This function will set the option value of the OptionBase
      * to the handle.
      *
      * Note: be carefull when using this function, see 
-     * cURLpp::OptionList::setOpt(OptionBase *option) function for more
+     * curlpp::OptionList::setOpt(OptionBase *option) function for more
      * details.
      */
-    virtual void setOpt(const cURLpp::OptionBase &option);
+    virtual void setOpt(const curlpp::OptionBase &option);
 
 	/**
      * This function will call the setOpt on each options
      * contained by * the option list passed in argument.
      */
-    virtual void setOpt(const cURLpp::OptionList &options);
+    virtual void setOpt(const curlpp::OptionList &options);
 
     /**
      * This function will create OptionTrait class with the value given and call
-     * virtual void setOpt(const cURLpp::OptionBase &option) with it.
+     * virtual void setOpt(const curlpp::OptionBase &option) with it.
      */
 	template<class OptionTrait>
 	void setOpt(typename OptionTrait::ParamType);
@@ -103,23 +103,24 @@ namespace cURLpp
     
   private:
     /**
-     * This is the function that cURLpp::InfoGetter will call
+     * This is the function that curlpp::InfoGetter will call
      * to retreive option.
      */
     template< typename T >
     void getInfo(CURLINFO info, T &value);
       
-    std::auto_ptr< cURLpp::CurlHandle > myCurl;
+    std::auto_ptr< curlpp::CurlHandle > myCurl;
   };
 
-} // namespace cURLpp
+} // namespace curlpp
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "Easy.inl"
 #endif
 
 // Not quite sure if we shouldn't pass a const handle and clone it instead.
-CURLPPAPI std::ostream & operator<<(std::ostream & stream, const cURLpp::Easy & handle);
+CURLPPAPI std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & handle);
 
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_EASY_HPP

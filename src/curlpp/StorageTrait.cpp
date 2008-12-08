@@ -3,7 +3,7 @@
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
-*    (cURLpp), to deal in the Software without restriction, 
+*    (curlpp), to deal in the Software without restriction, 
 *    including without limitation the rights to use, copy, modify, merge,
 *    publish, distribute, sublicense, and/or sell copies of the Software,
 *    and to permit persons to whom the Software is furnished to do so, 
@@ -21,11 +21,11 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "curlpp/cURLpp.hpp"
+#include "curlpp/curlpp.hpp"
 #include <cstdio>
 
 
-bool cURLpp::OutputProgressTrait::ProgressFunction(
+bool curlpp::OutputProgressTrait::ProgressFunction(
    double dltotal,
    double dlnow,
    double ultotal,
@@ -45,7 +45,7 @@ bool cURLpp::OutputProgressTrait::ProgressFunction(
 }
 
 //\TODO add exception throwing
-bool cURLpp::InputPasswdTrait::passwdFunction(
+bool curlpp::InputPasswdTrait::passwdFunction(
    char *prompt,
    char *buffer,
    int buflen
@@ -60,18 +60,18 @@ bool cURLpp::InputPasswdTrait::passwdFunction(
    return true;
 }
 
-void cURLpp::OutputDebugTrait::debugFunction(
-   cURLpp::debug::Type type,
+void curlpp::OutputDebugTrait::debugFunction(
+   curlpp::debug::Type type,
    char *buffer,
    int buflen
 )
 {
-   if ( type == cURLpp::debug::Text )
+   if ( type == curlpp::debug::Text )
    {
       fwrite( "* ", 2, 1, stdout );
       fwrite( buffer, buflen, 1, stdout );
    }
-   else if ( type == cURLpp::debug::headerOut )
+   else if ( type == curlpp::debug::headerOut )
    {
       fwrite( "> ", 2, 1, stdout );
       fwrite( buffer, buflen, 1, stdout );

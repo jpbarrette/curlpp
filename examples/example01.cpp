@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -24,18 +24,13 @@
 #include <string>
 #include <iostream>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
-using namespace std;
-
-using namespace cURLpp;
-using namespace cURLpp::Options;
-
 namespace
 {
-	const long MyPort = 80;
+const long MyPort = 80;
 }
 
 /** 
@@ -43,79 +38,81 @@ namespace
  */
 int main(int, char **)
 {
-  try
-    {
-      Cleanup myCleanup;
+	try
+	{
+		curlpp::Cleanup myCleanup;
 
-      // Creation of the URL option.
-      Url myUrl(string("http://example.com"));
-      
-      // Copy construct from the other URL.
-      Url myUrl2(myUrl);
+		// Creation of the URL option.
+		curlpp::options::Url myUrl(std::string("http://example.com"));
 
-      // Creation of the port option.
-      Port myPort(MyPort);
+		// Copy construct from the other URL.
+		curlpp::options::Url myUrl2(myUrl);
 
-      // Creation of the request.
-      Easy myRequest;
+		// Creation of the port option.
+		curlpp::options::Port myPort(MyPort);
 
-      // Creation of an option that contain a copy of the URL option.
-      OptionBase *mytest = myUrl.clone();
-      myRequest.setOpt(*mytest);
+		// Creation of the request.
+		curlpp::Easy myRequest;
 
-      // You can reuse the base option for other type of option
-      // and set the option to the request. but first, don't forget 
-      // to delete the previous memory. You can delete it since the 
-      // option is internally duplicated for the request.
-      delete mytest;
-      mytest = myPort.clone();
-      myRequest.setOpt(*mytest);
-      delete mytest;
+		// Creation of an option that contain a copy of the URL option.
+		curlpp::OptionBase *mytest = myUrl.clone();
+		myRequest.setOpt(*mytest);
 
-      // You can clone an option directly to the same type of 
-      // option.
-      Url *myUrl3 = myUrl.clone();
-      myRequest.setOpt(myUrl3);
-      // Now myUrl3 is owned by the request we will NOT use 
-      // it anymore.
+		// You can reuse the base option for other type of option
+		// and set the option to the request. but first, don't forget 
+		// to delete the previous memory. You can delete it since the 
+		// option is internally duplicated for the request.
+		delete mytest;
+		mytest = myPort.clone();
+		myRequest.setOpt(*mytest);
+		delete mytest;
 
-
-      // You don't need to declare an option if you just want 
-      // to use it once.
-      myRequest.setOpt(Url("example.com"));
-      
-
-      // Note that the previous line wasn't really efficient
-      // because we create the option, this option is duplicated
-      // for the request and then the option destructor is called.
-      // You can use this instead:
-      myRequest.setOpt(new Url("example.com"));
-      // Note that with this the request will use directly this
-      // instance we just created. Be aware that if you pass an
-      // Option pointer to the setOpt function, it will consider
-      // the instance has its own instance. The Option instance
-      // will be deleted when the request will be deleted, so
-      // don't use the instance further in your code.
+		// You can clone an option directly to the same type of 
+		// option.
+		curlpp::options::Url *myUrl3 = myUrl.clone();
+		myRequest.setOpt(myUrl3);
+		// Now myUrl3 is owned by the request we will NOT use 
+		// it anymore.
 
 
-      // Doing the previous line is efficient as this:
-      myRequest.setOpt(myUrl.clone());
+		// You don't need to declare an option if you just want 
+		// to use it once.
+		myRequest.setOpt(curlpp::options::Url("example.com"));
 
-      
-      // You can retreive the value of a specific option.
-      cout << myUrl2.getValue() << endl;
 
-      // Perform the transaction with the options set.
-      myRequest.perform();
-    }
-  catch( RuntimeError &e )
-    {
-      cout << e.what() << endl;
-    }
-  catch( cURLpp::LogicError &e )
-    {
-      cout << e.what() << endl;
-    }
+		// Note that the previous line wasn't really efficient
+		// because we create the option, this option is duplicated
+		// for the request and then the option destructor is called.
+		// You can use this instead:
+		myRequest.setOpt(new curlpp::options::Url("example.com"));
+		// Note that with this the request will use directly this
+		// instance we just created. Be aware that if you pass an
+		// Option pointer to the setOpt function, it will consider
+		// the instance has its own instance. The Option instance
+		// will be deleted when the request will be deleted, so
+		// don't use the instance further in your code.
+
+
+		// Doing the previous line is efficient as this:
+		myRequest.setOpt(myUrl.clone());
+
+
+		// You can retreive the value of a specific option.
+		std::cout << myUrl2.getValue() << std::endl;
+
+		// Perform the transaction with the options set.
+		myRequest.perform();
+	}
+
+	catch( curlpp::RuntimeError &e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	catch( curlpp::LogicError &e )
+	{
+		std::cout << e.what() << std::endl;
+	}
     
   return 0;
 }
