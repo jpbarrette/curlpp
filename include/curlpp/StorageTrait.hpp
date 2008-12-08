@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -33,7 +33,7 @@
  * any kind of Storage trait. Subclasses need to implement the 'setup' method.
  * Storage traits can be used for input (read) or output (write).
  */
-namespace cURLpp
+namespace curlpp
 {
 
    CURLPPAPI class StorageTrait
@@ -186,7 +186,7 @@ namespace cURLpp
           * so it will NOT necesserily be NULL terminated.
           */
          virtual void debugFunction(
-               cURLpp::debug::Type type,
+               curlpp::debug::Type type,
                char *buffer,
                int buflen
                ) = 0;
@@ -203,7 +203,7 @@ namespace cURLpp
          {}
 
          virtual void debugFunction(
-               cURLpp::debug::Type type,
+               curlpp::debug::Type type,
                char *buffer,
                int buflen
                );
@@ -211,6 +211,8 @@ namespace cURLpp
 
    static OutputDebugTrait defaultDebugTrait;
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_STORAGE_TRAIT_HPP

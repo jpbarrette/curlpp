@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -22,14 +22,14 @@
  */
 
 template< typename T >
-void cURLpp::Easy::getInfo(CURLINFO info, T &value)
+void curlpp::Easy::getInfo(CURLINFO info, T &value)
 {
   myCurl->getInfo(info, value);
 }
 
 template<class OptionTrait>
 void 
-cURLpp::Easy::setOpt(typename OptionTrait::ParamType value)
+curlpp::Easy::setOpt(typename OptionTrait::ParamType value)
 {
-	setOpt(cURLpp::OptionTrait<OptionTrait::OptionType, OptionTrait::option>(value));
+	setOpt(curlpp::OptionTrait<OptionTrait::OptionType, OptionTrait::option>(value));
 } 

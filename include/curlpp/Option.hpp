@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -30,7 +30,7 @@
 #include "OptionContainer.hpp"
 
 
-namespace cURLpp
+namespace curlpp
 {
 
   class Easy;
@@ -41,7 +41,7 @@ namespace cURLpp
    * the declaration of an option object.
    */
   template< typename OptionType >
-  class CURLPPAPI Option : public cURLpp::OptionBase
+  class CURLPPAPI Option : public curlpp::OptionBase
   {
 
   public:
@@ -68,7 +68,7 @@ namespace cURLpp
     /**
      * The constructor will contain an unset option value.
      * Note that if you try to retreive the value of this option
-     * before calling the cURLpp::Option::setValue function it will
+     * before calling the curlpp::Option::setValue function it will
      * throw a UnsetOption exception.
      */
     Option(CURLoption option);
@@ -89,8 +89,8 @@ namespace cURLpp
     /** 
      * This function will return the value that this option was set to.
      *
-     * Note: if you didn't set any value by the cURLpp::Option::setValue function,
-     * or the handle option value, retreived by the cURLpp::Option::updateMeToHandle
+     * Note: if you didn't set any value by the curlpp::Option::setValue function,
+     * or the handle option value, retreived by the curlpp::Option::updateMeToHandle
      * function, is a unset value, it will throw a UnsetOption exception.
      */
     typename Option< OptionType >::ReturnType getValue() const;
@@ -111,25 +111,25 @@ namespace cURLpp
   private:
     /**
      * This function will update the given handle to the value previously set,
-     * by the cURLpp::Option::setValue function.
+     * by the curlpp::Option::setValue function.
      */
-    void setOpt(cURLpp::Easy *handle) const;
+    void setOpt(curlpp::Easy *handle) const;
 
     /**
      * This function will update the current value of the option to the handle
      * option value.
      */
-    void getOpt(cURLpp::Easy *handle);
+    void getOpt(curlpp::Easy *handle);
 
   protected:
     /**
      * the class that actually have the value.
      */
-    typename cURLpp::OptionContainer< OptionType > *mContainer;
+    typename curlpp::OptionContainer< OptionType > *mContainer;
   };
 
   /**
-   * This class is just a wrapper around cURLpp::Option, in order to
+   * This class is just a wrapper around curlpp::Option, in order to
    * be able to typedef Options. 
    */
   template< typename OptionType, CURLoption option >
@@ -149,7 +149,7 @@ namespace cURLpp
     /**
      * The constructor will contain an unset option value.
      * Note that if you try to retreive the value of this option
-     * before calling the cURLpp::Option::setValue function it will
+     * before calling the curlpp::Option::setValue function it will
      * throw a UnsetOption exception.
      */
     OptionTrait();
@@ -165,11 +165,11 @@ namespace cURLpp
      * will call the actual libcurl option function with the value we got 
      * on the handle.
      */
-    virtual void updateHandleToMe(cURLpp::CurlHandle *handle) const;
+    virtual void updateHandleToMe(curlpp::CurlHandle *handle) const;
   };
 
   /**
-   * This class is just a wrapper around cURLpp::OptionTrait, in order to
+   * This class is just a wrapper around curlpp::OptionTrait, in order to
    * be able to have "No value" option, like SslDefaultEngine.
    */
   template< CURLoption option >
@@ -201,7 +201,7 @@ namespace cURLpp
     /**
      * The constructor will contain an unset option value.
      * Note that if you try to retreive the value of this option
-     * before calling the cURLpp::Option::setValue function it will
+     * before calling the curlpp::Option::setValue function it will
      * throw a UnsetOption exception.
      */
     NotAvailableOptionTrait();
@@ -217,13 +217,15 @@ namespace cURLpp
      * will call the actual libcurl option function with the value we got 
      * on the handle.
      */
-    virtual void updateHandleToMe(cURLpp::CurlHandle *handle) const;
+    virtual void updateHandleToMe(curlpp::CurlHandle *handle) const;
   };
 
-}
+} // namespace curlpp
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "Option.inl"
 #endif
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_OPTION_HPP

@@ -27,7 +27,7 @@
 #include "buildconfig.h"
 #include "storage_trait.hpp"
 
-namespace cURLpp
+namespace curlpp
 {
 
    /**
@@ -123,6 +123,8 @@ namespace cURLpp
     */
    static ofile_trait stdout_trait( stdout );
 
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_FILE_TRAIT_HPP

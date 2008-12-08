@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -24,7 +24,7 @@
 #include <string>
 #include <iostream>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
@@ -35,19 +35,19 @@ int main(int, char **)
 {
   try
   {
-      cURLpp::Cleanup myCleanup;
+      curlpp::Cleanup myCleanup;
       
       // Creation of the URL option.
-      cURLpp::Easy myRequest;
-      myRequest.setOpt(new cURLpp::Options::Url(std::string("https://example.com")));
-      myRequest.setOpt(new cURLpp::Options::SslEngineDefault());
+      curlpp::Easy myRequest;
+      myRequest.setOpt(new curlpp::options::Url(std::string("https://example.com")));
+      myRequest.setOpt(new curlpp::options::SslEngineDefault());
       myRequest.perform();
     }
-  catch( cURLpp::RuntimeError &e )
+  catch( curlpp::RuntimeError &e )
     {
       std::cout << e.what() << std::endl;
     }
-  catch( cURLpp::LogicError &e )
+  catch( curlpp::LogicError &e )
     {
       std::cout << e.what() << std::endl;
     }

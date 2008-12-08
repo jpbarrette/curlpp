@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -25,7 +25,7 @@ template< typename CallbackType,
 	  typename DataType, 
 	  CURLoption CallbackOptionValue,
 	  CURLoption DataOptionValue >
-void cURLpp::Options::StorageOption< CallbackType,
+void curlpp::options::StorageOption< CallbackType,
 				     DataType,
 				     CallbackOptionValue,
 				     DataOptionValue >::setCallback(CallbackType callback)
@@ -37,7 +37,7 @@ template< typename CallbackType,
 	  typename DataType, 
 	  CURLoption CallbackOptionValue,
 	  CURLoption DataOptionValue >
-void cURLpp::Options::StorageOption< CallbackType,
+void curlpp::options::StorageOption< CallbackType,
 				     DataType,
 				     CallbackOptionValue,
 				     DataOptionValue >::setData(typename Utilspp::TypeTrait< DataType >::ParamType data)

@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -25,7 +25,7 @@
 
 #include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Multi.hpp>
 #include <curlpp/Options.hpp>
@@ -44,19 +44,19 @@ int main(int argc, char *argv[])
   char *url2 = argv[2];
   
   try {
-    cURLpp::Cleanup cleaner;
+    curlpp::Cleanup cleaner;
     
-    cURLpp::Easy request1;
-    cURLpp::Easy request2;
+    curlpp::Easy request1;
+    curlpp::Easy request2;
     
-    request1.setOpt(new cURLpp::Options::Url(url1)); 
-    request1.setOpt(new cURLpp::Options::Verbose(true)); 
+    request1.setOpt(new curlpp::options::Url(url1)); 
+    request1.setOpt(new curlpp::options::Verbose(true)); 
     
-    request2.setOpt(new cURLpp::Options::Url(url2)); 
-    request2.setOpt(new cURLpp::Options::Verbose(true)); 
+    request2.setOpt(new curlpp::options::Url(url2)); 
+    request2.setOpt(new curlpp::options::Verbose(true)); 
     
     int nbLeft;
-    cURLpp::Multi requests;
+    curlpp::Multi requests;
     requests.add(&request1);
     requests.add(&request2);
     
@@ -106,10 +106,10 @@ int main(int argc, char *argv[])
     /* See how the transfers went */
     /* 
        Multi::info returns a list of:
-       std::pair< cURLpp::Easy, cURLpp::Multi::Info >
+       std::pair< curlpp::Easy, curlpp::Multi::Info >
     */
-    cURLpp::Multi::Msgs msgs = requests.info();
-    for(cURLpp::Multi::Msgs::iterator pos = msgs.begin();
+    curlpp::Multi::Msgs msgs = requests.info();
+    for(curlpp::Multi::Msgs::iterator pos = msgs.begin();
 	pos != msgs.end();
 	pos++) {
       if(pos->second.msg == CURLMSG_DONE) {
@@ -124,10 +124,10 @@ int main(int argc, char *argv[])
       }
     }
   }
-  catch ( cURLpp::LogicError & e ) {
+  catch ( curlpp::LogicError & e ) {
     std::cout << e.what() << std::endl;
   }
-  catch ( cURLpp::RuntimeError & e ) {
+  catch ( curlpp::RuntimeError & e ) {
     std::cout << e.what() << std::endl;
   }
 

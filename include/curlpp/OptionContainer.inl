@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -25,34 +25,34 @@
 #define OPTION_CONTAINER_INL
 
 template< class OptionType >
-cURLpp::OptionContainer< OptionType >::OptionContainer(typename cURLpp::OptionContainer< OptionType >::ParamType value) 
+curlpp::OptionContainer< OptionType >::OptionContainer(typename curlpp::OptionContainer< OptionType >::ParamType value) 
 : mValue(value)
 {}
 
 
 template< class OptionType >
-cURLpp::OptionContainer< OptionType >::OptionContainer(cURLpp::OptionContainer< OptionType > &other) 
+curlpp::OptionContainer< OptionType >::OptionContainer(curlpp::OptionContainer< OptionType > &other) 
 : mValue(other.mValue)
 {}
 
 
 template< class OptionType >
 void
-cURLpp::OptionContainer< OptionType >::setValue(typename OptionContainer< OptionType >::ParamType value)
+curlpp::OptionContainer< OptionType >::setValue(typename OptionContainer< OptionType >::ParamType value)
 {
   mValue = value;
 }
 
 template< class OptionType >
-typename cURLpp::OptionContainer< OptionType >::ReturnType
-cURLpp::OptionContainer< OptionType >::getValue()
+typename curlpp::OptionContainer< OptionType >::ReturnType
+curlpp::OptionContainer< OptionType >::getValue()
 {
   return mValue;
 }
 
 template< class OptionType >
-typename cURLpp::OptionContainer< OptionType >::HandleOptionType
-cURLpp::OptionContainer< OptionType >::getHandleOptionValue()
+typename curlpp::OptionContainer< OptionType >::HandleOptionType
+curlpp::OptionContainer< OptionType >::getHandleOptionValue()
 {
   return mValue;
 }

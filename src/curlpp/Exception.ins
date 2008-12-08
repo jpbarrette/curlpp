@@ -2,11 +2,11 @@
 
 #include <stdexcept>
 
-namespace cURLpp
+namespace curlpp
 {
 
 template
-void cURLpp::raiseException<std::exception>(const std::exception &);
+void curlpp::raiseException<std::exception>(const std::exception &);
 
 template
 void raiseException<std::logic_error>(const std::logic_error &);
@@ -35,4 +35,4 @@ void raiseException<std::underflow_error>(const std::underflow_error &);
 template
 void raiseException<std::range_error>(const std::range_error &);
 
-} // namespace cURLpp
+} // namespace curlpp

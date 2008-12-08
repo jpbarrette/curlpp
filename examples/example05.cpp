@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -24,15 +24,10 @@
 #include <cstdlib>
 #include <cstring>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
-
-using namespace std;
-
-using namespace cURLpp;
-using namespace cURLpp::Options;
 
 #define MAX_FILE_LENGTH 20000
 
@@ -71,44 +66,48 @@ size_t WriteMemoryCallback(char* ptr, size_t size, size_t nmemb)
 
 void print() 
 {
-  cout << "Size: " << m_Size << endl;
-  cout << "Content: " << endl << m_pBuffer << endl;
+	std::cout << "Size: " << m_Size << std::endl;
+	std::cout << "Content: " << std::endl << m_pBuffer << std::endl;
 }
 
 
 int main(int argc, char *argv[])
 {
-  m_pBuffer = (char*) malloc(MAX_FILE_LENGTH * sizeof(char));
+	m_pBuffer = (char*) malloc(MAX_FILE_LENGTH * sizeof(char));
 
-  if(argc != 2) {
-    cerr << "Example 05: Wrong number of arguments" << endl 
-	      << "Example 05: Usage: example05 url" 
-	      << endl;
-    return EXIT_FAILURE;
-  }
-  char *url = argv[1];
-  
-  try {
-    Cleanup cleaner;
-    Easy request;
-    
-    // Set the writer callback to enable cURL 
-    // to write result in a memory area
-    Types::WriteFunctionFunctor functor(WriteMemoryCallback);
-    WriteFunction *test = new WriteFunction(functor);
-    request.setOpt(test);
-    
-    // Setting the URL to retrive.
-    request.setOpt(new Url(url));
-    request.setOpt(new Verbose(true));
-    request.perform();
+	if(argc != 2)
+	{
+		std::cerr << "Example 05: Wrong number of arguments" << std::endl 
+			<< "Example 05: Usage: example05 url" 
+			<< std::endl;
+		return EXIT_FAILURE;
+	}
+	char *url = argv[1];
 
-    print();
-  }
-  catch ( LogicError & e ) {
-    cout << e.what() << endl;
-  }
-  catch ( RuntimeError & e ) {
-    cout << e.what() << endl;
-  }
+	try
+	{
+		curlpp::Cleanup cleaner;
+		curlpp::Easy request;
+
+		// Set the writer callback to enable cURL 
+		// to write result in a memory area
+		curlpp::types::WriteFunctionFunctor functor(WriteMemoryCallback);
+		curlpp::options::WriteFunction *test = new curlpp::options::WriteFunction(functor);
+		request.setOpt(test);
+
+		// Setting the URL to retrive.
+		request.setOpt(new curlpp::options::Url(url));
+		request.setOpt(new curlpp::options::Verbose(true));
+		request.perform();
+
+		print();
+	}
+	catch ( curlpp::LogicError & e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch ( curlpp::RuntimeError & e )
+	{
+		std::cout << e.what() << std::endl;
+	}
 }

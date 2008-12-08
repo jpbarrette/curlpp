@@ -1,7 +1,7 @@
 /* config.win32.h Config for Win32 platform. See configure.ac  */
 /* config.h.in    Generated from configure.ac by autoheader.   */
 
-/* Define when building cURLpp itself */
+/* Define when building curlpp itself */
 /* DO NOT define or undefine this symbol if you are building from the IDE
 /* using solution files for VC9. Project files define or undefine this from within the IDE */
 //#define BUILDING_CURLPP

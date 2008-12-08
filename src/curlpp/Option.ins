@@ -6,7 +6,7 @@
 
 #include <iostream> 
 
-namespace cURLpp
+namespace curlpp
 {
 
 	/**
@@ -48,11 +48,11 @@ namespace cURLpp
      */
 
 	template
-	Option<cURLpp::Types::WriteFunctionFunctor>;
+	Option<curlpp::types::WriteFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostWriteFunction>;
+	Option<curlpp::types::BoostWriteFunction>;
 #endif
 
     /**
@@ -79,20 +79,20 @@ namespace cURLpp
 
 #if LIBCURL_VERSION_NUM >= 0x070c01
     template
-	Option<cURLpp::Types::ReadFunctionFunctor>;
+	Option<curlpp::types::ReadFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostReadFunction>;
+	Option<curlpp::types::BoostReadFunction>;
 #endif
 #else
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template
-	Option<cURLpp::Types::ReadFunctionFunctor>;
+	Option<curlpp::types::ReadFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostReadFunction>;
+	Option<curlpp::types::BoostReadFunction>;
 #endif // HAVE_BOOST
 #endif // CURLPP_ALLOW_NOT_AVAILABLE
 #endif // LIBCURL_VERSION_NUM
@@ -119,35 +119,35 @@ namespace cURLpp
 #endif // LIBCURL_VERSION_NUM
 
     template
-	Option<cURLpp::Types::ProgressFunctionFunctor>;
+	Option<curlpp::types::ProgressFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostProgressFunction>;
+	Option<curlpp::types::BoostProgressFunction>;
 #endif
 
     template
-	Option<cURLpp::Types::WriteFunctionFunctor>;
+	Option<curlpp::types::WriteFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostWriteFunction>;
+	Option<curlpp::types::BoostWriteFunction>;
 #endif
 
     template
-	Option<cURLpp::Types::DebugFunctionFunctor>;
+	Option<curlpp::types::DebugFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostDebugFunction>;
+	Option<curlpp::types::BoostDebugFunction>;
 #endif
 
     template
-	Option<cURLpp::Types::SslCtxFunctionFunctor>;
+	Option<curlpp::types::SslCtxFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
-	Option<cURLpp::Types::BoostSslCtxFunction>;
+	Option<curlpp::types::BoostSslCtxFunction>;
 #endif
     
       
@@ -238,7 +238,7 @@ namespace cURLpp
     template
 	Option<curl_off_t>;
     template
-	Option<cURLpp::Forms>;
+	Option<curlpp::Forms>;
     template
 	Option<std::string>;
     template

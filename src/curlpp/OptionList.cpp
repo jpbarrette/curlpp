@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -27,15 +27,15 @@
 #include "curlpp/OptionList.hpp"
 
 
-cURLpp::OptionList::OptionList()
+curlpp::OptionList::OptionList()
 {}
 
-cURLpp::OptionList::OptionList( const cURLpp::OptionList &rhs )
+curlpp::OptionList::OptionList( const curlpp::OptionList &rhs )
 {
    insert( rhs.mOptions );
 }
 
-cURLpp::OptionList::~OptionList()
+curlpp::OptionList::~OptionList()
 {
   mapType::iterator pos = mOptions.begin();
   while (pos != mOptions.end()) {
@@ -45,7 +45,7 @@ cURLpp::OptionList::~OptionList()
 }
 
 
-void cURLpp::OptionList::setOpt( cURLpp::OptionBase *option )
+void curlpp::OptionList::setOpt( curlpp::OptionBase *option )
 {
    mapType::iterator pos = mOptions.find(option->getOption());
    if( pos != mOptions.end() )
@@ -57,7 +57,7 @@ void cURLpp::OptionList::setOpt( cURLpp::OptionBase *option )
 }
 
 
-void cURLpp::OptionList::setOpt(const cURLpp::OptionList &options)
+void curlpp::OptionList::setOpt(const curlpp::OptionList &options)
 {
   for(mapType::const_iterator pos = options.mOptions.begin();
       pos != options.mOptions.end();
@@ -69,14 +69,14 @@ void cURLpp::OptionList::setOpt(const cURLpp::OptionList &options)
 
 
 void
-cURLpp::OptionList::setOpt( const cURLpp::OptionBase &option )
+curlpp::OptionList::setOpt( const curlpp::OptionBase &option )
 {
    setOpt(option.clone());
 }
 
 
 void
-cURLpp::OptionList::getOpt(cURLpp::OptionBase *option) const
+curlpp::OptionList::getOpt(curlpp::OptionBase *option) const
 {
    mapType::const_iterator pos = mOptions.find(option->getOption());
    if( pos != mOptions.end() )
@@ -91,7 +91,7 @@ cURLpp::OptionList::getOpt(cURLpp::OptionBase *option) const
 
 
 void
-cURLpp::OptionList::insert( const cURLpp::OptionList::mapType &other )
+curlpp::OptionList::insert( const curlpp::OptionList::mapType &other )
 {
     for( mapType::const_iterator pos = other.begin();
          pos != other.end();

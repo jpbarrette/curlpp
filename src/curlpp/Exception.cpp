@@ -3,7 +3,7 @@
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
-*    (cURLpp), to deal in the Software without restriction, 
+*    (curlpp), to deal in the Software without restriction, 
 *    including without limitation the rights to use, copy, modify, merge,
 *    publish, distribute, sublicense, and/or sell copies of the Software,
 *    and to permit persons to whom the Software is furnished to do so, 
@@ -24,125 +24,125 @@
 #include "curlpp/global.h"
 #include "curlpp/Exception.hpp"
 
-cURLpp::RuntimeError::~RuntimeError() throw()
+curlpp::RuntimeError::~RuntimeError() throw()
 {}
 
-cURLpp::RuntimeError::RuntimeError( const char *reason )
+curlpp::RuntimeError::RuntimeError( const char *reason )
   : std::runtime_error(std::string(reason))
 {}
 
-cURLpp::RuntimeError::RuntimeError( const std::string &reason )
+curlpp::RuntimeError::RuntimeError( const std::string &reason )
   : std::runtime_error(reason)
 {}
 
-cURLpp::LogicError::~LogicError() throw()
+curlpp::LogicError::~LogicError() throw()
 {}
 
-cURLpp::LogicError::LogicError( const char *reason )
+curlpp::LogicError::LogicError( const char *reason )
     : std::logic_error(std::string(reason))
 {}
 
-cURLpp::LogicError::LogicError( const std::string &reason )
+curlpp::LogicError::LogicError( const std::string &reason )
     : std::logic_error(reason)
 {}
 
-cURLpp::LibcurlRuntimeError::LibcurlRuntimeError( const std::string &reason, CURLcode code )
-    : cURLpp::RuntimeError(reason)
+curlpp::LibcurlRuntimeError::LibcurlRuntimeError( const std::string &reason, CURLcode code )
+    : curlpp::RuntimeError(reason)
     , mCode(code)
 {}
 
-cURLpp::LibcurlRuntimeError::LibcurlRuntimeError( const char *reason, CURLcode code )
-    : cURLpp::RuntimeError(reason)
+curlpp::LibcurlRuntimeError::LibcurlRuntimeError( const char *reason, CURLcode code )
+    : curlpp::RuntimeError(reason)
     , mCode(code)
 {}
 
-CURLcode cURLpp::LibcurlRuntimeError::whatCode() const throw()
+CURLcode curlpp::LibcurlRuntimeError::whatCode() const throw()
 {
    return mCode;
 }
 
-cURLpp::LibcurlLogicError::LibcurlLogicError( const std::string &reason, CURLcode code )
-    : cURLpp::LogicError(reason)
+curlpp::LibcurlLogicError::LibcurlLogicError( const std::string &reason, CURLcode code )
+    : curlpp::LogicError(reason)
     , mCode(code)
 {}
 
-cURLpp::LibcurlLogicError::LibcurlLogicError( const char *reason, CURLcode code )
-    : cURLpp::LogicError(reason)
+curlpp::LibcurlLogicError::LibcurlLogicError( const char *reason, CURLcode code )
+    : curlpp::LogicError(reason)
     , mCode(code)
 {}
 
-cURLpp::UnsetOption::UnsetOption(const std::string &reason)
-    : cURLpp::RuntimeError(reason)
+curlpp::UnsetOption::UnsetOption(const std::string &reason)
+    : curlpp::RuntimeError(reason)
 {};
 
-cURLpp::UnsetOption::UnsetOption(const char *reason)
-    : cURLpp::RuntimeError(reason)
+curlpp::UnsetOption::UnsetOption(const char *reason)
+    : curlpp::RuntimeError(reason)
 {};
 
-cURLpp::NotAvailable::NotAvailable()
-    : cURLpp::LogicError("This option was not available at compile time.")
+curlpp::NotAvailable::NotAvailable()
+    : curlpp::LogicError("This option was not available at compile time.")
 {};
 
-cURLpp::UnknowException::UnknowException() 
-  : cURLpp::RuntimeError("An unknown exception was thrown within a callback")
+curlpp::UnknowException::UnknowException() 
+  : curlpp::RuntimeError("An unknown exception was thrown within a callback")
 {}
 
-CURLcode cURLpp::LibcurlLogicError::whatCode() const throw()
+CURLcode curlpp::LibcurlLogicError::whatCode() const throw()
 {
    return mCode;
 }
 
-cURLpp::CallbackExceptionBase::CallbackExceptionBase() 
+curlpp::CallbackExceptionBase::CallbackExceptionBase() 
   : RuntimeError("Exception thrown within a callback")
 {}
     
-cURLpp::CallbackExceptionBase::CallbackExceptionBase(const CallbackExceptionBase &other) 
+curlpp::CallbackExceptionBase::CallbackExceptionBase(const CallbackExceptionBase &other) 
   : RuntimeError(other)
 {}
 
 
-void cURLpp::libcurlRuntimeAssert( const std::string &reason, CURLcode code )
+void curlpp::libcurlRuntimeAssert( const std::string &reason, CURLcode code )
 {
-  cURLpp::libcurlRuntimeAssert( reason.c_str(), code );
+  curlpp::libcurlRuntimeAssert( reason.c_str(), code );
 }
 
-void cURLpp::libcurlRuntimeAssert(const char *reason, CURLcode code)
+void curlpp::libcurlRuntimeAssert(const char *reason, CURLcode code)
 {
   if ( code != CURLE_OK )
-    throw cURLpp::LibcurlRuntimeError( reason, code );
+    throw curlpp::LibcurlRuntimeError( reason, code );
 }
 
-void cURLpp::libcurlLogicAssert( const std::string &reason, CURLcode code )
+void curlpp::libcurlLogicAssert( const std::string &reason, CURLcode code )
 {
   libcurlLogicAssert(reason.c_str(), code);
 }
 
-void cURLpp::libcurlLogicAssert( const char *reason, CURLcode code )
+void curlpp::libcurlLogicAssert( const char *reason, CURLcode code )
 {
   if ( code != CURLE_OK )
-    throw cURLpp::LibcurlLogicError( reason, code );
+    throw curlpp::LibcurlLogicError( reason, code );
 }
 
-void cURLpp::runtimeAssert( const std::string &reason, bool isOkay )
+void curlpp::runtimeAssert( const std::string &reason, bool isOkay )
 {
   runtimeAssert(reason.c_str(), isOkay);
 }
 
-void cURLpp::runtimeAssert( const char *reason, bool isOkay )
+void curlpp::runtimeAssert( const char *reason, bool isOkay )
 {
   if ( !isOkay )
-    throw cURLpp::RuntimeError( reason );
+    throw curlpp::RuntimeError( reason );
 }
 
-void cURLpp::logicAssert( const std::string &reason, bool isOkay )
+void curlpp::logicAssert( const std::string &reason, bool isOkay )
 {
   logicAssert(reason.c_str(), isOkay);
 }
 
-void cURLpp::logicAssert( const char *reason, bool isOkay )
+void curlpp::logicAssert( const char *reason, bool isOkay )
 {
    if ( !isOkay )
-     throw cURLpp::LogicError( reason );
+     throw curlpp::LogicError( reason );
 }
 
 #if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)

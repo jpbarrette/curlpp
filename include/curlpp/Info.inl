@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -26,39 +26,39 @@
 
 template< CURLINFO info, typename T >
 void
-cURLpp::Info< info, T >::get(cURLpp::Easy &handle, T &value)
+curlpp::Info< info, T >::get(curlpp::Easy &handle, T &value)
 {
-   cURLpp::InfoTypeConverter< T >::get(handle, info, value);
+   curlpp::InfoTypeConverter< T >::get(handle, info, value);
 }
 
 template< CURLINFO info, typename T >
 T
-cURLpp::Info< info, T >::get(cURLpp::Easy &handle)
+curlpp::Info< info, T >::get(curlpp::Easy &handle)
 {
   T value;
-  cURLpp::InfoTypeConverter< T >::get(handle, info, value);
+  curlpp::InfoTypeConverter< T >::get(handle, info, value);
   return value;
 }
 
 template< CURLINFO info, typename T >
 void
-cURLpp::NotAvailableInfo< info, T >::get(cURLpp::Easy &, T &)
+curlpp::NotAvailableInfo< info, T >::get(curlpp::Easy &, T &)
 {
-  throw cURLpp::NotAvailable();
+  throw curlpp::NotAvailable();
 }
 
 template< CURLINFO info, typename T >
 T
-cURLpp::NotAvailableInfo< info, T >::get(cURLpp::Easy &)
+curlpp::NotAvailableInfo< info, T >::get(curlpp::Easy &)
 {
-  throw cURLpp::NotAvailable();
+  throw curlpp::NotAvailable();
 }
 
 
 
 template< typename T >
 void
-cURLpp::InfoGetter::get(cURLpp::Easy &handle, 
+curlpp::InfoGetter::get(curlpp::Easy &handle, 
 	                CURLINFO info,
  			T &value)
 {
@@ -68,7 +68,7 @@ cURLpp::InfoGetter::get(cURLpp::Easy &handle,
 
 template< typename T >
 void
-cURLpp::InfoTypeConverter< T >::get(cURLpp::Easy &handle, 
+curlpp::InfoTypeConverter< T >::get(curlpp::Easy &handle, 
 				    CURLINFO info,
 				    T &value)
 {

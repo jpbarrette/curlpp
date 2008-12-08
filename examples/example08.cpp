@@ -3,7 +3,7 @@
 *    
 *    Permission is hereby granted, free of charge, to any person obtaining
 *    a copy of this software and associated documentation files 
-*    (cURLpp), to deal in the Software without restriction, 
+*    (curlpp), to deal in the Software without restriction, 
 *    including without limitation the rights to use, copy, modify, merge,
 *    publish, distribute, sublicense, and/or sell copies of the Software,
 *    and to permit persons to whom the Software is furnished to do so, 
@@ -23,61 +23,69 @@
 
 #include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
  
 
-using namespace std;
-
-using namespace cURLpp;
-
 
 class MyWindow
 {
+
 public:
-  int writeDebug(curl_infotype, char *, size_t)
-  {
-    raiseException(runtime_error("This is our exception."));
-    cout << "We never reach this line." << endl;
-    return 0;
-  }
+
+	int writeDebug(curl_infotype, char *, size_t)
+	{
+		curlpp::raiseException(std::runtime_error("This is our exception."));
+		std::cout << "We never reach this line." << std::endl;
+		return 0;
+	}
 };
+
 
 int main(int argc, char *argv[])
 {
-  if(argc != 2) {
-    cerr << "Example 8: Wrong number of arguments" << endl 
-	      << "Example 8: Usage: example8 url" 
-	      << endl;
-    return EXIT_FAILURE;
-  }
-  char *url = argv[1];
-     
-  MyWindow myWindow;
-  try {
-    Cleanup cleaner;
-    Easy request;
-    
-    using namespace Options;
-    request.setOpt(Verbose(true));
-    request.setOpt(DebugFunction(Types::DebugFunctionFunctor(&myWindow, 
-								     &MyWindow::writeDebug)));
-    request.setOpt(Url(url));
-    
-    request.perform();
-  }
-  catch ( LogicError & e ) {
-    cout << e.what() << endl;
-  }
-  catch ( RuntimeError & e ) {
-    cout << e.what() << endl;
-  }
-  catch ( runtime_error &e ) {
-    cout << e.what() << endl;
-  }
-  
-  return 0;
+	if(argc != 2)
+	{
+		std::cerr << "Example 8: Wrong number of arguments" << std::endl 
+			<< "Example 8: Usage: example8 url" 
+			<< std::endl;
+		return EXIT_FAILURE;
+	}
+	char *url = argv[1];
+
+	MyWindow myWindow;
+
+	try
+	{
+		curlpp::Cleanup cleaner;
+		curlpp::Easy request;
+
+		using namespace curlpp::Options;
+		request.setOpt(Verbose(true));
+		request.setOpt(DebugFunction(curlpp::types::DebugFunctionFunctor(&myWindow, 
+			&MyWindow::writeDebug)));
+		request.setOpt(Url(url));
+
+		request.perform();
+	}
+
+	catch ( curlpp::LogicError & e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	catch ( curlpp::RuntimeError & e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	catch ( std::runtime_error &e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	return 0;
 }
 

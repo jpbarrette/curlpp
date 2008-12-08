@@ -32,11 +32,11 @@
 #include <utilspp/clone_ptr.hpp>
 
 
-namespace cURLpp
+namespace curlpp
 {
   class FormPart;
   
-  typedef std::list< utilspp::clone_ptr< cURLpp::FormPart > > Forms;
+  typedef std::list< utilspp::clone_ptr< curlpp::FormPart > > Forms;
 
   /**
    * This class is used internally to wrap over curl_httppost
@@ -229,6 +229,8 @@ namespace cURLpp
       const std::string mContentType;
     };
   }
-}
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif //CURLPP_FORM_HPP

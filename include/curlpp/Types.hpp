@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -32,10 +32,10 @@
 
 #include <utilspp/Functors.hpp>
 
-namespace cURLpp
+namespace curlpp
 {
 
-  namespace Types
+  namespace types
   {
 
 	  typedef utilspp::Functor< 
@@ -69,7 +69,12 @@ namespace cURLpp
     typedef boost::function4< int, double, double, double, double > BoostProgressFunction;
 #endif
 
-  }
-}
+  } // namespace types
+
+	namespace Types = types;
+
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_TYPES_HPP

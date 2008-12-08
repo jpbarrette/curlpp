@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -24,19 +24,19 @@
 #include "curlpp/global.h"
 #include "curlpp/OptionBase.hpp"
 
-cURLpp::OptionBase::OptionBase(CURLoption option)
+curlpp::OptionBase::OptionBase(CURLoption option)
   : mOption(option)
 {};
 
-cURLpp::OptionBase::~OptionBase()
+curlpp::OptionBase::~OptionBase()
 {};
 
-bool cURLpp::OptionBase::operator<(const cURLpp::OptionBase &rhs) const 
+bool curlpp::OptionBase::operator<(const curlpp::OptionBase &rhs) const 
 {
    return mOption < rhs.mOption;
 }
 
-CURLoption cURLpp::OptionBase::getOption() const 
+CURLoption curlpp::OptionBase::getOption() const 
 {
    return mOption;
 }

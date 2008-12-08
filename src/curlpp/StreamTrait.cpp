@@ -23,7 +23,7 @@
 
 #include "curlpp/StreamTrait.hpp"
 
-using namespace cURLpp;
+using namespace curlpp;
 
 size_t IStreamTrait::read( void *buffer, size_t size )
 {

@@ -3,7 +3,7 @@
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
- *    (cURLpp), to deal in the Software without restriction, 
+ *    (curlpp), to deal in the Software without restriction, 
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
  *    and to permit persons to whom the Software is furnished to do so, 
@@ -25,68 +25,68 @@
 #include <cstdio>
 #include <cstring>
 
-#include <curlpp/cURLpp.hpp>
+#include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
-
-using namespace std;
-
-using namespace cURLpp;
-using namespace cURLpp::Options;
-
 
 #define MAX_FILE_LENGTH 20000
 
 size_t 
 FileCallback(FILE *f, char* ptr, size_t size, size_t nmemb)
 {
-  return fwrite(ptr, size, nmemb, f);
+	return fwrite(ptr, size, nmemb, f);
 };
 
 
 int main(int argc, char *argv[])
 {
-  if(argc != 3) {
-    cerr << argv[0] << ": Wrong number of arguments" << endl 
-	      << argv[0] << ": Usage: " << " url file" 
-	      << endl;
+	if(argc != 3)
+	{
+		std::cerr << argv[0] << ": Wrong number of arguments" << std::endl 
+			<< argv[0] << ": Usage: " << " url file" 
+			<< std::endl;
 
-    return EXIT_FAILURE;
-  }
+		return EXIT_FAILURE;
+	}
 
-  char *url = argv[1];
-  char *filename = argv[2];
-  FILE * file = fopen(filename, "w");
-  if (!file)
-  {
-    cerr << "Error opening " << filename << endl;
-    return EXIT_FAILURE;
-  }
-  
-  try {
-    Cleanup cleaner;
-    Easy request;
-    
-    // Set the writer callback to enable cURL 
-    // to write result in a memory area
-    Types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), file));
-    WriteFunction *test = new WriteFunction(functor);
-    request.setOpt(test);
-    
-    // Setting the URL to retrive.
-    request.setOpt(new Url(url));
-    request.setOpt(new Verbose(true));
-    request.perform();
+	char *url = argv[1];
+	char *filename = argv[2];
+	FILE * file = fopen(filename, "w");
+	if (!file)
+	{
+		std::cerr << "Error opening " << filename << std::endl;
+		return EXIT_FAILURE;
+	}
 
-    return EXIT_SUCCESS;
-  }
-  catch ( LogicError & e ) {
-    cout << e.what() << endl;
-  }
-  catch ( RuntimeError & e ) {
-    cout << e.what() << endl;
-  }
+	try
+	{
+		curlpp::Cleanup cleaner;
+		curlpp::Easy request;
 
-  return EXIT_FAILURE;
+		// Set the writer callback to enable cURL 
+		// to write result in a memory area
+		curlpp::types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), file));
+		curlpp::options::WriteFunction *test = new curlpp::options::WriteFunction(functor);
+		request.setOpt(test);
+
+		// Setting the URL to retrive.
+		request.setOpt(new curlpp::options::Url(url));
+		request.setOpt(new curlpp::options::Verbose(true));
+		request.perform();
+
+		return EXIT_SUCCESS;
+	}
+
+	catch ( curlpp::LogicError & e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	catch ( curlpp::RuntimeError & e )
+	{
+		std::cout << e.what() << std::endl;
+	}
+
+	return EXIT_FAILURE;
 }
