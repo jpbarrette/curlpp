@@ -10,7 +10,7 @@ int utilspp::PrivateMembers::mNbElements = 0;
 utilspp::PrivateMembers::LifetimeTracker::LifetimeTracker( unsigned int
       longevity ) 
 : 
-mLongevity( longevity )
+mLongevity(longevity)
 {}
 
 utilspp::PrivateMembers::LifetimeTracker::~LifetimeTracker()
@@ -18,8 +18,8 @@ utilspp::PrivateMembers::LifetimeTracker::~LifetimeTracker()
 
 bool
 utilspp::PrivateMembers::LifetimeTracker::compare( 
-      const LifetimeTracker *l, 
-      const LifetimeTracker *r 
+      const LifetimeTracker * l, 
+      const LifetimeTracker * r 
       )
 {
    return l->mLongevity < r->mLongevity;

@@ -43,7 +43,7 @@ namespace curlpp
     {
     public:
       void setCallback(CallbackType callback);
-      void setData(typename Utilspp::TypeTrait< DataType >::ParamType data);
+      void setData(typename Utilspp::TypeTrait<DataType>::ParamType data);
     };
 
   } // namespace options

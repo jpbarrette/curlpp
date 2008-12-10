@@ -24,18 +24,18 @@
 #ifndef LIFETIME_DEFAULT_INL
 #define LIFETIME_DEFAULT_INL
 
-template< typename T >
+template<typename T>
 void 
-utilspp::LifetimeDefault< T >::scheduleDestruction( T *, void (*func)() )
+utilspp::LifetimeDefault<T>::scheduleDestruction(T *, void (* func)())
 {
    std::atexit(func);
 }
 
-template< typename T >
+template<typename T>
 void
-utilspp::LifetimeDefault< T >::onDeadReference()
+utilspp::LifetimeDefault<T>::onDeadReference()
 {
-   throw std::logic_error( "Dead reference detected" );
+   throw std::logic_error("Dead reference detected");
 }
 
 

@@ -30,7 +30,7 @@ void curlpp::options::StorageOption< CallbackType,
 				     CallbackOptionValue,
 				     DataOptionValue >::setCallback(CallbackType callback)
 {
-  setOpt(new OptionTrait< CallbackType, CallbackOptionValue >(callback));
+  setOpt(new OptionTrait<CallbackType, CallbackOptionValue>(callback));
 }
 
 template< typename CallbackType, 
@@ -40,7 +40,7 @@ template< typename CallbackType,
 void curlpp::options::StorageOption< CallbackType,
 				     DataType,
 				     CallbackOptionValue,
-				     DataOptionValue >::setData(typename Utilspp::TypeTrait< DataType >::ParamType data)
+				     DataOptionValue >::setData(typename Utilspp::TypeTrait<DataType>::ParamType data)
 {
-  setOpt(new OptionTrait< DataType, DataOptionValue >(data));
+  setOpt(new OptionTrait<DataType, DataOptionValue>(data));
 }

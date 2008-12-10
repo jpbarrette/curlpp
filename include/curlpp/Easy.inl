@@ -21,8 +21,8 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-template< typename T >
-void curlpp::Easy::getInfo(CURLINFO info, T &value)
+template<typename T>
+void curlpp::Easy::getInfo(CURLINFO info, T & value)
 {
   myCurl->getInfo(info, value);
 }

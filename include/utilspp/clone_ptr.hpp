@@ -40,7 +40,7 @@ namespace utilspp
   //
   // So, it means that the class we stores, needs a "clone"
   // member.
-  template < typename T > 
+  template <typename T> 
   class clone_ptr
   {
   public:

@@ -47,13 +47,13 @@ namespace curlpp
           * Returns the file size. The file has to be opened before for this to
           * succeed.
           */
-         bool size( long &size );
+         bool size(long & size);
 
          /**
           * Returns file name. Returns NULL if the file xas specified using the 'FILE'
           * constructor. If the file is not open or an error occured, false is returned.
           */
-         const char *name()
+         const char * name()
          {
             return m_filename.c_str();
          }
@@ -62,7 +62,7 @@ namespace curlpp
           * open the file using 'open_mode'. Returns true if the file was already
           * open or has been open successfully.
           */
-         bool open( const char *open_mode );
+         bool open(const char * open_mode);
 
          /**
           * close the file. Returns true if the file was already closed or closed
@@ -72,19 +72,19 @@ namespace curlpp
          bool close();
 
       protected:
-         FILE *m_file;
+         FILE * m_file;
          std::string m_filename;
 
          /**
           * 'FILE' constructor. The file will never be closed. It's the caller
           * responsibility to close it.
           */
-         file_trait( FILE *file );
+         file_trait(FILE * file);
 
          /**
           * File name constructor. The file will be opened and closed when needed.
           */
-         file_trait( const char *filename );
+         file_trait(const char * filename);
    };
 
    /**
@@ -94,10 +94,10 @@ namespace curlpp
    {
 
       public:
-         ofile_trait( FILE *file );
-         ofile_trait( const char *filename );
+         ofile_trait(FILE * file);
+         ofile_trait(const char * filename);
 
-         size_t write( void *buffer, size_t size );
+         size_t write(void * buffer, size_t size);
    };
 
    /**
@@ -107,21 +107,21 @@ namespace curlpp
    {
 
       public:
-         ifile_trait( FILE *file );
-         ifile_trait( const char *filename );
+         ifile_trait(FILE * file);
+         ifile_trait(const char * filename);
 
-         size_t read( void *buffer, size_t size );
+         size_t read(void * buffer, size_t size);
    };
 
    /**
     * standard input trait
     */
-   static ifile_trait stdin_trait( stdin );
+   static ifile_trait stdin_trait(stdin);
 
    /**
     * standard output trait
     */
-   static ofile_trait stdout_trait( stdout );
+   static ofile_trait stdout_trait(stdout);
 
 } // namespace curlpp
 

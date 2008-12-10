@@ -26,16 +26,16 @@
 
 namespace utilspp
 {
-  template< typename Incoming >
+  template<typename Incoming>
   class BinderFirst : public FunctorImpl< typename Incoming::ResultType,
 					  typename Incoming::ParmList::tail >
   {
-    typedef utilspp::Functor< typename Incoming::ResultType, typename Incoming::ParmList::tail > Outgoing;
+    typedef utilspp::Functor<typename Incoming::ResultType, typename Incoming::ParmList::tail> Outgoing;
     typedef typename Incoming::Parm1 Bound;
     typedef typename Incoming::ResultType ResultType;
     
   public:
-    BinderFirst(const Incoming& fun, Bound bound)
+    BinderFirst(const Incoming & fun, Bound bound)
       : mFun(fun), mBound(bound)
     {}
 
@@ -92,12 +92,12 @@ namespace utilspp
     Bound mBound;
   };
   
-  template< typename R, class TList >
-  Functor<R, typename TList::tail> BindFirst(const Functor<R, TList>& fun,
+  template<typename R, class TList>
+  Functor<R, typename TList::tail> BindFirst(const Functor<R, TList> & fun,
 					     typename TList::head bound)
   {
-    typedef Functor< R, TList > Incoming;
-    typedef Functor< R, typename TList::tail > Outgoing;
+    typedef Functor<R, TList> Incoming;
+    typedef Functor<R, typename TList::tail> Outgoing;
     
     return Outgoing(std::auto_ptr<typename Outgoing::Impl>(new BinderFirst<Incoming>(fun, bound)));
   }

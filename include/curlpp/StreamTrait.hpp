@@ -40,10 +40,10 @@ namespace curlpp
          virtual ~IStreamTrait()
          {}
 
-         IStreamTrait( std::istream* file ) : mFile( file )
+         IStreamTrait(std::istream* file ) : mFile( file)
          {}
 
-         size_t read( void *buffer, size_t length );
+         size_t read(void * buffer, size_t length);
 
       protected:
          std::istream* mFile;
@@ -59,10 +59,10 @@ namespace curlpp
          virtual ~OStreamTrait()
          {}
 
-         OStreamTrait( std::ostream* file ) : mFile( file )
+         OStreamTrait(std::ostream* file ) : mFile( file)
          {}
 
-         size_t write( void *buffer, size_t length );
+         size_t write(void * buffer, size_t length);
 
       protected:
          std::ostream* mFile;

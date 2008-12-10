@@ -29,7 +29,7 @@
 
 namespace utilspp
 {
-   template < typename T = utilspp::NullType >
+   template <typename T = utilspp::NullType>
       struct ThreadingSingle
       {
          struct mutex
@@ -41,7 +41,7 @@ namespace utilspp
          struct lock
          {
             lock();
-            lock( mutex &m );
+            lock(mutex & m);
          };
 
          typedef T VolatileType;

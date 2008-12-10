@@ -31,91 +31,95 @@
 
 namespace curlpp
 {
-  
-  class CURLPPAPI Easy : public OptionList
-  {
-  public: 
-    friend struct InfoGetter;
-
-    Easy();
-
-    /**
-     * This allow to have a handle, which might have
-     * some option set, but we don't care about them.
-     */
-    Easy(std::auto_ptr< CurlHandle > handle);
-    virtual ~Easy();
-
-    /**
-     * it will call the curl_easy_perform function will all the options
-     * previously set for this handle.
-     */
-    void perform();
-	
-    /**
-     * This function will set the option value of the OptionBase to the 
-     * handle. 
-     *
-     * Note: be carefull when using this function, see 
-     * curlpp::OptionList::setOpt(OptionBase *option) function for more
-     * details.
-     */
-    virtual void setOpt(curlpp::OptionBase *option);
-
-    /**
-     * This function will set the option value of the OptionBase
-     * to the handle.
-     *
-     * Note: be carefull when using this function, see 
-     * curlpp::OptionList::setOpt(OptionBase *option) function for more
-     * details.
-     */
-    virtual void setOpt(const curlpp::OptionBase &option);
 
 	/**
-     * This function will call the setOpt on each options
-     * contained by * the option list passed in argument.
-     */
-    virtual void setOpt(const curlpp::OptionList &options);
+	* Easy class.
+	* Detailed description.
+	*/
+	class CURLPPAPI Easy : public OptionList
+	{
+	public: 
+		friend struct InfoGetter;
 
-    /**
-     * This function will create OptionTrait class with the value given and call
-     * virtual void setOpt(const curlpp::OptionBase &option) with it.
-     */
-	template<class OptionTrait>
-	void setOpt(typename OptionTrait::ParamType);
+		Easy();
 
-	/*
-	 * This function empties the option collection and reset all options
-	 * to their default value
-	 */
-	virtual void reset ();
+		/**
+		* This allow to have a handle, which might have
+		* some option set, but we don't care about them.
+		*/
+		Easy(std::auto_ptr<CurlHandle> handle);
+		virtual ~Easy();
 
-    /**
-     * This function will return the cURL * handle.
-     * DO NOT use this, unless you REALLY know what you
-     * are doing.
-     */
-    CURL *getHandle() const;
+		/**
+		* it will call the curl_easy_perform function will all the options
+		* previously set for this handle.
+		*/
+		void perform();
 
-    CurlHandle & getCurlHandle() { return *myCurl; }
-    const CurlHandle & getCurlHandle() const { return *myCurl; }
-    
-  private:
-    /**
-     * This is the function that curlpp::InfoGetter will call
-     * to retreive option.
-     */
-    template< typename T >
-    void getInfo(CURLINFO info, T &value);
-      
-    std::auto_ptr< curlpp::CurlHandle > myCurl;
-  };
+		/**
+		* This function will set the option value of the OptionBase to the 
+		* handle. 
+		*
+		* Note: be carefull when using this function, see 
+		* curlpp::OptionList::setOpt(OptionBase * option) function for more
+		* details.
+		*/
+		virtual void setOpt(curlpp::OptionBase * option);
+
+		/**
+		* This function will set the option value of the OptionBase
+		* to the handle.
+		*
+		* Note: be carefull when using this function, see 
+		* curlpp::OptionList::setOpt(OptionBase * option) function for more
+		* details.
+		*/
+		virtual void setOpt(const curlpp::OptionBase & option);
+
+		/**
+		* This function will call the setOpt on each options
+		* contained by * the option list passed in argument.
+		*/
+		virtual void setOpt(const curlpp::OptionList & options);
+
+		/**
+		* This function will create OptionTrait class with the value given and call
+		* virtual void setOpt(const curlpp::OptionBase & option) with it.
+		*/
+		template<class OptionTrait>
+		void setOpt(typename OptionTrait::ParamType);
+
+		/*
+		* This function empties the option collection and reset all options
+		* to their default value
+		*/
+		virtual void reset ();
+
+		/**
+		* This function will return the cURL * handle.
+		* DO NOT use this, unless you REALLY know what you
+		* are doing.
+		*/
+		CURL * getHandle() const;
+
+		CurlHandle & getCurlHandle() { return *myCurl; }
+		const CurlHandle & getCurlHandle() const { return *myCurl; }
+
+	private:
+		/**
+		* This is the function that curlpp::InfoGetter will call
+		* to retreive option.
+		*/
+		template<typename T>
+		void getInfo(CURLINFO info, T & value);
+
+		std::auto_ptr<curlpp::CurlHandle> myCurl;
+	};
 
 } // namespace curlpp
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "Easy.inl"
+#include "Easy.inl"
 #endif
 
 // Not quite sure if we shouldn't pass a const handle and clone it instead.

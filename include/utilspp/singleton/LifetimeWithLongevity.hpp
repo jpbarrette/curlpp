@@ -31,22 +31,22 @@
 namespace utilspp
 {
    
-   template< typename T >
-   unsigned int getLongevity( T *p );
+   template<typename T>
+   unsigned int getLongevity(T * p);
 
    /**
     * Assigns an object a longevity. Ensures ordered destructions of objects
     * registered thusly during the exit sequence of the application.
     */
-  template< typename T, typename TDestroyer >
-  void setLongevity(T *obj, 
+  template<typename T, typename TDestroyer>
+  void setLongevity(T * obj, 
 		    unsigned int longevity, 
-		    TDestroyer d = utilspp::PrivateMembers::Deleter< T >::deleteObject);
+		    TDestroyer d = utilspp::PrivateMembers::Deleter<T>::deleteObject);
   
-  template< typename T >
+  template<typename T>
   struct LifetimeWithLongevity
   {
-    static void scheduleDestruction( T *obj, void (*func)() );
+    static void scheduleDestruction(T * obj, void (* func)());
     static void onDeadReference();
   };
 }

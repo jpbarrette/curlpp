@@ -27,22 +27,22 @@
 namespace utilspp
 {
 
-  template< typename U >
+  template<typename U>
   struct TypeTrait
   {
     typedef U ParamType;
     typedef U UnConst;
   };
 
-  template< typename V >
-  struct TypeTrait< const V >
+  template<typename V>
+  struct TypeTrait<const V>
   {
-    typedef typename Utilspp::TypeTrait< V >::ParamType ParamType;
+    typedef typename Utilspp::TypeTrait<V>::ParamType ParamType;
     typedef V UnConst;
   };
 
-  template< typename V >
-  struct TypeTrait< V* >
+  template<typename V>
+  struct TypeTrait<V*>
   {
     typedef V* ParamType; 
     typedef V* UnConst;

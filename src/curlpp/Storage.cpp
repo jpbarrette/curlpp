@@ -37,150 +37,150 @@
 
 
 curlpp::BodyStorage::BodyStorage(
-   curlpp::Curl *parent,
-   curlpp::OutputTrait *trait,
+   curlpp::Curl * parent,
+   curlpp::OutputTrait * trait,
    bool own
 )
       :
-      StorageBase< curlpp::OutputTrait >( parent, trait, &stdoutTrait, own )
+      StorageBase<curlpp::OutputTrait>(parent, trait, &stdoutTrait, own)
 {}
 
 size_t curlpp::BodyStorage::writeCallback(
-   void *buffer,
+   void * buffer,
    size_t size,
    size_t nitems,
-   void *outstream
+   void * outstream
 )
 {
-   curlpp::OutputTrait * trait = static_cast< curlpp::OutputTrait *>( outstream );
-   return trait->write( buffer, size * nitems );
+   curlpp::OutputTrait * trait = static_cast< curlpp::OutputTrait *>(outstream);
+   return trait->write(buffer, size * nitems);
 }
 
 void curlpp::BodyStorage::setCallback()
 {
-   mParent->writeFunction( &writeCallback );
+   mParent->writeFunction(&writeCallback);
 }
 
 void curlpp::BodyStorage::setCallbackData()
 {
-   mParent->writeData( mTrait );
+   mParent->writeData(mTrait);
 }
 
 void curlpp::HeaderStorage::setCallback()
 {
-   mParent->writeHeaderFunction( &writeCallback );
+   mParent->writeHeaderFunction(&writeCallback);
 }
 
 void curlpp::HeaderStorage::setCallbackData()
 {
-   mParent->writeHeaderData( mTrait );
+   mParent->writeHeaderData(mTrait);
 }
 
 size_t curlpp::HeaderStorage::writeCallback(
-   void *buffer,
+   void * buffer,
    size_t size,
    size_t nitems,
-   void *outstream
+   void * outstream
 )
 {
-   curlpp::OutputTrait * trait = static_cast< curlpp::OutputTrait *>( outstream );
-   return trait->write( buffer, size * nitems );
+   curlpp::OutputTrait * trait = static_cast< curlpp::OutputTrait *>(outstream);
+   return trait->write(buffer, size * nitems);
 }
 
 void curlpp::InputStorage::setCallbackData()
 {
-   mParent->readData( mTrait );
+   mParent->readData(mTrait);
 }
 
 void curlpp::InputStorage::setCallback()
 {
-   mParent->readFunction( &readCallback );
+   mParent->readFunction(&readCallback);
 }
 
 size_t curlpp::InputStorage::readCallback(
-   void *buffer,
+   void * buffer,
    size_t size,
    size_t nmemb,
-   void *instream
+   void * instream
 )
 {
-   curlpp::InputTrait * trait = static_cast< curlpp::InputTrait *>( instream );
-   return trait->read( buffer, size * nmemb );
+   curlpp::InputTrait * trait = static_cast< curlpp::InputTrait *>(instream);
+   return trait->read(buffer, size * nmemb);
 }
 
 void curlpp::ProgressStorage::setCallback()
 {
-   mParent->progressFunction( &progressCallback );
+   mParent->progressFunction(&progressCallback);
 }
 
 void curlpp::ProgressStorage::setCallbackData()
 {
-   mParent->progressData( mTrait );
+   mParent->progressData(mTrait);
 }
 
 int curlpp::ProgressStorage::progressCallback(
-   void *clientp,
+   void * clientp,
    double dltotal,
    double dlnow,
    double ultotal,
    double ulnow
 )
 {
-   curlpp::ProgressTrait * trait = static_cast< curlpp::ProgressTrait *>( clientp );
-   return !( trait->progressFunction( dltotal, dlnow, ultotal, ulnow ) );
+   curlpp::ProgressTrait * trait = static_cast< curlpp::ProgressTrait *>(clientp);
+   return !(trait->progressFunction( dltotal, dlnow, ultotal, ulnow ));
 }
 
 void curlpp::PasswdStorage::setCallback()
 {
-   mParent->passwdFunction( &passwdCallback );
+   mParent->passwdFunction(&passwdCallback);
 }
 
 void curlpp::PasswdStorage::setCallbackData()
 {
-   mParent->passwdData( mTrait );
+   mParent->passwdData(mTrait);
 }
 
 int curlpp::PasswdStorage::passwdCallback(
-   void *client,
-   char *prompt,
-   char *buffer,
+   void * client,
+   char * prompt,
+   char * buffer,
    int buflen
 )
 {
-   curlpp::PasswdTrait * trait = static_cast< curlpp::PasswdTrait * >( client );
-   return !( trait->passwdFunction( prompt, buffer, buflen ) );
+   curlpp::PasswdTrait * trait = static_cast<curlpp::PasswdTrait *>(client);
+   return !(trait->passwdFunction(prompt, buffer, buflen));
 }
 
 void curlpp::DebugStorage::setCallback()
 {
-   mParent->debugFunction( &debugCallback );
+   mParent->debugFunction(&debugCallback);
 }
 
 void curlpp::DebugStorage::setCallbackData()
 {
-   mParent->debugData( mTrait );
+   mParent->debugData(mTrait);
 }
 
 int curlpp::DebugStorage::debugCallback(
    CURL *,
    curlpp::debug::Type type,
-   char *buffer,
+   char * buffer,
    size_t len,
-   void *ptr
+   void * ptr
 )
 {
-   curlpp::DebugTrait * trait = static_cast< curlpp::DebugTrait * >( ptr );
-   trait->debugFunction( type, buffer, len );
+   curlpp::DebugTrait * trait = static_cast<curlpp::DebugTrait *>(ptr);
+   trait->debugFunction(type, buffer, len);
    return 0;
 }
 
 #if LIBCURL_VERSION_NUM >= 0x070b01
-curlpp::Storage< curlpp::PasswdStorage >::Storage( curlpp::Curl * )
+curlpp::Storage<curlpp::PasswdStorage>::Storage(curlpp::Curl *)
 {}
 
-void curlpp::Storage< curlpp::PasswdStorage >::trait( curlpp::PasswdTrait *, bool )
+void curlpp::Storage<curlpp::PasswdStorage>::trait(curlpp::PasswdTrait *, bool)
 {
-  curlpp::runtimeAssert( false, "The CURLOPT_PASSWDFUNCTION option has been deprecated." );
+  curlpp::runtimeAssert(false, "The CURLOPT_PASSWDFUNCTION option has been deprecated.");
 }
 #endif
 

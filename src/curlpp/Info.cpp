@@ -8,22 +8,22 @@
 namespace curlpp 
 {
 
-template< >
+template<>
 void
-InfoTypeConverter< std::string >::get(curlpp::Easy &handle, 
+InfoTypeConverter<std::string>::get(curlpp::Easy & handle, 
 				      CURLINFO info,
-				      std::string &value)
+				      std::string & value)
 {
-  char *tmp;
+  char * tmp;
   InfoGetter::get(handle, info, tmp);
   value = tmp;
 }
 
-template< >
+template<>
 void 
-InfoTypeConverter< std::list< std::string > >::get(curlpp::Easy & handle,
+InfoTypeConverter<std::list<std::string> >::get(curlpp::Easy & handle,
 						   CURLINFO info,
-						   std::list< std::string > &value)
+						   std::list<std::string> & value)
 { 
   curl_slist * tmpList = NULL;
   InfoGetter::get(handle, info, tmpList);
@@ -31,20 +31,20 @@ InfoTypeConverter< std::list< std::string > >::get(curlpp::Easy & handle,
   value = slist.list();
 }
 
-template< >
+template<>
 void
-InfoTypeConverter< long >::get(curlpp::Easy &handle, 
+InfoTypeConverter<long>::get(curlpp::Easy & handle, 
 			       CURLINFO info,
-			       long &value)
+			       long & value)
 {
   InfoGetter::get(handle, info, value);
 }
 
-template< >
+template<>
 void
-InfoTypeConverter< double >::get(curlpp::Easy &handle, 
+InfoTypeConverter<double>::get(curlpp::Easy & handle, 
 				 CURLINFO info,
-				 double &value)
+				 double & value)
 {
   curl_off_t tmp;
   InfoGetter::get(handle, info, tmp);

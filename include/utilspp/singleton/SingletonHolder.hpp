@@ -35,14 +35,14 @@ namespace utilspp
 {
   template
   < class T,
-    template < class > class CreationPolicy = utilspp::CreationUsingNew,
-    template < class > class LifetimePolicy = utilspp::LifetimeDefault,
-    template < class > class ThreadingModel = utilspp::ThreadingSingle >
+    template <class> class CreationPolicy = utilspp::CreationUsingNew,
+    template <class> class LifetimePolicy = utilspp::LifetimeDefault,
+    template <class> class ThreadingModel = utilspp::ThreadingSingle >
   class SingletonHolder
   {
   public:
     //the accessor method.
-    static T& instance();
+    static T & instance();
     static void makeInstance();
     static void terminate();
          
@@ -54,7 +54,7 @@ namespace utilspp
     static void destroySingleton();
          
   private:
-    typedef typename ThreadingModel< T * >::VolatileType InstanceType;
+    typedef typename ThreadingModel<T *>::VolatileType InstanceType;
     static InstanceType mInstance;
     static bool mDestroyed;
   };

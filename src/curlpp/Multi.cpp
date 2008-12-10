@@ -48,7 +48,7 @@ curlpp::Multi::~Multi()
 }
 
 void
-curlpp::Multi::add(const curlpp::Easy *handle)
+curlpp::Multi::add(const curlpp::Easy * handle)
 {
   CURLMcode code = curl_multi_add_handle(mMultiHandle, handle->getHandle());
   if(code != CURLM_CALL_MULTI_PERFORM) {
@@ -60,7 +60,7 @@ curlpp::Multi::add(const curlpp::Easy *handle)
 }
 
 void
-curlpp::Multi::remove(const curlpp::Easy *handle)
+curlpp::Multi::remove(const curlpp::Easy * handle)
 {
   CURLMcode code = curl_multi_remove_handle(mMultiHandle, handle->getHandle());
   if(code != CURLM_CALL_MULTI_PERFORM) {
@@ -72,7 +72,7 @@ curlpp::Multi::remove(const curlpp::Easy *handle)
 }
 
 bool
-curlpp::Multi::perform(int *nbHandles)
+curlpp::Multi::perform(int * nbHandles)
 {
   CURLMcode code = curl_multi_perform(mMultiHandle, nbHandles);
   if(code == CURLM_CALL_MULTI_PERFORM) {
@@ -87,7 +87,7 @@ curlpp::Multi::perform(int *nbHandles)
 }
 
 void
-curlpp::Multi::fdset(fd_set *read, fd_set *write, fd_set *exc, int *max)
+curlpp::Multi::fdset(fd_set * read, fd_set * write, fd_set * exc, int * max)
 {
   CURLMcode code = curl_multi_fdset(mMultiHandle, read, write, exc, max);
   if(code != CURLM_CALL_MULTI_PERFORM) {
@@ -100,7 +100,7 @@ curlpp::Multi::fdset(fd_set *read, fd_set *write, fd_set *exc, int *max)
 curlpp::Multi::Msgs
 curlpp::Multi::info()
 {
-  CURLMsg *msg; /* for picking up messages with the transfer status */
+  CURLMsg * msg; /* for picking up messages with the transfer status */
   
   int msgsInQueue;
   Msgs result;

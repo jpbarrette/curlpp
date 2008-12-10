@@ -25,11 +25,11 @@
 
 using namespace curlpp;
 
-size_t IStreamTrait::read( void *buffer, size_t size )
+size_t IStreamTrait::read(void * buffer, size_t size)
 {
-   mFile->read( static_cast< char * >( buffer ), size );
+   mFile->read(static_cast<char *>( buffer ), size);
    
-   if ( !( *mFile ) )
+   if (!( *mFile ))
    {
       return 0;
    }
@@ -39,11 +39,11 @@ size_t IStreamTrait::read( void *buffer, size_t size )
    }
 }
 
-size_t OStreamTrait::write( void *buffer, size_t size )
+size_t OStreamTrait::write(void * buffer, size_t size)
 {
-   mFile->write( static_cast< char * >( buffer ), size );
+   mFile->write(static_cast<char *>( buffer ), size);
    
-   if ( !( *mFile ) )
+   if (!( *mFile ))
    {
       return 0;
    }

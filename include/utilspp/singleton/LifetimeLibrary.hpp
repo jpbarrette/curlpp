@@ -32,18 +32,18 @@
 namespace utilspp
 {
    
-   template< typename T >
-   unsigned int getLongevity( T *p );
+   template<typename T>
+   unsigned int getLongevity(T * p);
 
    /**
     * Assigns an object a longevity. Ensures ordered destructions of objects
     * registered thusly during the exit sequence of the application.
     */
-   template< typename T, typename TDestroyer >
+   template<typename T, typename TDestroyer>
       void setLibraryLongevity( 
-            T *obj, 
+            T * obj, 
             unsigned int longevity, 
-            TDestroyer d = utilspp::PrivateMembers::Deleter< T >::deleteObject
+            TDestroyer d = utilspp::PrivateMembers::Deleter<T>::deleteObject
             );
 
   /**
@@ -55,10 +55,10 @@ namespace utilspp
    *
    * This singleton use the utilspp::LifetimeWithLongevity policy.
    */
-  template< typename T >
+  template<typename T>
   struct LifetimeLibrary
   {
-    static void scheduleDestruction( T *obj, void (*func)() );
+    static void scheduleDestruction(T * obj, void (* func)());
     static void onDeadReference();
   };
   
@@ -68,7 +68,7 @@ namespace utilspp
     LifetimeLibraryImpl();
     ~LifetimeLibraryImpl();
     
-    void add( utilspp::PrivateMembers::LifetimeTracker *tracker );
+    void add(utilspp::PrivateMembers::LifetimeTracker * tracker);
     void terminate();
     
   private:
@@ -76,7 +76,7 @@ namespace utilspp
     int mNbElements;
   };
   
-  unsigned int getLongevity( utilspp::LifetimeLibraryImpl *p );
+  unsigned int getLongevity(utilspp::LifetimeLibraryImpl * p);
 
   typedef utilspp::SingletonHolder< 
     utilspp::LifetimeLibraryImpl,
@@ -91,7 +91,7 @@ namespace utilspp
    *
    * is called.
    */
-  template< typename T = utilspp::LifetimeLibrarySingleton >
+  template<typename T = utilspp::LifetimeLibrarySingleton>
   class LifetimeLibraryGuard
   {
   public:

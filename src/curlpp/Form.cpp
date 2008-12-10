@@ -26,7 +26,7 @@
 
 #include <iostream>
 
-curlpp::HttpPost::HttpPost(const Forms &posts)
+curlpp::HttpPost::HttpPost(const Forms & posts)
   : mFirst(NULL)
   , mLast(NULL)
 {
@@ -50,7 +50,7 @@ curlpp::HttpPost::~HttpPost()
 
 
 curlpp::HttpPost &
-curlpp::HttpPost::operator=(const Forms &posts)
+curlpp::HttpPost::operator=(const Forms & posts)
 {
   clear();
 
@@ -94,18 +94,18 @@ curlpp::Forms curlpp::HttpPost::getList()
   return newForm;
 }
 
-curlpp::FormPart::FormPart(const char *name)
+curlpp::FormPart::FormPart(const char * name)
   : mName(name)
 {}
 
 curlpp::FormPart::~FormPart()
 {}
 
-curlpp::FormPart::FormPart(const std::string &name)
+curlpp::FormPart::FormPart(const std::string & name)
   : mName(name)
 {}
 
-curlpp::FormParts::File::File(const char *name, const char *filename)
+curlpp::FormParts::File::File(const char * name, const char * filename)
   : FormPart(name)
   , mFilename(filename)
 {}
@@ -113,21 +113,21 @@ curlpp::FormParts::File::File(const char *name, const char *filename)
 curlpp::FormParts::File::~File()
 {}
 
-curlpp::FormParts::File::File(const char *name, const char *filename, const char *contentType)
+curlpp::FormParts::File::File(const char * name, const char * filename, const char * contentType)
   : FormPart(name)
   , mFilename(filename)
   , mContentType(contentType)
 {}
 
-curlpp::FormParts::File::File(const std::string &name, 
-			      const std::string &filename)
+curlpp::FormParts::File::File(const std::string & name, 
+			      const std::string & filename)
   : FormPart(name)
   , mFilename(filename)
 {}
   
-curlpp::FormParts::File::File(const std::string &name, 
-			      const std::string &filename,
-			      const std::string &contentType)
+curlpp::FormParts::File::File(const std::string & name, 
+			      const std::string & filename,
+			      const std::string & contentType)
   : FormPart(name)
   , mFilename(filename)
   , mContentType(contentType)
@@ -136,12 +136,12 @@ curlpp::FormParts::File::File(const std::string &name,
 curlpp::FormParts::File *
 curlpp::FormParts::File::clone() const
 {
-   return new curlpp::FormParts::File(*this);
+   return new curlpp::FormParts::File(* this);
 }
 
 void
-curlpp::FormParts::File::add(::curl_httppost **first, 
-			     ::curl_httppost **last)
+curlpp::FormParts::File::add(::curl_httppost ** first, 
+			     ::curl_httppost ** last)
 {
   // One instance = One curl_httppost, so we don't
   // need to duplicate the memory.
@@ -168,8 +168,8 @@ curlpp::FormParts::File::add(::curl_httppost **first,
 }
 
 
-curlpp::FormParts::Content::Content(const char *name, 
-				    const char *content)
+curlpp::FormParts::Content::Content(const char * name, 
+				    const char * content)
   : FormPart(name)
   , mContent(content)
 {}
@@ -177,22 +177,22 @@ curlpp::FormParts::Content::Content(const char *name,
 curlpp::FormParts::Content::~Content()
 {}
 
-curlpp::FormParts::Content::Content(const char *name, 
-				    const char *content, const char *contentType)
+curlpp::FormParts::Content::Content(const char * name, 
+				    const char * content, const char * contentType)
   : FormPart(name)
   , mContent(content)
   , mContentType(contentType)
 {}
 
-curlpp::FormParts::Content::Content(const std::string &name, 
-				    const std::string &content)
+curlpp::FormParts::Content::Content(const std::string & name, 
+				    const std::string & content)
   : FormPart(name)
   , mContent(content)
 {}
 
-curlpp::FormParts::Content::Content(const std::string &name, 
-				    const std::string &content,
-				    const std::string &contentType)
+curlpp::FormParts::Content::Content(const std::string & name, 
+				    const std::string & content,
+				    const std::string & contentType)
   : FormPart(name)
   , mContent(content)
   , mContentType(contentType)
@@ -205,8 +205,8 @@ curlpp::FormParts::Content::clone() const
 }
 
 void
-curlpp::FormParts::Content::add(::curl_httppost **first, 
-				::curl_httppost **last)
+curlpp::FormParts::Content::add(::curl_httppost ** first, 
+				::curl_httppost ** last)
 {
   // We uses options that will copy internally the string (c_str),
   // so we don't need to worry about the memory.

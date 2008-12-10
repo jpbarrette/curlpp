@@ -3,8 +3,8 @@
 
 utilspp::LifetimeLibraryImpl::LifetimeLibraryImpl()
    :
-   mTrackerArray( NULL ),
-   mNbElements( 0 )
+   mTrackerArray(NULL),
+   mNbElements(0)
 {}
 
 utilspp::LifetimeLibraryImpl::~LifetimeLibraryImpl()
@@ -13,12 +13,12 @@ utilspp::LifetimeLibraryImpl::~LifetimeLibraryImpl()
 }
 
 void
-utilspp::LifetimeLibraryImpl::add( utilspp::PrivateMembers::LifetimeTracker *tracker )
+utilspp::LifetimeLibraryImpl::add(utilspp::PrivateMembers::LifetimeTracker * tracker)
 {
    utilspp::PrivateMembers::TrackerArray newArray = static_cast<
       utilspp::PrivateMembers::TrackerArray >(std::realloc(mTrackerArray, 
 							    mNbElements + 1));
-   if( newArray == NULL )
+   if(newArray == NULL)
    {
       throw std::bad_alloc();
    }
@@ -42,12 +42,12 @@ void
 utilspp::LifetimeLibraryImpl::terminate()
 {
   //The number of elements MUST always be equal or over zero.
-  assert( mNbElements >= 0 );
+  assert(mNbElements >= 0);
   
-  while( mNbElements > 0 )
+  while(mNbElements > 0)
   {
     //At this point the mTrackerArray MUST not be NULL.
-    assert( mTrackerArray != NULL );
+    assert(mTrackerArray != NULL);
     
     //Pick the element at the top of the stack.
     utilspp::PrivateMembers::LifetimeTracker* top =  
@@ -56,7 +56,7 @@ utilspp::LifetimeLibraryImpl::terminate()
     //Remove that object off the stack.
     //Don't check errors-realloc with less memory, cause that can't fail.
     mTrackerArray = 
-      static_cast< utilspp::PrivateMembers::TrackerArray >
+      static_cast<utilspp::PrivateMembers::TrackerArray>
       (std::realloc(mTrackerArray, --mNbElements));
     
     //Destroy the element.
@@ -65,7 +65,7 @@ utilspp::LifetimeLibraryImpl::terminate()
 }
 
 unsigned int 
-utilspp::getLongevity( utilspp::LifetimeLibraryImpl * )
+utilspp::getLongevity(utilspp::LifetimeLibraryImpl *)
 {
    return 0;
 }
