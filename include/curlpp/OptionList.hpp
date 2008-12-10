@@ -46,9 +46,9 @@ namespace curlpp
 
 	/**
 	 * This contructor initialize his list by calling the
-	 * option_container< T >::clone() function.
+	 * option_container<T>::clone() function.
 	 */
-	OptionList(const OptionList &rhs);
+	OptionList(const OptionList & rhs);
 
 	virtual ~OptionList();
 
@@ -62,40 +62,40 @@ namespace curlpp
 	 * suggested to not referer at all further in the code to the option 
 	 * instance passed as an argument.
 	 */
-	virtual void setOpt(OptionBase *option);
+	virtual void setOpt(OptionBase * option);
 
 	/**
 	 * This function will add an option to the list. Note that if the
 	 * option is allready contained by the list, the option value of this
 	 * option will be overrided by the new value. 
 	 */
-	virtual void setOpt(const OptionBase &option);
+	virtual void setOpt(const OptionBase & option);
 
     /**
      * This function will call the setOpt on each options
      * contained by * the option list passed in argument.
 	 */
-    virtual void setOpt(const OptionList &options);
+    virtual void setOpt(const OptionList & options);
 	
     /**
 	 * This function will get the current option value of the corresponding 
 	 * OptionBase. Note that if the option is not set, the option passed in
 	 * parameter will be cleared. (See Option::getOpt for more details)
 	 */
-	virtual void getOpt(OptionBase *option) const;
+	virtual void getOpt(OptionBase * option) const;
 
 	/**
 	 * all the options contained by the class will be deleted and we will
 	 * clone the rhs option_container and store them in the class.
 	 */
-	//OptionList &operator=( const OptionList &rhs );
+	//OptionList & operator=(const OptionList & rhs);
 
-	typedef std::map< CURLoption, curlpp::OptionBase * > mapType;
+	typedef std::map<CURLoption, curlpp::OptionBase *> mapType;
 	
     private:
 	curlpp::OptionList::mapType mOptions;
 
-	void insert( const curlpp::OptionList::mapType &other );
+	void insert(const curlpp::OptionList::mapType & other);
 
 
     };

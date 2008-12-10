@@ -24,35 +24,35 @@
 #ifndef OPTION_CONTAINER_INL
 #define OPTION_CONTAINER_INL
 
-template< class OptionType >
-curlpp::OptionContainer< OptionType >::OptionContainer(typename curlpp::OptionContainer< OptionType >::ParamType value) 
+template<class OptionType>
+curlpp::OptionContainer<OptionType>::OptionContainer(typename curlpp::OptionContainer<OptionType>::ParamType value) 
 : mValue(value)
 {}
 
 
-template< class OptionType >
-curlpp::OptionContainer< OptionType >::OptionContainer(curlpp::OptionContainer< OptionType > &other) 
+template<class OptionType>
+curlpp::OptionContainer<OptionType>::OptionContainer(curlpp::OptionContainer<OptionType> & other) 
 : mValue(other.mValue)
 {}
 
 
-template< class OptionType >
+template<class OptionType>
 void
-curlpp::OptionContainer< OptionType >::setValue(typename OptionContainer< OptionType >::ParamType value)
+curlpp::OptionContainer<OptionType>::setValue(typename OptionContainer<OptionType>::ParamType value)
 {
   mValue = value;
 }
 
-template< class OptionType >
-typename curlpp::OptionContainer< OptionType >::ReturnType
-curlpp::OptionContainer< OptionType >::getValue()
+template<class OptionType>
+typename curlpp::OptionContainer<OptionType>::ReturnType
+curlpp::OptionContainer<OptionType>::getValue()
 {
   return mValue;
 }
 
-template< class OptionType >
-typename curlpp::OptionContainer< OptionType >::HandleOptionType
-curlpp::OptionContainer< OptionType >::getHandleOptionValue()
+template<class OptionType>
+typename curlpp::OptionContainer<OptionType>::HandleOptionType
+curlpp::OptionContainer<OptionType>::getHandleOptionValue()
 {
   return mValue;
 }

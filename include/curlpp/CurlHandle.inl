@@ -28,7 +28,7 @@
 
 namespace curlpp
 {
-	template< typename OptionType >
+	template<typename OptionType>
 	void 
 		CurlHandle::option(CURLoption optionType, 
 		OptionType value)
@@ -38,19 +38,19 @@ namespace curlpp
 		libcurlRuntimeAssert(mErrorBuffer, code);
 	}
 
-	template< typename OptionType, CURLoption optionType >
+	template<typename OptionType, CURLoption optionType>
 	void 
 		CurlHandle::option(OptionType value)
 	{
 		option(optionType, value);
 	}
 
-	template < typename T >
+	template <typename T>
 	void 
-		CurlHandle::getInfo(CURLINFO info, T &value)
+		CurlHandle::getInfo(CURLINFO info, T & value)
 	{
 		CURLcode code;
-		code = curl_easy_getinfo(mCurl, info, &value);
+		code = curl_easy_getinfo(mCurl, info, & value);
 		libcurlRuntimeAssert(mErrorBuffer, code);
 	}
 

@@ -28,41 +28,41 @@
 
 namespace utilspp
 {
-  template< typename T >
+  template<typename T>
   class TypeTrait
   {
   private:
-    template< typename U >
+    template<typename U>
     struct unreference
     {
       typedef U type;
     };
 
-    template< typename U >
-    struct unreference< U & >
+    template<typename U>
+    struct unreference<U &>
     {
       typedef U type;
     };
 
-    template< typename U >
+    template<typename U>
     struct unconst
     {
       typedef U type;
     };
 
-    template< typename U >
-    struct unconst< const U >
+    template<typename U>
+    struct unconst<const U>
     {
       typedef U type;
     };
 
   public:
-    typedef typename unreference< T >::type NonReference;
-    typedef typename unconst< T >::type NonConst;
-    typedef typename unconst< typename unreference< T >::type >::type NonParam;
+    typedef typename unreference<T>::type NonReference;
+    typedef typename unconst<T>::type NonConst;
+    typedef typename unconst<typename unreference<T>::type>::type NonParam;
   };
 
-  template< class T >
+  template<class T>
   struct PointerOnMemberFunction
   {
     typedef utilspp::NullType ClassType;
@@ -86,8 +86,8 @@ namespace utilspp
     typedef utilspp::NullType ParamList;
   };
 
-  template< typename V, typename W >
-  struct PointerOnMemberFunction< W(V::*)() >
+  template<typename V, typename W>
+  struct PointerOnMemberFunction<W(V::*)()>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -111,8 +111,8 @@ namespace utilspp
     typedef utilspp::NullType ParamList;
   };
 
-  template< typename V, typename W, typename X >
-  struct PointerOnMemberFunction< W(V::*)(X) >
+  template<typename V, typename W, typename X>
+  struct PointerOnMemberFunction<W(V::*)(X)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -135,8 +135,8 @@ namespace utilspp
     typedef TYPE_LIST_1(X) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y >
-  struct PointerOnMemberFunction< W(V::*)(X, Y) >
+  template<typename V, typename W, typename X, typename Y>
+  struct PointerOnMemberFunction<W(V::*)(X, Y)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -159,8 +159,8 @@ namespace utilspp
     typedef TYPE_LIST_2(X, Y) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z) >
+  template<typename V, typename W, typename X, typename Y, typename Z>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -183,8 +183,8 @@ namespace utilspp
     typedef TYPE_LIST_3(X, Y, Z) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -207,8 +207,8 @@ namespace utilspp
     typedef TYPE_LIST_4(X, Y, Z, A) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -231,8 +231,8 @@ namespace utilspp
     typedef TYPE_LIST_5(X, Y, Z, A, B) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -255,8 +255,8 @@ namespace utilspp
     typedef TYPE_LIST_6(X, Y, Z, A, B, C) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -279,8 +279,8 @@ namespace utilspp
     typedef TYPE_LIST_7(X, Y, Z, A, B, C, D) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -303,8 +303,8 @@ namespace utilspp
     typedef TYPE_LIST_8(X, Y, Z, A, B, C, D, E) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -327,8 +327,8 @@ namespace utilspp
     typedef TYPE_LIST_9(X, Y, Z, A, B, C, D, E, F) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F, G) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F, G)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -351,8 +351,8 @@ namespace utilspp
     typedef TYPE_LIST_10(X, Y, Z, A, B, C, D, E, F, G) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -375,8 +375,8 @@ namespace utilspp
     typedef TYPE_LIST_11(X, Y, Z, A, B, C, D, E, F, G, H) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -399,8 +399,8 @@ namespace utilspp
     typedef TYPE_LIST_12(X, Y, Z, A, B, C, D, E, F, G, H, I) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I, J) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I, J)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -423,8 +423,8 @@ namespace utilspp
     typedef TYPE_LIST_13(X, Y, Z, A, B, C, D, E, F, G, H, I, J) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J, typename K >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I, J, K) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J, typename K>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I, J, K)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -447,8 +447,8 @@ namespace utilspp
     typedef TYPE_LIST_14(X, Y, Z, A, B, C, D, E, F, G, H, I, J, K) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J, typename K, typename L >
-  struct PointerOnMemberFunction< W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I, J, K, L) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J, typename K, typename L>
+  struct PointerOnMemberFunction<W(V::*)(X, Y, Z, A, B, C, D, E, F, G, H, I, J, K, L)>
   {
     typedef V ClassType;
     typedef W ReturnType;
@@ -471,7 +471,7 @@ namespace utilspp
     typedef TYPE_LIST_15(X, Y, Z, A, B, C, D, E, F, G, H, I, J, K, L) ParamList;
   };
 
-  template< typename T >
+  template<typename T>
   struct PointerOnFunction
   {
     typedef utilspp::NullType ReturnType;
@@ -495,8 +495,8 @@ namespace utilspp
     typedef utilspp::NullType ParamList;
   };
 
-  template< typename V >
-  struct PointerOnFunction< V(*)() >
+  template<typename V>
+  struct PointerOnFunction<V(*)()>
   {
     typedef V ReturnType;
     typedef utilspp::NullType Param1Type;
@@ -518,8 +518,8 @@ namespace utilspp
     typedef utilspp::NullType ParamList;
  };
 
-  template< typename V, typename W >
-  struct PointerOnFunction< V(*)(W) >
+  template<typename V, typename W>
+  struct PointerOnFunction<V(*)(W)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -541,8 +541,8 @@ namespace utilspp
     typedef TYPE_LIST_1(W) ParamList;
   };
 
-  template< typename V, typename W, typename X >
-  struct PointerOnFunction< V(*)(W, X) >
+  template<typename V, typename W, typename X>
+  struct PointerOnFunction<V(*)(W, X)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -564,8 +564,8 @@ namespace utilspp
     typedef TYPE_LIST_2(W, X) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y >
-  struct PointerOnFunction< V(*)(W, X, Y) >
+  template<typename V, typename W, typename X, typename Y>
+  struct PointerOnFunction<V(*)(W, X, Y)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -587,8 +587,8 @@ namespace utilspp
     typedef TYPE_LIST_3(W, X, Y) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z >
-  struct PointerOnFunction< V(*)(W, X, Y, Z) >
+  template<typename V, typename W, typename X, typename Y, typename Z>
+  struct PointerOnFunction<V(*)(W, X, Y, Z)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -610,8 +610,8 @@ namespace utilspp
     typedef TYPE_LIST_4(W, X, Y, Z) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -633,8 +633,8 @@ namespace utilspp
     typedef TYPE_LIST_5(W, X, Y, Z, A) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -656,8 +656,8 @@ namespace utilspp
     typedef TYPE_LIST_6(W, X, Y, Z, A, B) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -679,8 +679,8 @@ namespace utilspp
     typedef TYPE_LIST_7(W, X, Y, Z, A, B, C) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -702,8 +702,8 @@ namespace utilspp
     typedef TYPE_LIST_8(W, X, Y, Z, A, B, C, D) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -725,8 +725,8 @@ namespace utilspp
     typedef TYPE_LIST_9(W, X, Y, Z, A, B, C, D, E) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E, F) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E, F)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -748,8 +748,8 @@ namespace utilspp
     typedef TYPE_LIST_10(W, X, Y, Z, A, B, C, D, E, F) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E, F, G) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E, F, G)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -771,8 +771,8 @@ namespace utilspp
     typedef TYPE_LIST_11(W, X, Y, Z, A, B, C, D, E, F, G) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -794,8 +794,8 @@ namespace utilspp
     typedef TYPE_LIST_12(W, X, Y, Z, A, B, C, D, E, F, G, H) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -817,8 +817,8 @@ namespace utilspp
     typedef TYPE_LIST_13(W, X, Y, Z, A, B, C, D, E, F, G, H, I ) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J)>
   {
     typedef V ReturnType;
     typedef W Param1Type;
@@ -840,8 +840,8 @@ namespace utilspp
     typedef TYPE_LIST_14(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J ) ParamList;
   };
 
-  template< typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J, typename K >
-  struct PointerOnFunction< V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J, K) >
+  template<typename V, typename W, typename X, typename Y, typename Z, typename A, typename B, typename C, typename D, typename E, typename F, typename G, typename H, typename I, typename J, typename K>
+  struct PointerOnFunction<V(*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J, K)>
   {
     typedef V ReturnType;
     typedef W Param1Type;

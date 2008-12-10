@@ -33,7 +33,7 @@ namespace utilspp
          {}
 
       private:
-         NonCopyable(const NonCopyable& r)
+         NonCopyable(const NonCopyable & r)
          {}
    };
 }

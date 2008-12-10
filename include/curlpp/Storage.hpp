@@ -33,11 +33,11 @@ namespace curlpp
    * This is the base class used to manage the writing of the ouput, headers, 
    * input, etc.
    */
-  template< typename FuncType, typename TraitType >
+  template<typename FuncType, typename TraitType>
   CURLPPAPI class StorageBase
   {
   public:
-    virtual void stream(TraitType *trait) = 0;
+    virtual void stream(TraitType * trait) = 0;
     virtual void func(FuncType func) = 0;
 
   public:
@@ -49,19 +49,19 @@ namespace curlpp
     * This class manage the writing of the body ouput of the "easy" parent.
     * By default this class is using the "stdoutTrait" trait.
     */
-  template< typename TraitType >
-  CURLPPAPI class WriteStorage : public StorageBase< curlpp::curl_write_callback, TraitType >
+  template<typename TraitType>
+  CURLPPAPI class WriteStorage : public StorageBase<curlpp::curl_write_callback, TraitType>
   {
   public:
-    WriteStorage(TraitType *trait, curlpp::curl_write_callback func);
-    virtual void stream(TraitType *trait);
+    WriteStorage(TraitType * trait, curlpp::curl_write_callback func);
+    virtual void stream(TraitType * trait);
     virtual void func(curlpp::curl_write_callback func);
 
   private:
-    static size_t writeCallback(void *buffer,
+    static size_t writeCallback(void * buffer,
 				size_t size,
 				size_t nitems,
-				void *outstream);
+				void * outstream);
   };
 
 
@@ -69,14 +69,14 @@ namespace curlpp
     * This class manage the writing of the header ouput of the "easy" parent.
     * By default this class is using the "stdoutTrait" trait.
     */
-   CURLPPAPI class HeaderStorage : public StorageBase< OutputTrait >
+   CURLPPAPI class HeaderStorage : public StorageBase<OutputTrait>
    {
       public:
          HeaderStorage(
-               curl *parent,
-               OutputTrait *trait = &stdoutTrait,
+               curl * parent,
+               OutputTrait * trait = &stdoutTrait,
                bool own = false
-               ) : StorageBase< OutputTrait >( parent, trait, &stdoutTrait, own )
+               ) : StorageBase<OutputTrait>(parent, trait, &stdoutTrait, own)
                {}
 
          void setCallback();
@@ -84,10 +84,10 @@ namespace curlpp
 
       private:
          static size_t writeCallback(
-               void *buffer,
+               void * buffer,
                size_t size,
                size_t nitems,
-               void *outstream
+               void * outstream
                );
    };
 
@@ -95,14 +95,14 @@ namespace curlpp
     * This class manage the reading of the "easy" parent. 
     * By default this class is using the "stdinTrait" trait.
     */
-   CURLPPAPI class InputStorage : public StorageBase< InputTrait >
+   CURLPPAPI class InputStorage : public StorageBase<InputTrait>
    {
       public:
          InputStorage(
-               curl *parent,
-               InputTrait *trait = &stdinTrait,
+               curl * parent,
+               InputTrait * trait = &stdinTrait,
                bool own = false
-               ) : StorageBase< InputTrait >( parent, trait, &stdinTrait, own )
+               ) : StorageBase<InputTrait>(parent, trait, &stdinTrait, own)
                {}
 
          void setCallback();
@@ -110,10 +110,10 @@ namespace curlpp
 
       private:
          static size_t readCallback(
-               void *buffer,
+               void * buffer,
                size_t size,
                size_t nmemb,
-               void *instream
+               void * instream
                );
    };
 
@@ -121,14 +121,14 @@ namespace curlpp
     * This class manage the writing of the progess ouput of the "easy" parent. 
     * By default this class is using the "defaultProgressTrait" trait.
     */
-   CURLPPAPI class ProgressStorage : public StorageBase< ProgressTrait >
+   CURLPPAPI class ProgressStorage : public StorageBase<ProgressTrait>
    {
       public:
          ProgressStorage(
-               curl *parent,
-               ProgressTrait *trait = &defaultProgressTrait,
+               curl * parent,
+               ProgressTrait * trait = &defaultProgressTrait,
                bool own = false
-               ) : StorageBase< ProgressTrait >( parent, trait, &defaultProgressTrait, own )
+               ) : StorageBase<ProgressTrait>(parent, trait, &defaultProgressTrait, own)
                {}
 
          void setCallback();
@@ -136,7 +136,7 @@ namespace curlpp
 
       private:
          static int progressCallback(
-               void *clientp,
+               void * clientp,
                double dltotal,
                double dlnow,
                double ultotal,
@@ -148,14 +148,14 @@ namespace curlpp
     * This class manage the input of passwords for the "easy" parent. 
     * By default this class is using the "defaultPasswdTrait" trait.
     */
-   CURLPPAPI class PasswdStorage : public StorageBase< PasswdTrait >
+   CURLPPAPI class PasswdStorage : public StorageBase<PasswdTrait>
    {
       public:
          PasswdStorage(
-               curl *parent,
-               PasswdTrait *trait = &defaultPasswdTrait,
+               curl * parent,
+               PasswdTrait * trait = &defaultPasswdTrait,
                bool own = false
-               ) : StorageBase< PasswdTrait >( parent, trait, &defaultPasswdTrait, own )
+               ) : StorageBase<PasswdTrait>(parent, trait, &defaultPasswdTrait, own)
                {}
 
          void setCallback();
@@ -163,9 +163,9 @@ namespace curlpp
 
       private:
          static int passwd_callback(
-               void *client,
-               char *prompt,
-               char *buffer,
+               void * client,
+               char * prompt,
+               char * buffer,
                int buflen
                );
    };
@@ -174,14 +174,14 @@ namespace curlpp
     * This class manage the writing of the debug ouput of the "easy" parent. 
     * By default this class is using the "defaultDebugTrait" trait.
     */
-   CURLPPAPI class DebugStorage : public StorageBase< DebugTrait >
+   CURLPPAPI class DebugStorage : public StorageBase<DebugTrait>
    {
       public:
          DebugStorage(
-               curl *parent,
-               DebugTrait *trait = &defaultDebugTrait,
+               curl * parent,
+               DebugTrait * trait = &defaultDebugTrait,
                bool own = false
-               ) : StorageBase< DebugTrait >( parent, trait, &defaultDebugTrait, own )
+               ) : StorageBase<DebugTrait>(parent, trait, &defaultDebugTrait, own)
                {}
 
          void setCallback();
@@ -189,11 +189,11 @@ namespace curlpp
 
       private:
          static int debug_callback(
-               CURL *handle,
+               CURL * handle,
                curlpp::debug::Type info,
-               char *buffer,
+               char * buffer,
                size_t len,
-               void *ptr
+               void * ptr
                );
    };
 
@@ -202,37 +202,37 @@ namespace curlpp
     * This class calls setCallback() and setCallbackData() when it's
     * needed by the Storage.
     */
-   template < class StorageType >
+   template <class StorageType>
       CURLPPAPI class Storage
       {
          public:
-            Storage( curl *parent );
-            void trait( typename StorageType::StorageTraitType *giventTrait, bool own = false );
+            Storage(curl * parent);
+            void trait(typename StorageType::StorageTraitType * giventTrait, bool own = false);
 
          private:
             StorageType mStorage;
       };
 
-   template < class StorageType >
-      Storage< StorageType >::Storage( curl *parent ) : mStorage( parent )
+   template <class StorageType>
+      Storage<StorageType>::Storage(curl * parent ) : mStorage( parent)
       {
          mStorage.setCallback();
          mStorage.setCallbackData();
       }
 
-   template < class StorageType >
-      void Storage< StorageType >::trait( typename StorageType::StorageTraitType *giventTrait, bool own ) {
-         mStorage.trait( giventTrait, own );
+   template <class StorageType>
+      void Storage<StorageType>::trait(typename StorageType::StorageTraitType * giventTrait, bool own) {
+         mStorage.trait(giventTrait, own);
          mStorage.setCallbackData();
       }
 
 #if LIBCURL_VERSION_NUM >= 0x070b01
    template <>
-      CURLPPAPI class Storage< PasswdStorage >
+      CURLPPAPI class Storage<PasswdStorage>
       {
          public:
-            Storage( curl *parent );
-            void trait( PasswdTrait *giventTrait, bool own = false );
+            Storage(curl * parent);
+            void trait(PasswdTrait * giventTrait, bool own = false);
       };
 #endif
 

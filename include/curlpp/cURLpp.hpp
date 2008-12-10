@@ -65,7 +65,7 @@ namespace curlpp
    
   /**
    * This function takes care of cleaning up curlpp ( also libcURL). See 
-   * curlpp::initialize( long flags ) for more documentation.
+   * curlpp::initialize(long flags) for more documentation.
    * 
    * NOTE: you cannot call this function if curlpp is not loaded, or if you already
    * called in once; it will throw a logic_error if you do otherwise.
@@ -75,7 +75,7 @@ namespace curlpp
   /**
    * This is an obsolete class. DO NOT use it. The only reason it's still there,
    * is to be sure that it is backward compatible. This class was taking care of 
-   * initialization and cleaning up curlpp ( also libcURL ) (it was calling 
+   * initialization and cleaning up curlpp (also libcURL) (it was calling 
    * curlpp:terminate() in his destructor). However, from now on, you do not need
    * this class. Note that the removal of this class was done because it was 
    * raising some threading issues. 
@@ -88,7 +88,7 @@ namespace curlpp
    *   constructor, so you don't have to call it by yourself, when you have 
    *   decided to use it.
    *
-   * See curlpp::initialize( long flags ) and curlpp:terminate() for more documentation.
+   * See curlpp::initialize(long flags) and curlpp:terminate() for more documentation.
    */
   class CURLPPAPI Cleanup
   {
@@ -103,7 +103,7 @@ namespace curlpp
    * that  are  not a-z, A-Z or 0-9 will be converted to their "URL escaped"
    * version (%NN where NN is a two-digit hexadecimal number).
    */
-  std::string CURLPPAPI escape( const std::string& url );
+  std::string CURLPPAPI escape(const std::string & url);
 
   /**
    * This  function  will  convert  the  given  URL encoded input string to a
@@ -113,7 +113,7 @@ namespace curlpp
    * (up to a ? letter, no + letters to the right of a ? letter will be
    * converted).
    */
-  std::string CURLPPAPI unescape( const std::string &url );
+  std::string CURLPPAPI unescape(const std::string & url);
 
   /**
    * this is  a portable wrapper for the getenv() function, meant to emulate
@@ -124,7 +124,7 @@ namespace curlpp
    * implementation thus have to suffer slightly from the drawbacks of other
    * systems.
    */
-  std::string CURLPPAPI getenv( const std::string &name );
+  std::string CURLPPAPI getenv(const std::string & name);
 
   /**
    * Returns  a  human readable string with the version number of libcurl and
@@ -192,7 +192,7 @@ namespace curlpp
    * the year, MM as the month number and DD as the day of the month, for the
    * specified calendar date.
    */
-  time_t CURLPPAPI getdate( const std::string&date, time_t *now = 0 );
+  time_t CURLPPAPI getdate(const std::string & date, time_t *now = 0);
  
 } // namespace curlpp
 

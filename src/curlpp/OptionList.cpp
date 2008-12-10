@@ -30,9 +30,9 @@
 curlpp::OptionList::OptionList()
 {}
 
-curlpp::OptionList::OptionList( const curlpp::OptionList &rhs )
+curlpp::OptionList::OptionList(const curlpp::OptionList & rhs)
 {
-   insert( rhs.mOptions );
+   insert(rhs.mOptions);
 }
 
 curlpp::OptionList::~OptionList()
@@ -45,10 +45,10 @@ curlpp::OptionList::~OptionList()
 }
 
 
-void curlpp::OptionList::setOpt( curlpp::OptionBase *option )
+void curlpp::OptionList::setOpt(curlpp::OptionBase * option)
 {
    mapType::iterator pos = mOptions.find(option->getOption());
-   if( pos != mOptions.end() )
+   if(pos != mOptions.end())
    {
       delete (*pos).second;
       mOptions.erase(pos);	
@@ -57,7 +57,7 @@ void curlpp::OptionList::setOpt( curlpp::OptionBase *option )
 }
 
 
-void curlpp::OptionList::setOpt(const curlpp::OptionList &options)
+void curlpp::OptionList::setOpt(const curlpp::OptionList & options)
 {
   for(mapType::const_iterator pos = options.mOptions.begin();
       pos != options.mOptions.end();
@@ -69,17 +69,17 @@ void curlpp::OptionList::setOpt(const curlpp::OptionList &options)
 
 
 void
-curlpp::OptionList::setOpt( const curlpp::OptionBase &option )
+curlpp::OptionList::setOpt(const curlpp::OptionBase & option)
 {
    setOpt(option.clone());
 }
 
 
 void
-curlpp::OptionList::getOpt(curlpp::OptionBase *option) const
+curlpp::OptionList::getOpt(curlpp::OptionBase * option) const
 {
    mapType::const_iterator pos = mOptions.find(option->getOption());
-   if( pos != mOptions.end() )
+   if(pos != mOptions.end())
    {
       option->updateMeToOption((*(*pos).second));
    }
@@ -91,7 +91,7 @@ curlpp::OptionList::getOpt(curlpp::OptionBase *option) const
 
 
 void
-curlpp::OptionList::insert( const curlpp::OptionList::mapType &other )
+curlpp::OptionList::insert(const curlpp::OptionList::mapType & other)
 {
     for( mapType::const_iterator pos = other.begin();
          pos != other.end();

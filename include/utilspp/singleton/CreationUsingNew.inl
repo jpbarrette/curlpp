@@ -24,16 +24,16 @@
 #ifndef CREATION_USING_NEW_INL
 #define CREATION_USING_NEW_INL
 
-template< typename T >
+template<typename T>
 T *
-utilspp::CreationUsingNew< T >::create()
+utilspp::CreationUsingNew<T>::create()
 {
    return new T;
 }
 
-template< typename T >
+template<typename T>
 void
-utilspp::CreationUsingNew< T >::destroy( T *obj )
+utilspp::CreationUsingNew<T>::destroy(T * obj)
 {
    delete obj;
 }

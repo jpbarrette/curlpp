@@ -40,12 +40,12 @@
  */
 namespace utilspp
 {
-   template< typename T >
+   template<typename T>
    class CreationStatic
    {
       public:
          static T* create();
-         static void destroy( T* obj );
+         static void destroy(T* obj);
    };
 }
 

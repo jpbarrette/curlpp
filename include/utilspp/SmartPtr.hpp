@@ -32,20 +32,20 @@
 namespace utilspp
 {
 
-  template < typename Type = unsigned int >
+  template <typename Type = unsigned int>
   class FastCount
   {
   public:
     FastCount(Type count = 1) : mCount(count)
     {}
 
-    FastCount &operator++()
+    FastCount & operator++()
     {
       mCount++;
       return *this;
     }
 
-    FastCount &operator--()
+    FastCount & operator--()
     {
       mCount--;
       return *this;
@@ -66,11 +66,11 @@ namespace utilspp
   };
 
   
-  template < typename ContentType, typename CountPolicy = FastCount >
+  template <typename ContentType, typename CountPolicy = FastCount>
   class CountingBody : public utilspp::NonCopyable
   {
   public:
-    CountingBody(ContentType *body) : mBody(body)
+    CountingBody(ContentType * body) : mBody(body)
     {}
 
     void inc()
@@ -86,7 +86,7 @@ namespace utilspp
       }
     }
 
-    ContentType *get()
+    ContentType * get()
     {
       return mBody;
     }
@@ -102,7 +102,7 @@ namespace utilspp
 
   private:
     CountPolicy mCount;
-    ContentType *mBody;
+    ContentType * mBody;
   };
 
 
@@ -110,10 +110,10 @@ namespace utilspp
   class SharedPtr
   {
   public:
-    SharedPtr() : mContent(new CountingPolicy< ContentType >(NULL))
+    SharedPtr() : mContent(new CountingPolicy<ContentType>(NULL))
     {}
 
-    explicit SharedPtr(ContentType *content) : mContent(new CountingBodyPolicy< ContentType >(content))
+    explicit SharedPtr(ContentType * content) : mContent(new CountingBodyPolicy<ContentType>(content))
     {}
 
     ~SharedPtr()
@@ -121,38 +121,38 @@ namespace utilspp
       mContent->dec();
     }
 
-    SharedPtr(const SharedPtr &other) : mContent(other.mContent)
+    SharedPtr(const SharedPtr & other) : mContent(other.mContent)
     {
       mContent->inc();
     }
 
-    SharedPtr& operator=(const SharedPtr &other)
+    SharedPtr & operator=(const SharedPtr & other)
     {
       if(mContent->get() != other.mContent->get()) {
 	mContent->dec();
 	mContent = other.mContent;
 	mContent->inc();
       }
-      return ( *this );
+      return (*this);
     }
 
-    SharedPtr& operator=(ContentType *content)
+    SharedPtr & operator=(ContentType * content)
     {
       mContent--;
-      mContent = new CountingBodyPolicy< ContentType >(content);
+      mContent = new CountingBodyPolicy<ContentType>(content);
     }
 
-    bool operator==(const SharedPtr &other) const
+    bool operator==(const SharedPtr & other) const
     {
       return (mContent->get() == other.mContent->get());
     }
 
-    bool operator!=(const SharedPtr &other) const
+    bool operator!=(const SharedPtr & other) const
     {
       return (mContent->get() != other.mContent->get());
     }
 
-    bool operator<(const SharedPtr &other) const
+    bool operator<(const SharedPtr & other) const
     {
       return (mContent->get() < other.mContent->get());
     }
@@ -162,7 +162,7 @@ namespace utilspp
       return mContent->get();
     }
 
-    ContentType& operator*()
+    ContentType & operator*()
     {
       if(mContent->get() == NULL) {
 	throw std::runtime_error(NULL_BODY_ERROR);

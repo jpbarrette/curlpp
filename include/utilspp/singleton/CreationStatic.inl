@@ -25,7 +25,7 @@
 #define CREATION_STATIC_INL
 
 
-template< typename T >
+template<typename T>
 T*
 utilspp::CreationStatic<T>::create()
 {
@@ -33,7 +33,7 @@ utilspp::CreationStatic<T>::create()
    return &mObj;
 }
 
-template< typename T >
+template<typename T>
 void
 utilspp::CreationStatic<T>::destroy(T*)
 {}

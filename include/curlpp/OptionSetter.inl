@@ -31,26 +31,26 @@ template< typename OptionValueType,
 	  CURLoption optionType >
 void
 curlpp::OptionSetter< OptionValueType, 
-		      optionType >::setOpt(curlpp::CurlHandle *handle, 
+		      optionType >::setOpt(curlpp::CurlHandle * handle, 
 					   ParamType value)
 {
   handle->option(optionType, value);
 }
 
 
-template< CURLoption optionType >
+template<CURLoption optionType>
 void
 curlpp::OptionSetter< std::string, 
-		      optionType >::setOpt(curlpp::CurlHandle *handle, 
+		      optionType >::setOpt(curlpp::CurlHandle * handle, 
 		                           ParamType value)
 {
 	handle->option(optionType, (void *)value.c_str());
 }
 
-template< CURLoption optionType >
+template<CURLoption optionType>
 void
-curlpp::OptionSetter< std::list< std::string >, 
-		      optionType >::setOpt(curlpp::CurlHandle *handle, 
+curlpp::OptionSetter<std::list< std::string>, 
+		      optionType >::setOpt(curlpp::CurlHandle * handle, 
 					   ParamType value)
 {
 	handle->option(optionType, (void *)value.cslist());

@@ -40,37 +40,37 @@ namespace curlpp
   {
   public:
     SList();
-    SList(const SList &rhs);
+    SList(const SList & rhs);
 
     /**
      * the list passed in argument is now possessed by
      * the class.
      */
-    SList(curl_slist *list);
+    SList(curl_slist * list);
 
-    SList(const std::list< std::string > &list);
+    SList(const std::list<std::string> & list);
     ~SList();
 
-    SList &operator=(const std::list< std::string > &list);
-    operator std::list< std::string > ();
+    SList & operator=(const std::list<std::string> & list);
+    operator std::list<std::string> ();
 
-    curl_slist *cslist() const;
-    std::list< std::string > list();
+    curl_slist * cslist() const;
+    std::list<std::string> list();
 
   private:
-    void set(const std::list< std::string > &list);
+    void set(const std::list<std::string> & list);
     void update();
     void clear();
-    void constructFrom(curl_slist *list);
+    void constructFrom(curl_slist * list);
 
      
-    curl_slist *mList;
-    std::list< std::string > mData;
+    curl_slist * mList;
+    std::list<std::string> mData;
   };
 
 } // namespace curlpp
 
-std::ostream CURLPPAPI &operator<<(std::ostream &stream, const std::list< std::string > &value);
+std::ostream CURLPPAPI & operator<<(std::ostream & stream, const std::list<std::string> & value);
 
 namespace cURLpp = curlpp;
 

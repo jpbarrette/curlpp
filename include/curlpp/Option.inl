@@ -29,8 +29,8 @@
 #include "Exception.hpp"
 
 
-template< typename OptionType >
-curlpp::Option< OptionType >::Option(CURLoption option, typename curlpp::Option< OptionType >::ParamType value)
+template<typename OptionType>
+curlpp::Option<OptionType>::Option(CURLoption option, typename curlpp::Option<OptionType>::ParamType value)
 : OptionBase(option),
 mContainer(NULL)
 {
@@ -38,14 +38,14 @@ mContainer(NULL)
 }
 
 
-template< typename OptionType >
-curlpp::Option< OptionType >::Option(CURLoption option)
+template<typename OptionType>
+curlpp::Option<OptionType>::Option(CURLoption option)
 : OptionBase(option),
 mContainer(NULL)
 {}
 
-template< typename OptionType >
-curlpp::Option< OptionType >::Option(const curlpp::Option< OptionType > &other)
+template<typename OptionType>
+curlpp::Option<OptionType>::Option(const curlpp::Option<OptionType> & other)
   : OptionBase(other)
   , mContainer(NULL)
 {
@@ -56,8 +56,8 @@ curlpp::Option< OptionType >::Option(const curlpp::Option< OptionType > &other)
 }
 
 
-template< typename OptionType >
-curlpp::Option< OptionType >::~Option()
+template<typename OptionType>
+curlpp::Option<OptionType>::~Option()
 {
 	delete mContainer;
 	mContainer = NULL;
@@ -66,13 +66,13 @@ curlpp::Option< OptionType >::~Option()
 
 
 
-template< typename OptionType >
+template<typename OptionType>
 void
-curlpp::Option< OptionType >::setValue(typename curlpp::Option< OptionType >::ParamType value)
+curlpp::Option<OptionType>::setValue(typename curlpp::Option<OptionType>::ParamType value)
 {
 	if(mContainer == NULL)
 	{	
-		mContainer = new OptionContainer< OptionType >(value);
+		mContainer = new OptionContainer<OptionType>(value);
 	}
 	else
 	{
@@ -81,11 +81,11 @@ curlpp::Option< OptionType >::setValue(typename curlpp::Option< OptionType >::Pa
 }
 
 
-template< typename OptionType >
+template<typename OptionType>
 void
-curlpp::Option< OptionType >::updateMeToOption(const curlpp::OptionBase &other)
+curlpp::Option<OptionType>::updateMeToOption(const curlpp::OptionBase & other)
 {
-	const curlpp::Option< OptionType > *option = dynamic_cast< const curlpp::Option< OptionType > * >(&other);
+	const curlpp::Option<OptionType> * option = dynamic_cast<const curlpp::Option<OptionType> *>(&other);
 	if(option == NULL)
 	{
 		throw UnsetOption("You are trying to update an option to an incompatible option");
@@ -93,17 +93,17 @@ curlpp::Option< OptionType >::updateMeToOption(const curlpp::OptionBase &other)
 	setValue(option->getValue());
 }
 
-template< typename OptionType >
+template<typename OptionType>
 void
-curlpp::Option< OptionType >::clear()
+curlpp::Option<OptionType>::clear()
 {
   delete mContainer;
   mContainer = NULL;
 }
 
-template< typename OptionType >
-typename curlpp::Option< OptionType >::ReturnType
-curlpp::Option< OptionType >::getValue() const
+template<typename OptionType>
+typename curlpp::Option<OptionType>::ReturnType
+curlpp::Option<OptionType>::getValue() const
 {
   if(mContainer == NULL)
     throw curlpp::UnsetOption(std::string("You are trying to retreive the value of an unset option"));
@@ -111,76 +111,76 @@ curlpp::Option< OptionType >::getValue() const
   return mContainer->getValue();
 }
 
-template< typename OptionType, CURLoption option >
-curlpp::OptionTrait< OptionType, option >::OptionTrait(typename curlpp::Option< OptionType >::ParamType value)
-: Option< OptionType >(option, value)
+template<typename OptionType, CURLoption option>
+curlpp::OptionTrait<OptionType, option>::OptionTrait(typename curlpp::Option<OptionType>::ParamType value)
+: Option<OptionType>(option, value)
 {}
 
-template< typename OptionType, CURLoption option >
-curlpp::OptionTrait< OptionType, option >::OptionTrait()
-: Option< OptionType >(option)
+template<typename OptionType, CURLoption option>
+curlpp::OptionTrait<OptionType, option>::OptionTrait()
+: Option<OptionType>(option)
 {}
 
 
-template< typename OptionType, CURLoption option >
-curlpp::OptionTrait< OptionType, option > *
-curlpp::OptionTrait< OptionType, option >::clone() const
+template<typename OptionType, CURLoption option>
+curlpp::OptionTrait<OptionType, option> *
+curlpp::OptionTrait<OptionType, option>::clone() const
 {
-  return new OptionTrait< OptionType, option >(this->getValue());
+  return new OptionTrait<OptionType, option>(this->getValue());
 }
 
 
-template< typename OptionType, CURLoption option >
+template<typename OptionType, CURLoption option>
 void
-curlpp::OptionTrait< OptionType, option >::updateHandleToMe(curlpp::CurlHandle *handle) const
+curlpp::OptionTrait<OptionType, option>::updateHandleToMe(curlpp::CurlHandle * handle) const
 {
 	if(this->mContainer == NULL)
 	{
 		throw UnsetOption(std::string("You are trying to set an unset option to a handle"));
 	}	
 
-	OptionSetter< OptionType, option >::setOpt(handle, this->mContainer->getHandleOptionValue());
+	OptionSetter<OptionType, option>::setOpt(handle, this->mContainer->getHandleOptionValue());
 }
 
 
-template< CURLoption option >
-curlpp::NoValueOptionTrait< option >::NoValueOptionTrait() 
-  : OptionTrait< bool, option >(true)
+template<CURLoption option>
+curlpp::NoValueOptionTrait<option>::NoValueOptionTrait() 
+  : OptionTrait<bool, option>(true)
 {}
 
-template< CURLoption option >
-curlpp::NoValueOptionTrait< option > *
-curlpp::NoValueOptionTrait< option >::clone() const
+template<CURLoption option>
+curlpp::NoValueOptionTrait<option> *
+curlpp::NoValueOptionTrait<option>::clone() const
 {
-  return new NoValueOptionTrait< option >();
+  return new NoValueOptionTrait<option>();
 }
 
-template< typename OptionType >
-curlpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait(typename curlpp::Option< OptionType >::ParamType )
-  : Option< OptionType >(CURLOPT_URL)
-{
-  throw curlpp::NotAvailable();
-}
-
-template< typename OptionType >
-curlpp::NotAvailableOptionTrait< OptionType >::NotAvailableOptionTrait()
-  : Option< OptionType >(CURLOPT_URL)
+template<typename OptionType>
+curlpp::NotAvailableOptionTrait<OptionType>::NotAvailableOptionTrait(typename curlpp::Option<OptionType>::ParamType )
+  : Option<OptionType>(CURLOPT_URL)
 {
   throw curlpp::NotAvailable();
 }
 
-
-template< typename OptionType >
-curlpp::NotAvailableOptionTrait< OptionType > *
-curlpp::NotAvailableOptionTrait< OptionType >::clone() const
+template<typename OptionType>
+curlpp::NotAvailableOptionTrait<OptionType>::NotAvailableOptionTrait()
+  : Option<OptionType>(CURLOPT_URL)
 {
   throw curlpp::NotAvailable();
 }
 
 
-template< typename OptionType >
+template<typename OptionType>
+curlpp::NotAvailableOptionTrait<OptionType> *
+curlpp::NotAvailableOptionTrait<OptionType>::clone() const
+{
+  throw curlpp::NotAvailable();
+}
+
+
+template<typename OptionType>
 void
-curlpp::NotAvailableOptionTrait< OptionType >::updateHandleToMe(curlpp::CurlHandle *) const
+curlpp::NotAvailableOptionTrait<OptionType>::updateHandleToMe(curlpp::CurlHandle *) const
 {
   throw curlpp::NotAvailable();
 }

@@ -11,12 +11,12 @@
 #include "curlpp/Options.hpp"
 
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
-#define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef curlpp::NotAvailableOptionTrait< type, option > name;
+#define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef curlpp::NotAvailableOptionTrait<type, option> name;
 #endif
 
 // #begin define OPTION(version,type,option,name) 
 // #if LIBCURL_VERSION_NUM >= version 
-//   typedef curlpp::OptionTrait< type, option > name;
+//   typedef curlpp::OptionTrait<type, option> name;
 // #else
 // DEF_IF_ALLOW_AVAILABLE(type,option,name)
 // #endif

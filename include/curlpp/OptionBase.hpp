@@ -35,13 +35,14 @@ namespace curlpp
   class CurlHandle;
 
   /**
-   * This is the parent of the curlpp::option class. This is only used to be
-   * able to stock a list of options.
+   * This is the parent of the curlpp::option class.
+	 *
+	 * This is only used to be able to stock a list of options.
    */
   class CURLPPAPI OptionBase
   {
   public:
-    OptionBase( CURLoption option );
+    OptionBase(CURLoption option);
      
     /**
      * The destructor.
@@ -51,12 +52,12 @@ namespace curlpp
     /**
      * See curlpp::option::operator< for documentation.
      */
-    virtual bool operator<( const OptionBase &rhs ) const;
+    virtual bool operator<(const OptionBase & rhs) const;
 
     /**
      * return a copy of the current option.
      */
-    virtual OptionBase *clone() const = 0;
+    virtual OptionBase * clone() const = 0;
 
     /**
      * return the libcurl option.
@@ -67,13 +68,13 @@ namespace curlpp
      * will update the value of the option with the value of the
      * option passed is argument.
      */
-    virtual void updateMeToOption(const OptionBase &other) = 0;
+    virtual void updateMeToOption(const OptionBase & other) = 0;
 
     /**
      * will call the actual libcurl option function with the value we got 
      * on the handle.
      */
-    virtual void updateHandleToMe(curlpp::CurlHandle *handle) const = 0;
+    virtual void updateHandleToMe(curlpp::CurlHandle * handle) const = 0;
 
     /**
      * this function will reset the option value.

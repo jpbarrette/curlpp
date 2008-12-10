@@ -56,7 +56,7 @@ namespace curlpp
          virtual ~InputTrait()
          {}
 
-         virtual size_t read( void *buffer, size_t length ) = 0;
+         virtual size_t read(void * buffer, size_t length) = 0;
 
    };
 
@@ -69,7 +69,7 @@ namespace curlpp
          virtual ~OutputTrait()
          {}
 
-         virtual size_t write( void *buffer, size_t length ) = 0;
+         virtual size_t write(void * buffer, size_t length) = 0;
    };
 
    CURLPPAPI class IOTrait : public InputTrait, public OutputTrait
@@ -136,8 +136,8 @@ namespace curlpp
          {}
 
          virtual bool passwdFunction(
-               char *prompt,
-               char *buffer,
+               char * prompt,
+               char * buffer,
                int buflen
                ) = 0;
    };
@@ -153,8 +153,8 @@ namespace curlpp
          {}
 
          virtual bool passwdFunction(
-               char *prompt,
-               char *buffer,
+               char * prompt,
+               char * buffer,
                int buflen
                );
    };
@@ -187,7 +187,7 @@ namespace curlpp
           */
          virtual void debugFunction(
                curlpp::debug::Type type,
-               char *buffer,
+               char * buffer,
                int buflen
                ) = 0;
    };
@@ -204,7 +204,7 @@ namespace curlpp
 
          virtual void debugFunction(
                curlpp::debug::Type type,
-               char *buffer,
+               char * buffer,
                int buflen
                );
    };

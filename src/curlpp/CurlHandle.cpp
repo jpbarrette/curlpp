@@ -40,16 +40,16 @@ void curlpp::CurlHandle::perform()
 {
   CURLcode code;
 
-  code = curl_easy_perform( mCurl );
+  code = curl_easy_perform(mCurl);
   throwException();
   libcurlRuntimeAssert(mErrorBuffer, code); //if we got an error
 }
 
 void curlpp::CurlHandle::reset()
 {
-  curl_easy_reset( mCurl );
+  curl_easy_reset(mCurl);
   memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
-  errorBuffer( mErrorBuffer );
+  errorBuffer(mErrorBuffer);
 }
 
 CURL *
@@ -63,8 +63,8 @@ curlpp::CurlHandle::CurlHandle()
 {
   memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
   mCurl = curl_easy_init();
-  runtimeAssert( "Error when trying to curl_easy_init() a handle", mCurl != NULL );
-  errorBuffer( mErrorBuffer );
+  runtimeAssert("Error when trying to curl_easy_init() a handle", mCurl != NULL);
+  errorBuffer(mErrorBuffer);
 }
 
 curlpp::CurlHandle::CurlHandle(CURL * handle) 
@@ -72,16 +72,16 @@ curlpp::CurlHandle::CurlHandle(CURL * handle)
 {
   memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
   mCurl = handle;
-  runtimeAssert( "Error when trying to curl_easy_init() a handle", mCurl != NULL );
-  errorBuffer( mErrorBuffer );
+  runtimeAssert("Error when trying to curl_easy_init() a handle", mCurl != NULL);
+  errorBuffer(mErrorBuffer);
 }
 
-std::auto_ptr< curlpp::CurlHandle > 
+std::auto_ptr<curlpp::CurlHandle> 
 curlpp::CurlHandle::clone() const
 {
   CURL * cHandle = curl_easy_duphandle(mCurl);
   runtimeAssert("Error when trying to curl_easy_duphandle() a handle", cHandle != NULL);
-  auto_ptr< curlpp::CurlHandle > newHandle(new CurlHandle(cHandle));
+  auto_ptr<curlpp::CurlHandle> newHandle(new CurlHandle(cHandle));
   
   return newHandle;
 }
@@ -96,69 +96,69 @@ curlpp::CurlHandle::~CurlHandle()
 }
 
 void
-curlpp::CurlHandle::errorBuffer(char *buffer)
+curlpp::CurlHandle::errorBuffer(char * buffer)
 {
   option( CURLOPT_ERRORBUFFER, (void *)buffer);
 }
 
 size_t 
-curlpp::CurlHandle::executeWriteFunctor(char *buffer, size_t size, size_t nitems)
+curlpp::CurlHandle::executeWriteFunctor(char * buffer, size_t size, size_t nitems)
 {
    if(!mWriteFunctor) {
-     setException(new CallbackException< curlpp::LogicError >(curlpp::LogicError("Null write functor")));
+     setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null write functor")));
      return CURLE_ABORTED_BY_CALLBACK;
    }
 
   try {
     return (mWriteFunctor)(buffer, size, nitems);
   }
-  catch(curlpp::CallbackExceptionBase *e) {
+  catch(curlpp::CallbackExceptionBase * e) {
     setException(e);
   }
   catch(...) {
-    setException(new CallbackException< curlpp::UnknowException >(curlpp::UnknowException()));
+    setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
 }
 
 size_t 
-curlpp::CurlHandle::executeHeaderFunctor(char *buffer, size_t size, size_t nitems)
+curlpp::CurlHandle::executeHeaderFunctor(char * buffer, size_t size, size_t nitems)
 {
   if(!mHeaderFunctor) {
-    setException(new CallbackException< curlpp::LogicError >(curlpp::LogicError("Null write functor")));
+    setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null write functor")));
     return CURLE_ABORTED_BY_CALLBACK;
   }
     
   try {
     return mHeaderFunctor(buffer, size, nitems);
   }
-  catch(curlpp::CallbackExceptionBase *e) {
+  catch(curlpp::CallbackExceptionBase * e) {
     setException(e);
   }
   catch(...) {
-    setException(new CallbackException< curlpp::UnknowException >(curlpp::UnknowException()));
+    setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
 }
 
 size_t 
-curlpp::CurlHandle::executeReadFunctor(char *buffer, size_t size, size_t nitems)
+curlpp::CurlHandle::executeReadFunctor(char * buffer, size_t size, size_t nitems)
 {
   if(!mReadFunctor) {
-    setException(new CallbackException< curlpp::LogicError >(curlpp::LogicError("Null write functor")));
+    setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null write functor")));
     return CURLE_ABORTED_BY_CALLBACK;
   }
    
   try {
     return mReadFunctor(buffer, size, nitems);
   }
-  catch(curlpp::CallbackExceptionBase *e) {
+  catch(curlpp::CallbackExceptionBase * e) {
     setException(e);
   }
   catch(...) {
-    setException(new CallbackException< curlpp::UnknowException >(curlpp::UnknowException()));
+    setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
@@ -171,67 +171,67 @@ curlpp::CurlHandle::executeProgressFunctor(double dltotal,
 					   double ulnow)
 {
   if(!mProgressFunctor) {
-    setException(new CallbackException< curlpp::LogicError >(curlpp::LogicError("Null write functor")));
+    setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null write functor")));
     return CURLE_ABORTED_BY_CALLBACK;
   }
   
   try {
     return mProgressFunctor(dltotal, dlnow, ultotal, ulnow);
   }
-  catch(curlpp::CallbackExceptionBase *e) {
+  catch(curlpp::CallbackExceptionBase * e) {
     setException(e);
   }
   catch(...) {
-    setException(new CallbackException< curlpp::UnknowException >(curlpp::UnknowException()));
+    setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
 }
 
 int 
-curlpp::CurlHandle::executeDebugFunctor(curl_infotype info, char *buffer, size_t size)
+curlpp::CurlHandle::executeDebugFunctor(curl_infotype info, char * buffer, size_t size)
 {
   if(!mDebugFunctor) {
-    setException(new CallbackException< curlpp::LogicError >(curlpp::LogicError("Null write functor")));
+    setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null write functor")));
     return CURLE_ABORTED_BY_CALLBACK;
   }
 
   try {
     return mDebugFunctor(info, buffer, size);
   }
-  catch(curlpp::CallbackExceptionBase *e) {
+  catch(curlpp::CallbackExceptionBase * e) {
     setException(e);
   }
   catch(...) {
-    setException(new CallbackException< curlpp::UnknowException >(curlpp::UnknowException()));
+    setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
 }
 
 CURLcode 
-curlpp::CurlHandle::executeSslCtxFunctor(void *ssl_ctx)
+curlpp::CurlHandle::executeSslCtxFunctor(void * ssl_ctx)
 {
   if(!mSslFunctor) {
-    setException(new CallbackException< curlpp::LogicError >(curlpp::LogicError("Null write functor")));
+    setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null write functor")));
     return CURLE_ABORTED_BY_CALLBACK;
   }
 
   try {
     return mSslFunctor(ssl_ctx);
   }
-  catch(curlpp::CallbackExceptionBase *e) {
+  catch(curlpp::CallbackExceptionBase * e) {
     setException(e);
   }
   catch(...) {
-    setException(new CallbackException< curlpp::UnknowException >(curlpp::UnknowException()));
+    setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
   }
   
   return CURLE_ABORTED_BY_CALLBACK;
 }
 
 void
-curlpp::CurlHandle::setException(curlpp::CallbackExceptionBase *e) 
+curlpp::CurlHandle::setException(curlpp::CallbackExceptionBase * e) 
 {
   if(mException) {
     delete mException;

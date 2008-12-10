@@ -36,11 +36,11 @@ namespace utilspp
     class LifetimeTracker
     {
     public:
-      LifetimeTracker( unsigned int longevity );
+      LifetimeTracker(unsigned int longevity);
       virtual ~LifetimeTracker();
       static bool compare( 
-			  const LifetimeTracker *l, 
-			  const LifetimeTracker *r
+			  const LifetimeTracker * l, 
+			  const LifetimeTracker * r
 			  );
 
     private:
@@ -55,20 +55,20 @@ namespace utilspp
     /**
      * Helper class for Destroyer
      */
-    template< typename T >
+    template<typename T>
     struct Deleter
     {
-      void deleteObject( T *obj );
+      void deleteObject(T * obj);
     };
 
     /**
      * Concrete lifetime tracker for objects of type T
      */
-    template< typename T, typename TDestroyer >
+    template<typename T, typename TDestroyer>
     class ConcreteLifetimeTracker : public LifetimeTracker
     {
     public:
-      ConcreteLifetimeTracker(T *obj, unsigned int longevity, TDestroyer d);
+      ConcreteLifetimeTracker(T * obj, unsigned int longevity, TDestroyer d);
        
       ~ConcreteLifetimeTracker();
       
@@ -83,7 +83,7 @@ namespace utilspp
     struct adapter
     {
       void operator()(T*);
-      void (*mFunc)();
+      void (* mFunc)();
     };
   }
 }

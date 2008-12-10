@@ -30,59 +30,59 @@
 namespace curlpp
 {
 
-    template< typename OptionType >
-    class Option;
-
-    /**
-     * This class is used to set an option to a handle and to keep it's value.
-     */
-    template< class OptionType >
-    class CURLPPAPI OptionContainer
-    {
-    public:
-	typedef typename OptionContainerType< OptionType >::ParamType ParamType;
-	typedef typename OptionContainerType< OptionType >::ReturnType ReturnType;
-	typedef typename OptionContainerType< OptionType >::ValueType ValueType;
-	typedef typename OptionContainerType< OptionType >::HandleOptionType HandleOptionType;
+	template<typename OptionType>
+	class Option;
 
 	/**
-	 * Contructor. We pass the value of the option.
-	 */
-	OptionContainer(typename OptionContainer< OptionType >::ParamType value);
+	* This class is used to set an option to a handle and to keep it's value.
+	*/
+	template<class OptionType>
+	class CURLPPAPI OptionContainer
+	{
+	public:
+		typedef typename OptionContainerType<OptionType>::ParamType ParamType;
+		typedef typename OptionContainerType<OptionType>::ReturnType ReturnType;
+		typedef typename OptionContainerType<OptionType>::ValueType ValueType;
+		typedef typename OptionContainerType<OptionType>::HandleOptionType HandleOptionType;
 
-	OptionContainer(OptionContainer< OptionType > &other);
+		/**
+		* Contructor. We pass the value of the option.
+		*/
+		OptionContainer(typename OptionContainer<OptionType>::ParamType value);
 
-	/**
-	 * This function set the argument that will be passed to the 
-	 * option call for a handle. It will use the argument passed to
-	 * this function.
-	 */
-	void setValue(typename OptionContainer< OptionType >::ParamType value);
+		OptionContainer(OptionContainer<OptionType> & other);
 
-	/**
-	 * This function get the argument that is set on the handle.
-	 */
-	typename OptionContainer< OptionType >::ReturnType getValue();
+		/**
+		* This function set the argument that will be passed to the 
+		* option call for a handle. It will use the argument passed to
+		* this function.
+		*/
+		void setValue(typename OptionContainer<OptionType>::ParamType value);
 
-        /** 
-	 * We call this function to have the value passed to the curl_easy_setopt.
-	 * 
-	 * Note: DO NOT USE THIS FUNCTION! It's for internal use only.
-	 */
-	typename OptionContainer< OptionType >::HandleOptionType getHandleOptionValue();
+		/**
+		* This function get the argument that is set on the handle.
+		*/
+		typename OptionContainer<OptionType>::ReturnType getValue();
+
+		/** 
+		* We call this function to have the value passed to the curl_easy_setopt.
+		* 
+		* Note: DO NOT USE THIS FUNCTION! It's for internal use only.
+		*/
+		typename OptionContainer<OptionType>::HandleOptionType getHandleOptionValue();
 
 
-    private:         
-	/**
-	 * We cannot call this constructor. We absolutely need an initial value.
-	 */
-	OptionContainer();
+	private:         
+		/**
+		* We cannot call this constructor. We absolutely need an initial value.
+		*/
+		OptionContainer();
 
-	/**
-	 * Current value of the option.
-	 */
-	typename OptionContainer< OptionType >::ValueType mValue;
-    };
+		/**
+		* Current value of the option.
+		*/
+		typename OptionContainer<OptionType>::ValueType mValue;
+	};
 
 } // namespace curlpp
 

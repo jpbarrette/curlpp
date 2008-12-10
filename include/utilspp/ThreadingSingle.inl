@@ -24,27 +24,27 @@
 #ifndef SINGLE_THREADED_INL
 #define SINGLE_THREADED_INL
 
-template< typename T >
+template<typename T>
 inline
-utilspp::ThreadingSingle< T >::lock::lock()
+utilspp::ThreadingSingle<T>::lock::lock()
 {};
 
-template< typename T >
+template<typename T>
 inline
-utilspp::ThreadingSingle< T >::lock::lock( 
-      typename utilspp::ThreadingSingle< T >::mutex & )
+utilspp::ThreadingSingle<T>::lock::lock( 
+      typename utilspp::ThreadingSingle<T>::mutex & )
 {}
 
-template< typename T >
+template<typename T>
 inline
 void
-utilspp::ThreadingSingle< T >::mutex::lock()
+utilspp::ThreadingSingle<T>::mutex::lock()
 {};
 
-template< typename T >
+template<typename T>
 inline
 void
-utilspp::ThreadingSingle< T >::mutex::unlock()
+utilspp::ThreadingSingle<T>::mutex::unlock()
 {};
 
 #endif

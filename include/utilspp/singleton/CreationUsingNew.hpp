@@ -30,11 +30,11 @@
  */
 namespace utilspp
 {
-   template< typename T >
+   template<typename T>
    struct CreationUsingNew
    {
-         static T *create();
-         static void destroy( T *obj );
+         static T * create();
+         static void destroy(T * obj);
    };
 }
 

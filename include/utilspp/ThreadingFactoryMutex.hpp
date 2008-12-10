@@ -28,13 +28,13 @@
 
 namespace utilspp
 {
-   template < typename T >
+   template <typename T>
       struct ThreadingFactoryMutex
       {
          struct lock
          {
             lock();
-            lock( const T & );
+            lock(const T &);
          };
 
          typedef T VolatileType;

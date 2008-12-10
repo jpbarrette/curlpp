@@ -1,20 +1,20 @@
 #include <algorithm>
 
-template< typename T, typename TDestroyer >
+template<typename T, typename TDestroyer>
 void
-utilspp::setLongevity( T *obj, unsigned int longevity, TDestroyer d )
+utilspp::setLongevity(T * obj, unsigned int longevity, TDestroyer d)
 {
    using namespace utilspp::PrivateMembers;
 
-   TrackerArray newArray = static_cast< TrackerArray >( 
+   TrackerArray newArray = static_cast<TrackerArray>( 
          std::realloc(mTrackerArray, mNbElements + 1));
-   if( newArray == NULL )
+   if(newArray == NULL)
    {
       throw std::bad_alloc();
    }
 
-   LifetimeTracker *p = 
-	new ConcreteLifetimeTracker< T, TDestroyer >(obj, longevity, d);
+   LifetimeTracker * p = 
+	new ConcreteLifetimeTracker<T, TDestroyer>(obj, longevity, d);
 
    mTrackerArray = newArray;
 
@@ -30,27 +30,27 @@ utilspp::setLongevity( T *obj, unsigned int longevity, TDestroyer d )
 
    *pos = p;
    mNbElements++;
-   std::atexit( &atExitFunc );
+   std::atexit(&atExitFunc);
 };
 
-template< typename T >
+template<typename T>
 void 
-utilspp::LifetimeWithLongevity< T >::scheduleDestruction( T *obj, void (*func)() )
+utilspp::LifetimeWithLongevity<T>::scheduleDestruction(T * obj, void (* func)())
 {
    utilspp::PrivateMembers::adapter<T> adapter = { func };
-   utilspp::setLongevity( obj, getLongevity( obj ), adapter );
+   utilspp::setLongevity(obj, getLongevity( obj ), adapter);
 }
 
-template< typename T >
+template<typename T>
 void 
-utilspp::LifetimeWithLongevity< T >::onDeadReference()
+utilspp::LifetimeWithLongevity<T>::onDeadReference()
 {
    throw std::logic_error("Dead reference detected");
 }
 
-template< typename T >
+template<typename T>
 unsigned int 
-utilspp::getLongevity( T * )
+utilspp::getLongevity(T *)
 {
    return 1000;
 }

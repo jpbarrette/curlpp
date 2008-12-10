@@ -26,54 +26,54 @@
 
 namespace utilspp
 {
-  template< typename R, class TList >
+  template<typename R, class TList>
   struct FunctorImpl;
   
-  template< typename R >
+  template<typename R>
   struct FunctorImpl<R, utilspp::NullType >
   {
     R operator()() = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
   
-  template< typename R, typename P1 >
+  template<typename R, typename P1>
   struct FunctorImpl<R, TYPE_LIST_1(P1) >
   {
     virtual R operator()(P1) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
   
-  template< typename R, typename P1, typename P2 >
+  template<typename R, typename P1, typename P2>
   struct FunctorImpl<R, TYPE_LIST_2(P1, P2) >
   {
     virtual R operator()(P1, P2) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
   
-  template< typename R, typename P1, typename P2, typename P3 >
+  template<typename R, typename P1, typename P2, typename P3>
   struct FunctorImpl<R, TYPE_LIST_3(P1, P2, P3) >
   {
     virtual R operator()(P1, P2, P3) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4>
   struct FunctorImpl<R, TYPE_LIST_4(P1, P2, P3, P4) >
   {
     virtual R operator()(P1, P2, P3, P4) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4, typename P5 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4, typename P5>
   struct FunctorImpl<R, TYPE_LIST_5(P1, P2, P3, P4, P5) >
   {
     virtual R operator()(P1, P2, P3, P4, P5) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
@@ -88,7 +88,7 @@ namespace utilspp
   struct FunctorImpl<R, TYPE_LIST_6(P1, P2, P3, P4, P5, P6) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
@@ -104,7 +104,7 @@ namespace utilspp
   struct FunctorImpl<R, TYPE_LIST_7(P1, P2, P3, P4, P5, P6, P7) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
@@ -121,7 +121,7 @@ namespace utilspp
   struct FunctorImpl<R, TYPE_LIST_8(P1, P2, P3, P4, P5, P6, P7, P8) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
@@ -139,7 +139,7 @@ namespace utilspp
   struct FunctorImpl<R, TYPE_LIST_9(P1, P2, P3, P4, P5, P6, P7, P8, P9) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
@@ -158,47 +158,47 @@ namespace utilspp
   struct FunctorImpl<R, TYPE_LIST_10(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11>
   struct FunctorImpl<R, TYPE_LIST_11(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12>
   struct FunctorImpl<R, TYPE_LIST_12(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12, typename P13 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12, typename P13>
   struct FunctorImpl<R, TYPE_LIST_13(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12, typename P13, typename P14 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12, typename P13, typename P14>
   struct FunctorImpl<R, TYPE_LIST_14(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 
-  template< typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12, typename P13, typename P14, typename P15 >
+  template<typename R, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6, typename P7, typename P8, typename P9, typename P10, typename P11, typename P12, typename P13, typename P14, typename P15>
   struct FunctorImpl<R, TYPE_LIST_15(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15) >
   {
     virtual R operator()(P1, P2, P3, P4, P5, P6, P7, P8, P9, P10, P11, P12, P13, P14, P15) = 0;
-    virtual FunctorImpl *clone() const = 0;
+    virtual FunctorImpl * clone() const = 0;
     virtual ~FunctorImpl(){};
   };
 }

@@ -47,20 +47,20 @@ namespace curlpp
     Multi();
     ~Multi();
 
-    void add(const curlpp::Easy *handle);
-    void remove(const curlpp::Easy *handle);
+    void add(const curlpp::Easy * handle);
+    void remove(const curlpp::Easy * handle);
 
-    bool perform(int *nbHandles);
-    void fdset(fd_set *read_fd_set,
-	       fd_set *write_fd_set,
-	       fd_set *exc_fd_set,
-	       int *max_fd);
+    bool perform(int * nbHandles);
+    void fdset(fd_set * read_fd_set,
+	       fd_set * write_fd_set,
+	       fd_set * exc_fd_set,
+	       int * max_fd);
 
-    typedef std::list< std::pair< const curlpp::Easy *, Multi::Info > > Msgs;
+    typedef std::list<std::pair<const curlpp::Easy *, Multi::Info> > Msgs;
     Msgs info();
 
   private:
-    CURLM *mMultiHandle;
+    CURLM * mMultiHandle;
     std::map< CURL *, const curlpp::Easy *> mHandles;
   };
 

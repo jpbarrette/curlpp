@@ -27,9 +27,9 @@
 template
 <
 class T,
-template < class > class CreationPolicy,
-template < class > class LifetimePolicy,
-template < class > class ThreadingModel
+template <class> class CreationPolicy,
+template <class> class LifetimePolicy,
+template <class> class ThreadingModel
 >
 T&
 utilspp::SingletonHolder
@@ -41,20 +41,20 @@ ThreadingModel
 >
 ::instance()
 {
-    if ( mInstance == NULL )
+    if (mInstance == NULL)
     {
         makeInstance();
     }
 
-    return ( *mInstance );
+    return (*mInstance);
 };
 
 template
 <
   class T,
-  template < class > class CreationPolicy,
-  template < class > class LifetimePolicy,
-  template < class > class ThreadingModel
+  template <class> class CreationPolicy,
+  template <class> class LifetimePolicy,
+  template <class> class ThreadingModel
   >
 void
 utilspp::SingletonHolder
@@ -65,20 +65,20 @@ utilspp::SingletonHolder
   ThreadingModel
   >::makeInstance()
 {
-  if ( mInstance == NULL )
+  if (mInstance == NULL)
   {
-    typename ThreadingModel< T >::lock guard;
+    typename ThreadingModel<T>::lock guard;
     (void)guard;
     
-    if ( mInstance == NULL ) {
-      if ( mDestroyed )
+    if (mInstance == NULL) {
+      if (mDestroyed)
       {
-        LifetimePolicy< T >::onDeadReference();
+        LifetimePolicy<T>::onDeadReference();
         mDestroyed = false;
       }
       
-      mInstance = CreationPolicy< T >::create();
-      LifetimePolicy< T >::scheduleDestruction( mInstance, &destroySingleton );
+      mInstance = CreationPolicy<T>::create();
+      LifetimePolicy<T>::scheduleDestruction(mInstance, & destroySingleton);
     }
   }
 }
@@ -86,9 +86,9 @@ utilspp::SingletonHolder
 template
 <
 class T,
-template < class > class CreationPolicy,
-template < class > class LifetimePolicy,
-template < class > class ThreadingModel
+template <class> class CreationPolicy,
+template <class> class LifetimePolicy,
+template <class> class ThreadingModel
 >
 void
 utilspp::SingletonHolder
@@ -100,27 +100,27 @@ ThreadingModel
 >
 ::destroySingleton()
 {
-    assert( !mDestroyed );
-    CreationPolicy< T >::destroy( mInstance );
+    assert(!mDestroyed);
+    CreationPolicy<T>::destroy(mInstance);
     mInstance = NULL;
     mDestroyed = true;
 }
 
 template < class T,
-template < class > class C,
-template < class > class L,
-template < class > class M
+template <class> class C,
+template <class> class L,
+template <class> class M
 >
 typename utilspp::SingletonHolder< T, C, L, M>::InstanceType
-utilspp::SingletonHolder< T, C, L, M >::mInstance;
+utilspp::SingletonHolder<T, C, L, M>::mInstance;
 
 template
 <
 class T,
-template < class > class C,
-template < class > class L,
-template < class > class M
+template <class> class C,
+template <class> class L,
+template <class> class M
 >
-bool utilspp::SingletonHolder< T, C, L, M >::mDestroyed;
+bool utilspp::SingletonHolder<T, C, L, M>::mDestroyed;
 
 #endif

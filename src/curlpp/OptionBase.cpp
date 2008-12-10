@@ -31,7 +31,7 @@ curlpp::OptionBase::OptionBase(CURLoption option)
 curlpp::OptionBase::~OptionBase()
 {};
 
-bool curlpp::OptionBase::operator<(const curlpp::OptionBase &rhs) const 
+bool curlpp::OptionBase::operator<(const curlpp::OptionBase & rhs) const 
 {
    return mOption < rhs.mOption;
 }

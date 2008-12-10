@@ -32,13 +32,13 @@ bool curlpp::OutputProgressTrait::ProgressFunction(
    double ulnow
 )
 {
-   if ( dltotal != 0 )
+   if (dltotal != 0)
    {
-      printf( "%.0f/%.0f KBytes\n", dlnow / 1024, dltotal / 1024 );
+      printf("%.0f/%.0f KBytes\n", dlnow / 1024, dltotal / 1024);
    }
    else
    {
-      printf( "%f/%f KBytes\n", ulnow / 1024, ultotal / 1024 );
+      printf("%f/%f KBytes\n", ulnow / 1024, ultotal / 1024);
    }
    
    return true;
@@ -46,13 +46,13 @@ bool curlpp::OutputProgressTrait::ProgressFunction(
 
 //\TODO add exception throwing
 bool curlpp::InputPasswdTrait::passwdFunction(
-   char *prompt,
-   char *buffer,
+   char * prompt,
+   char * buffer,
    int buflen
 )
 {
-   printf( "%s", prompt );
-   if ( fgets( buffer, buflen, stdin ) == NULL )
+   printf("%s", prompt);
+   if (fgets( buffer, buflen, stdin ) == NULL)
    {
       return false;
    }
@@ -62,19 +62,19 @@ bool curlpp::InputPasswdTrait::passwdFunction(
 
 void curlpp::OutputDebugTrait::debugFunction(
    curlpp::debug::Type type,
-   char *buffer,
+   char * buffer,
    int buflen
 )
 {
-   if ( type == curlpp::debug::Text )
+   if (type == curlpp::debug::Text)
    {
-      fwrite( "* ", 2, 1, stdout );
-      fwrite( buffer, buflen, 1, stdout );
+      fwrite("* ", 2, 1, stdout);
+      fwrite(buffer, buflen, 1, stdout);
    }
-   else if ( type == curlpp::debug::headerOut )
+   else if (type == curlpp::debug::headerOut)
    {
-      fwrite( "> ", 2, 1, stdout );
-      fwrite( buffer, buflen, 1, stdout );
+      fwrite("> ", 2, 1, stdout);
+      fwrite(buffer, buflen, 1, stdout);
    }
 };
 

@@ -31,17 +31,28 @@
 namespace curlpp
 {
 
+	/**
+	* \todo class Handle brief description.
+	*
+	* \todo class Handle detail description.
+	*/
+
 	CURLPPAPI class Handle : public OptionList
-    {
-    private:
-	void updateMeToOption(const OptionBase &option);
+	{
 
-    public: 
-	void perform();
+	private:
 
-    private:
-	Curl myCurl;
-    };
+		void updateMeToOption(const OptionBase & option);
+
+	public: 
+
+		void perform();
+
+	private:
+
+		Curl myCurl;
+
+	};
 
 } // namespace curlpp
 

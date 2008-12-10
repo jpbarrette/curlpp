@@ -24,14 +24,14 @@
 #ifndef THREADING_FACTORY_MUTEX_INL
 #define THREADING_FACTORY_MUTEX_INL
 
-template< typename T >
+template<typename T>
 inline
-utilspp::ThreadingSingle< T >::lock::lock()
+utilspp::ThreadingSingle<T>::lock::lock()
 {};
 
-template< typename T >
+template<typename T>
 inline
-utilspp::ThreadingSingle< T >::lock::lock( const T & )
+utilspp::ThreadingSingle<T>::lock::lock(const T &)
 {};
 
 #endif
