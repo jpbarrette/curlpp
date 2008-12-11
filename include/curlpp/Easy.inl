@@ -31,5 +31,5 @@ template<class OptionTrait>
 void 
 curlpp::Easy::setOpt(typename OptionTrait::ParamType value)
 {
-	setOpt(curlpp::OptionTrait<OptionTrait::OptionType, OptionTrait::option>(value));
+  setOpt(curlpp::OptionTrait<typename OptionTrait::OptionType, OptionTrait::option>(value));
 } 

@@ -47,8 +47,6 @@ namespace curlpp
 
 	public:
 
-		typedef OptionType OptionType;
-
 		typedef typename OptionContainer<OptionType>::ParamType ParamType;
 		typedef typename OptionContainer<OptionType>::ValueType ValueType;
 		typedef typename OptionContainer<OptionType>::ReturnType ReturnType;
@@ -144,7 +142,7 @@ namespace curlpp
 
 	public:
 
-		static const CURLoption option = option;
+		//static const CURLoption option = option;
 
 		/**
 		* The constructor takes the a value to set a handle.

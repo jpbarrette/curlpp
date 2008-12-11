@@ -1,4 +1,5 @@
 #include "curlpp/global.h"
+#include "curlpp/config.h"
 
 #if HAVE_OSTREAM
 #  include <ostream>
