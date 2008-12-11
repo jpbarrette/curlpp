@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "curlpp.VC9.vcproj", "{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp.examples", "curlpp.examples.VC9.vcproj", "{C351C533-3329-4782-A72D-28433330F6E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087} = {DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DynamicLibDebugDynamicRTL|Win32 = DynamicLibDebugDynamicRTL|Win32
+		DynamicLibDebugStaticRTL|Win32 = DynamicLibDebugStaticRTL|Win32
+		DynamicLibReleaseDynamicRTL|Win32 = DynamicLibReleaseDynamicRTL|Win32
+		DynamicLibReleaseStaticRTL|Win32 = DynamicLibReleaseStaticRTL|Win32
+		StaticLibDebugDynamicRTL|Win32 = StaticLibDebugDynamicRTL|Win32
+		StaticLibDebugStaticRTL|Win32 = StaticLibDebugStaticRTL|Win32
+		StaticLibReleaseDynamicRTL|Win32 = StaticLibReleaseDynamicRTL|Win32
+		StaticLibReleaseStaticRTL|Win32 = StaticLibReleaseStaticRTL|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibDebugDynamicRTL|Win32.ActiveCfg = DynamicLibDebugDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibDebugDynamicRTL|Win32.Build.0 = DynamicLibDebugDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibDebugStaticRTL|Win32.ActiveCfg = DynamicLibDebugStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibDebugStaticRTL|Win32.Build.0 = DynamicLibDebugStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibReleaseDynamicRTL|Win32.ActiveCfg = DynamicLibReleaseDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibReleaseDynamicRTL|Win32.Build.0 = DynamicLibReleaseDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibReleaseStaticRTL|Win32.ActiveCfg = DynamicLibReleaseStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DynamicLibReleaseStaticRTL|Win32.Build.0 = DynamicLibReleaseStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibDebugDynamicRTL|Win32.ActiveCfg = StaticLibDebugDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibDebugDynamicRTL|Win32.Build.0 = StaticLibDebugDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibDebugStaticRTL|Win32.ActiveCfg = StaticLibDebugStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibDebugStaticRTL|Win32.Build.0 = StaticLibDebugStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibReleaseDynamicRTL|Win32.ActiveCfg = StaticLibReleaseDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibReleaseDynamicRTL|Win32.Build.0 = StaticLibReleaseDynamicRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibReleaseStaticRTL|Win32.ActiveCfg = StaticLibReleaseStaticRTL|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.StaticLibReleaseStaticRTL|Win32.Build.0 = StaticLibReleaseStaticRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibDebugDynamicRTL|Win32.ActiveCfg = DynamicLibDebugDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibDebugDynamicRTL|Win32.Build.0 = DynamicLibDebugDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibDebugStaticRTL|Win32.ActiveCfg = DynamicLibDebugStaticRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibDebugStaticRTL|Win32.Build.0 = DynamicLibDebugStaticRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibReleaseDynamicRTL|Win32.ActiveCfg = DynamicLibReleaseDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibReleaseDynamicRTL|Win32.Build.0 = DynamicLibReleaseDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibReleaseStaticRTL|Win32.ActiveCfg = DynamicLibReleaseStaticRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.DynamicLibReleaseStaticRTL|Win32.Build.0 = DynamicLibReleaseStaticRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibDebugDynamicRTL|Win32.ActiveCfg = StaticLibDebugDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibDebugDynamicRTL|Win32.Build.0 = StaticLibDebugDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibDebugStaticRTL|Win32.ActiveCfg = StaticLibReleaseDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibDebugStaticRTL|Win32.Build.0 = StaticLibReleaseDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibReleaseDynamicRTL|Win32.ActiveCfg = StaticLibReleaseDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibReleaseDynamicRTL|Win32.Build.0 = StaticLibReleaseDynamicRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibReleaseStaticRTL|Win32.ActiveCfg = StaticLibReleaseStaticRTL|Win32
+		{C351C533-3329-4782-A72D-28433330F6E3}.StaticLibReleaseStaticRTL|Win32.Build.0 = StaticLibReleaseStaticRTL|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

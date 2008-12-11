@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="curlpp.VC9"
+	OutputDirectory="$(CURLPP_LIB_PATH)\"
+	IntermediateDirectory="$(CURLPP_LIB_PATH)\$(ConfigurationName)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="&quot;$(CURLPP_INCLUDE_PATH)\&quot;;&quot;$(LIBCURL_PATH)\include&quot;;&quot;$(OPENSSL_PATH)\include&quot;;&quot;$(BOOST_PATH)\include&quot;"
+		PreprocessorDefinitions="LIB;_LIB;BUILDING_CURLPP;HAVE_BOOST;_SCL_SECURE_NO_WARNINGS"
+		ProgramDataBaseFileName="$(OutDir)\$(TargetName).pdb"
+		BrowseInformation="1"
+		WarningLevel="4"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		OutputFile=""
+		AdditionalLibraryDirectories="&quot;$(LIBCURL_PATH)\lib&quot;;&quot;$(OPENSSL_PATH)\lib&quot;"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		OutputFile=""
+		AdditionalLibraryDirectories="&quot;$(LIBCURL_PATH)\lib&quot;;&quot;$(OPENSSL_PATH)\lib&quot;"
+		ManifestFile="$(IntDir)\$(TargetFileName).manifest"
+		ProfileGuidedDatabase=""
+	/>
+</VisualStudioPropertySheet>

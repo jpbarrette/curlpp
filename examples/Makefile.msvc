@@ -1,0 +1,147 @@
+#############################################################
+#
+# Makefile for building libcurlpp examples with MSVC
+# All examples are linked against curlpp release static library
+# Giuseppe "Cowo" Corbelli - cowo at lugbs dot linux dot it
+#
+# Usage: nmake -f Makefile.msvc all
+#        Should be invoked from examples/ directory
+#        Edit the LIBCURL_PATH/BOOST_PATH or set LIBCURL_PATH/BOOST_PATH env vars
+#
+##############################################################
+
+CURLPP_LIB_NAME        = curlpp.lib
+CURL_LIB_NAME          = libcurl.lib
+
+#############################################################
+
+!IFNDEF LIBCURL_PATH
+LIBCURL_PATH   = ../../curl/include
+!ENDIF
+
+!IF "$(cfg)"=="DebugStatic" || "$(cfg)"=="DebugDynamic"
+CC    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GR /EHsc
+!ELSE
+CC    = cl.exe /MD /O2 /DNDEBUG /GR /Y- /EHsc
+!ENDIF
+
+CFLAGS     = /I ../include /I ../include/curlpp /I "$(LIBCURL_PATH)/include" /DCURLPP_STATICLIB /D_CRT_SECURE_NO_DEPRECATE /nologo /W3 /DWIN32 /FD /c
+!IFDEF BOOST_PATH
+CFLAGS = /I $(BOOST_PATH) $(CFLAGS) 
+!ENDIF
+
+LNKLIB     = link.exe /INCREMENTAL:NO /OPT:NOREF
+LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)\lib" /LIBPATH:"..\$(cfg)" $(CURLPP_LIB_NAME) $(CURL_LIB_NAME)
+
+LNK = $(LNKLIB)  $(LFLAGS)
+
+example01 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example02 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example03 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example04 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example05 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example06 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example07 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example08 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example09 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example10 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example11 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example12 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example13 : $$(@B).o
+	$(LNK) Ws2_32.lib /out:$@.exe $**
+
+example14 : $$(@B).o
+	$(LNK) Ws2_32.lib /out:$@.exe $**
+
+example15 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example16 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example17 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example18 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example19 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example20 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example21 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+example22 : $$(@B).o
+	$(LNK) /out:$@.exe $**
+
+
+TARGET = \
+	example01 \
+	example02 \
+	example03 \
+	example04 \
+	example05 \
+	example06 \
+	example07 \
+	example08 \
+	example09 \
+	example10 \
+	example11 \
+	example12 \
+	example13 \
+	example14 \
+	example15 \
+	example16 \
+	example17 \
+	example18 \
+	example19 \
+	example20 \
+	example21 \
+	example22
+
+all : $(TARGET) copy_curlpp
+
+rebuild: clean all
+  
+clean:
+  @echo Cleaning...
+  del *.o *.exe  >NUL 2>&1
+
+copy_curlpp:
+!IF "$(cfg)"=="DebugDynamic" || "$(cfg)"=="ReleaseDynamic"
+  copy ..\$(cfg)\curlpp.dll .\
+!ENDIF
+
+.SUFFIXES: .cpp .o
+
+.cpp.o:
+	$(CC) $(CFLAGS) /Fo"$@"  $<
+
+
