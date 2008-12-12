@@ -669,17 +669,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\OptionContainer.inl"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\src\curlpp\OptionList.cpp"
 				>
 			</File>
@@ -1049,6 +1038,14 @@
 					</File>
 				</Filter>
 			</Filter>
+			<Filter
+				Name="internal"
+				>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionContainer.inl"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -1113,14 +1110,6 @@
 			</File>
 			<File
 				RelativePath=".\include\curlpp\OptionBase.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\OptionContainer.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\OptionContainerType.hpp"
 				>
 			</File>
 			<File
@@ -1262,6 +1251,18 @@
 						>
 					</File>
 				</Filter>
+			</Filter>
+			<Filter
+				Name="internal"
+				>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionContainer.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionContainerType.hpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter

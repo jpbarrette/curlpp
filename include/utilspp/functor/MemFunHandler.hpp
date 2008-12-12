@@ -27,8 +27,8 @@
 namespace utilspp
 {
   template <class ParentFunctor, typename PointerToObj, typename PointerToMemFn>
-  class MemFunHandler : public FunctorImpl< typename ParentFunctor::ResultType,
-					    typename ParentFunctor::ParmList >
+  class MemFunHandler : public FunctorImpl<typename ParentFunctor::ResultType,
+					    typename ParentFunctor::ParmList>
   {
   public:
     typedef typename ParentFunctor::ResultType ResultType;

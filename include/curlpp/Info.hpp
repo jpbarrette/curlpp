@@ -25,87 +25,100 @@
 #ifndef CURLPP_INFO_HPP
 #define CURLPP_INFO_HPP
 
+
 #include "buildconfig.h"
 #include "Easy.hpp"
 
-namespace curlpp 
+
+namespace curlpp
 {
 
-  /**
-   * This class is responsible of retreiving the Info from
-   * a handle. This is the class you use when you want to do
-   * so.
-   */
-  template<CURLINFO info, typename T>
-  struct CURLPPAPI Info 
-  {
-    static void get(curlpp::Easy & handle, T & value);
-    static T get(curlpp::Easy & handle);
-  };
 
-  /**
-   * This class is used when an info is not available for the
-   * current libcURL version.
-   */
-  template<CURLINFO info, typename T>
-  struct CURLPPAPI NotAvailableInfo : Info<info, T>
-  {
-    static void get(curlpp::Easy & handle, T & value);
-    static T get(curlpp::Easy & handle);
-  };
+	/**
+	* This class is responsible of retreiving the Info from
+	* a handle. This is the class you use when you want to do
+	* so.
+	*/
 
-  /**
-   * This is the class you need to specialize if you use
-   * a special type that libcURL is not aware of. This class
-   * need to call curlpp::InfoGetter::get function. See 
-   * curlpp::InfoGetter for more information.
-   */
-  template<typename T>
-  struct CURLPPAPI InfoTypeConverter
-  {
-    static void get(curlpp::Easy & handle, CURLINFO info, T & value);
-  }; 
+	template<CURLINFO info, typename T>
+	struct CURLPPAPI Info 
+	{
+		static void get(curlpp::Easy & handle, T & value);
+		static T get(curlpp::Easy & handle);
+	};
 
-  template<>
-  void InfoTypeConverter<std::string>::get(curlpp::Easy & handle, 
-					     CURLINFO info,
-					     std::string & value);
 
-  template<>
-  void InfoTypeConverter<std::list<std::string> >::get(curlpp::Easy & handle,
-							  CURLINFO info,
-							  std::list<std::string> & value);
+	/**
+	* This class is used when an info is not available for the
+	* current libcURL version.
+	*/
 
-  template<>
-  void InfoTypeConverter<long>::get(curlpp::Easy & handle, 
-				      CURLINFO info,
-				      long & value);
+	template<CURLINFO info, typename T>
+	struct CURLPPAPI NotAvailableInfo : Info<info, T>
+	{
+		static void get(curlpp::Easy & handle, T & value);
+		static T get(curlpp::Easy & handle);
+	};
 
-  template<>
-  void InfoTypeConverter<double>::get(curlpp::Easy & handle, 
-					CURLINFO info,
-					double & value);
 
-    
-  /**
-   * This is the only class that is authorized to retreive 
-   * info from a curlpp::Easy class. So, this is the class
-   * you need to use when you specialize the class
-   * curlpp::InfoTypeConverter. This class is in fact used
-   * as a proxy, just to be sure that nobody access curlpp::Easy's 
-   * private data.
-   */
-  struct CURLPPAPI InfoGetter
-  {
-    template<typename T>
-    static void get(curlpp::Easy & handle, CURLINFO info, T & value);
-  };
+	/**
+	* This is the class you need to specialize if you use
+	* a special type that libcURL is not aware of. This class
+	* need to call curlpp::InfoGetter::get function. See 
+	* curlpp::InfoGetter for more information.
+	*/
+
+	template<typename T>
+	struct CURLPPAPI InfoTypeConverter
+	{
+		static void get(curlpp::Easy & handle, CURLINFO info, T & value);
+	}; 
+
+
+	template<>
+	void InfoTypeConverter<std::string>
+		::get(curlpp::Easy & handle, CURLINFO info, std::string & value);
+
+
+	template<>
+	void InfoTypeConverter<std::list<std::string> >
+		::get(curlpp::Easy & handle, CURLINFO info, std::list<std::string> & value);
+
+
+	template<>
+	void InfoTypeConverter<long>
+		::get(curlpp::Easy & handle, CURLINFO info, long & value);
+
+
+	template<>
+	void InfoTypeConverter<double>
+		::get(curlpp::Easy & handle, CURLINFO info, double & value);
+
+
+	/**
+	* This is the only class that is authorized to retreive 
+	* info from a curlpp::Easy class. So, this is the class
+	* you need to use when you specialize the class
+	* curlpp::InfoTypeConverter. This class is in fact used
+	* as a proxy, just to be sure that nobody access curlpp::Easy's 
+	* private data.
+	*/
+
+	struct CURLPPAPI InfoGetter
+	{
+		template<typename T>
+		static void get(curlpp::Easy & handle, CURLINFO info, T & value);
+	};
+
+
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "Info.inl"
 #endif
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_INFO_HPP

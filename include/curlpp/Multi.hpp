@@ -24,48 +24,59 @@
 #ifndef CURLPP_MULTI_HPP
 #define CURLPP_MULTI_HPP
 
+
 #include <list>
 #include <map>
 
 #include <curl/multi.h>
 
+
 namespace curlpp
 {
 
-  class Easy;
 
-  class CURLPPAPI Multi
-  {
-  public:
-    struct Info 
-    {
-      CURLcode code;
-      CURLMSG msg;
-    };
+	class Easy;
 
-  public:
-    Multi();
-    ~Multi();
+	class CURLPPAPI Multi
+	{
 
-    void add(const curlpp::Easy * handle);
-    void remove(const curlpp::Easy * handle);
+	public:
 
-    bool perform(int * nbHandles);
-    void fdset(fd_set * read_fd_set,
-	       fd_set * write_fd_set,
-	       fd_set * exc_fd_set,
-	       int * max_fd);
+		struct Info 
+		{
+			CURLcode code;
+			CURLMSG msg;
+		};
 
-    typedef std::list<std::pair<const curlpp::Easy *, Multi::Info> > Msgs;
-    Msgs info();
+	public:
 
-  private:
-    CURLM * mMultiHandle;
-    std::map< CURL *, const curlpp::Easy *> mHandles;
-  };
+		Multi();
+		~Multi();
+
+		void add(const curlpp::Easy * handle);
+		void remove(const curlpp::Easy * handle);
+
+		bool perform(int * nbHandles);
+		void fdset(fd_set * read_fd_set,
+								fd_set * write_fd_set,
+								fd_set * exc_fd_set,
+								int * max_fd);
+
+		typedef std::list<std::pair<const curlpp::Easy *, Multi::Info> >
+			Msgs;
+		
+		Msgs info();
+
+	private:
+
+		CURLM * mMultiHandle;
+		std::map<CURL *, const curlpp::Easy *> mHandles;
+	};
+
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_MULTI_HPP

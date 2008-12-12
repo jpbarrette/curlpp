@@ -16,7 +16,7 @@ void
 utilspp::LifetimeLibraryImpl::add(utilspp::PrivateMembers::LifetimeTracker * tracker)
 {
    utilspp::PrivateMembers::TrackerArray newArray = static_cast<
-      utilspp::PrivateMembers::TrackerArray >(std::realloc(mTrackerArray, 
+      utilspp::PrivateMembers::TrackerArray>(std::realloc(mTrackerArray, 
 							    mNbElements + 1));
    if(newArray == NULL)
    {

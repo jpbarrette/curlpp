@@ -106,12 +106,12 @@ ThreadingModel
     mDestroyed = true;
 }
 
-template < class T,
+template <class T,
 template <class> class C,
 template <class> class L,
 template <class> class M
 >
-typename utilspp::SingletonHolder< T, C, L, M>::InstanceType
+typename utilspp::SingletonHolder<T, C, L, M>::InstanceType
 utilspp::SingletonHolder<T, C, L, M>::mInstance;
 
 template

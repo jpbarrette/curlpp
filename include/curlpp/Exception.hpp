@@ -34,6 +34,7 @@
 namespace curlpp
 {
 
+
 	/**
 	* This class is a parent to all curlpp's RuntimeErrors.
 	*
@@ -244,6 +245,7 @@ namespace curlpp
 		throw (CallbackExceptionBase *)(new CallbackException<T>(e));
 	}
 
+
 	template<typename T>
 	CallbackException<T> * createCallbackException(const T & e)
 	{
@@ -294,8 +296,10 @@ namespace curlpp
 	void CURLPPAPI logicAssert(const std::string & reason, bool isOkay);
 	void CURLPPAPI logicAssert(const char * reason, bool isOkay);
 
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_EXCEPTION_HPP

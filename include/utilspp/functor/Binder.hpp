@@ -27,8 +27,8 @@
 namespace utilspp
 {
   template<typename Incoming>
-  class BinderFirst : public FunctorImpl< typename Incoming::ResultType,
-					  typename Incoming::ParmList::tail >
+  class BinderFirst : public FunctorImpl<typename Incoming::ResultType,
+					  typename Incoming::ParmList::tail>
   {
     typedef utilspp::Functor<typename Incoming::ResultType, typename Incoming::ParmList::tail> Outgoing;
     typedef typename Incoming::Parm1 Bound;

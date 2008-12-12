@@ -106,7 +106,7 @@ namespace utilspp
   };
 
 
-  template < typename ContentType, typename CountingBodyPolicy = CountingBody>
+  template <typename ContentType, typename CountingBodyPolicy = CountingBody>
   class SharedPtr
   {
   public:

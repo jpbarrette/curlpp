@@ -24,6 +24,7 @@
 #ifndef CURLPP_OPTION_CONTAINER_TYPE_HPP
 #define CURLPP_OPTION_CONTAINER_TYPE_HPP
 
+
 #include <string>
 #include <list>
 
@@ -31,18 +32,29 @@
 #include "Form.hpp"
 #include "Types.hpp"
 
+
 namespace curlpp
 {
 
+
+namespace internal
+{
+
+
 	/**
-	* \todo struct OptionContainerType - brief.
+	* Defines types connected with the type of the option.
 	*
-	* \todo struct OptionContainerType - detail.
+	* To be able to operate on option's values we have to define
+	* value of what type do we
+	* accept as an argument (ParamType),
+	* store (ValueType),
+	* return (ReturnType).
 	*/
 
 	template<typename OptionType>
 	struct OptionContainerType
 	{
+
 		/// The type of the parameter of setOpt.
 		typedef const OptionType & ParamType;
 
@@ -57,40 +69,30 @@ namespace curlpp
 		* eventually call curl_easy_setopt().
 		*/
 		typedef OptionType & HandleOptionType;
+
 	};
 
 
 	/**
-	* \todo struct OptionContainerType<OptionType *> - brief.
+	* Specialization of template<typename OptionType>	struct OptionContainerType.
 	*
-	* \todo struct OptionContainerType<OptionType *> - detail.
 	*/
 
 	template<typename OptionType>
 	struct OptionContainerType<OptionType *>
 	{
-		/// The type of the parameter of setOpt.
+
 		typedef OptionType * ParamType;
-
-		/// The type of the value kept in the option class.
 		typedef OptionType * ValueType;
-
-		/// The type of the value returned by getValue function.
 		typedef OptionType * ReturnType;
-
-		/**
-		* This typedef is the type usable by the OptionSetter::setOpt to
-		* eventually call curl_easy_setopt().
-		*/
 		typedef OptionType * HandleOptionType;
 
 	};
 
 
 	/**
-	* \todo struct OptionContainerType<std::string> - brief.
+	* Specialization of template<typename OptionType>	struct OptionContainerType.
 	*
-	* \todo struct OptionContainerType<std::string> - detail.
 	*/
 
 	template<>
@@ -108,9 +110,8 @@ namespace curlpp
 
 
 	/**
-	* \todo struct OptionContainerType<std::list<std::string> > - brief.
+	* Specialization of template<typename OptionType>	struct OptionContainerType.
 	*
-	* \todo struct OptionContainerType<std::list<std::string> > - detail.
 	*/
 
 	template<>
@@ -128,20 +129,26 @@ namespace curlpp
 
 
 	/**
-	* \todo struct OptionContainerType<curlpp::Forms> - brief.
+	* Specialization of template<typename OptionType>	struct OptionContainerType.
 	*
-	* \todo struct OptionContainerType<curlpp::Forms> - detail.
 	*/
 
 	template<>
 	struct OptionContainerType<curlpp::Forms>
 	{
+
 		typedef const Forms & ParamType;
 		typedef curlpp::HttpPost ValueType;
 		typedef Forms ReturnType;
 		typedef const curlpp::HttpPost & HandleOptionType;
 
 	};
+
+
+	/**
+	* Specialization of template<typename OptionType>	struct OptionContainerType.
+	*
+	*/
 
 	//   template<>
 	//   struct OptionContainerType<std::ostream *>
@@ -152,8 +159,13 @@ namespace curlpp
 	//     typedef const curlpp::HttpPost & HandleOptionType;
 	//   };
 
+
+} // namespace internal
+
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_OPTION_CONTAINER_TYPE_HPP

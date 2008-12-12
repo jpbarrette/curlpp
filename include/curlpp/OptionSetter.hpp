@@ -24,17 +24,19 @@
 #ifndef CURLPP_OPTION_SETTER_HPP
 #define CURLPP_OPTION_SETTER_HPP
 
+
 #include "buildconfig.h"
 
-#include "OptionContainerType.hpp"
+#include "curlpp/internal/OptionContainerType.hpp"
 #include "CurlHandle.hpp"
 #include "Types.hpp"
+
 
 namespace curlpp
 {
 
 	/**
-	* This class is used to specialize some option settings.
+	* Defines the way options are set.
 	*/
 
 	template<typename OptionValueType, CURLoption optionType>
@@ -43,7 +45,8 @@ namespace curlpp
 
 	public:
 
-		typedef typename OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef typename internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -51,7 +54,7 @@ namespace curlpp
 
 
 	/**
-	* This class is used to specialize the std::string options type.
+	* Specialization.
 	*/
 
 	template<CURLoption optionType>
@@ -60,14 +63,16 @@ namespace curlpp
 
 	public:
 
-		typedef curlpp::OptionContainerType<std::string>::HandleOptionType ParamType;
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		typedef curlpp::internal::OptionContainerType<std::string>::HandleOptionType
+			ParamType;
+
+		static void	setOpt(curlpp::CurlHandle * handle, ParamType value);
 
 	};
 
 
 	/**
-	* This class is used to specialize the curlpp::SList options type.
+	* Specialization.
 	*/
 
 	template<CURLoption optionType>
@@ -76,16 +81,19 @@ namespace curlpp
 
 	public:
 
-		typedef std::list<std::string> OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef std::list<std::string>
+			OptionValueType;
+		
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void	setOpt(curlpp::CurlHandle * handle, ParamType value);
 
 	};
 
 
 	/**
-	* This class is used to specialize the curlpp::HttpPost options type.
+	* Specialization.
 	*/
 
 	template<>
@@ -94,8 +102,11 @@ namespace curlpp
 
 	public:
 
-		typedef curlpp::Forms OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::Forms 
+			OptionValueType;
+		
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -103,96 +114,21 @@ namespace curlpp
 
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
 	class CURLPPAPI OptionSetter<curlpp::types::WriteFunctionFunctor,
-		CURLOPT_WRITEFUNCTION>
+																CURLOPT_WRITEFUNCTION>
 	{
 
 	public:
 
-		typedef curlpp::types::WriteFunctionFunctor OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::WriteFunctionFunctor
+			OptionValueType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
-	};
-
-
-#ifdef HAVE_BOOST
-
-	/**
-	* \todo Brief comment.
-	*/
-
-	template<>
-	class CURLPPAPI OptionSetter<curlpp::types::BoostWriteFunction, 
-		CURLOPT_WRITEFUNCTION>
-	{
-
-	public:
-
-		typedef curlpp::types::BoostWriteFunction OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
-
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
-
-	};
-
-#endif // #ifdef HAVE_BOOST
-
-
-	/**
-	* \todo Brief comment.
-	*/
-
-	template<>
-	class CURLPPAPI OptionSetter<FILE *, 
-		CURLOPT_WRITEDATA>
-	{
-
-	public:
-
-		typedef FILE * OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
-
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
-
-	};
-
-
-	/**
-	* \todo Brief comment.
-	*/
-
-	template<>
-	class CURLPPAPI OptionSetter<std::ostream *, 
-		CURLOPT_WRITEDATA>
-	{
-
-	public:
-
-		typedef std::ostream * OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
-
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
-	};
-
-
-	/**
-	* \todo Brief comment.
-	*/
-
-	template<>
-	class CURLPPAPI OptionSetter<curlpp::types::ReadFunctionFunctor, 
-		CURLOPT_READFUNCTION>
-	{
-
-	public:
-
-		typedef curlpp::types::ReadFunctionFunctor OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -202,36 +138,136 @@ namespace curlpp
 #ifdef HAVE_BOOST
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter<curlpp::types::BoostReadFunction, 
-		CURLOPT_READFUNCTION>
+	class CURLPPAPI OptionSetter<curlpp::types::BoostWriteFunction,
+																CURLOPT_WRITEFUNCTION>
 	{
+
 	public:
-		typedef curlpp::types::BoostReadFunction OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+
+		typedef curlpp::types::BoostWriteFunction
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
 	};
 
 #endif // #ifdef HAVE_BOOST
 
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
+	*/
+
+	template<>
+	class CURLPPAPI OptionSetter<FILE *,
+																CURLOPT_WRITEDATA>
+	{
+
+	public:
+
+		typedef FILE *
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
+	};
+
+
+	/**
+	* Specialization.
+	*/
+
+	template<>
+	class CURLPPAPI OptionSetter<std::ostream *,
+																CURLOPT_WRITEDATA>
+	{
+
+	public:
+
+		typedef std::ostream *
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+	};
+
+
+	/**
+	* Specialization.
+	*/
+
+	template<>
+	class CURLPPAPI OptionSetter<curlpp::types::ReadFunctionFunctor,
+																CURLOPT_READFUNCTION>
+	{
+
+	public:
+
+		typedef curlpp::types::ReadFunctionFunctor
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
+	};
+
+
+#ifdef HAVE_BOOST
+
+	/**
+	* Specialization.
+	*/
+
+	template<>
+	class CURLPPAPI OptionSetter<curlpp::types::BoostReadFunction,
+																CURLOPT_READFUNCTION>
+	{
+
+	public:
+
+		typedef curlpp::types::BoostReadFunction
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
+	};
+
+#endif // #ifdef HAVE_BOOST
+
+
+	/**
+	* Specialization.
 	*/
 
 	template <>
-	class CURLPPAPI OptionSetter<FILE *, 
-		CURLOPT_READDATA>
+	class CURLPPAPI OptionSetter<FILE *,
+																CURLOPT_READDATA>
 	{
 
 	public:
 
-		typedef FILE * OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef FILE *
+			OptionValueType;
+		
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -239,18 +275,21 @@ namespace curlpp
 
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter<std::istream *, 
-		CURLOPT_READDATA>
+	class CURLPPAPI OptionSetter<std::istream *,
+																CURLOPT_READDATA>
 	{
 
 	public:
 
-		typedef std::istream * OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef std::istream *
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -258,18 +297,21 @@ namespace curlpp
 
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter<curlpp::types::ProgressFunctionFunctor, 
-		CURLOPT_PROGRESSFUNCTION>
+	class CURLPPAPI OptionSetter<curlpp::types::ProgressFunctionFunctor,
+																CURLOPT_PROGRESSFUNCTION>
 	{
 
 	public:
 
-		typedef curlpp::types::ProgressFunctionFunctor OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::ProgressFunctionFunctor
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -279,94 +321,70 @@ namespace curlpp
 #ifdef HAVE_BOOST
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter<curlpp::types::BoostProgressFunction, 
-		CURLOPT_PROGRESSFUNCTION>
+	class CURLPPAPI OptionSetter<curlpp::types::BoostProgressFunction,
+																CURLOPT_PROGRESSFUNCTION>
 	{
 
 	public:
 
-		typedef curlpp::types::BoostProgressFunction OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::BoostProgressFunction
+			OptionValueType;
+		
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
 	};
 
 #endif // #ifdef HAVE_BOOST
 
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter< curlpp::types::WriteFunctionFunctor, 
-		CURLOPT_HEADERFUNCTION >
+	class CURLPPAPI OptionSetter<curlpp::types::WriteFunctionFunctor,
+																CURLOPT_HEADERFUNCTION>
 	
 	{
 
 	public:
 
-		typedef curlpp::types::WriteFunctionFunctor OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::WriteFunctionFunctor
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
-	};
-
-#ifdef HAVE_BOOST
-
-	/**
-	* \todo Brief comment.
-	*/
-
-	template<>
-	class CURLPPAPI OptionSetter< curlpp::types::BoostWriteFunction, 
-		CURLOPT_HEADERFUNCTION >
-	{
-	public:
-		typedef curlpp::types::BoostWriteFunction OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
-
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
-	};
-#endif
-
-
-	/**
-	* \todo Brief comment.
-	*/
-
-	template<>
-	class CURLPPAPI OptionSetter< curlpp::types::DebugFunctionFunctor, 
-		CURLOPT_DEBUGFUNCTION >
-	{
-	public:
-		typedef curlpp::types::DebugFunctionFunctor OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
-
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 	};
 
 
 #ifdef HAVE_BOOST
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter< curlpp::types::BoostDebugFunction, 
-		CURLOPT_DEBUGFUNCTION >
+	class CURLPPAPI OptionSetter<curlpp::types::BoostWriteFunction,
+																CURLOPT_HEADERFUNCTION>
 	{
 
 	public:
 
-		typedef curlpp::types::BoostDebugFunction OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::BoostWriteFunction
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
@@ -376,51 +394,108 @@ namespace curlpp
 
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter< curlpp::types::SslCtxFunctionFunctor, 
-		CURLOPT_SSL_CTX_FUNCTION >
+	class CURLPPAPI OptionSetter<curlpp::types::DebugFunctionFunctor,
+																CURLOPT_DEBUGFUNCTION>
 	{
 
 	public:
 
-		typedef curlpp::types::SslCtxFunctionFunctor OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::DebugFunctionFunctor
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 
 	};
 
+
 #ifdef HAVE_BOOST
 
 	/**
-	* \todo Brief comment.
+	* Specialization.
 	*/
 
 	template<>
-	class CURLPPAPI OptionSetter< curlpp::types::BoostSslCtxFunction, 
-		CURLOPT_SSL_CTX_FUNCTION >
+	class CURLPPAPI OptionSetter<curlpp::types::BoostDebugFunction,
+																CURLOPT_DEBUGFUNCTION>
 	{
 
 	public:
 
-		typedef curlpp::types::BoostSslCtxFunction OptionValueType;
-		typedef curlpp::OptionContainerType<OptionValueType>::HandleOptionType ParamType;
+		typedef curlpp::types::BoostDebugFunction
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
+	};
+
+#endif // #ifdef HAVE_BOOST
+
+
+	/**
+	* Specialization.
+	*/
+
+	template<>
+	class CURLPPAPI OptionSetter<curlpp::types::SslCtxFunctionFunctor,
+																CURLOPT_SSL_CTX_FUNCTION>
+	{
+
+	public:
+
+		typedef curlpp::types::SslCtxFunctionFunctor
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+
+	};
+
+
+#ifdef HAVE_BOOST
+
+	/**
+	* Specialization.
+	*/
+
+	template<>
+	class CURLPPAPI OptionSetter<curlpp::types::BoostSslCtxFunction,
+																CURLOPT_SSL_CTX_FUNCTION>
+	{
+
+	public:
+
+		typedef curlpp::types::BoostSslCtxFunction
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
 
 		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
 	};
 
 #endif // #ifdef HAVE_BOOST
+
 
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "OptionSetter.inl"
 #endif
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_OPTION_SETTER_HPP
-
