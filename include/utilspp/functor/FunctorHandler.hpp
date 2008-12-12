@@ -27,8 +27,8 @@
 namespace utilspp
 {
   template <class ParentFunctor, typename Fun>
-  class FunctorHandler : public FunctorImpl< typename ParentFunctor::ResultType,
-					     typename ParentFunctor::ParmList >
+  class FunctorHandler : public FunctorImpl<typename ParentFunctor::ResultType,
+					     typename ParentFunctor::ParmList>
   {
   public:
     typedef typename ParentFunctor::ResultType ResultType;

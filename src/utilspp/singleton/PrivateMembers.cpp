@@ -29,7 +29,7 @@ void
 utilspp::PrivateMembers::atExitFunc()
 {
    assert((mTrackerArray != NULL) && 
-	  (mNbElements > 0));
+	  (mNbElements> 0));
 
    //Pick the element at the top of the stack.
    LifetimeTracker* top =  mTrackerArray[mNbElements - 1];
@@ -37,7 +37,7 @@ utilspp::PrivateMembers::atExitFunc()
    //Remove that object off the stack.
    //Don't check errors-realloc with less memory, cause that can't fail.
    mTrackerArray = static_cast< 
-     utilspp::PrivateMembers::TrackerArray >(std::realloc(mTrackerArray, 
+     utilspp::PrivateMembers::TrackerArray>(std::realloc(mTrackerArray, 
 							    --mNbElements));
 
    //Destroy the element.

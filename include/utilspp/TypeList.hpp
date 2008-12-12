@@ -125,7 +125,7 @@ namespace utilspp
     };
 
     template<unsigned int i, class OutOfBound>
-    struct TypeAtNonStrict< utilspp::NullType, i , OutOfBound>
+    struct TypeAtNonStrict<utilspp::NullType, i , OutOfBound>
     {
       typedef OutOfBound Result;
     };

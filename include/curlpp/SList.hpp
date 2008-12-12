@@ -24,6 +24,7 @@
 #ifndef CURLPP_SLIST_HPP
 #define CURLPP_SLIST_HPP
 
+
 #include <curl/curl.h>
 #include <list>
 
@@ -33,45 +34,51 @@
 namespace curlpp
 {
 
-  /**
-   * This class is binding the curl_slist struct.
-   */
-  class CURLPPAPI SList
-  {
-  public:
-    SList();
-    SList(const SList & rhs);
+	/**
+	* This class is binding the curl_slist struct.
+	*/
 
-    /**
-     * the list passed in argument is now possessed by
-     * the class.
-     */
-    SList(curl_slist * list);
+	class CURLPPAPI SList
+	{
 
-    SList(const std::list<std::string> & list);
-    ~SList();
+	public:
 
-    SList & operator=(const std::list<std::string> & list);
-    operator std::list<std::string> ();
+		SList();
+		SList(const SList & rhs);
 
-    curl_slist * cslist() const;
-    std::list<std::string> list();
+		/**
+		* The list passed in argument is now possessed by the class.
+		*/
+		SList(curl_slist * list);
 
-  private:
-    void set(const std::list<std::string> & list);
-    void update();
-    void clear();
-    void constructFrom(curl_slist * list);
+		SList(const std::list<std::string> & list);
+		~SList();
 
-     
-    curl_slist * mList;
-    std::list<std::string> mData;
-  };
+		SList & operator=(const std::list<std::string> & list);
+		operator std::list<std::string>();
+
+		curl_slist * cslist() const;
+		std::list<std::string> list();
+
+	private:
+
+		void set(const std::list<std::string> & list);
+		void update();
+		void clear();
+		void constructFrom(curl_slist * list);
+
+
+		curl_slist * mList;
+		std::list<std::string> mData;
+
+	};
 
 } // namespace curlpp
 
+namespace cURLpp = curlpp;
+
+
 std::ostream CURLPPAPI & operator<<(std::ostream & stream, const std::list<std::string> & value);
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_SLIST_HPP

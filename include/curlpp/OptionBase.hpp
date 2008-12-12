@@ -24,6 +24,7 @@
 #ifndef CURLPP_OPTION_BASE_HPP
 #define CURLPP_OPTION_BASE_HPP
 
+
 #include <curl/curl.h>
 
 #include "buildconfig.h"
@@ -32,6 +33,7 @@
 namespace curlpp
 {
 
+
   class CurlHandle;
 
   /**
@@ -39,10 +41,13 @@ namespace curlpp
 	 *
 	 * This is only used to be able to stock a list of options.
    */
-  class CURLPPAPI OptionBase
+
+	class CURLPPAPI OptionBase
   {
-  public:
-    OptionBase(CURLoption option);
+
+	public:
+
+		OptionBase(CURLoption option);
      
     /**
      * The destructor.
@@ -82,11 +87,15 @@ namespace curlpp
     virtual void clear() = 0;
 
   private:
+
     CURLoption mOption;
+
   };
+
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
-   
+
+
 #endif // #ifndef CURLPP_OPTION_BASE_HPP

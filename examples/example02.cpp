@@ -21,6 +21,13 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+* \file
+* Uploading of string.
+* ReadFunction option using functor.
+* Setting custom headers.
+*/
+
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
@@ -67,7 +74,7 @@ int main(int argc, char *argv[])
 		curlpp::Cleanup cleaner;
 		curlpp::Easy request;
 
-		std::list< std::string > headers;
+		std::list<std::string> headers;
 		headers.push_back("Content-Type: text/*"); 
 		sprintf(buf, "Content-Length: %d", size); 
 		headers.push_back(buf);
@@ -82,11 +89,11 @@ int main(int argc, char *argv[])
 
 		request.perform();
 	}
-	catch ( curlpp::LogicError & e )
+	catch (curlpp::LogicError & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	catch ( curlpp::RuntimeError & e )
+	catch (curlpp::RuntimeError & e)
 	{
 		std::cout << e.what() << std::endl;
 	}

@@ -24,6 +24,7 @@
 #ifndef CURLPP_STORAGE_TRAIT_HPP
 #define CURLPP_STORAGE_TRAIT_HPP
 
+
 #include "buildconfig.h"
 #include "types.hpp"
 
@@ -36,183 +37,214 @@
 namespace curlpp
 {
 
-   CURLPPAPI class StorageTrait
-   {
-      public:
-         StorageTrait( )
-         {}
+	CURLPPAPI class StorageTrait
+	{
 
-         virtual ~StorageTrait()
-         {}
+	public:
+
+		StorageTrait( )
+		{}
+
+		virtual ~StorageTrait()
+		{}
+
+	};
+
+
+	CURLPPAPI class InputTrait : public StorageTrait
+	{
+
+	public:
+
+		InputTrait( )
+		{}
+
+		virtual ~InputTrait()
+		{}
+
+		virtual size_t read(void * buffer, size_t length) = 0;
+
+	};
+
+
+	CURLPPAPI class OutputTrait : public StorageTrait
+	{
+
+	public:
+
+		OutputTrait( )
+		{}
+
+		virtual ~OutputTrait()
+		{}
+
+		virtual size_t write(void * buffer, size_t length) = 0;
+
+	};
+
+
+	CURLPPAPI class IOTrait : public InputTrait, public OutputTrait
+	{
+
+	public:
+
+		IOTrait( )
+		{}
+
+		virtual ~IOTrait()
+		{}
+	};
+
+
+	CURLPPAPI class ProgressTrait : public StorageTrait
+	{
+
+	public:
+
+		ProgressTrait()
+		{}
+
+		virtual ~ProgressTrait()
+		{}
+
+		virtual bool ProgressFunction(
+																	double dltotal,
+																	double dlnow,
+																	double ultotal,
+																	double ulnow) = 0;
+	};
+
+
+	CURLPPAPI class OutputProgressTrait : public ProgressTrait
+	{
+
+	public:
+
+		OutputProgressTrait()
+		{}
+
+		virtual ~OutputProgressTrait()
+		{}
+
+		bool ProgressFunction(
+													double dltotal,
+													double dlnow,
+													double ultotal,
+													double ulnow);
 
    };
 
-   CURLPPAPI class InputTrait : public StorageTrait
-   {
-      public:
-         InputTrait( )
-         {}
+	static OutputProgressTrait defaultProgressTrait;
 
-         virtual ~InputTrait()
-         {}
 
-         virtual size_t read(void * buffer, size_t length) = 0;
+	/**
+	* This class is the class you need to derive from to 
+	* obtain a "home made" passwd callback, in order to 
+	* manage by yourself the input of passwords.
+	*
+	* NOTE:to see how to use this check the 
+	* defaultPasswdTrait, that's an 
+	* InputPasswdTrait
+	*/
 
-   };
+	CURLPPAPI class PasswdTrait : public StorageTrait
+	{
 
-   CURLPPAPI class OutputTrait : public StorageTrait
-   {
-      public:
-         OutputTrait( )
-         {}
+	public:
 
-         virtual ~OutputTrait()
-         {}
+		virtual ~PasswdTrait()
+		{}
 
-         virtual size_t write(void * buffer, size_t length) = 0;
-   };
+		virtual bool passwdFunction(
+																char * prompt,
+																char * buffer,
+																int buflen) = 0;
 
-   CURLPPAPI class IOTrait : public InputTrait, public OutputTrait
-   {
-      public:
-         IOTrait( )
-         {}
+	};
 
-         virtual ~IOTrait()
-         {}
-   }
-   ;
 
-   CURLPPAPI class ProgressTrait : public StorageTrait
-   {
-      public:
-         ProgressTrait()
-         {}
+	/**
+	* This class is the default trait for 
+	* PasswdStorage
+	*/
 
-         virtual ~ProgressTrait()
-         {}
+	CURLPPAPI class InputPasswdTrait : public PasswdTrait
+	{
 
-         virtual bool ProgressFunction(
-               double dltotal,
-               double dlnow,
-               double ultotal,
-               double ulnow
-               ) = 0;
-   };
+	public:
 
-   CURLPPAPI class OutputProgressTrait : public ProgressTrait
-   {
-      public:
-         OutputProgressTrait()
-         {}
+		virtual ~InputPasswdTrait()
+		{}
 
-         virtual ~OutputProgressTrait()
-         {}
+		virtual bool passwdFunction(
+																char * prompt,
+																char * buffer,
+																int buflen);
 
-         bool ProgressFunction(
-               double dltotal,
-               double dlnow,
-               double ultotal,
-               double ulnow
-               );
+	};
 
-   };
+	static InputPasswdTrait defaultPasswdTrait;
 
-   static OutputProgressTrait defaultProgressTrait;
 
-   /**
-    * This class is the class you need to derive from to 
-    * obtain a "home made" passwd callback, in order to 
-    * manage by yourself the input of passwords.
-    *
-    * NOTE:to see how to use this check the 
-    * defaultPasswdTrait, that's an 
-    * InputPasswdTrait
-    */
-   CURLPPAPI class PasswdTrait : public StorageTrait
-   {
-      public:
-         virtual ~PasswdTrait()
-         {}
+	/**
+	* This class is the class you need to derive from to 
+	* obtain a "home made" debug callback, in order to 
+	* manage by yourself the output of debug.
+	*
+	* NOTE:to see how to use this check the 
+	* defaultDebugTrait, that's an 
+	* OutputDebugTrait
+	*/
 
-         virtual bool passwdFunction(
-               char * prompt,
-               char * buffer,
-               int buflen
-               ) = 0;
-   };
+	CURLPPAPI class DebugTrait : public StorageTrait
+	{
 
-   /**
-    * This class is the default trait for 
-    * PasswdStorage
-    */
-   CURLPPAPI class InputPasswdTrait : public PasswdTrait
-   {
-      public:
-         virtual ~InputPasswdTrait()
-         {}
+	public:
 
-         virtual bool passwdFunction(
-               char * prompt,
-               char * buffer,
-               int buflen
-               );
-   };
+		virtual ~DebugTrait()
+		{}
 
-   static InputPasswdTrait defaultPasswdTrait;
+		/**
+		* You need to implement this function in order
+		* to provide a "home made" debug function.
+		*
+		* NOTE:always use the buflen when using this data, 
+		* buffer is treated at this point like binary data,
+		* so it will NOT necesserily be NULL terminated.
+		*/
+		virtual void debugFunction(
+																curlpp::debug::Type type,
+																char * buffer,
+																int buflen) = 0;
+	};
 
-   /**
-    * This class is the class you need to derive from to 
-    * obtain a "home made" debug callback, in order to 
-    * manage by yourself the output of debug.
-    *
-    * NOTE:to see how to use this check the 
-    * defaultDebugTrait, that's an 
-    * OutputDebugTrait
-    */
 
-   CURLPPAPI class DebugTrait : public StorageTrait
-   {
-      public:
-         virtual ~DebugTrait()
-         {}
+	/**
+	* This class is the default trait for the
+	* DebugStorage class
+	*/
 
-         /**
-          * You need to implement this function in order
-          * to provide a "home made" debug function.
-          *
-          * NOTE:always use the buflen when using this data, 
-          * buffer is treated at this point like binary data,
-          * so it will NOT necesserily be NULL terminated.
-          */
-         virtual void debugFunction(
-               curlpp::debug::Type type,
-               char * buffer,
-               int buflen
-               ) = 0;
-   };
+	CURLPPAPI class OutputDebugTrait : public DebugTrait
+	{
 
-   /**
-    * This class is the default trait for the
-    * DebugStorage class
-    */
-   CURLPPAPI class OutputDebugTrait : public DebugTrait
-   {
-      public:
-         virtual ~OutputDebugTrait()
-         {}
+	public:
 
-         virtual void debugFunction(
-               curlpp::debug::Type type,
-               char * buffer,
-               int buflen
-               );
-   };
+		virtual ~OutputDebugTrait()
+		{}
 
-   static OutputDebugTrait defaultDebugTrait;
+		virtual void debugFunction(
+			curlpp::debug::Type type,
+			char * buffer,
+			int buflen);
+
+	};
+
+	static OutputDebugTrait defaultDebugTrait;
+
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_STORAGE_TRAIT_HPP
