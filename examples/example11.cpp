@@ -34,7 +34,7 @@
 #define MAX_FILE_LENGTH 20000
 
 
-// Callback must be declared static, otherwise it won't link...
+/// Callback must be declared static, otherwise it won't link...
 size_t WriteCallback(char* ptr, size_t size, size_t nmemb, void *f)
 {
 	FILE *file = (FILE *)f;
@@ -53,7 +53,8 @@ int main(int argc, char *argv[])
 	}
 	char *url = argv[1];
 	char *filename = NULL;
-	if(argc >= 3) {
+	if(argc >= 3)
+	{
 		filename = argv[2];
 	}
 
@@ -62,38 +63,39 @@ int main(int argc, char *argv[])
 		curlpp::Cleanup cleaner;
 		curlpp::Easy request;
 
-		// Set the writer callback to enable cURL 
-		// to write result in a memory area
-		curlpp::OptionTrait< curl_write_callback, CURLOPT_WRITEFUNCTION > 
+		/// Set the writer callback to enable cURL to write result in a memory area
+		curlpp::OptionTrait<curl_write_callback, CURLOPT_WRITEFUNCTION> 
 			myFunction(WriteCallback);
 
 		FILE *file = stdout;
-		if(filename != NULL) {
+		if(filename != NULL)
+		{
 			file = fopen(filename, "wb");
-			if(file == NULL) {
+			if(file == NULL)
+			{
 				fprintf(stderr, strerror(errno));
 				return EXIT_FAILURE;
 			}
 		} 
 
-		curlpp::OptionTrait< void *, CURLOPT_WRITEDATA > 
+		curlpp::OptionTrait<void *, CURLOPT_WRITEDATA> 
 			myData(file);
 
 		request.setOpt(myFunction);
 		request.setOpt(myData);
 
-		// Setting the URL to retrive.
+		/// Setting the URL to retrive.
 		request.setOpt(new curlpp::options::Url(url));
 		request.setOpt(new curlpp::options::Verbose(true));
 		request.perform();
 	}
 
-	catch ( curlpp::LogicError & e )
+	catch (curlpp::LogicError & e)
 	{
 		std::cout << e.what() << std::endl;
 	}
 
-	catch ( curlpp::RuntimeError & e )
+	catch (curlpp::RuntimeError & e)
 	{
 		std::cout << e.what() << std::endl;
 	}

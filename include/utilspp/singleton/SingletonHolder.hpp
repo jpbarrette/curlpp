@@ -34,10 +34,10 @@
 namespace utilspp
 {
   template
-  < class T,
+  <class T,
     template <class> class CreationPolicy = utilspp::CreationUsingNew,
     template <class> class LifetimePolicy = utilspp::LifetimeDefault,
-    template <class> class ThreadingModel = utilspp::ThreadingSingle >
+    template <class> class ThreadingModel = utilspp::ThreadingSingle>
   class SingletonHolder
   {
   public:

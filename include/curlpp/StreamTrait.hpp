@@ -24,53 +24,67 @@
 #ifndef CURLPP_STREAM_TRAIT_HPP
 #define CURLPP_STREAM_TRAIT_HPP
 
+
 #include "buildconfig.h"
 #include "StorageTrait.hpp"
+
 
 namespace curlpp
 {
 
-   /**
-    * Class for Input 'stream' storage trait.
-    */
-   CURLPPAPI class IStreamTrait : public InputTrait
-   {
 
-      public:
-         virtual ~IStreamTrait()
-         {}
+	/**
+	* Class for Input 'stream' storage trait.
+	*/
 
-         IStreamTrait(std::istream* file ) : mFile( file)
-         {}
+	CURLPPAPI class IStreamTrait : public InputTrait
+	{
 
-         size_t read(void * buffer, size_t length);
+	public:
 
-      protected:
-         std::istream* mFile;
-   };
+		virtual ~IStreamTrait()
+		{}
 
-   // ============================================================================
-   // Class for Output 'stream' storage trait.
-   // ============================================================================
-   CURLPPAPI class OStreamTrait : public OutputTrait
-   {
+		IStreamTrait(std::istream* file) : mFile(file)
+		{}
 
-      public:
-         virtual ~OStreamTrait()
-         {}
+		size_t read(void * buffer, size_t length);
 
-         OStreamTrait(std::ostream* file ) : mFile( file)
-         {}
+	protected:
 
-         size_t write(void * buffer, size_t length);
+		std::istream* mFile;
 
-      protected:
-         std::ostream* mFile;
-   };
+	};
+
+
+	/**
+	* Class for Output 'stream' storage trait.
+	*/
+
+	CURLPPAPI class OStreamTrait : public OutputTrait
+	{
+
+	public:
+
+		virtual ~OStreamTrait()
+		{}
+
+		OStreamTrait(std::ostream* file) : mFile(file)
+		{}
+
+		size_t write(void * buffer, size_t length);
+
+	protected:
+
+		std::ostream* mFile;
+
+	};
+
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_STREAM_TRAIT_HPP
 

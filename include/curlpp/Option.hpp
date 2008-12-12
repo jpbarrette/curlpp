@@ -27,11 +27,12 @@
 
 #include "buildconfig.h"
 #include "OptionBase.hpp"
-#include "OptionContainer.hpp"
+#include "curlpp/internal/OptionContainer.hpp"
 
 
 namespace curlpp
 {
+
 
 	class Easy;
 
@@ -41,6 +42,7 @@ namespace curlpp
 	* We use utilspp::pointer_on_member_function and utilspp::type_trait to simplify
 	* the declaration of an option object.
 	*/
+
 	template<typename OptionType>
 	class CURLPPAPI Option : public curlpp::OptionBase
 	{
@@ -49,10 +51,10 @@ namespace curlpp
 
 		typedef OptionType OptionType;
 
-		typedef typename OptionContainer<OptionType>::ParamType ParamType;
-		typedef typename OptionContainer<OptionType>::ValueType ValueType;
-		typedef typename OptionContainer<OptionType>::ReturnType ReturnType;
-		typedef typename OptionContainer<OptionType>::HandleOptionType HandleOptionType;
+		typedef typename internal::OptionContainer<OptionType>::ParamType ParamType;
+		typedef typename internal::OptionContainer<OptionType>::ValueType ValueType;
+		typedef typename internal::OptionContainer<OptionType>::ReturnType ReturnType;
+		typedef typename internal::OptionContainer<OptionType>::HandleOptionType HandleOptionType;
 
 	protected:
 
@@ -129,14 +131,16 @@ namespace curlpp
 		/**
 		* the class that actually have the value.
 		*/
-		typename curlpp::OptionContainer<OptionType> * mContainer;
+		typename curlpp::internal::OptionContainer<OptionType> * mContainer;
 
 	};
+
 
 	/**
 	* This class is just a wrapper around curlpp::Option, in order to
 	* be able to typedef Options. 
 	*/
+
 	template<typename OptionType, CURLoption option>
 	class CURLPPAPI OptionTrait : public Option<OptionType>
 	{
@@ -175,10 +179,12 @@ namespace curlpp
 
 	};
 
+
 	/**
 	* This class is just a wrapper around curlpp::OptionTrait, in order to
 	* be able to have "No value" option, like SslDefaultEngine.
 	*/
+
 	template<CURLoption option>
 	class CURLPPAPI NoValueOptionTrait : public OptionTrait<bool, option>
 	{
@@ -195,9 +201,11 @@ namespace curlpp
 
 	};
 
+
 	/**
 	* This class is used when the option is not implemented.
 	*/
+
 	template<typename OptionType>
 	class CURLPPAPI NotAvailableOptionTrait : public Option<OptionType>
 	{
@@ -233,12 +241,15 @@ namespace curlpp
 
 	};
 
+
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 #include "Option.inl"
 #endif
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_OPTION_HPP

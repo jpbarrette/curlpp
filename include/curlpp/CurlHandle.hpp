@@ -34,9 +34,9 @@
 namespace curlpp
 {
 
+
 	/**
-	* \todo documentation brief.
-	* \todo documentation detail
+	* Wrapper for CURL * handle.
 	*/
 
 	class CURLPPAPI CurlHandle
@@ -50,13 +50,12 @@ namespace curlpp
 		std::auto_ptr<CurlHandle> clone() const;
 
 		/**
-		* Simply calls curl_easy_perform on the handle,
-		* but throws exceptions on errors.
+		* Calls curl_easy_perform on the handle and throws exceptions on errors.
 		*/
 		void perform();
 
 		/**
-		* Simply calls curl_easy_reset on the handle
+		* Simply calls curl_easy_reset on the handle.
 		*/
 		void reset();
 
@@ -75,24 +74,29 @@ namespace curlpp
 		void option(OptionType value);
 
 		/**
-		* This function will return the cURL * handle.
+		* This function will return the CURL * handle.
+		*
 		* DO NOT use this, unless you REALLY know what you
 		* are doing.
 		*/
 		CURL * getHandle() const;
 
 		/**
-		* Request internal information from the curl session 
-		* with this function. The third argument MUST be a 
-		* pointer to a long, a pointer to a char *, a pointer 
-		* to a struct curl_slist * or a pointer to a double.
+		* Request internal information from the curl session with this function.
+		*
+		* The third argument MUST be a pointer to a long, a pointer to a char *, 
+		* a pointer to a struct curl_slist * or a pointer to a double.
 		*/
-		template <typename T>
+		template<typename T>
 		void getInfo(CURLINFO info, T & value);
 
 
+		template<typename FunctorType>
+		typename FunctorType::ResultType execute(FunctorType functor, typename FunctorType::ParamList params);
+
+
 		size_t executeWriteFunctor(char * buffer, size_t size, size_t nitems);
-		
+
 		void setWriteFunctor(curlpp::types::WriteFunctionFunctor functor)
 		{
 			mWriteFunctor = functor;
@@ -116,10 +120,10 @@ namespace curlpp
 
 
 		int executeProgressFunctor(double dltotal, 
-			double dlnow, 
-			double ultotal, 
-			double ulnow);
-		
+																double dlnow, 
+																double ultotal, 
+																double ulnow);
+
 		void setProgressFunctor(curlpp::types::ProgressFunctionFunctor functor)
 		{
 			mProgressFunctor = functor;
@@ -127,7 +131,7 @@ namespace curlpp
 
 
 		int executeDebugFunctor(curl_infotype, char *, size_t);
-		
+
 		void setDebugFunctor(curlpp::types::DebugFunctionFunctor functor)
 		{
 			mDebugFunctor = functor;
@@ -150,6 +154,8 @@ namespace curlpp
 		CurlHandle & operator=(const CurlHandle & other);
 
 		/**
+		* Provides libcURL a space to store error messages.
+		*
 		* Pass a char * to a buffer that the libcURL may store
 		* human readable error messages in. This may  be  more
 		* helpful  than just the return code from the library.
@@ -176,12 +182,15 @@ namespace curlpp
 
 	};
 
+
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "CurlHandle.inl"
 #endif
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_CURL_HANDLE_HPP

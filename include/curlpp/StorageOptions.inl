@@ -21,11 +21,11 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-template< typename CallbackType, 
+template<typename CallbackType, 
 	  typename DataType, 
 	  CURLoption CallbackOptionValue,
 	  CURLoption DataOptionValue >
-void curlpp::options::StorageOption< CallbackType,
+void curlpp::options::StorageOption<CallbackType,
 				     DataType,
 				     CallbackOptionValue,
 				     DataOptionValue >::setCallback(CallbackType callback)
@@ -33,11 +33,11 @@ void curlpp::options::StorageOption< CallbackType,
   setOpt(new OptionTrait<CallbackType, CallbackOptionValue>(callback));
 }
 
-template< typename CallbackType, 
+template<typename CallbackType, 
 	  typename DataType, 
 	  CURLoption CallbackOptionValue,
 	  CURLoption DataOptionValue >
-void curlpp::options::StorageOption< CallbackType,
+void curlpp::options::StorageOption<CallbackType,
 				     DataType,
 				     CallbackOptionValue,
 				     DataOptionValue >::setData(typename Utilspp::TypeTrait<DataType>::ParamType data)

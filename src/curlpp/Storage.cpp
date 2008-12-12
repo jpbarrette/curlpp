@@ -52,7 +52,7 @@ size_t curlpp::BodyStorage::writeCallback(
    void * outstream
 )
 {
-   curlpp::OutputTrait * trait = static_cast< curlpp::OutputTrait *>(outstream);
+   curlpp::OutputTrait * trait = static_cast<curlpp::OutputTrait *>(outstream);
    return trait->write(buffer, size * nitems);
 }
 
@@ -83,7 +83,7 @@ size_t curlpp::HeaderStorage::writeCallback(
    void * outstream
 )
 {
-   curlpp::OutputTrait * trait = static_cast< curlpp::OutputTrait *>(outstream);
+   curlpp::OutputTrait * trait = static_cast<curlpp::OutputTrait *>(outstream);
    return trait->write(buffer, size * nitems);
 }
 
@@ -104,7 +104,7 @@ size_t curlpp::InputStorage::readCallback(
    void * instream
 )
 {
-   curlpp::InputTrait * trait = static_cast< curlpp::InputTrait *>(instream);
+   curlpp::InputTrait * trait = static_cast<curlpp::InputTrait *>(instream);
    return trait->read(buffer, size * nmemb);
 }
 
@@ -126,7 +126,7 @@ int curlpp::ProgressStorage::progressCallback(
    double ulnow
 )
 {
-   curlpp::ProgressTrait * trait = static_cast< curlpp::ProgressTrait *>(clientp);
+   curlpp::ProgressTrait * trait = static_cast<curlpp::ProgressTrait *>(clientp);
    return !(trait->progressFunction( dltotal, dlnow, ultotal, ulnow ));
 }
 

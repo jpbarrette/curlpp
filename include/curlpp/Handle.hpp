@@ -24,12 +24,15 @@
 #ifndef CURLPP_HANDLE_HPP
 #define CURLPP_HANDLE_HPP
 
+
 #include "curlpp/buildconfig.h"
 #include "curlpp/OptionList.hpp"
 #include "curlpp/curlpp.hpp"
 
+
 namespace curlpp
 {
+
 
 	/**
 	* \todo class Handle brief description.
@@ -54,8 +57,10 @@ namespace curlpp
 
 	};
 
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_HANDLE_HPP

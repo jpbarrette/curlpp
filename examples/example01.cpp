@@ -21,6 +21,12 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Setting and copying options.
+* 
+*/
+
 #include <string>
 #include <iostream>
 
