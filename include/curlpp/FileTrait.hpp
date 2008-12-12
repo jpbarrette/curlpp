@@ -30,101 +30,118 @@
 namespace curlpp
 {
 
-   /**
-    * Base class for 'FILE' storage trait.
-    */
-   CURLPPAPI class file_trait
-   {
 
-      public:
-         /**
-          * close the file if it has been specified using a file name and has not
-          * already been closed by a call to 'close'.
-          */
-         virtual ~file_trait();
+	/**
+	* Base class for 'FILE' storage trait.
+	*/
 
-         /**
-          * Returns the file size. The file has to be opened before for this to
-          * succeed.
-          */
-         bool size(long & size);
+	CURLPPAPI class file_trait
+	{
 
-         /**
-          * Returns file name. Returns NULL if the file xas specified using the 'FILE'
-          * constructor. If the file is not open or an error occured, false is returned.
-          */
-         const char * name()
-         {
-            return m_filename.c_str();
-         }
+	public:
 
-         /**
-          * open the file using 'open_mode'. Returns true if the file was already
-          * open or has been open successfully.
-          */
-         bool open(const char * open_mode);
+		/**
+		* close the file if it has been specified using a file name and has not
+		* already been closed by a call to 'close'.
+		*/
+		virtual ~file_trait();
 
-         /**
-          * close the file. Returns true if the file was already closed or closed
-          * successfully. Returns false if the file was specified using the 'FILE'
-          * constructor.
-          */
-         bool close();
+		/**
+		* Returns the file size. The file has to be opened before for this to
+		* succeed.
+		*/
+		bool size(long & size);
 
-      protected:
-         FILE * m_file;
-         std::string m_filename;
+		/**
+		* Returns file name. Returns NULL if the file xas specified using the 'FILE'
+		* constructor. If the file is not open or an error occured, false is returned.
+		*/
+		const char * name()
+		{
+			return m_filename.c_str();
+		}
 
-         /**
-          * 'FILE' constructor. The file will never be closed. It's the caller
-          * responsibility to close it.
-          */
-         file_trait(FILE * file);
+		/**
+		* open the file using 'open_mode'. Returns true if the file was already
+		* open or has been open successfully.
+		*/
+		bool open(const char * open_mode);
 
-         /**
-          * File name constructor. The file will be opened and closed when needed.
-          */
-         file_trait(const char * filename);
-   };
+		/**
+		* close the file. Returns true if the file was already closed or closed
+		* successfully. Returns false if the file was specified using the 'FILE'
+		* constructor.
+		*/
+		bool close();
 
-   /**
-    * this class is fo ouput FILE *
-    */
-   CURLPPAPI class ofile_trait : public curlpp::output_trait, public curlpp::file_trait
-   {
+	protected:
 
-      public:
-         ofile_trait(FILE * file);
-         ofile_trait(const char * filename);
+		FILE * m_file;
+		std::string m_filename;
 
-         size_t write(void * buffer, size_t size);
-   };
+		/**
+		* 'FILE' constructor. The file will never be closed. It's the caller
+		* responsibility to close it.
+		*/
+		file_trait(FILE * file);
 
-   /**
-    * this class is for intput FILE *
-    */
-   CURLPPAPI class ifile_trait : public input_trait, public file_trait
-   {
+		/**
+		* File name constructor. The file will be opened and closed when needed.
+		*/
+		file_trait(const char * filename);
 
-      public:
-         ifile_trait(FILE * file);
-         ifile_trait(const char * filename);
+	};
 
-         size_t read(void * buffer, size_t size);
-   };
 
-   /**
-    * standard input trait
-    */
-   static ifile_trait stdin_trait(stdin);
+	/**
+	* this class is fo ouput FILE *
+	*/
 
-   /**
-    * standard output trait
-    */
-   static ofile_trait stdout_trait(stdout);
+	CURLPPAPI class ofile_trait : public curlpp::output_trait, public curlpp::file_trait
+	{
+
+	public:
+
+		ofile_trait(FILE * file);
+		ofile_trait(const char * filename);
+
+		size_t write(void * buffer, size_t size);
+
+	};
+
+
+	/**
+	* this class is for intput FILE *
+	*/
+
+	CURLPPAPI class ifile_trait : public input_trait, public file_trait
+	{
+
+	public:
+
+		ifile_trait(FILE * file);
+		ifile_trait(const char * filename);
+
+		size_t read(void * buffer, size_t size);
+
+	};
+
+
+	/**
+	* standard input trait
+	*/
+	static ifile_trait stdin_trait(stdin);
+
+
+	/**
+	* standard output trait
+	*/
+	static ofile_trait stdout_trait(stdout);
+
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif // #ifndef CURLPP_FILE_TRAIT_HPP

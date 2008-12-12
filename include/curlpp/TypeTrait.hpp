@@ -24,6 +24,7 @@
 #ifndef CURLPP_TYPE_TRAIT_HPP
 #define CURLPP_TYPE_TRAIT_HPP
 
+
 namespace utilspp
 {
 
@@ -48,6 +49,8 @@ namespace utilspp
     typedef V* UnConst;
   };
 
+
 } // namespace utilspp
+
 
 #endif // #ifndef CURLPP_TYPE_TRAIT_HPP

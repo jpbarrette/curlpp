@@ -609,6 +609,13 @@
 				RelativePath=".\examples\example01.cpp"
 				>
 				<FileConfiguration
+					Name="DynamicLibDebugDynamicRTL|Win32"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
 					Name="DynamicLibReleaseDynamicRTL|Win32"
 					ExcludedFromBuild="true"
 					>
@@ -654,6 +661,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -697,6 +705,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -764,6 +773,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -831,6 +841,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -898,6 +909,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -965,6 +977,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1024,6 +1037,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1075,6 +1089,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1142,6 +1157,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1209,6 +1225,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1276,6 +1293,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1343,6 +1361,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1410,6 +1429,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1477,6 +1497,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1544,6 +1565,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1611,6 +1633,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1678,6 +1701,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1745,6 +1769,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1812,6 +1837,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1879,6 +1905,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1946,6 +1973,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"

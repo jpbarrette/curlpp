@@ -146,16 +146,16 @@ namespace utilspp
   };
   
   template<typename Fun>
-  Functor< typename PointerOnFunction<Fun>::ReturnType, 
-	   typename PointerOnFunction<Fun>::ParamList > make_functor(Fun fun)
+  Functor<typename PointerOnFunction<Fun>::ReturnType, 
+	   typename PointerOnFunction<Fun>::ParamList> make_functor(Fun fun)
   {
     return utilspp::Functor<typename utilspp::PointerOnFunction<Fun>::ReturnType, 
       typename utilspp::PointerOnFunction<Fun>::ParamList>(fun);
   }
 
   template<class MemFun>
-  Functor< typename PointerOnMemberFunction<MemFun>::ReturnType, 
-	   typename PointerOnMemberFunction<MemFun>::ParamList > 
+  Functor<typename PointerOnMemberFunction<MemFun>::ReturnType, 
+	   typename PointerOnMemberFunction<MemFun>::ParamList> 
   make_functor(typename PointerOnMemberFunction<MemFun>::ClassType * obj, MemFun fun)
   {
     return utilspp::Functor<typename utilspp::PointerOnMemberFunction<MemFun>::ReturnType, 

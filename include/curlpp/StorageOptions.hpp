@@ -24,6 +24,7 @@
 #ifndef CURLPP_STORAGE_OPTIONS_HPP
 #define CURLPP_STORAGE_OPTIONS_HPP
 
+
 #include "buildconfig.h"
 #include "Option.hpp"
 #include "TypeTrait.hpp"
@@ -32,30 +33,37 @@
 namespace curlpp 
 {
 
-  namespace options 
-  {
+namespace options 
+{
     
-	template< typename CallbackType, 
-	      typename DataType, 
-	      CURLoption CallbackOptionValue,
-	      CURLoption DataOptionValue >
-    class CURLPPAPI StorageOption :  public curlpp::OptionList
-    {
-    public:
-      void setCallback(CallbackType callback);
-      void setData(typename Utilspp::TypeTrait<DataType>::ParamType data);
-    };
+	template<typename CallbackType, 
+						typename DataType, 
+						CURLoption CallbackOptionValue,
+						CURLoption DataOptionValue >
+	class CURLPPAPI StorageOption : public curlpp::OptionList
+	{
 
-  } // namespace options
+	public:
 
-	namespace Options = options;
+		void setCallback(CallbackType callback);
+		void setData(typename Utilspp::TypeTrait<DataType>::ParamType data);
+
+	};
+
+
+} // namespace options
+
+namespace Options = options;
+
 
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "StorageOptions.inl"
 #endif
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_STORAGE_OPTIONS_HPP

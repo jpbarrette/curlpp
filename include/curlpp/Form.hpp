@@ -34,203 +34,238 @@
 
 namespace curlpp
 {
-  class FormPart;
-  
-  typedef std::list<utilspp::clone_ptr<curlpp::FormPart> > Forms;
 
-  /**
-   * This class is used internally to wrap over curl_httppost
-   * class.
-   */
-  class CURLPPAPI HttpPost
-  {
 
-  public:
-    HttpPost(const Forms & posts);
-    HttpPost();
-    ~HttpPost();
+	class FormPart;
 
-    /**
-     * initialize the HTTP post with the list of forms. The Forms 
-     * will be cloned.
-     */
-    HttpPost & operator=(const Forms & posts);
 
-    operator Forms() { return getList(); }
+	typedef std::list<utilspp::clone_ptr<curlpp::FormPart> > Forms;
 
-    
-    /**
-     * return the curl_httppost representation of this HTTP Post.
-     * Be aware that the memory return is owned by the current 
-     * instance, so don't try to delete it.
-     */
-    ::curl_httppost * cHttpPost() const;
 
-    /**
-     * Free all HTTP posts.
-     */
-    void clear();
+	/**
+	* This class is used internally to wrap over curl_httppost
+	* class.
+	*/
 
-    /**
-     * Get the list. 
-     */
-    Forms getList();
+	class CURLPPAPI HttpPost
+	{
 
-  private:
-    ::curl_httppost * mFirst;
-    ::curl_httppost * mLast;
-    Forms mForms;
-  };
+	public:
 
-  /**
-   * This class is the base representation of a post. You need
-   * to inherit from it to define a type of post.
-   */
-  class CURLPPAPI FormPart
-  {
-    friend class HttpPost;
+		HttpPost(const Forms & posts);
+		HttpPost();
+		~HttpPost();
 
-  public:
-    /**
-     * initialize the FormPart. "name" is the name of the field.
-     */
-    FormPart(const char * name);
+		/**
+		* initialize the HTTP post with the list of forms. The Forms 
+		* will be cloned.
+		*/
+		HttpPost & operator=(const Forms & posts);
 
-    /**
-     * initialize the FormPart. "name" is the name of the field.
-     */
-    FormPart(const std::string & name);
+		operator Forms() { return getList(); }
 
-    virtual ~FormPart();
 
-    virtual FormPart * clone() const = 0;
+		/**
+		* return the curl_httppost representation of this HTTP Post.
+		* Be aware that the memory return is owned by the current 
+		* instance, so don't try to delete it.
+		*/
+		::curl_httppost * cHttpPost() const;
 
-  protected:
-    /**
-     * it will add himself to the curl_httppost * first.
-     */
-    virtual void add(::curl_httppost ** first, 
-		     ::curl_httppost ** last) = 0;
+		/**
+		* Free all HTTP posts.
+		*/
+		void clear();
 
-    /**
-     * Contain the name of the field.
-     */
-    const std::string mName;
-  };
+		/**
+		* Get the list. 
+		*/
+		Forms getList();
 
-  namespace FormParts {
-    /**
-     * This class is a file post. It will send a file in the
-     * HTTP post.
-     */
-    class CURLPPAPI File : public FormPart
-    {
-    public:
-      /**
-       * initialize a File part. "name" is the name of the field. 
-       * "filename" is the string that holds the filename.
-       */
-      File(const char * name, 
-	   const char * filename);
+	private:
 
-      /**
-       * initialize a File part. "name" is the name of the field. 
-       * "filename" is the string that holds the filename. 
-       * "contentType" is the MIME type of the file.
-       */
-      File(const char * name, 
-	   const char * filename, 
-	   const char * contentType);
+		::curl_httppost * mFirst;
+		::curl_httppost * mLast;
+		Forms mForms;
 
-      /**
-       * initialize a File part. "name" is the name of the field. 
-       * "filename" is the string that holds the filename.
-       */
-      File(const std::string & name, 
-	   const std::string & filename);
+	};
 
-      /**
-       * initialize a File part. "name" is the name of the field. 
-       * "filename" is the string that holds the filename. 
-       * "contentType" is the MIME type of the file.
-       */
-      File(const std::string & name, 
-	   const std::string & filename,
-	   const std::string & contentType);
 
-      virtual ~File();
+	/**
+	* This class is the base representation of a post. You need
+	* to inherit from it to define a type of post.
+	*/
 
-      /**
-       * This function will return a copy of the instance.
-       */
-      virtual File * clone() const;
+	class CURLPPAPI FormPart
+	{
+		friend class HttpPost;
 
-    private:
-      void add(::curl_httppost ** first, 
-	       ::curl_httppost ** last);
+	public:
 
-    private:
-      const std::string mFilename; 
-      const std::string mContentType;
-    };
+		/**
+		* initialize the FormPart. "name" is the name of the field.
+		*/
+		FormPart(const char * name);
 
-    /**
-     * This class is a file post. It will send a file in the
-     * HTTP post.
-     */
-    class CURLPPAPI Content : public FormPart
-    {
-    public:
-      /**
-       * initialize a Content part. "name" is the name of the field. 
-       * "content" is the string that holds the filename.
-       */
-      Content(const char * name, 
-	      const char * content);
+		/**
+		* initialize the FormPart. "name" is the name of the field.
+		*/
+		FormPart(const std::string & name);
 
-      /**
-       * initialize a Content part. "name" is the name of the field. 
-       * "content" is the string that holds the filename. 
-       * "contentType" is the MIME type of the file.
-       */
-      Content(const char * name, 
-	      const char * content, 
-	      const char * contentType);
+		virtual ~FormPart();
 
-      /**
-       * initialize a Content part. "name" is the name of the field. 
-       * "content" is the string that holds the content.
-       */
-      Content(const std::string & name, 
-	      const std::string & content);
+		virtual FormPart * clone() const = 0;
 
-      /**
-       * initialize a Content part. "name" is the name of the field. 
-       * "content" is the string that holds the content. 
-       * "content_type" is the MIME type of the file.
-       */
-      Content(const std::string & name, 
-	      const std::string & content,
-	      const std::string & content_type);
-    
-      virtual ~Content();
-    
-      /**
-       * This function will return a copy of the instance.
-       */
-      virtual Content * clone() const;
+	protected:
 
-    private:
-      void add(::curl_httppost ** first, 
-	       ::curl_httppost ** last);
+		/**
+		* it will add himself to the curl_httppost * first.
+		*/
+		virtual void add(::curl_httppost ** first, 
+			::curl_httppost ** last) = 0;
 
-    private:
-      const std::string mContent; 
-      const std::string mContentType;
-    };
-  }
+		/**
+		* Contain the name of the field.
+		*/
+		const std::string mName;
+
+	};
+
+
+namespace FormParts
+{
+
+
+	/**
+	* This class is a file post. It will send a file in the
+	* HTTP post.
+	*/
+
+	class CURLPPAPI File : public FormPart
+	{
+
+	public:
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
+		* "filename" is the string that holds the filename.
+		*/
+		File(const char * name, 
+			const char * filename);
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
+		* "filename" is the string that holds the filename. 
+		* "contentType" is the MIME type of the file.
+		*/
+		File(const char * name, 
+			const char * filename, 
+			const char * contentType);
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
+		* "filename" is the string that holds the filename.
+		*/
+		File(const std::string & name, 
+			const std::string & filename);
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
+		* "filename" is the string that holds the filename. 
+		* "contentType" is the MIME type of the file.
+		*/
+		File(const std::string & name, 
+			const std::string & filename,
+			const std::string & contentType);
+
+		virtual ~File();
+
+		/**
+		* This function will return a copy of the instance.
+		*/
+		virtual File * clone() const;
+
+	private:
+
+		void add(::curl_httppost ** first, 
+			::curl_httppost ** last);
+
+	private:
+
+		const std::string mFilename; 
+		const std::string mContentType;
+
+	};
+
+
+	/**
+	* This class is a file post. It will send a file in the
+	* HTTP post.
+	*/
+
+	class CURLPPAPI Content : public FormPart
+	{
+
+	public:
+
+		/**
+		* initialize a Content part. "name" is the name of the field. 
+		* "content" is the string that holds the filename.
+		*/
+		Content(const char * name, 
+			const char * content);
+
+		/**
+		* initialize a Content part. "name" is the name of the field. 
+		* "content" is the string that holds the filename. 
+		* "contentType" is the MIME type of the file.
+		*/
+		Content(const char * name, 
+			const char * content, 
+			const char * contentType);
+
+		/**
+		* initialize a Content part. "name" is the name of the field. 
+		* "content" is the string that holds the content.
+		*/
+		Content(const std::string & name, 
+			const std::string & content);
+
+		/**
+		* initialize a Content part. "name" is the name of the field. 
+		* "content" is the string that holds the content. 
+		* "content_type" is the MIME type of the file.
+		*/
+		Content(const std::string & name, 
+			const std::string & content,
+			const std::string & content_type);
+
+		virtual ~Content();
+
+		/**
+		* This function will return a copy of the instance.
+		*/
+		virtual Content * clone() const;
+
+	private:
+
+		void add(::curl_httppost ** first, 
+			::curl_httppost ** last);
+
+	private:
+
+		const std::string mContent; 
+		const std::string mContentType;
+
+	};
+
+
+} // namespace FormParts
+
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
+
 
 #endif //CURLPP_FORM_HPP

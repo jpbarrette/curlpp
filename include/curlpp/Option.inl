@@ -64,15 +64,13 @@ curlpp::Option<OptionType>::~Option()
 }
 
 
-
-
 template<typename OptionType>
 void
 curlpp::Option<OptionType>::setValue(typename curlpp::Option<OptionType>::ParamType value)
 {
 	if(mContainer == NULL)
 	{	
-		mContainer = new OptionContainer<OptionType>(value);
+		mContainer = new internal::OptionContainer<OptionType>(value);
 	}
 	else
 	{

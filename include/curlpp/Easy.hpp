@@ -32,13 +32,17 @@
 namespace curlpp
 {
 
+
 	/**
 	* Easy class.
 	* Detailed description.
 	*/
+
 	class CURLPPAPI Easy : public OptionList
 	{
+
 	public: 
+
 		friend struct InfoGetter;
 
 		Easy();
@@ -106,6 +110,7 @@ namespace curlpp
 		const CurlHandle & getCurlHandle() const { return *myCurl; }
 
 	private:
+
 		/**
 		* This is the function that curlpp::InfoGetter will call
 		* to retreive option.
@@ -114,9 +119,14 @@ namespace curlpp
 		void getInfo(CURLINFO info, T & value);
 
 		std::auto_ptr<curlpp::CurlHandle> myCurl;
+
 	};
 
+
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 #include "Easy.inl"
@@ -125,6 +135,5 @@ namespace curlpp
 // Not quite sure if we shouldn't pass a const handle and clone it instead.
 CURLPPAPI std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & handle);
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_EASY_HPP
