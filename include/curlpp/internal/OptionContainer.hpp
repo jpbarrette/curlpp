@@ -24,11 +24,18 @@
 #ifndef CURLPP_OPTION_CONTAINER_HPP
 #define CURLPP_OPTION_CONTAINER_HPP
 
+
 #include "buildconfig.h"
-#include "OptionContainerType.hpp"
+#include "curlpp/internal/OptionContainerType.hpp"
+
 
 namespace curlpp
 {
+
+
+namespace internal
+{
+
 
 	template<typename OptionType>
 	class Option;
@@ -39,7 +46,9 @@ namespace curlpp
 	template<class OptionType>
 	class CURLPPAPI OptionContainer
 	{
+
 	public:
+
 		typedef typename OptionContainerType<OptionType>::ParamType ParamType;
 		typedef typename OptionContainerType<OptionType>::ReturnType ReturnType;
 		typedef typename OptionContainerType<OptionType>::ValueType ValueType;
@@ -84,13 +93,19 @@ namespace curlpp
 		typename OptionContainer<OptionType>::ValueType mValue;
 	};
 
+
+} // namespace internal
+
+
 } // namespace curlpp
+
+namespace cURLpp = curlpp;
+
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 	#include "OptionContainer.inl"
 #endif
 
-namespace cURLpp = curlpp;
 
 #endif // #ifndef CURLPP_OPTION_CONTAINER_HPP
 
