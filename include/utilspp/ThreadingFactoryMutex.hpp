@@ -24,7 +24,7 @@
 #ifndef THREADING_FACTORY_MUTEX_HPP
 #define THREADING_FACTORY_MUTEX_HPP
 
-//#include "buildconfig.h"
+//#include "curlpp/buildconfig.h"
 
 namespace utilspp
 {
@@ -42,7 +42,7 @@ namespace utilspp
 }
 
 //#ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "ThreadingFactoryMutex.inl"
+	#include "utilspp/ThreadingFactoryMutex.inl"
 //#endif
 
 #endif

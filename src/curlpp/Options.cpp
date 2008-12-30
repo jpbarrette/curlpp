@@ -37,5 +37,5 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & ur
 }
 
 #if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "Options.ins"
+	#include "./Options.ins"
 #endif

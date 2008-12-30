@@ -28,7 +28,7 @@
 #include <string>
 #include <stdexcept>
 
-#include "buildconfig.h"
+#include "curlpp/buildconfig.h"
 
 
 namespace curlpp

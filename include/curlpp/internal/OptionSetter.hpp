@@ -25,15 +25,20 @@
 #define CURLPP_OPTION_SETTER_HPP
 
 
-#include "buildconfig.h"
+#include "curlpp/buildconfig.h"
 
 #include "curlpp/internal/OptionContainerType.hpp"
-#include "CurlHandle.hpp"
-#include "Types.hpp"
+#include "curlpp/CurlHandle.hpp"
+#include "curlpp/Types.hpp"
 
 
 namespace curlpp
 {
+
+
+namespace internal
+{
+
 
 	/**
 	* Defines the way options are set.
@@ -488,13 +493,16 @@ namespace curlpp
 #endif // #ifdef HAVE_BOOST
 
 
+} // namespace internal
+
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "OptionSetter.inl"
+	#include "curlpp/internal/OptionSetter.inl"
 #endif
 
 

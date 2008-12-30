@@ -29,7 +29,7 @@
 #include <curl/curl.h>
 #include <list>
 
-#include "Info.hpp"
+#include "curlpp/Info.hpp"
 
 
 namespace curlpp

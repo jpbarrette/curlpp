@@ -685,228 +685,14 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\OptionSetter.inl"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\src\curlpp\SList.cpp"
 				>
-			</File>
-			<File
-				RelativePath=".\src\curlpp\Storage.cpp"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibReleaseStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibReleaseDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibDebugStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibDebugStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibReleaseDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibReleaseStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\StorageOptions.inl"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\src\curlpp\StorageTrait.cpp"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibReleaseStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibReleaseDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibDebugStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibDebugStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibReleaseDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibReleaseStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\src\curlpp\StreamTrait.cpp"
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibReleaseStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibReleaseDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="DynamicLibDebugStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibDebugStaticRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibReleaseDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="StaticLibReleaseStaticRTL|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -922,7 +708,6 @@
 					>
 					<FileConfiguration
 						Name="DynamicLibDebugDynamicRTL|Win32"
-						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCustomBuildTool"
@@ -934,7 +719,6 @@
 					>
 					<FileConfiguration
 						Name="DynamicLibDebugDynamicRTL|Win32"
-						ExcludedFromBuild="true"
 						>
 						<Tool
 							Name="VCCustomBuildTool"
@@ -949,7 +733,6 @@
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -961,7 +744,6 @@
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -973,7 +755,6 @@
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -983,13 +764,19 @@
 					<File
 						RelativePath=".\src\utilspp\singleton\LifetimeLibrary.cpp"
 						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\include\utilspp\singleton\LifetimeLibrary.inl"
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -1001,7 +788,6 @@
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -1011,13 +797,19 @@
 					<File
 						RelativePath=".\src\utilspp\singleton\PrivateMembers.cpp"
 						>
+						<FileConfiguration
+							Name="DynamicLibDebugDynamicRTL|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\include\utilspp\singleton\PrivateMembers.inl"
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -1029,7 +821,6 @@
 						>
 						<FileConfiguration
 							Name="DynamicLibDebugDynamicRTL|Win32"
-							ExcludedFromBuild="true"
 							>
 							<Tool
 								Name="VCCustomBuildTool"
@@ -1043,6 +834,10 @@
 				>
 				<File
 					RelativePath=".\include\curlpp\internal\OptionContainer.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionSetter.inl"
 					>
 				</File>
 			</Filter>
@@ -1121,23 +916,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\OptionSetter.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\include\curlpp\SList.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\Storage.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\StorageOptions.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\StorageTrait.hpp"
 				>
 			</File>
 			<File
@@ -1261,6 +1040,10 @@
 				</File>
 				<File
 					RelativePath=".\include\curlpp\internal\OptionContainerType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionSetter.hpp"
 					>
 				</File>
 			</Filter>

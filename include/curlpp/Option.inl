@@ -25,8 +25,8 @@
 #define CURLPP_OPTION_INL
 
 #include <iostream>
-#include "OptionSetter.hpp"
-#include "Exception.hpp"
+#include "curlpp/internal/OptionSetter.hpp"
+#include "curlpp/Exception.hpp"
 
 
 template<typename OptionType>
@@ -137,7 +137,7 @@ curlpp::OptionTrait<OptionType, option>::updateHandleToMe(curlpp::CurlHandle * h
 		throw UnsetOption(std::string("You are trying to set an unset option to a handle"));
 	}	
 
-	OptionSetter<OptionType, option>::setOpt(handle, this->mContainer->getHandleOptionValue());
+	internal::OptionSetter<OptionType, option>::setOpt(handle, this->mContainer->getHandleOptionValue());
 }
 
 

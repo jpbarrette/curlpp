@@ -24,8 +24,8 @@
 #ifndef CURLPP_FILE_TRAIT_HPP
 #define CURLPP_FILE_TRAIT_HPP
 
-#include "buildconfig.h"
-#include "storage_trait.hpp"
+#include "curlpp/buildconfig.h"
+#include "curlpp/storage_trait.hpp"
 
 namespace curlpp
 {

@@ -24,8 +24,8 @@
 #ifndef SINGLE_THREADED_HPP
 #define SINGLE_THREADED_HPP
 
-//#include "buildconfig.h"
-#include "NullType.hpp"
+//#include "curlpp/buildconfig.h"
+#include "utilspp/NullType.hpp"
 
 namespace utilspp
 {
@@ -49,7 +49,7 @@ namespace utilspp
 }
 
 //#ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "ThreadingSingle.inl"
+	#include "utilspp/ThreadingSingle.inl"
 //#endif
 
 #endif

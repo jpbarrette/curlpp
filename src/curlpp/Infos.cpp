@@ -1,5 +1,5 @@
 #include "curlpp/buildconfig.h"
 
 #if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "Infos.ins"
+	#include "./Infos.ins"
 #endif

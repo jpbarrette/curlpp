@@ -25,8 +25,8 @@
 #define CURLPP_STORAGE_TRAIT_HPP
 
 
-#include "buildconfig.h"
-#include "types.hpp"
+#include "curlpp/buildconfig.h"
+#include "curlpp/types.hpp"
 
 
 /**

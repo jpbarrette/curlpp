@@ -26,8 +26,8 @@
 
 #include <map>
 
-#include "buildconfig.h"
-#include "OptionBase.hpp"
+#include "curlpp/buildconfig.h"
+#include "curlpp/OptionBase.hpp"
 
 namespace curlpp
 {

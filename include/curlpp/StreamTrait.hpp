@@ -25,8 +25,8 @@
 #define CURLPP_STREAM_TRAIT_HPP
 
 
-#include "buildconfig.h"
-#include "StorageTrait.hpp"
+#include "curlpp/buildconfig.h"
+#include "curlpp/StorageTrait.hpp"
 
 
 namespace curlpp

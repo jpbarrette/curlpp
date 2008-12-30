@@ -31,7 +31,7 @@
 	#include <boost/function.hpp>
 #endif 
 
-#include <utilspp/Functors.hpp>
+#include "utilspp/Functors.hpp"
 
 
 namespace curlpp

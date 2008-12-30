@@ -31,7 +31,7 @@
 #include <string>
 #include <curl/curl.h>
 
-#include "buildconfig.h"
+#include "curlpp/buildconfig.h"
 
 
 namespace curlpp

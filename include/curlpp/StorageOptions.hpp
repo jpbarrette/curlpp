@@ -25,9 +25,9 @@
 #define CURLPP_STORAGE_OPTIONS_HPP
 
 
-#include "buildconfig.h"
-#include "Option.hpp"
-#include "TypeTrait.hpp"
+#include "curlpp/buildconfig.h"
+#include "curlpp/Option.hpp"
+#include "curlpp/TypeTrait.hpp"
 
 
 namespace curlpp 
@@ -62,7 +62,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "StorageOptions.inl"
+	#include "curlpp/StorageOptions.inl"
 #endif
 
 

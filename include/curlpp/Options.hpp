@@ -24,7 +24,7 @@
 #ifndef CURLPP_OPTIONS_HPP
 #define CURLPP_OPTIONS_HPP
 
-#include "Option.hpp"
+#include "curlpp/Option.hpp"
 //#include "StorageOptions.hpp"
 
 #include <iostream> 

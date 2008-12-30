@@ -27,9 +27,9 @@
 #include <memory>
 #include <curl/curl.h>
 
-#include "buildconfig.h"
-#include "Exception.hpp"
-#include "Types.hpp"
+#include "curlpp/buildconfig.h"
+#include "curlpp/Exception.hpp"
+#include "curlpp/Types.hpp"
 
 namespace curlpp
 {
@@ -189,7 +189,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "CurlHandle.inl"
+	#include "curlpp/CurlHandle.inl"
 #endif
 
 

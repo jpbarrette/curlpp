@@ -28,9 +28,9 @@
 #include <string>
 #include <list>
 
-#include "SList.hpp"
-#include "Form.hpp"
-#include "Types.hpp"
+#include "curlpp/SList.hpp"
+#include "curlpp/Form.hpp"
+#include "curlpp/Types.hpp"
 
 
 namespace curlpp

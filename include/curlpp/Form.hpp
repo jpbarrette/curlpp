@@ -28,8 +28,8 @@
 #include <list>
 #include <string>
 
-#include "buildconfig.h"
-#include <utilspp/clone_ptr.hpp>
+#include "curlpp/buildconfig.h"
+#include "utilspp/clone_ptr.hpp"
 
 
 namespace curlpp
