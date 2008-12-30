@@ -1,0 +1,135 @@
+#############################################################
+#
+# Makefile for building libcurlpp with MSVC
+# Based heavily on libcurl Makefile
+# Giuseppe "Cowo" Corbelli - cowo at lugbs dot linux dot it
+#
+# Usage: see usage message below
+#        Should be invoked from curlpp/ directory
+#        Edit the LIBCURL_PATH or set LIBCURL_PATH envvar
+#
+##############################################################
+
+LIB_NAME          = libcurlpp
+LIB_NAME_DEBUG    = libcurlppd
+
+#############################################################
+
+!IFNDEF LIBCURL_PATH
+LIBCURL_PATH   = ../../curl/include
+!ENDIF
+
+CCNODBG    = cl.exe /MD /O2 /DNDEBUG /GR
+CCDEBUG    = cl.exe /MDd /Od /Gm /Zi /D_DEBUG /GZ /GR
+CFLAGS     = /I ../ /I "$(LIBCURL_PATH)/include" /nologo /W3 /GX /DWIN32 /YX /FD /c
+CFLAGSLIB  = /DCURLPP_STATICLIB
+CFLAGSDLL  = /UCURLPP_STATICLIB
+LNKDLL     = link.exe /DLL /INCREMENTAL:NO /OPT:NOREF
+LNKLIB     = link.exe /lib
+LFLAGS     = /nologo /LIBPATH:"$(LIBCURL_PATH)/lib"
+CURLLIB    = libcurl_imp.lib
+CFGSET     = FALSE
+
+######################
+# release
+
+!IF "$(CFG)" == "release"
+TARGET = $(LIB_NAME).lib
+DIROBJ = $(CFG)
+LNK    = $(LNKLIB) /out:$(DIROBJ)/$(TARGET)
+CC     = $(CCNODBG) $(CFLAGSLIB)
+CFGSET = TRUE
+!ENDIF
+
+######################
+# release-dll
+
+!IF "$(CFG)" == "release-dll"
+TARGET   = $(LIB_NAME).dll
+DIROBJ   = $(CFG)
+LNK      = $(LNKDLL) $(CURLLIB) /out:$(DIROBJ)/$(TARGET)
+CC       = $(CCNODBG) $(CFLAGSDLL)
+CFGSET   = TRUE
+!ENDIF
+
+######################
+# debug
+
+!IF "$(CFG)" == "debug"
+TARGET = $(LIB_NAME_DEBUG).lib
+DIROBJ = $(CFG)
+LNK    = $(LNKLIB) /out:$(DIROBJ)/$(TARGET)
+CC     = $(CCDEBUG) $(CFLAGSLIB)
+CFGSET = TRUE
+!ENDIF
+
+######################
+# debug-dll
+
+!IF "$(CFG)" == "debug-dll"
+TARGET = $(LIB_NAME_DEBUG).dll
+DIROBJ = $(CFG)
+LNK    = $(LNKDLL) $(CURLLIB) /DEBUG /out:$(DIROBJ)/$(TARGET) /PDB:$(DIROBJ)/$(LIB_NAME_DEBUG).pdb
+CC     = $(CCDEBUG)
+CFGSET = TRUE
+!ENDIF
+
+
+#######################
+# Usage
+#
+!IF "$(CFGSET)" == "FALSE" && "$(CFG)" != ""
+!MESSAGE Usage: nmake /f makefile.msvc CFG=<config>
+!MESSAGE where <config> is one of:
+!MESSAGE   release                      - release static library
+!MESSAGE   release-dll                  - release dynamic library
+!MESSAGE   debug                        - debug static library
+!MESSAGE   debug-dll                    - debug dynamic library
+!ERROR please choose a valid configuration "$(CFG)"
+!ENDIF
+
+#######################
+# Only the clean target can be used if a config was not provided.
+#
+!IF "$(CFGSET)" == "FALSE"
+clean:
+	@-erase /s *.dll 2> NUL
+	@-erase /s *.exp 2> NUL
+	@-erase /s *.idb 2> NUL
+	@-erase /s *.lib 2> NUL
+	@-erase /s *.o   2> NUL
+	@-erase /s *.pch 2> NUL
+	@-erase /s *.pdb 2> NUL
+	@-erase /s *.res 2> NUL
+!ELSE
+# A config was provided, so the library can be built.
+#
+X_OBJS= \
+	$(DIROBJ)/CurlHandle.o \
+	$(DIROBJ)/cURLpp.o \
+	$(DIROBJ)/Exception.o \
+	$(DIROBJ)/Easy.o \
+	$(DIROBJ)/Form.o \
+	$(DIROBJ)/Info.o \
+	$(DIROBJ)/Multi.o \
+	$(DIROBJ)/OptionBase.o \
+	$(DIROBJ)/OptionList.o \
+	$(DIROBJ)/OptionSetter.o \
+	$(DIROBJ)/SList.o \
+
+all : $(TARGET)
+
+$(TARGET): $(X_OBJS)
+	$(LNK) $(LFLAGS) $(X_OBJS)
+
+$(X_OBJS): $(DIROBJ)
+
+$(DIROBJ):
+	@if not exist "$(DIROBJ)" mkdir $(DIROBJ)
+
+.SUFFIXES: .cpp .obj
+
+{.\}.cpp{$(DIROBJ)\}.o:
+	$(CC) $(CFLAGS) /Fo"$@"  $<
+
+!ENDIF  # End of case where a config was provided.
