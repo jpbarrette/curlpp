@@ -33,6 +33,10 @@ namespace curlpp
 {
 
 
+namespace internal
+{
+
+
 	/**
 	* This class can keep a set of option_container it's used to keep all the
 	* option set on a handle.
@@ -98,12 +102,15 @@ namespace curlpp
 
 	private:
 
-		curlpp::OptionList::mapType mOptions;
+		OptionList::mapType mOptions;
 
-		void insert(const curlpp::OptionList::mapType & other);
+		void insert(const OptionList::mapType & other);
 
 
 	};
+
+
+} // namespace internal
 
 
 } // namespace curlpp

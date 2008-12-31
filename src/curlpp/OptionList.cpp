@@ -24,18 +24,18 @@
 #include <iostream>
 
 #include "curlpp/global.h"
-#include "curlpp/OptionList.hpp"
+#include "curlpp/internal/OptionList.hpp"
 
 
-curlpp::OptionList::OptionList()
+curlpp::internal::OptionList::OptionList()
 {}
 
-curlpp::OptionList::OptionList(const curlpp::OptionList & rhs)
+curlpp::internal::OptionList::OptionList(const curlpp::internal::OptionList & rhs)
 {
    insert(rhs.mOptions);
 }
 
-curlpp::OptionList::~OptionList()
+curlpp::internal::OptionList::~OptionList()
 {
   mapType::iterator pos = mOptions.begin();
   while (pos != mOptions.end()) {
@@ -45,7 +45,7 @@ curlpp::OptionList::~OptionList()
 }
 
 
-void curlpp::OptionList::setOpt(curlpp::OptionBase * option)
+void curlpp::internal::OptionList::setOpt(curlpp::OptionBase * option)
 {
    mapType::iterator pos = mOptions.find(option->getOption());
    if(pos != mOptions.end())
@@ -57,7 +57,7 @@ void curlpp::OptionList::setOpt(curlpp::OptionBase * option)
 }
 
 
-void curlpp::OptionList::setOpt(const curlpp::OptionList & options)
+void curlpp::internal::OptionList::setOpt(const curlpp::internal::OptionList & options)
 {
   for(mapType::const_iterator pos = options.mOptions.begin();
       pos != options.mOptions.end();
@@ -69,14 +69,14 @@ void curlpp::OptionList::setOpt(const curlpp::OptionList & options)
 
 
 void
-curlpp::OptionList::setOpt(const curlpp::OptionBase & option)
+curlpp::internal::OptionList::setOpt(const curlpp::OptionBase & option)
 {
    setOpt(option.clone());
 }
 
 
 void
-curlpp::OptionList::getOpt(curlpp::OptionBase * option) const
+curlpp::internal::OptionList::getOpt(curlpp::OptionBase * option) const
 {
    mapType::const_iterator pos = mOptions.find(option->getOption());
    if(pos != mOptions.end())
@@ -91,7 +91,7 @@ curlpp::OptionList::getOpt(curlpp::OptionBase * option) const
 
 
 void
-curlpp::OptionList::insert(const curlpp::OptionList::mapType & other)
+curlpp::internal::OptionList::insert(const curlpp::internal::OptionList::mapType & other)
 {
     for( mapType::const_iterator pos = other.begin();
          pos != other.end();

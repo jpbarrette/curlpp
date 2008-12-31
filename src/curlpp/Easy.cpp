@@ -25,56 +25,72 @@
 #include "curlpp/buildconfig.h"
 
 #include "curlpp/Easy.hpp"
-
 #include "curlpp/Options.hpp"
+
 
 curlpp::Easy::Easy()
   : myCurl(new CurlHandle())
 {}
 
+
 curlpp::Easy::Easy(std::auto_ptr<CurlHandle> handle)
   : myCurl(handle)
 {}
 
+
 curlpp::Easy::~Easy()
 {}
+
 
 void 
 curlpp::Easy::perform()
 {
-    myCurl->perform();
+	myCurl->perform();
 }
+
 
 CURL *
 curlpp::Easy::getHandle() const
 {
-  return myCurl->getHandle();
+	return myCurl->getHandle();
 }
+
 
 void
 curlpp::Easy::setOpt(const curlpp::OptionBase & option)
 {
-    setOpt(option.clone());    
+	setOpt(option.clone());    
 }
+
+
+void
+curlpp::Easy::setOpt(std::auto_ptr<curlpp::OptionBase> option)
+{
+	option->updateHandleToMe(myCurl.get());
+	myOptions.setOpt(option.release());    
+}
+
 
 void
 curlpp::Easy::setOpt(curlpp::OptionBase * option)
 {
-  option->updateHandleToMe(myCurl.get());
-  OptionList::setOpt(option);    
+	option->updateHandleToMe(myCurl.get());
+	myOptions.setOpt(option);    
 }
 
+
 void
-curlpp::Easy::setOpt(const curlpp::OptionList & options)
+curlpp::Easy::setOpt(const curlpp::internal::OptionList & options)
 {
-    OptionList::setOpt(options);    
+	myOptions.setOpt(options);    
 }
+
 
 void
 curlpp::Easy::reset ()
 {
-  myCurl->reset();
-  OptionList::setOpt(OptionList());
+	myCurl->reset();
+	myOptions.setOpt(internal::OptionList());
 }
 
 

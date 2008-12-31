@@ -688,18 +688,6 @@
 				RelativePath=".\src\curlpp\SList.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\src\curlpp\StreamTrait.cpp"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-			</File>
 			<Filter
 				Name="utilspp"
 				>
@@ -764,13 +752,6 @@
 					<File
 						RelativePath=".\src\utilspp\singleton\LifetimeLibrary.cpp"
 						>
-						<FileConfiguration
-							Name="DynamicLibDebugDynamicRTL|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\include\utilspp\singleton\LifetimeLibrary.inl"
@@ -797,13 +778,6 @@
 					<File
 						RelativePath=".\src\utilspp\singleton\PrivateMembers.cpp"
 						>
-						<FileConfiguration
-							Name="DynamicLibDebugDynamicRTL|Win32"
-							>
-							<Tool
-								Name="VCCLCompilerTool"
-							/>
-						</FileConfiguration>
 					</File>
 					<File
 						RelativePath=".\include\utilspp\singleton\PrivateMembers.inl"
@@ -905,10 +879,6 @@
 			</File>
 			<File
 				RelativePath=".\include\curlpp\OptionBase.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\OptionList.hpp"
 				>
 			</File>
 			<File
@@ -1040,6 +1010,10 @@
 				</File>
 				<File
 					RelativePath=".\include\curlpp\internal\OptionContainerType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionList.hpp"
 					>
 				</File>
 				<File
