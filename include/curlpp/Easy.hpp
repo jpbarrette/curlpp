@@ -24,10 +24,13 @@
 #ifndef CURLPP_EASY_HPP
 #define CURLPP_EASY_HPP
 
+#include <memory>
+
 #include "curlpp/buildconfig.h"
-#include "curlpp/Option.hpp"
-#include "curlpp/OptionList.hpp"
 #include "curlpp/CurlHandle.hpp"
+#include "curlpp/Option.hpp"
+#include "curlpp/internal/OptionList.hpp"
+
 
 namespace curlpp
 {
@@ -38,7 +41,7 @@ namespace curlpp
 	* Detailed description.
 	*/
 
-	class CURLPPAPI Easy : public OptionList
+	class CURLPPAPI Easy
 	{
 
 	public: 
@@ -61,16 +64,6 @@ namespace curlpp
 		void perform();
 
 		/**
-		* This function will set the option value of the OptionBase to the 
-		* handle. 
-		*
-		* Note: be carefull when using this function, see 
-		* curlpp::OptionList::setOpt(OptionBase * option) function for more
-		* details.
-		*/
-		virtual void setOpt(curlpp::OptionBase * option);
-
-		/**
 		* This function will set the option value of the OptionBase
 		* to the handle.
 		*
@@ -81,10 +74,24 @@ namespace curlpp
 		virtual void setOpt(const curlpp::OptionBase & option);
 
 		/**
-		* This function will call the setOpt on each options
-		* contained by * the option list passed in argument.
+		* This function will set the option value of the OptionBase to the 
+		* handle. 
+		*
+		* Note: be carefull when using this function, see 
+		* curlpp::OptionList::setOpt(OptionBase * option) function for more
+		* details.
 		*/
-		virtual void setOpt(const curlpp::OptionList & options);
+		virtual void setOpt(std::auto_ptr<curlpp::OptionBase> option);
+
+		/**
+		* This function will set the option value of the OptionBase to the 
+		* handle. 
+		*
+		* Note: be carefull when using this function, see 
+		* curlpp::OptionList::setOpt(OptionBase * option) function for more
+		* details.
+		*/
+		virtual void setOpt(curlpp::OptionBase * option);
 
 		/**
 		* This function will create OptionTrait class with the value given and call
@@ -112,6 +119,12 @@ namespace curlpp
 	private:
 
 		/**
+		* This function will call the setOpt on each options
+		* contained by * the option list passed in argument.
+		*/
+		virtual void setOpt(const curlpp::internal::OptionList & options);
+
+		/**
 		* This is the function that curlpp::InfoGetter will call
 		* to retreive option.
 		*/
@@ -119,6 +132,8 @@ namespace curlpp
 		void getInfo(CURLINFO info, T & value);
 
 		std::auto_ptr<curlpp::CurlHandle> myCurl;
+
+		internal::OptionList myOptions;
 
 	};
 
