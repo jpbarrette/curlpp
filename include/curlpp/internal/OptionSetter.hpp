@@ -25,7 +25,7 @@
 #define CURLPP_OPTION_SETTER_HPP
 
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 #include "curlpp/internal/OptionContainerType.hpp"
 #include "curlpp/internal/CurlHandle.hpp"
 

@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Using options::Url as stream input.
+* 
+*/
+
+
 #include <sstream>
 
 #include <cstdlib>

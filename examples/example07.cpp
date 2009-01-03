@@ -1,3 +1,9 @@
+/**
+* \file
+* Cookies.
+* 
+*/
+
 #include <string>
 #include <sstream>
 #include <vector>
@@ -13,6 +19,7 @@
 
 #include <curlpp/Infos.hpp>
 #include <curlpp/Options.hpp>
+
 
 class YesNo
 {

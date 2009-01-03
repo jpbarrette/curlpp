@@ -569,6 +569,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\curlpp\Easy.custom.ins"
+				>
+			</File>
+			<File
 				RelativePath=".\include\curlpp\Easy.inl"
 				>
 				<FileConfiguration

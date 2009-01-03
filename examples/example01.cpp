@@ -27,12 +27,14 @@
 * 
 */
 
+
 #include <string>
 #include <iostream>
 
 #include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
+
 
 namespace
 {

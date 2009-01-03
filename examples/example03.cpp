@@ -23,7 +23,7 @@
 
 /**
 * \file
-* DebugFunction option.
+* DebugFunction option using functor as a callback.
 */
 
 

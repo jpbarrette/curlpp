@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Simple Multi demo.
+* 
+*/
+
+
 #include <iostream>
 
 #include <cstdlib>
@@ -30,6 +37,7 @@
 #include <curlpp/Multi.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+
 
 int main(int argc, char *argv[])
 {

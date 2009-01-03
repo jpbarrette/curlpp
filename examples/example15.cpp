@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Using options.
+* 
+*/
+
+
 #include <string>
 #include <iostream>
 
@@ -28,9 +35,7 @@
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 
-/** 
- * This example is made to show you how you can use the Options.
- */
+
 int main(int, char **)
 {
   try

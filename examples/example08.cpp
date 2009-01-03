@@ -21,6 +21,13 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+* \file
+* DebugFunction option using functor.
+* 
+*/
+
+
 #include <cstdlib>
 
 #include <curlpp/curlpp.hpp>

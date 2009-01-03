@@ -27,7 +27,7 @@
 
 #include <curl/curl.h>
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 
 
 namespace curlpp
@@ -57,7 +57,7 @@ namespace internal
 		OptionBase(CURLoption option);
      
     /**
-     * The destructor.
+     * Base class needs virtual destructor.
      */
     virtual ~OptionBase();
          

@@ -27,7 +27,7 @@
 
 #include <memory>
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 #include "curlpp/internal/CurlHandle.hpp"
 #include "curlpp/internal/OptionList.hpp"
 
@@ -99,8 +99,14 @@ namespace curlpp
 		* This function will create OptionTrait class with the value given and call
 		* virtual void setOpt(const curlpp::OptionBase & option) with it.
 		*/
-		template<class OptionTrait>
+		template<typename OptionTrait>
 		void setOpt(typename OptionTrait::ParamType);
+
+		/**
+		* Setting options from custom container with curlpp options.
+		*/
+		template<typename InputIterator>
+		void setOpt(InputIterator first, InputIterator last);
 
 		/*
 		* This function empties the option collection and reset all options

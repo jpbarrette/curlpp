@@ -28,7 +28,7 @@
 #include <memory>
 #include <curl/curl.h>
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 
 #include "curlpp/Exception.hpp"
 #include "curlpp/Types.hpp"
