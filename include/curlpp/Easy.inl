@@ -24,7 +24,7 @@
 template<typename T>
 void curlpp::Easy::getInfo(CURLINFO info, T & value)
 {
-  myCurl->getInfo(info, value);
+  mCurl->getInfo(info, value);
 }
 
 template<class OptionTrait>

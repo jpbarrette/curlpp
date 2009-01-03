@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -113,8 +113,8 @@ namespace curlpp
 		*/
 		CURL * getHandle() const;
 
-		CurlHandle & getCurlHandle() { return *myCurl; }
-		const CurlHandle & getCurlHandle() const { return *myCurl; }
+		CurlHandle & getCurlHandle() { return *mCurl; }
+		const CurlHandle & getCurlHandle() const { return *mCurl; }
 
 	private:
 
@@ -131,9 +131,9 @@ namespace curlpp
 		template<typename T>
 		void getInfo(CURLINFO info, T & value);
 
-		std::auto_ptr<curlpp::CurlHandle> myCurl;
+		std::auto_ptr<curlpp::CurlHandle> mCurl;
 
-		internal::OptionList myOptions;
+		internal::OptionList mOptions;
 
 	};
 

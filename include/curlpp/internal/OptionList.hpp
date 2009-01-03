@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -24,10 +24,12 @@
 #ifndef CURLPP_OPTION_LIST_HPP
 #define CURLPP_OPTION_LIST_HPP
 
+
 #include <map>
 
 #include "curlpp/buildconfig.h"
 #include "curlpp/OptionBase.hpp"
+
 
 namespace curlpp
 {
