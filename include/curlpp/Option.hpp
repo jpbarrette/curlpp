@@ -175,7 +175,7 @@ namespace curlpp
 		* will call the actual libcurl option function with the value we got 
 		* on the handle.
 		*/
-		virtual void updateHandleToMe(curlpp::CurlHandle * handle) const;
+		virtual void updateHandleToMe(internal::CurlHandle * handle) const;
 
 	};
 
@@ -237,7 +237,7 @@ namespace curlpp
 		* will call the actual libcurl option function with the value we got 
 		* on the handle.
 		*/
-		virtual void updateHandleToMe(curlpp::CurlHandle * handle) const;
+		virtual void updateHandleToMe(internal::CurlHandle * handle) const;
 
 	};
 

@@ -30,7 +30,7 @@
 template<typename OptionValueType, CURLoption optionType>
 void
 curlpp::internal::OptionSetter<OptionValueType, optionType>
-::setOpt(curlpp::CurlHandle * handle, ParamType value)
+::setOpt(internal::CurlHandle * handle, ParamType value)
 {
   handle->option(optionType, value);
 }
@@ -39,7 +39,7 @@ curlpp::internal::OptionSetter<OptionValueType, optionType>
 template<CURLoption optionType>
 void
 curlpp::internal::OptionSetter<std::string, optionType>
-::setOpt(curlpp::CurlHandle * handle, ParamType value)
+::setOpt(internal::CurlHandle * handle, ParamType value)
 {
 	handle->option(optionType, (void *)value.c_str());
 }
@@ -48,7 +48,7 @@ curlpp::internal::OptionSetter<std::string, optionType>
 template<CURLoption optionType>
 void
 curlpp::internal::OptionSetter<std::list<std::string>, optionType>
-::setOpt(curlpp::CurlHandle * handle, ParamType value)
+::setOpt(internal::CurlHandle * handle, ParamType value)
 {
 	handle->option(optionType, (void *)value.cslist());
 }

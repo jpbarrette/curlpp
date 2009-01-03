@@ -24,14 +24,21 @@
 #ifndef CURLPP_CURL_HANDLE_HPP
 #define CURLPP_CURL_HANDLE_HPP
 
+
 #include <memory>
 #include <curl/curl.h>
 
 #include "curlpp/buildconfig.h"
+
 #include "curlpp/Exception.hpp"
 #include "curlpp/Types.hpp"
 
+
 namespace curlpp
+{
+
+
+namespace internal
 {
 
 
@@ -183,13 +190,16 @@ namespace curlpp
 	};
 
 
+} // namespace internal
+
+
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "curlpp/CurlHandle.inl"
+	#include "curlpp/internal/CurlHandle.inl"
 #endif
 
 

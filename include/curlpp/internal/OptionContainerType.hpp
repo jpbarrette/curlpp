@@ -28,7 +28,7 @@
 #include <string>
 #include <list>
 
-#include "curlpp/SList.hpp"
+#include "curlpp/internal/SList.hpp"
 #include "curlpp/Form.hpp"
 #include "curlpp/Types.hpp"
 
@@ -121,9 +121,9 @@ namespace internal
 	public:
 
 		typedef const std::list<std::string> & ParamType;
-		typedef curlpp::SList ValueType;
+		typedef SList ValueType;
 		typedef std::list<std::string> ReturnType;
-		typedef const curlpp::SList & HandleOptionType;
+		typedef const SList & HandleOptionType;
 
 	};
 

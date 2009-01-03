@@ -26,9 +26,9 @@
 
 
 #include "curlpp/buildconfig.h"
-
 #include "curlpp/internal/OptionContainerType.hpp"
-#include "curlpp/CurlHandle.hpp"
+#include "curlpp/internal/CurlHandle.hpp"
+
 #include "curlpp/Types.hpp"
 
 
@@ -53,7 +53,7 @@ namespace internal
 		typedef typename internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -71,7 +71,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<std::string>::HandleOptionType
 			ParamType;
 
-		static void	setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void	setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -92,7 +92,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void	setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void	setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -113,7 +113,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -135,7 +135,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -159,7 +159,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -183,7 +183,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -205,7 +205,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 	};
 
 
@@ -226,7 +226,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -250,7 +250,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -274,7 +274,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -296,7 +296,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -318,7 +318,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -342,7 +342,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -367,7 +367,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -391,7 +391,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -415,7 +415,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -439,7 +439,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -463,7 +463,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 
 	};
 
@@ -487,7 +487,7 @@ namespace internal
 		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
 			ParamType;
 
-		static void setOpt(curlpp::CurlHandle * handle, ParamType value);
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
 	};
 
 #endif // #ifdef HAVE_BOOST

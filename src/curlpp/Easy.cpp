@@ -29,11 +29,11 @@
 
 
 curlpp::Easy::Easy()
-  : mCurl(new CurlHandle())
+: mCurl(new internal::CurlHandle())
 {}
 
 
-curlpp::Easy::Easy(std::auto_ptr<CurlHandle> handle)
+curlpp::Easy::Easy(std::auto_ptr<internal::CurlHandle> handle)
   : mCurl(handle)
 {}
 
@@ -80,7 +80,7 @@ curlpp::Easy::setOpt(curlpp::OptionBase * option)
 
 
 void
-curlpp::Easy::setOpt(const curlpp::internal::OptionList & options)
+curlpp::Easy::setOpt(const internal::OptionList & options)
 {
 	mOptions.setOpt(options);    
 }

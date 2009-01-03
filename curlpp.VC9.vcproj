@@ -561,21 +561,6 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath=".\src\curlpp\CurlHandle.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\CurlHandle.inl"
-				>
-				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
 				RelativePath=".\src\curlpp\cURLpp.cpp"
 				>
 			</File>
@@ -669,23 +654,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\curlpp\OptionList.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\src\curlpp\Options.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\src\curlpp\Options.ins"
-				>
-			</File>
-			<File
-				RelativePath=".\src\curlpp\OptionSetter.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\curlpp\SList.cpp"
 				>
 			</File>
 			<Filter
@@ -807,11 +780,31 @@
 				Name="internal"
 				>
 				<File
+					RelativePath=".\src\curlpp\internal\CurlHandle.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\CurlHandle.inl"
+					>
+				</File>
+				<File
 					RelativePath=".\include\curlpp\internal\OptionContainer.inl"
 					>
 				</File>
 				<File
+					RelativePath=".\src\curlpp\internal\OptionList.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\curlpp\internal\OptionSetter.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\include\curlpp\internal\OptionSetter.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\src\curlpp\internal\SList.cpp"
 					>
 				</File>
 			</Filter>
@@ -830,10 +823,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\CurlHandle.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\include\curlpp\cURLpp.hpp"
 				>
 			</File>
@@ -846,19 +835,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\FileTrait.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\include\curlpp\Form.hpp"
 				>
 			</File>
 			<File
 				RelativePath=".\include\curlpp\global.h"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\Handle.hpp"
 				>
 			</File>
 			<File
@@ -886,19 +867,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\SList.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\StreamTrait.hpp"
-				>
-			</File>
-			<File
 				RelativePath=".\include\curlpp\Types.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\TypeTrait.hpp"
 				>
 			</File>
 			<Filter
@@ -1005,6 +974,10 @@
 				Name="internal"
 				>
 				<File
+					RelativePath=".\include\curlpp\internal\CurlHandle.hpp"
+					>
+				</File>
+				<File
 					RelativePath=".\include\curlpp\internal\OptionContainer.hpp"
 					>
 				</File>
@@ -1018,6 +991,10 @@
 				</File>
 				<File
 					RelativePath=".\include\curlpp\internal\OptionSetter.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\SList.hpp"
 					>
 				</File>
 			</Filter>

@@ -28,7 +28,7 @@
 #include <cstring>
 
 #include "curlpp/global.h"
-#include "curlpp/CurlHandle.hpp"
+#include "curlpp/internal/CurlHandle.hpp"
 
 #include "curlpp/curlpp.hpp"
 #include "curlpp/Exception.hpp"
@@ -37,7 +37,15 @@ using std::memset;
 using std::auto_ptr;
 
 
-void curlpp::CurlHandle::perform()
+namespace curlpp
+{
+
+
+namespace internal
+{
+
+
+void CurlHandle::perform()
 {
 	CURLcode code;
 
@@ -47,7 +55,7 @@ void curlpp::CurlHandle::perform()
 }
 
 
-void curlpp::CurlHandle::reset()
+void CurlHandle::reset()
 {
 	curl_easy_reset(mCurl);
 	memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
@@ -55,14 +63,13 @@ void curlpp::CurlHandle::reset()
 }
 
 
-CURL *
-curlpp::CurlHandle::getHandle() const
+CURL * CurlHandle::getHandle() const
 {
 	return mCurl;
 }
 
 
-curlpp::CurlHandle::CurlHandle() 
+CurlHandle::CurlHandle() 
 	: mException(NULL)
 {
 	memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
@@ -72,7 +79,7 @@ curlpp::CurlHandle::CurlHandle()
 }
 
 
-curlpp::CurlHandle::CurlHandle(CURL * handle) 
+CurlHandle::CurlHandle(CURL * handle) 
 	: mException(NULL)
 {
 	memset(mErrorBuffer,0,CURL_ERROR_SIZE + 1);
@@ -82,18 +89,18 @@ curlpp::CurlHandle::CurlHandle(CURL * handle)
 }
 
 
-std::auto_ptr<curlpp::CurlHandle> 
-curlpp::CurlHandle::clone() const
+std::auto_ptr<CurlHandle> 
+CurlHandle::clone() const
 {
 	CURL * cHandle = curl_easy_duphandle(mCurl);
 	runtimeAssert("Error when trying to curl_easy_duphandle() a handle", cHandle != NULL);
-	auto_ptr<curlpp::CurlHandle> newHandle(new CurlHandle(cHandle));
+	auto_ptr<CurlHandle> newHandle(new CurlHandle(cHandle));
 
 	return newHandle;
 }
 
 
-curlpp::CurlHandle::~CurlHandle()
+CurlHandle::~CurlHandle()
 {
 	if (mException)
 	{
@@ -105,7 +112,7 @@ curlpp::CurlHandle::~CurlHandle()
 
 
 void
-curlpp::CurlHandle::errorBuffer(char * buffer)
+CurlHandle::errorBuffer(char * buffer)
 {
 	option(CURLOPT_ERRORBUFFER, (void *)buffer);
 }
@@ -140,7 +147,7 @@ typename FunctorType::ResultType execute(FunctorType functor, typename FunctorTy
 
 
 size_t 
-curlpp::CurlHandle::executeWriteFunctor(char * buffer, size_t size, size_t nitems)
+CurlHandle::executeWriteFunctor(char * buffer, size_t size, size_t nitems)
 {
 	if (!mWriteFunctor)
 	{
@@ -168,7 +175,7 @@ curlpp::CurlHandle::executeWriteFunctor(char * buffer, size_t size, size_t nitem
 
 
 size_t 
-curlpp::CurlHandle::executeHeaderFunctor(char * buffer, size_t size, size_t nitems)
+CurlHandle::executeHeaderFunctor(char * buffer, size_t size, size_t nitems)
 {
 	if (!mHeaderFunctor)
 	{
@@ -196,7 +203,7 @@ curlpp::CurlHandle::executeHeaderFunctor(char * buffer, size_t size, size_t nite
 
 
 size_t 
-curlpp::CurlHandle::executeReadFunctor(char * buffer, size_t size, size_t nitems)
+CurlHandle::executeReadFunctor(char * buffer, size_t size, size_t nitems)
 {
 	if(!mReadFunctor)
 	{
@@ -223,11 +230,11 @@ curlpp::CurlHandle::executeReadFunctor(char * buffer, size_t size, size_t nitems
 }
 
 
-int 
-curlpp::CurlHandle::executeProgressFunctor(double dltotal, 
-																					 double dlnow, 
-																					 double ultotal, 
-																					 double ulnow)
+int
+CurlHandle::executeProgressFunctor(double dltotal, 
+																	 double dlnow, 
+																	 double ultotal, 
+																	 double ulnow)
 {
 	if (!mProgressFunctor)
 	{
@@ -255,7 +262,7 @@ curlpp::CurlHandle::executeProgressFunctor(double dltotal,
 
 
 int 
-curlpp::CurlHandle::executeDebugFunctor(curl_infotype info, char * buffer, size_t size)
+CurlHandle::executeDebugFunctor(curl_infotype info, char * buffer, size_t size)
 {
 	if (!mDebugFunctor)
 	{
@@ -283,7 +290,7 @@ curlpp::CurlHandle::executeDebugFunctor(curl_infotype info, char * buffer, size_
 
 
 CURLcode 
-curlpp::CurlHandle::executeSslCtxFunctor(void * ssl_ctx)
+CurlHandle::executeSslCtxFunctor(void * ssl_ctx)
 {
 	if (!mSslFunctor)
 	{
@@ -311,7 +318,7 @@ curlpp::CurlHandle::executeSslCtxFunctor(void * ssl_ctx)
 
 
 void
-curlpp::CurlHandle::setException(curlpp::CallbackExceptionBase * e) 
+CurlHandle::setException(curlpp::CallbackExceptionBase * e) 
 {
 	if(mException)
 	{
@@ -323,8 +330,14 @@ curlpp::CurlHandle::setException(curlpp::CallbackExceptionBase * e)
 
 
 void
-curlpp::CurlHandle::throwException()
+CurlHandle::throwException()
 {
 	if(mException) 
 		mException->throwMe();
 }
+
+
+} // namespace internal
+
+
+} // namespace curlpp
