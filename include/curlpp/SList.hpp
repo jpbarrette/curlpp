@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -47,11 +47,11 @@ namespace curlpp
 		SList(const SList & rhs);
 
 		/**
-		* The list passed in argument is now possessed by the class.
+		* The list passed in as an argument is now possessed by the class.
 		*/
 		SList(curl_slist * list);
 
-		SList(const std::list<std::string> & list);
+		explicit SList(const std::list<std::string> & list);
 		~SList();
 
 		SList & operator=(const std::list<std::string> & list);
@@ -67,11 +67,11 @@ namespace curlpp
 		void clear();
 		void constructFrom(curl_slist * list);
 
-
 		curl_slist * mList;
 		std::list<std::string> mData;
 
 	};
+
 
 } // namespace curlpp
 

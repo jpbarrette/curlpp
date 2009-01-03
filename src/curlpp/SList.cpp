@@ -10,116 +10,130 @@
 
 #include "curlpp/SList.hpp"
 
+
 curlpp::SList::SList(const SList & rhs) 
-  : mList(0)
-  , mData(rhs.mData)
+	: mList(0)
+	, mData(rhs.mData)
 {
-  update();
+	update();
 }
+
 
 curlpp::SList::SList(curl_slist * list)
-  : mList(NULL)
+	: mList(NULL)
 {
-  constructFrom(list);
+	constructFrom(list);
 }
+
 
 curlpp::SList::SList(const std::list<std::string> & rhs)
-  : mList(0)
-  , mData(rhs)
+	: mList(0)
+	, mData(rhs)
 {
-  update();
+	update();
 }
 
-curlpp::SList::SList() : mList(0)
+
+curlpp::SList::SList() 
+	: mList(0)
 {}
+
 
 curlpp::SList::~SList()
 {
-   clear();
+	clear();
 }
 
+
 void
-curlpp::SList::clear() {
-   if(mList != 0)
-   {
-      curl_slist_free_all(mList);
-      mList = 0;
-   }
+curlpp::SList::clear()
+{
+	if(mList != 0)
+	{
+		curl_slist_free_all(mList);
+		mList = 0;
+	}
 }
 
 
 void 
 curlpp::SList::constructFrom(curl_slist * list)
 {
-  mData.clear();
+	mData.clear();
 
-  curl_slist * c = list;
-  while(c)
-    {
-      mData.push_back(c->data);
-      c = c->next;
-    }
+	curl_slist * c = list;
+	while(c)
+	{
+		mData.push_back(c->data);
+		c = c->next;
+	}
 
-  update();
+	update();
 }
 
+
 void 
-curlpp::SList::set( const std::list<std::string> & list) 
+curlpp::SList::set(const std::list<std::string> & list) 
 {
-  mData = list;
-  update();
+	mData = list;
+	update();
 }
 
 
 void 
 curlpp::SList::update() 
 {
-  clear();
+	clear();
 
-  for(std::list<std::string>::const_iterator pos = mData.begin();
-      pos != mData.end();
-      pos++) {
-    mList = curl_slist_append(mList, (*pos).c_str());
-  }
+	for(std::list<std::string>::const_iterator pos = mData.begin();
+			pos != mData.end();
+			pos++)
+	{
+		mList = curl_slist_append(mList, (*pos).c_str());
+	}
 }
 
 
 curlpp::SList::operator std::list<std::string> ()
 {
-  return list();
+	return list();
 }
 
 
 curlpp::SList &
 curlpp::SList::operator=(const std::list<std::string> & list)
 {
-  set(list);
-  return (*this);
+	set(list);
+	return (*this);
 }
+
 
 curl_slist *
 curlpp::SList::cslist() const
 {
-  return mList;
+	return mList;
 }
+
 
 std::list<std::string>
 curlpp::SList::list() 
 {
-  return mData;
+	return mData;
 }
 
 
 std::ostream & operator<<(std::ostream & stream, const std::list<std::string> & value)
 {
-  for(std::list<std::string>::const_iterator pos = value.begin();
-      pos != value.end();
-      pos++) {
-    if(pos != value.begin()) {
-      stream << ", ";
-    }
-    stream << (*pos);
-  }
+	for(std::list<std::string>::const_iterator pos = value.begin();
+			pos != value.end();
+			pos++)
+	{
+		if(pos != value.begin())
+		{
+			stream << ", ";
+		}
+		stream << (*pos);
+	}
 
-  return stream;
+	return stream;
 }

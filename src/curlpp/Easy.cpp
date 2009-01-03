@@ -1,5 +1,5 @@
 /*
- *    Copyright (c) <2002-2008> <Jean-Philippe Barrette-LaPierre>
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
  *    
  *    Permission is hereby granted, free of charge, to any person obtaining
  *    a copy of this software and associated documentation files 
@@ -29,12 +29,12 @@
 
 
 curlpp::Easy::Easy()
-  : myCurl(new CurlHandle())
+  : mCurl(new CurlHandle())
 {}
 
 
 curlpp::Easy::Easy(std::auto_ptr<CurlHandle> handle)
-  : myCurl(handle)
+  : mCurl(handle)
 {}
 
 
@@ -45,14 +45,14 @@ curlpp::Easy::~Easy()
 void 
 curlpp::Easy::perform()
 {
-	myCurl->perform();
+	mCurl->perform();
 }
 
 
 CURL *
 curlpp::Easy::getHandle() const
 {
-	return myCurl->getHandle();
+	return mCurl->getHandle();
 }
 
 
@@ -66,31 +66,31 @@ curlpp::Easy::setOpt(const curlpp::OptionBase & option)
 void
 curlpp::Easy::setOpt(std::auto_ptr<curlpp::OptionBase> option)
 {
-	option->updateHandleToMe(myCurl.get());
-	myOptions.setOpt(option.release());    
+	option->updateHandleToMe(mCurl.get());
+	mOptions.setOpt(option.release());    
 }
 
 
 void
 curlpp::Easy::setOpt(curlpp::OptionBase * option)
 {
-	option->updateHandleToMe(myCurl.get());
-	myOptions.setOpt(option);    
+	option->updateHandleToMe(mCurl.get());
+	mOptions.setOpt(option);    
 }
 
 
 void
 curlpp::Easy::setOpt(const curlpp::internal::OptionList & options)
 {
-	myOptions.setOpt(options);    
+	mOptions.setOpt(options);    
 }
 
 
 void
 curlpp::Easy::reset ()
 {
-	myCurl->reset();
-	myOptions.setOpt(internal::OptionList());
+	mCurl->reset();
+	mOptions.setOpt(internal::OptionList());
 }
 
 
