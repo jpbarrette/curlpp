@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* WriteFunction using streams.
+* 
+*/
+
+
 #include <sstream>
 #include <cstdlib>
 
@@ -30,6 +37,7 @@
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 #include <curlpp/Infos.hpp>
+
 
 struct MethodClass
 {

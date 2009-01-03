@@ -21,6 +21,14 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* WriteFunction option using free function.
+* Writing to FILE*
+* 
+*/
+
+
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>

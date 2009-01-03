@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* WriteFunction option using functor as a callback.
+* 
+*/
+
+
 #include <cstdlib>
 #include <cstring>
 

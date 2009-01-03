@@ -28,7 +28,7 @@
 #include <list>
 #include <string>
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 #include "utilspp/clone_ptr.hpp"
 
 

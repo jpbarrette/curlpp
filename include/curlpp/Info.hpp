@@ -26,7 +26,7 @@
 #define CURLPP_INFO_HPP
 
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 #include "curlpp/Easy.hpp"
 
 

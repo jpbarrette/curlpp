@@ -21,15 +21,28 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
 template<typename T>
 void curlpp::Easy::getInfo(CURLINFO info, T & value)
 {
   mCurl->getInfo(info, value);
 }
 
-template<class OptionTrait>
+
+template<typename OptionTrait>
 void 
 curlpp::Easy::setOpt(typename OptionTrait::ParamType value)
 {
   setOpt(curlpp::OptionTrait<typename OptionTrait::OptionType, OptionTrait::option>(value));
+} 
+
+
+template<typename InputIterator>
+void 
+curlpp::Easy::setOpt(InputIterator first, InputIterator last)
+{
+	for(InputIterator it=first; it != last; ++it)
+	{
+		setOpt(*it);
+	}
 } 

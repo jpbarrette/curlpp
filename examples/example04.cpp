@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Getting options using curlpp::infos.
+* 
+*/
+
+
 #include <cstdlib>
 
 #include <curlpp/curlpp.hpp>

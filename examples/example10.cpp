@@ -21,6 +21,14 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* WriteFunction option using functor.
+* Writing to FILE*
+* 
+*/
+
+
 #include <cstdlib>
 #include <cstdio>
 #include <cstring>
@@ -64,8 +72,7 @@ int main(int argc, char *argv[])
 		curlpp::Cleanup cleaner;
 		curlpp::Easy request;
 
-		// Set the writer callback to enable cURL 
-		// to write result in a memory area
+		// Set the writer callback to enable cURL to write result in a memory area
 		curlpp::types::WriteFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&FileCallback), file));
 		curlpp::options::WriteFunction *test = new curlpp::options::WriteFunction(functor);
 		request.setOpt(test);

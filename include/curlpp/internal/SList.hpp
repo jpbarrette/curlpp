@@ -28,7 +28,7 @@
 #include <curl/curl.h>
 #include <list>
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 
 
 namespace curlpp

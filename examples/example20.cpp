@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Using WriteStream option.
+* 
+*/
+
+
 #include <sstream>
 
 #include <cstdlib>

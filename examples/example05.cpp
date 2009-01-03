@@ -21,6 +21,13 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+/**
+* \file
+* Write function using free function as a callback.
+* 
+*/
+
+
 #include <cstdlib>
 #include <cstring>
 

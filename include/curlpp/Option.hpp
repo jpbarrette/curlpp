@@ -25,7 +25,7 @@
 #define CURLPP_OPTION_HPP
 
 
-#include "curlpp/buildconfig.h"
+#include "curlpp/internal/buildconfig.h"
 #include "curlpp/OptionBase.hpp"
 #include "curlpp/internal/OptionContainer.hpp"
 

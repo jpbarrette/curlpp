@@ -24,10 +24,11 @@
 #ifndef CURLPP_OPTIONS_HPP
 #define CURLPP_OPTIONS_HPP
 
-#include "curlpp/Option.hpp"
-//#include "StorageOptions.hpp"
 
 #include <iostream> 
+
+#include "curlpp/Option.hpp"
+
 
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
 #define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef curlpp::NotAvailableOptionTrait<type, option> name;
@@ -78,6 +79,7 @@ namespace options
 
 	typedef curlpp::OptionTrait<bool, CURLOPT_NOPROGRESS> NoProgress;
 
+
 	/**
 	* Callback options. 
 	*/
@@ -89,6 +91,7 @@ namespace options
 		typedef curlpp::OptionTrait<curlpp::types::BoostWriteFunction, CURLOPT_WRITEFUNCTION>
 			BoostWriteFunction;
 	#endif
+
 
 	/**
 	* Using this option will reset CURLOPT_WRITEFUNCTION to 
@@ -127,6 +130,7 @@ namespace options
 	#endif // HAVE_BOOST
 	#endif // CURLPP_ALLOW_NOT_AVAILABLE
 	#endif // LIBCURL_VERSION_NUM
+
 
 	/**
 	* Using this option will reset CURLOPT_READFUNCTION to 
@@ -190,6 +194,7 @@ namespace options
 
 	typedef curlpp::OptionTrait<bool, CURLOPT_FAILONERROR> FailOnError;
 
+
 	/**
 	* Network options.
 	*/
@@ -207,6 +212,7 @@ namespace options
 
 	typedef curlpp::OptionTrait<bool, CURLOPT_TCP_NODELAY> TcpNoDelay;
 
+
 	/**
 	* Names and passwords options.
 	*/
@@ -217,6 +223,7 @@ namespace options
 	typedef curlpp::OptionTrait<std::string, CURLOPT_PROXYUSERPWD> ProxyUserPwd;
 	typedef curlpp::OptionTrait<long, CURLOPT_HTTPAUTH> HttpAuth;
 	typedef curlpp::OptionTrait<long, CURLOPT_PROXYAUTH> ProxyAuth;
+
 
 	/**
 	* HTTP options.
@@ -245,6 +252,7 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_HTTPGET> HttpGet;
 	typedef curlpp::OptionTrait<long, CURLOPT_HTTP_VERSION> HttpVersion;
 
+
 	/**
 	* FTP options.
 	*/
@@ -261,6 +269,7 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_FTP_RESPONSE_TIMEOUT> FtpResponseTimeout;
 	typedef curlpp::OptionTrait<curl_ftpssl, CURLOPT_FTP_SSL> FtpSsl;
 	typedef curlpp::OptionTrait<curl_ftpauth, CURLOPT_FTPSSLAUTH> FtpSslAuth;
+
 
 	/**
 	* Protocol options.
@@ -281,6 +290,7 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_TIMECONDITION> TimeCondition;
 	typedef curlpp::OptionTrait<long, CURLOPT_TIMEVALUE> TimeValue;
 
+
 	/**
 	* Connection options.
 	*/
@@ -294,6 +304,7 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_FORBID_REUSE> ForbidReuse;
 	typedef curlpp::OptionTrait<long, CURLOPT_CONNECTTIMEOUT> ConnectTimeout;
 	typedef curlpp::OptionTrait<long, CURLOPT_IPRESOLVE> IpResolve;
+
 
 	/**
 	* SSL and security options.
@@ -317,12 +328,14 @@ namespace options
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSL_CIPHER_LIST> SslCipherList;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
 
+
 	/**
-	* Others options.
+	* Other options.
 	*/
 
 	typedef curlpp::OptionTrait<void *, CURLOPT_PRIVATE> Private;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
+
 
 	//Share;
 	//TelnetOptions
