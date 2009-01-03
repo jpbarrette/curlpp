@@ -8,10 +8,18 @@
 
 #include <string>
 
-#include "curlpp/SList.hpp"
+#include "curlpp/internal/SList.hpp"
 
 
-curlpp::SList::SList(const SList & rhs) 
+namespace curlpp
+{
+
+
+namespace internal
+{
+
+
+SList::SList(const SList & rhs) 
 	: mList(0)
 	, mData(rhs.mData)
 {
@@ -19,14 +27,14 @@ curlpp::SList::SList(const SList & rhs)
 }
 
 
-curlpp::SList::SList(curl_slist * list)
+SList::SList(curl_slist * list)
 	: mList(NULL)
 {
 	constructFrom(list);
 }
 
 
-curlpp::SList::SList(const std::list<std::string> & rhs)
+SList::SList(const std::list<std::string> & rhs)
 	: mList(0)
 	, mData(rhs)
 {
@@ -34,19 +42,19 @@ curlpp::SList::SList(const std::list<std::string> & rhs)
 }
 
 
-curlpp::SList::SList() 
+SList::SList() 
 	: mList(0)
 {}
 
 
-curlpp::SList::~SList()
+SList::~SList()
 {
 	clear();
 }
 
 
 void
-curlpp::SList::clear()
+SList::clear()
 {
 	if(mList != 0)
 	{
@@ -57,7 +65,7 @@ curlpp::SList::clear()
 
 
 void 
-curlpp::SList::constructFrom(curl_slist * list)
+SList::constructFrom(curl_slist * list)
 {
 	mData.clear();
 
@@ -73,7 +81,7 @@ curlpp::SList::constructFrom(curl_slist * list)
 
 
 void 
-curlpp::SList::set(const std::list<std::string> & list) 
+SList::set(const std::list<std::string> & list) 
 {
 	mData = list;
 	update();
@@ -81,7 +89,7 @@ curlpp::SList::set(const std::list<std::string> & list)
 
 
 void 
-curlpp::SList::update() 
+SList::update() 
 {
 	clear();
 
@@ -94,14 +102,14 @@ curlpp::SList::update()
 }
 
 
-curlpp::SList::operator std::list<std::string> ()
+SList::operator std::list<std::string> ()
 {
 	return list();
 }
 
 
-curlpp::SList &
-curlpp::SList::operator=(const std::list<std::string> & list)
+SList &
+SList::operator=(const std::list<std::string> & list)
 {
 	set(list);
 	return (*this);
@@ -109,17 +117,25 @@ curlpp::SList::operator=(const std::list<std::string> & list)
 
 
 curl_slist *
-curlpp::SList::cslist() const
+SList::cslist() const
 {
 	return mList;
 }
 
 
 std::list<std::string>
-curlpp::SList::list() 
+SList::list() 
 {
 	return mData;
 }
+
+
+
+
+} // namespace internal
+
+
+} // namespace curlpp
 
 
 std::ostream & operator<<(std::ostream & stream, const std::list<std::string> & value)

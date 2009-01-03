@@ -34,6 +34,11 @@
 namespace curlpp
 {
 
+
+namespace internal
+{
+
+
 	/**
 	* This class is binding the curl_slist struct.
 	*/
@@ -71,6 +76,9 @@ namespace curlpp
 		std::list<std::string> mData;
 
 	};
+
+
+} // namespace internal
 
 
 } // namespace curlpp

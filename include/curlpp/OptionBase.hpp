@@ -34,7 +34,14 @@ namespace curlpp
 {
 
 
-  class CurlHandle;
+namespace internal
+{
+
+
+	class CurlHandle;
+
+
+}
 
   /**
    * This is the parent of the curlpp::option class.
@@ -79,7 +86,7 @@ namespace curlpp
      * will call the actual libcurl option function with the value we got 
      * on the handle.
      */
-    virtual void updateHandleToMe(curlpp::CurlHandle * handle) const = 0;
+    virtual void updateHandleToMe(internal::CurlHandle * handle) const = 0;
 
     /**
      * this function will reset the option value.

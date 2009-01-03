@@ -27,15 +27,23 @@
 #include "curlpp/internal/OptionList.hpp"
 
 
-curlpp::internal::OptionList::OptionList()
+namespace curlpp
+{
+
+
+namespace internal
+{
+
+
+OptionList::OptionList()
 {}
 
-curlpp::internal::OptionList::OptionList(const curlpp::internal::OptionList & rhs)
+OptionList::OptionList(const OptionList & rhs)
 {
    insert(rhs.mOptions);
 }
 
-curlpp::internal::OptionList::~OptionList()
+OptionList::~OptionList()
 {
   mapType::iterator pos = mOptions.begin();
   while (pos != mOptions.end()) {
@@ -45,7 +53,7 @@ curlpp::internal::OptionList::~OptionList()
 }
 
 
-void curlpp::internal::OptionList::setOpt(curlpp::OptionBase * option)
+void OptionList::setOpt(curlpp::OptionBase * option)
 {
    mapType::iterator pos = mOptions.find(option->getOption());
    if(pos != mOptions.end())
@@ -57,7 +65,7 @@ void curlpp::internal::OptionList::setOpt(curlpp::OptionBase * option)
 }
 
 
-void curlpp::internal::OptionList::setOpt(const curlpp::internal::OptionList & options)
+void OptionList::setOpt(const OptionList & options)
 {
   for(mapType::const_iterator pos = options.mOptions.begin();
       pos != options.mOptions.end();
@@ -68,15 +76,13 @@ void curlpp::internal::OptionList::setOpt(const curlpp::internal::OptionList & o
 }
 
 
-void
-curlpp::internal::OptionList::setOpt(const curlpp::OptionBase & option)
+void OptionList::setOpt(const curlpp::OptionBase & option)
 {
    setOpt(option.clone());
 }
 
 
-void
-curlpp::internal::OptionList::getOpt(curlpp::OptionBase * option) const
+void OptionList::getOpt(curlpp::OptionBase * option) const
 {
    mapType::const_iterator pos = mOptions.find(option->getOption());
    if(pos != mOptions.end())
@@ -90,8 +96,7 @@ curlpp::internal::OptionList::getOpt(curlpp::OptionBase * option) const
 }
 
 
-void
-curlpp::internal::OptionList::insert(const curlpp::internal::OptionList::mapType & other)
+void OptionList::insert(const OptionList::mapType & other)
 {
     for( mapType::const_iterator pos = other.begin();
          pos != other.end();
@@ -102,3 +107,7 @@ curlpp::internal::OptionList::insert(const curlpp::internal::OptionList::mapType
 }
 
 
+} // namespace curlpp
+
+
+} // namespace internal

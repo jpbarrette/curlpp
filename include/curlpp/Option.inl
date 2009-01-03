@@ -130,7 +130,7 @@ curlpp::OptionTrait<OptionType, option>::clone() const
 
 template<typename OptionType, CURLoption option>
 void
-curlpp::OptionTrait<OptionType, option>::updateHandleToMe(curlpp::CurlHandle * handle) const
+curlpp::OptionTrait<OptionType, option>::updateHandleToMe(internal::CurlHandle * handle) const
 {
 	if(this->mContainer == NULL)
 	{
@@ -178,7 +178,7 @@ curlpp::NotAvailableOptionTrait<OptionType>::clone() const
 
 template<typename OptionType>
 void
-curlpp::NotAvailableOptionTrait<OptionType>::updateHandleToMe(curlpp::CurlHandle *) const
+curlpp::NotAvailableOptionTrait<OptionType>::updateHandleToMe(internal::CurlHandle *) const
 {
   throw curlpp::NotAvailable();
 }

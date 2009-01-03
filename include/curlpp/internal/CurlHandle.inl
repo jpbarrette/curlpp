@@ -21,40 +21,56 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
 #ifndef CURLPP_CURLHANDLE_INL
 #define CURLPP_CURLHANDLE_INL
 
+
 #include "curlpp/Exception.hpp"
+
 
 namespace curlpp
 {
-	template<typename OptionType>
-	void 
-		CurlHandle::option(CURLoption optionType, 
-		OptionType value)
-	{
-		CURLcode code;
-		code = curl_easy_setopt(mCurl, optionType, value);
-		libcurlRuntimeAssert(mErrorBuffer, code);
-	}
 
-	template<typename OptionType, CURLoption optionType>
-	void 
-		CurlHandle::option(OptionType value)
-	{
-		option(optionType, value);
-	}
 
-	template <typename T>
-	void 
-		CurlHandle::getInfo(CURLINFO info, T & value)
-	{
-		CURLcode code;
-		code = curl_easy_getinfo(mCurl, info, & value);
-		libcurlRuntimeAssert(mErrorBuffer, code);
-	}
+namespace internal
+{
 
-}// namespace
+
+template<typename OptionType>
+void 
+CurlHandle::option(CURLoption optionType, 
+OptionType value)
+{
+	CURLcode code;
+	code = curl_easy_setopt(mCurl, optionType, value);
+	libcurlRuntimeAssert(mErrorBuffer, code);
+}
+
+
+template<typename OptionType, CURLoption optionType>
+void 
+CurlHandle::option(OptionType value)
+{
+	option(optionType, value);
+}
+
+
+template <typename T>
+void 
+CurlHandle::getInfo(CURLINFO info, T & value)
+{
+	CURLcode code;
+	code = curl_easy_getinfo(mCurl, info, & value);
+	libcurlRuntimeAssert(mErrorBuffer, code);
+}
+
+
+} // namespace internal
+
+
+} // namespace curlpp
+
 
 #endif 
 

@@ -24,12 +24,14 @@
 #ifndef CURLPP_EASY_HPP
 #define CURLPP_EASY_HPP
 
+
 #include <memory>
 
 #include "curlpp/buildconfig.h"
-#include "curlpp/CurlHandle.hpp"
-#include "curlpp/Option.hpp"
+#include "curlpp/internal/CurlHandle.hpp"
 #include "curlpp/internal/OptionList.hpp"
+
+#include "curlpp/Option.hpp"
 
 
 namespace curlpp
@@ -54,7 +56,7 @@ namespace curlpp
 		* This allow to have a handle, which might have
 		* some option set, but we don't care about them.
 		*/
-		Easy(std::auto_ptr<CurlHandle> handle);
+		Easy(std::auto_ptr<internal::CurlHandle> handle);
 		virtual ~Easy();
 
 		/**
@@ -113,8 +115,8 @@ namespace curlpp
 		*/
 		CURL * getHandle() const;
 
-		CurlHandle & getCurlHandle() { return *mCurl; }
-		const CurlHandle & getCurlHandle() const { return *mCurl; }
+		internal::CurlHandle & getCurlHandle() { return *mCurl; }
+		const internal::CurlHandle & getCurlHandle() const { return *mCurl; }
 
 	private:
 
@@ -122,7 +124,7 @@ namespace curlpp
 		* This function will call the setOpt on each options
 		* contained by * the option list passed in argument.
 		*/
-		virtual void setOpt(const curlpp::internal::OptionList & options);
+		virtual void setOpt(const internal::OptionList & options);
 
 		/**
 		* This is the function that curlpp::InfoGetter will call
@@ -131,7 +133,7 @@ namespace curlpp
 		template<typename T>
 		void getInfo(CURLINFO info, T & value);
 
-		std::auto_ptr<curlpp::CurlHandle> mCurl;
+		std::auto_ptr<internal::CurlHandle> mCurl;
 
 		internal::OptionList mOptions;
 
