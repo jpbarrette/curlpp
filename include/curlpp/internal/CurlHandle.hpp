@@ -25,13 +25,14 @@
 #define CURLPP_CURL_HANDLE_HPP
 
 
-#include <memory>
-#include <curl/curl.h>
-
 #include "curlpp/internal/buildconfig.h"
 
 #include "curlpp/Exception.hpp"
 #include "curlpp/Types.hpp"
+
+#include <curl/curl.h>
+
+#include <memory>
 
 
 namespace curlpp

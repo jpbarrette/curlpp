@@ -25,12 +25,13 @@
 #define CURLPP_OPTION_CONTAINER_TYPE_HPP
 
 
-#include <string>
-#include <list>
-
 #include "curlpp/internal/SList.hpp"
+
 #include "curlpp/Form.hpp"
 #include "curlpp/Types.hpp"
+
+#include <string>
+#include <list>
 
 
 namespace curlpp

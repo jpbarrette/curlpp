@@ -21,17 +21,17 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <string>
-#include <iostream>
-#include <memory>
-
-#include <cstring>
-
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 #include "curlpp/internal/CurlHandle.hpp"
 
 #include "curlpp/curlpp.hpp"
 #include "curlpp/Exception.hpp"
+
+#include <string>
+#include <iostream>
+#include <memory>
+#include <cstring>
+
 
 using std::memset;
 using std::auto_ptr;

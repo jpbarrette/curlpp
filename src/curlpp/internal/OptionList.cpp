@@ -21,10 +21,10 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include <iostream>
-
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 #include "curlpp/internal/OptionList.hpp"
+
+#include <iostream>
 
 
 namespace curlpp

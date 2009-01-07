@@ -27,6 +27,7 @@
 
 
 #include "curlpp/internal/buildconfig.h"
+
 #include "curlpp/Easy.hpp"
 
 

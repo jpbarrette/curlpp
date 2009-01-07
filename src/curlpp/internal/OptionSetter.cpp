@@ -21,14 +21,14 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include <string>
-#include <iostream>
+#include "curlpp/internal/global.h"
+#include "curlpp/internal/CurlHandle.hpp"
+#include "curlpp/internal/OptionSetter.hpp"
 
 #include "utilspp/Functors.hpp"
 
-#include "curlpp/global.h"
-#include "curlpp/internal/CurlHandle.hpp"
-#include "curlpp/internal/OptionSetter.hpp"
+#include <string>
+#include <iostream>
 
 
 namespace curlpp

@@ -26,10 +26,11 @@
 #define CURLPP_INFOS_HPP
 
 
-#include <curl/curl.h>
-#include <list>
-
 #include "curlpp/Info.hpp"
+
+#include <curl/curl.h>
+
+#include <list>
 
 
 namespace curlpp

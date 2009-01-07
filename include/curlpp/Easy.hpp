@@ -25,13 +25,13 @@
 #define CURLPP_EASY_HPP
 
 
-#include <memory>
-
 #include "curlpp/internal/buildconfig.h"
 #include "curlpp/internal/CurlHandle.hpp"
 #include "curlpp/internal/OptionList.hpp"
 
 #include "curlpp/Option.hpp"
+
+#include <memory>
 
 
 namespace curlpp
@@ -68,12 +68,14 @@ namespace curlpp
 		/**
 		* This function will set the option value of the OptionBase
 		* to the handle.
-		*
-		* Note: be carefull when using this function, see 
-		* curlpp::OptionList::setOpt(OptionBase * option) function for more
-		* details.
 		*/
-		virtual void setOpt(const curlpp::OptionBase & option);
+		virtual void setOpt(const OptionBase & option);
+
+		/**
+		* This function will set the option value of the OptionBase to the 
+		* handle. 
+		*/
+		virtual void setOpt(std::auto_ptr<OptionBase> option);
 
 		/**
 		* This function will set the option value of the OptionBase to the 
@@ -83,21 +85,11 @@ namespace curlpp
 		* curlpp::OptionList::setOpt(OptionBase * option) function for more
 		* details.
 		*/
-		virtual void setOpt(std::auto_ptr<curlpp::OptionBase> option);
-
-		/**
-		* This function will set the option value of the OptionBase to the 
-		* handle. 
-		*
-		* Note: be carefull when using this function, see 
-		* curlpp::OptionList::setOpt(OptionBase * option) function for more
-		* details.
-		*/
-		virtual void setOpt(curlpp::OptionBase * option);
+		virtual void setOpt(OptionBase * option);
 
 		/**
 		* This function will create OptionTrait class with the value given and call
-		* virtual void setOpt(const curlpp::OptionBase & option) with it.
+		* virtual void setOpt(const OptionBase & option) with it.
 		*/
 		template<typename OptionTrait>
 		void setOpt(typename OptionTrait::ParamType);
@@ -108,13 +100,33 @@ namespace curlpp
 		template<typename InputIterator>
 		void setOpt(InputIterator first, InputIterator last);
 
+		/**
+		* This function will get the current option value of the corresponding 
+		* OptionBase. Note that if the option is not set, the option passed in
+		* parameter will be cleared. (See Option::getOpt for more details)
+		*/
+		void getOpt(OptionBase * option) const;
+
+		/**
+		* This function will get the current option value of the corresponding 
+		* OptionBase. Note that if the option is not set, the option passed in
+		* parameter will be cleared. (See Option::getOpt for more details)
+		*/
+		void getOpt(OptionBase & option) const;
+
+		/**
+		* Get all options.
+		*/
+		//template<typename OutputIterator>
+		//void getOptions(OutputIterator out);
+
 		/*
 		* This function empties the option collection and reset all options
 		* to their default value
-		*/
+ 		*/
 		virtual void reset ();
 
-		/**
+ 		/**
 		* This function will return the cURL * handle.
 		* DO NOT use this, unless you REALLY know what you
 		* are doing.

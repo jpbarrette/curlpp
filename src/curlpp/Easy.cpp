@@ -21,11 +21,11 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "curlpp/global.h"
-#include "curlpp/internal/buildconfig.h"
-
 #include "curlpp/Easy.hpp"
 #include "curlpp/Options.hpp"
+
+#include "curlpp/internal/global.h"
+#include "curlpp/internal/buildconfig.h"
 
 
 curlpp::Easy::Easy()
@@ -57,14 +57,14 @@ curlpp::Easy::getHandle() const
 
 
 void
-curlpp::Easy::setOpt(const curlpp::OptionBase & option)
+curlpp::Easy::setOpt(const OptionBase & option)
 {
 	setOpt(option.clone());    
 }
 
 
 void
-curlpp::Easy::setOpt(std::auto_ptr<curlpp::OptionBase> option)
+curlpp::Easy::setOpt(std::auto_ptr<OptionBase> option)
 {
 	option->updateHandleToMe(mCurl.get());
 	mOptions.setOpt(option.release());    
@@ -72,10 +72,24 @@ curlpp::Easy::setOpt(std::auto_ptr<curlpp::OptionBase> option)
 
 
 void
-curlpp::Easy::setOpt(curlpp::OptionBase * option)
+curlpp::Easy::setOpt(OptionBase * option)
 {
 	option->updateHandleToMe(mCurl.get());
 	mOptions.setOpt(option);    
+}
+
+
+void
+curlpp::Easy::getOpt(OptionBase * option) const
+{
+	mOptions.getOpt(option);
+}
+
+
+void
+curlpp::Easy::getOpt(OptionBase & option) const
+{
+	mOptions.getOpt(&option);
 }
 
 

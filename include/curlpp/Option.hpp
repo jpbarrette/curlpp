@@ -26,8 +26,9 @@
 
 
 #include "curlpp/internal/buildconfig.h"
-#include "curlpp/OptionBase.hpp"
 #include "curlpp/internal/OptionContainer.hpp"
+
+#include "curlpp/OptionBase.hpp"
 
 
 namespace curlpp
@@ -107,7 +108,7 @@ namespace curlpp
 		virtual void clear();
 
 		/**
-		* will update the value of the option with the value of the
+		* Will update the value of the option with the value of the
 		* option passed is argument.
 		*/
 		virtual void updateMeToOption(const OptionBase & other);
@@ -144,6 +145,7 @@ namespace curlpp
 	template<typename OptionType, CURLoption option>
 	class CURLPPAPI OptionTrait : public Option<OptionType>
 	{
+		
 		friend class Easy;
 
 	public:

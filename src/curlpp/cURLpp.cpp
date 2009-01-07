@@ -1,15 +1,19 @@
-#include <cstdlib>
-
-#include "curlpp/global.h"
-#include "curlpp/curlpp.hpp"
-#include "curlpp/Exception.hpp"
-
 #include "utilspp/singleton/SingletonHolder.hpp"
 #include "utilspp/singleton/CreationStatic.hpp"
 
+#include "curlpp/internal/global.h"
+
+#include "curlpp/curlpp.hpp"
+#include "curlpp/Exception.hpp"
+
+#include <cstdlib>
+
+
 namespace 
 {
-  struct libcURLInstance
+
+	
+	struct libcURLInstance
   {
     libcURLInstance();
 
@@ -18,12 +22,14 @@ namespace
   };
 }
 
+
 void curlpp::initialize(long flags)
 {
   CURLcode code;
   code = curl_global_init(flags);
   libcurlRuntimeAssert("cannot initialize curlpp", code);
 }
+
 
 void curlpp::terminate()
 {
@@ -40,6 +46,7 @@ curlpp::Cleanup::Cleanup()
 curlpp::Cleanup::~Cleanup()
 {}
 
+
 std::string 
 curlpp::escape(const std::string & url)
 {
@@ -54,6 +61,7 @@ curlpp::escape(const std::string & url)
    }
    return buffer;
 }
+
 
 std::string
 curlpp::unescape(const std::string & url)
@@ -72,6 +80,7 @@ curlpp::unescape(const std::string & url)
    return buffer;
 }
 
+
 std::string
 curlpp::getenv(const std::string & name)
 {
@@ -89,6 +98,7 @@ curlpp::getenv(const std::string & name)
    return buffer;
 }
 
+
 std::string
 curlpp::libcurlVersion()
 {
@@ -100,6 +110,7 @@ curlpp::libcurlVersion()
       
    return std::string(p);
 }
+
 
 time_t 
 curlpp::getdate(const std::string & date, time_t * now)
