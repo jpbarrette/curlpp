@@ -54,11 +54,13 @@ public:
   size_t write(curlpp::Easy *handle, char* ptr, size_t size, size_t nmemb)
   {
     ++writeRound;
-		std::string url;
-		curlpp::infos::EffectiveUrl::get(*handle, url);
+
+		curlpp::options::Url url;
+    handle->getOpt(url);
+
     // Calculate the real size of the incoming buffer
     size_t realsize = size * nmemb;
-    std::cerr << "write round: " << writeRound << ", url: " << url << std::endl;
+    std::cerr << "write round: " << writeRound << ", url: " << url.getValue() << std::endl;
     mStream->write(ptr, realsize);
     // return the real size of the buffer...
     return realsize;

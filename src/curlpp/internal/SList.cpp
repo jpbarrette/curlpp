@@ -1,4 +1,5 @@
-#include "curlpp/global.h"
+#include "curlpp/internal/SList.hpp"
+#include "curlpp/internal/global.h"
 
 #if HAVE_OSTREAM
 #  include <ostream>
@@ -7,8 +8,6 @@
 #endif
 
 #include <string>
-
-#include "curlpp/internal/SList.hpp"
 
 
 namespace curlpp

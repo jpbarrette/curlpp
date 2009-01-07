@@ -24,12 +24,14 @@
 #ifndef CURLPP_FORM_HPP
 #define CURLPP_FORM_HPP
 
-#include <curl/curl.h>
-#include <list>
-#include <string>
 
 #include "curlpp/internal/buildconfig.h"
 #include "utilspp/clone_ptr.hpp"
+
+#include <curl/curl.h>
+
+#include <list>
+#include <string>
 
 
 namespace curlpp

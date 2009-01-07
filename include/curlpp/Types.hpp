@@ -25,7 +25,7 @@
 #define CURLPP_TYPES_HPP
 
 
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 
 #ifdef HAVE_BOOST
 	#include <boost/function.hpp>

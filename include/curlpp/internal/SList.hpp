@@ -25,10 +25,11 @@
 #define CURLPP_SLIST_HPP
 
 
-#include <curl/curl.h>
-#include <list>
-
 #include "curlpp/internal/buildconfig.h"
+
+#include <curl/curl.h>
+
+#include <list>
 
 
 namespace curlpp

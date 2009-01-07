@@ -1,9 +1,10 @@
+#include "curlpp/internal/global.h"
+#include "curlpp/internal/SList.hpp"
+
+#include "curlpp/Info.hpp"
+
 #include <string>
 #include <list>
-
-#include "curlpp/global.h"
-#include "curlpp/Info.hpp"
-#include "curlpp/internal/SList.hpp"
 
 
 namespace curlpp 

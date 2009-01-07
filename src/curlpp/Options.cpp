@@ -21,7 +21,7 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#include "curlpp/global.h"
+#include "curlpp/internal/global.h"
 
 #include "curlpp/Options.hpp"
 #include "curlpp/Easy.hpp"

@@ -24,11 +24,11 @@
 #ifndef CURLPP_OPTION_LIST_HPP
 #define CURLPP_OPTION_LIST_HPP
 
+#include "curlpp/internal/buildconfig.h"
+
+#include "curlpp/OptionBase.hpp"
 
 #include <map>
-
-#include "curlpp/internal/buildconfig.h"
-#include "curlpp/OptionBase.hpp"
 
 
 namespace curlpp
@@ -48,6 +48,8 @@ namespace internal
 	{
 
 	public:
+
+		typedef std::map<CURLoption, curlpp::OptionBase *> mapType;
 
 		/**
 		* This construction initialize an empty list of options.
@@ -100,14 +102,12 @@ namespace internal
 		*/
 		//OptionList & operator=(const OptionList & rhs);
 
-		typedef std::map<CURLoption, curlpp::OptionBase *> mapType;
 
 	private:
 
-		OptionList::mapType mOptions;
-
 		void insert(const OptionList::mapType & other);
 
+		OptionList::mapType mOptions;
 
 	};
 

@@ -24,11 +24,13 @@
 #ifndef CURLPP_EXCEPTION_HPP
 #define CURLPP_EXCEPTION_HPP
 
-#include <curl/curl.h>
-#include <string>
-#include <stdexcept>
 
 #include "curlpp/internal/buildconfig.h"
+
+#include <curl/curl.h>
+
+#include <string>
+#include <stdexcept>
 
 
 namespace curlpp

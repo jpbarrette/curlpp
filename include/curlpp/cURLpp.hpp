@@ -28,10 +28,12 @@
 #define LIBCURLPP_VERSION "0.7.2"
 #define LIBCURLPP_VERSION_NUM 0x000702
 
-#include <string>
-#include <curl/curl.h>
 
 #include "curlpp/internal/buildconfig.h"
+
+#include <curl/curl.h>
+
+#include <string>
 
 
 namespace curlpp

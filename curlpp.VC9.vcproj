@@ -819,10 +819,6 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\include\curlpp\buildconfig.h"
-				>
-			</File>
-			<File
 				RelativePath=".\include\curlpp\config.win32.h"
 				>
 			</File>
@@ -840,10 +836,6 @@
 			</File>
 			<File
 				RelativePath=".\include\curlpp\Form.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\global.h"
 				>
 			</File>
 			<File
@@ -978,7 +970,15 @@
 				Name="internal"
 				>
 				<File
+					RelativePath=".\include\curlpp\internal\buildconfig.h"
+					>
+				</File>
+				<File
 					RelativePath=".\include\curlpp\internal\CurlHandle.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\global.h"
 					>
 				</File>
 				<File
