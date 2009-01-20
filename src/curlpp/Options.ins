@@ -45,6 +45,8 @@ namespace options
      * Callback options. 
      */
 
+	template WriteFunctionCurlFunction;
+		
 	template WriteFunction;
 
 #ifdef HAVE_BOOST
@@ -70,7 +72,10 @@ namespace options
 
 
 #if LIBCURL_VERSION_NUM >= 0x070c01
-    template ReadFunction;
+
+		template ReadFunctionCurlFunction;
+		
+		template ReadFunction;
 
 	#ifdef HAVE_BOOST
 		template BoostReadFunction;
@@ -275,6 +280,10 @@ namespace options
     //Share;
     //TelnetOptions
 
+
 } // namespace options
 
+
 } // namespace curlpp
+
+#include "./Options.custom.ins"

@@ -28,18 +28,15 @@
 * 
 */
 
-
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
-#include <cerrno>
-
 #include <curlpp/curlpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 
-#define MAX_FILE_LENGTH 20000
+#include <cstdlib>
+#include <cstdio>
+#include <cstring>
+#include <cerrno>
 
 
 /// Callback must be declared static, otherwise it won't link...
@@ -72,7 +69,7 @@ int main(int argc, char *argv[])
 		curlpp::Easy request;
 
 		/// Set the writer callback to enable cURL to write result in a memory area
-		curlpp::OptionTrait<curl_write_callback, CURLOPT_WRITEFUNCTION> 
+		curlpp::options::WriteFunctionCurlFunction
 			myFunction(WriteCallback);
 
 		FILE *file = stdout;

@@ -1,0 +1,37 @@
+/**
+* \file
+* Custom (user) specializations of options with user types.
+*
+* IMPORTANT !!!
+* Users should add explicit specializations for types
+* they use in their applications when building library with
+* SELF_CONTAINED set. Otherwise there will be linker errors when 
+* _using_ the library which has been built without these specializations.
+* 
+*/
+
+#include "curlpp/Options.hpp"
+
+
+namespace curlpp
+{
+
+
+namespace options
+{
+
+
+/// Used in example11.
+
+	typedef OptionTrait<void *, CURLOPT_WRITEDATA> OptionsCustomType1;
+
+template
+CURLPPAPI OptionsCustomType1;
+
+/// Add more here...
+
+
+} // namespace options
+
+
+} // namespace curlpp

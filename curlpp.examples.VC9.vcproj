@@ -610,6 +610,15 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -621,6 +630,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -636,6 +646,14 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="DynamicLibReleaseStaticRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
 					ExcludedFromBuild="true"
 					>
 					<Tool
@@ -672,6 +690,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -715,6 +734,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -782,6 +802,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -849,6 +870,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -916,6 +938,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -983,6 +1006,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1042,6 +1066,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1093,6 +1118,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1160,6 +1186,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1226,13 +1253,6 @@
 				RelativePath=".\examples\example11.cpp"
 				>
 				<FileConfiguration
-					Name="DynamicLibDebugDynamicRTL|Win32"
-					>
-					<Tool
-						Name="VCCLCompilerTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
 					Name="DynamicLibReleaseDynamicRTL|Win32"
 					ExcludedFromBuild="true"
 					>
@@ -1258,7 +1278,6 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="StaticLibDebugDynamicRTL|Win32"
-					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1294,6 +1313,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1361,6 +1381,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1428,6 +1449,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1495,6 +1517,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1562,6 +1585,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1629,6 +1653,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1696,6 +1721,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1763,6 +1789,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1830,6 +1857,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1897,6 +1925,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -1964,6 +1993,7 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"
@@ -2031,6 +2061,15 @@
 				>
 				<FileConfiguration
 					Name="DynamicLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCLCompilerTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="StaticLibDebugDynamicRTL|Win32"
+					ExcludedFromBuild="true"
 					>
 					<Tool
 						Name="VCCLCompilerTool"

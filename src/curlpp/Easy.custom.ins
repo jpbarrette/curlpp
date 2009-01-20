@@ -1,16 +1,18 @@
 /**
 * \file
-* Custom specializations of methods of Easy class.
+* Custom (user) specializations of methods of Easy class.
 *
-* Users should add explicit specializations of methods for arguments of types
-* they use in their applications.
-* Otherwise there will be linker errors when building with SELF_CONTAINED library.
+* IMPORTANT !!!
+* Users should add explicit specializations for types
+* they use in their applications when building library with
+* SELF_CONTAINED set. Otherwise there will be linker errors when 
+* _using_ the library which has been built without these specializations.
+*
 */
 
-#include <vector>
-
-
 #include "curlpp/Easy.hpp"
+
+#include <vector>
 
 
 using namespace curlpp::options;
@@ -19,6 +21,7 @@ using namespace curlpp::options;
 namespace curlpp
 {
 
+
 /**
  * Custom specializations for...
  *
@@ -26,14 +29,14 @@ namespace curlpp
  * void curlpp::Easy::setOpt(InputIterator first, InputIterator last)
  */
 
-// Used in example23.
+/// Used in example23.
 	
-typedef std::vector<OptionBase *>::iterator CustomType1;
+typedef std::vector<OptionBase *>::iterator EasyCustomType1;
 
 template
-CURLPPAPI void Easy::setOpt<CustomType1>(CustomType1 first, CustomType1 last);
+CURLPPAPI void Easy::setOpt<EasyCustomType1>(EasyCustomType1 first, EasyCustomType1 last);
 
-// Add next ones here...
+/// Add more here...
 
 
 } // namespace curlpp
