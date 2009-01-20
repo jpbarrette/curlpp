@@ -662,6 +662,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\src\curlpp\Options.custom.ins"
+				>
+			</File>
+			<File
 				RelativePath=".\src\curlpp\Options.ins"
 				>
 			</File>

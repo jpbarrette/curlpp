@@ -6,12 +6,14 @@
 
 #include <iostream> 
 
+
 namespace curlpp
 {
 
+
 	/**
-     * Cookie interface.
-     */
+	* Cookie interface.
+	*/
 
 #if LIBCURL_VERSION_NUM >= 0x070d01
 	template Option<std::string>;
@@ -22,9 +24,9 @@ namespace curlpp
 #endif
 #endif
 
-	/**
-     * Behavior options.
-     */
+		/**
+		* Behavior options.
+		*/
 
 	template
 	Option<bool>;
@@ -47,6 +49,9 @@ namespace curlpp
      * Callback options. 
      */
 
+	template
+	Option<curl_write_callback>;
+		
 	template
 	Option<curlpp::types::WriteFunctionFunctor>;
 
@@ -78,14 +83,20 @@ namespace curlpp
 
 
 #if LIBCURL_VERSION_NUM >= 0x070c01
-    template
+
+	template
+	Option<curl_read_callback>;
+
+	template
 	Option<curlpp::types::ReadFunctionFunctor>;
 
 #ifdef HAVE_BOOST
     template
 	Option<curlpp::types::BoostReadFunction>;
 #endif
+
 #else
+
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
     template
 	Option<curlpp::types::ReadFunctionFunctor>;
@@ -95,6 +106,7 @@ namespace curlpp
 	Option<curlpp::types::BoostReadFunction>;
 #endif // HAVE_BOOST
 #endif // CURLPP_ALLOW_NOT_AVAILABLE
+
 #endif // LIBCURL_VERSION_NUM
 
     /**
@@ -382,16 +394,16 @@ namespace curlpp
     template
 	Option<std::string>;
 
-    /**
-     * Others options.
-     */
+		/**
+		* Others options.
+		*/
 
 	template
 	Option<void *>;
     template
 	Option<std::string>;
 
-	//Share;
-    //TelnetOptions
+		//Share;
+		//TelnetOptions
 
 }

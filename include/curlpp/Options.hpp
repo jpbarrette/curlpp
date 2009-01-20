@@ -84,6 +84,9 @@ namespace options
 	* Callback options. 
 	*/
 
+	typedef curlpp::OptionTrait<curl_write_callback, CURLOPT_WRITEFUNCTION>
+		WriteFunctionCurlFunction;
+
 	typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor, CURLOPT_WRITEFUNCTION>
 		WriteFunction;
 
@@ -112,15 +115,25 @@ namespace options
 
 
 	#if LIBCURL_VERSION_NUM >= 0x070c01
+
+		typedef curlpp::OptionTrait<curl_read_callback, CURLOPT_READFUNCTION>
+			ReadFunctionCurlFunction;
+
 		typedef curlpp::OptionTrait<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
 			ReadFunction;
 
 	#ifdef HAVE_BOOST
 		typedef curlpp::OptionTrait<curlpp::types::BoostReadFunction, CURLOPT_READFUNCTION>
 			BoostReadFunction;
+
 	#endif
 	#else
+
 	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+
+		typedef curlpp::NotAvailableOptionTrait<curl_read_callback, CURLOPT_READFUNCTION>
+			ReadFunctionCurlFunction;
+
 		typedef curlpp::NotAvailableOptionTrait<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
 			ReadFunction;
 
@@ -129,6 +142,7 @@ namespace options
 			BoostReadFunction;
 	#endif // HAVE_BOOST
 	#endif // CURLPP_ALLOW_NOT_AVAILABLE
+
 	#endif // LIBCURL_VERSION_NUM
 
 
