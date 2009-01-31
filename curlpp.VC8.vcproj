@@ -303,39 +303,27 @@
 			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
-				RelativePath="src\curlpp\CurlHandle.cpp"
+				RelativePath=".\src\curlpp\cURLpp.cpp"
 				>
 			</File>
 			<File
-				RelativePath="src\curlpp\cURLpp.cpp"
+				RelativePath=".\src\curlpp\Easy.cpp"
 				>
 			</File>
 			<File
-				RelativePath="src\curlpp\Easy.cpp"
+				RelativePath=".\src\curlpp\Exception.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\curlpp\Easy.ins"
+				RelativePath=".\src\curlpp\Form.cpp"
 				>
 			</File>
 			<File
-				RelativePath="src\curlpp\Exception.cpp"
+				RelativePath=".\src\curlpp\Info.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\src\curlpp\Exception.ins"
-				>
-			</File>
-			<File
-				RelativePath="src\curlpp\Form.cpp"
-				>
-			</File>
-			<File
-				RelativePath="src\curlpp\Info.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\src\curlpp\Infos.ins"
+				RelativePath=".\src\curlpp\Infos.cpp"
 				>
 			</File>
 			<File
@@ -343,33 +331,49 @@
 				>
 			</File>
 			<File
-				RelativePath=".\src\curlpp\Option.ins"
+				RelativePath=".\src\curlpp\Option.cpp"
 				>
 			</File>
 			<File
-				RelativePath="src\curlpp\OptionBase.cpp"
-				>
-			</File>
-			<File
-				RelativePath="src\curlpp\OptionList.cpp"
+				RelativePath=".\src\curlpp\OptionBase.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\src\curlpp\Options.cpp"
 				>
 			</File>
-			<File
-				RelativePath=".\src\curlpp\Options.ins"
+			<Filter
+				Name="internal"
 				>
-			</File>
-			<File
-				RelativePath="src\curlpp\OptionSetter.cpp"
+				<File
+					RelativePath=".\src\curlpp\internal\CurlHandle.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\curlpp\internal\OptionList.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\curlpp\internal\OptionSetter.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\curlpp\internal\SList.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="utils"
 				>
-			</File>
-			<File
-				RelativePath="src\curlpp\SList.cpp"
-				>
-			</File>
+				<File
+					RelativePath=".\src\utilspp\singleton\LifetimeLibrary.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\src\utilspp\singleton\PrivateMembers.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -377,7 +381,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\include\curlpp\buildconfig.h"
+				RelativePath=".\src\curlpp\autolink.h"
 				>
 			</File>
 			<File
@@ -385,23 +389,11 @@
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\CurlHandle.hpp"
+				RelativePath=".\include\curlpp\cURLpp.hpp"
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\CurlHandle.inl"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\cURLpp.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\dllfct.h"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\Easy.hpp"
+				RelativePath=".\include\curlpp\Easy.hpp"
 				>
 			</File>
 			<File
@@ -409,35 +401,23 @@
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\Exception.hpp"
+				RelativePath=".\include\curlpp\Exception.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\FileTrait.hpp"
+				RelativePath=".\include\curlpp\Form.hpp"
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\Form.hpp"
+				RelativePath=".\include\curlpp\Info.hpp"
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\global.h"
+				RelativePath=".\include\curlpp\Info.inl"
 				>
 			</File>
 			<File
-				RelativePath=".\include\curlpp\Handle.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\Info.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\Info.inl"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\Infos.hpp"
+				RelativePath=".\include\curlpp\Infos.hpp"
 				>
 			</File>
 			<File
@@ -445,85 +425,205 @@
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\NonCopyable.hpp"
+				RelativePath=".\include\curlpp\Option.hpp"
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\Option.hpp"
+				RelativePath=".\include\curlpp\Option.inl"
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\Option.inl"
+				RelativePath=".\include\curlpp\OptionBase.hpp"
 				>
 			</File>
 			<File
-				RelativePath="include\curlpp\OptionBase.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\OptionContainer.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\OptionContainer.inl"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\OptionContainerType.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\OptionList.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\Options.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\OptionSetter.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\OptionSetter.inl"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\SList.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\Storage.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\StorageOptions.hpp"
-				>
-			</File>
-			<File
-				RelativePath="include\curlpp\StorageOptions.inl"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\StorageTrait.hpp"
-				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\StreamTrait.hpp"
+				RelativePath=".\include\curlpp\Options.hpp"
 				>
 			</File>
 			<File
 				RelativePath=".\include\curlpp\Types.hpp"
 				>
 			</File>
-			<File
-				RelativePath="include\utilspp\TypeTrait.hpp"
+			<Filter
+				Name="internal"
 				>
-			</File>
-			<File
-				RelativePath=".\include\curlpp\TypeTrait.hpp"
+				<File
+					RelativePath=".\include\curlpp\internal\buildconfig.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\CurlHandle.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\CurlHandle.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\global.h"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionContainer.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionContainer.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionContainerType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionList.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionSetter.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\OptionSetter.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\curlpp\internal\SList.hpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="utils"
 				>
-			</File>
+				<File
+					RelativePath=".\include\utilspp\functor\Binder.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\clone_ptr.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\CreationStatic.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\CreationStatic.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\CreationUsingNew.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\CreationUsingNew.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\EmptyType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\functor\Functor.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\functor\FunctorHandler.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\functor\FunctorImpl.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\Functors.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\LifetimeDefault.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\LifetimeDefault.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\LifetimeLibrary.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\LifetimeLibrary.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\LifetimeWithLongevity.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\LifetimeWithLongevity.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\functor\MemFunHandler.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\NonCopyable.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\NullType.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\PrivateMembers.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\PrivateMembers.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\Singleton.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\SingletonHolder.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\singleton\SingletonHolder.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\SmartPtr.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingFactoryMutex.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingFactoryMutex.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingSingle.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\ThreadingSingle.inl"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\TypeList.hpp"
+					>
+				</File>
+				<File
+					RelativePath=".\include\utilspp\TypeTrait.hpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<File
 			RelativePath=".\README.win32"
