@@ -1,0 +1,61 @@
+#include "curlpp/Infos.hpp"
+
+#include <string>
+#include <list>
+
+/*
+ * Use Find what: "typedef.*\> {.*}$" regular expression and Replace with: "template \1"
+ * to generate most of this file from its corresponding header file.
+ */
+
+namespace curlpp
+{
+
+  namespace infos
+  {
+    template EffectiveUrl;
+    template ResponseCode;
+    template HttpConnectCode;
+    template FileTime;
+    template TotalTime;
+    template NameLookupTime;
+    template ConnectTime;
+    template PreTransferTime;
+    template StartTransferTime;
+    template RedirectTime;
+    template RedirectCount;
+    template SizeUpload;
+    template SizeDownload;
+    template SpeedDownload;
+    template SpeedUpload;
+    template HeaderSize;
+    template RequestSize;
+    template SslVerifyResult;
+#if LIBCURL_VERSION_NUM >= 0x070c03
+    template SslEngines;
+#endif 
+    template ContentLengthDownload;
+    template ContentLengthUpload;
+    template ContentType;
+    template HttpAuthAvail;
+    template ProxyAuthAvail;
+#if LIBCURL_VERSION_NUM >= 0x070c02
+    template OsErrno;
+#endif
+#if LIBCURL_VERSION_NUM >= 0x070c03
+    template NumConnects;
+#endif
+
+#if LIBCURL_VERSION_NUM >= 0x070e01
+    template CookieList;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    // This curlinfo text must be specified, so we specify something
+    // that we know will be there.
+    template CookieList;
+#endif
+#endif
+
+	} // namespace infos
+
+} // namespace curlpp

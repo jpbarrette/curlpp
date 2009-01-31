@@ -1,0 +1,409 @@
+/*
+ * Use Find what: ".*?<\s*?\n?\s*(.*?)\s*,\s*?\n?.*?>\s*(.*?)s*;" regex and
+ * Replace with: "template Option<$1>;" regex
+ * to generate this file from Options.hpp header file.
+ */
+
+#include <iostream> 
+
+
+namespace curlpp
+{
+
+
+	/**
+	* Cookie interface.
+	*/
+
+#if LIBCURL_VERSION_NUM >= 0x070d01
+	template Option<std::string>;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template
+	Option<std::string>;
+#endif
+#endif
+
+		/**
+		* Behavior options.
+		*/
+
+	template
+	Option<bool>;
+    template
+	Option<bool>;
+#if LIBCURL_VERSION_NUM >= 0x070A00
+    template
+	Option<bool>;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template
+	Option<bool>;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+    template
+	Option<bool>;
+    
+    /**
+     * Callback options. 
+     */
+
+	template
+	Option<curl_write_callback>;
+		
+	template
+	Option<curlpp::types::WriteFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostWriteFunction>;
+#endif
+
+    /**
+     * Using this option will reset CURLOPT_WRITEFUNCTION to 
+     * default callback. In fact, use only this option if you only 
+     * want libcURL to use the FILE * given in argument instead 
+     * of stdout. 
+     */
+
+#if LIBCURL_VERSION_NUM >= 0x070907
+    template
+	Option<FILE *>;
+    template
+	Option<std::ostream *>;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template
+	Option<FILE *>;
+    template
+	Option<std::ostream *>;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+
+#if LIBCURL_VERSION_NUM >= 0x070c01
+
+	template
+	Option<curl_read_callback>;
+
+	template
+	Option<curlpp::types::ReadFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostReadFunction>;
+#endif
+
+#else
+
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template
+	Option<curlpp::types::ReadFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostReadFunction>;
+#endif // HAVE_BOOST
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+
+#endif // LIBCURL_VERSION_NUM
+
+    /**
+     * Using this option will reset CURLOPT_READFUNCTION to 
+     * default callback. In fact, use only this option if you only 
+     * want libcURL to use the FILE * given in argument instead 
+     * of stdout. 
+     */
+
+#if LIBCURL_VERSION_NUM >= 0x070907
+    template
+	Option<FILE *>;
+    template
+	Option<std::istream *>;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template
+	Option<FILE *>;
+    template
+	Option<std::istream *>;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+    template
+	Option<curlpp::types::ProgressFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostProgressFunction>;
+#endif
+
+    template
+	Option<curlpp::types::WriteFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostWriteFunction>;
+#endif
+
+    template
+	Option<curlpp::types::DebugFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostDebugFunction>;
+#endif
+
+    template
+	Option<curlpp::types::SslCtxFunctionFunctor>;
+
+#ifdef HAVE_BOOST
+    template
+	Option<curlpp::types::BoostSslCtxFunction>;
+#endif
+    
+      
+    /**
+     * Error options.
+     */
+
+	template
+	Option<char *>;
+
+#ifdef FILE
+    template
+	Option<FILE *>;
+#endif
+
+	template
+	Option<bool>;
+
+    /**
+     * Network options.
+     */
+	
+	template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<curl_proxytype>;
+    template
+	Option<bool>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+    template
+	Option<long>;
+
+	template
+	Option<bool>;
+
+    /**
+     * Names and passwords options.
+     */
+
+	template
+	Option<long>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<long>;
+
+    /**
+     * HTTP options.
+     */
+
+	template
+	Option<bool>;
+    template
+	Option<std::string>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<curl_off_t>;
+    template
+	Option<curlpp::Forms>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::list<std::string> >;
+    template
+	Option<std::list<std::string> >;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+
+    /**
+     * FTP options.
+     */
+
+	template
+	Option<std::string>;
+    template
+	Option<std::list<std::string> >;
+    template
+	Option<std::list<std::string> >;
+    template
+	Option<std::list<std::string> >;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<curl_ftpssl>;
+    template
+	Option<curl_ftpauth>;
+      
+    /**
+     * Protocol options.
+     */
+
+	template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<curl_off_t>;
+    template
+	Option<std::string>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+    template
+	Option<curl_off_t>;
+    template
+	Option<long>;
+    template
+	Option<curl_off_t>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+
+    /**
+     * Connection options.
+     */
+    
+	template
+	Option<long>;
+    template
+	Option<long>;
+    template
+	Option<long>;
+    template
+	Option<long>;
+    template
+	Option<curl_closepolicy>;
+    template
+	Option<bool>;
+    template
+	Option<bool>;
+    template
+	Option<long>;
+    template
+	Option<long>;
+      
+    /**
+     * SSL and security options.
+     */
+
+	template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<bool>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+    template
+	Option<long>;
+    template
+	Option<std::string>;
+    template
+	Option<std::string>;
+
+		/**
+		* Others options.
+		*/
+
+	template
+	Option<void *>;
+    template
+	Option<std::string>;
+
+		//Share;
+		//TelnetOptions
+
+}

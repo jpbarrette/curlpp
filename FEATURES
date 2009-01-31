@@ -1,0 +1,4 @@
+- pkg-config support.
+- option value retreiving.
+- exception safe.
+
