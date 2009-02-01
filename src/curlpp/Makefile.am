@@ -1,3 +1,4 @@
+SUBDIRS = internal
 lib_LTLIBRARIES = libcurlpp.la
 EXTRA_DIST = Makefile.msvc
 
@@ -8,7 +9,6 @@ endif
 INCLUDES = -I$(top_builddir)/include/curlpp -I$(top_builddir)/include
 
 sources = \
-	CurlHandle.cpp CurlHandle.hpp CurlHandle.inl \
 	cURLpp.cpp cURLpp.hpp \
 	Exception.cpp Exception.hpp \
 	Easy.cpp Easy.hpp Easy.inl \
@@ -20,20 +20,16 @@ sources = \
 	OptionBase.cpp OptionBase.hpp \
 	OptionContainer.hpp OptionContainer.inl \
 	OptionContainerType.hpp \
-	OptionList.cpp OptionList.hpp \
-	OptionSetter.cpp OptionSetter.hpp OptionSetter.inl \
 	Option.hpp Option.inl \
 	Options.cpp Options.hpp \
-	SList.cpp SList.hpp \
 	StorageOptions.hpp StorageOptions.inl \
 	Types.hpp \
 	TypeTrait.hpp \
 	autolink.h \
 	${maintener_source}
 
-
+libcurlpp_la_LIBADD = internal/libinternal.la
 libcurlpp_la_SOURCES = ${sources}
-
 VERSION=-version-info 0:2:0
 
 AM_CXXFLAGS= -I../ 
@@ -70,7 +66,7 @@ if NO_UNDEFINED
 # find a case in which we need to remove this flag, we should most likely
 # write a configure check that detects when this flag is needed and when its
 # not.
-libcurlpp_la_LDFLAGS = -no-undefined -Wno-inline-dllimport $(VERSION)
+libcurlpp_la_LDFLAGS = -no-undefined -Wno-inline-dllimport $(VERSION) 
 else
 libcurlpp_la_LDFLAGS = $(VERSION)
 endif
