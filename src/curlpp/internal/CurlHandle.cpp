@@ -110,6 +110,16 @@ CurlHandle::~CurlHandle()
 	curl_easy_cleanup(mCurl);
 }
 
+void
+CurlHandle::setException(curlpp::CallbackExceptionBase * e) 
+{
+	if(mException)
+	{
+		delete mException;
+	}
+
+	mException = e;
+}
 
 void
 CurlHandle::errorBuffer(char * buffer)
@@ -119,11 +129,12 @@ CurlHandle::errorBuffer(char * buffer)
 
 
 template<typename FunctorType>
-typename FunctorType::ResultType execute(FunctorType functor, typename FunctorType::ParamList params)
+typename FunctorType::ResultType 
+CurlHandle::execute(FunctorType functor, typename FunctorType::ParamList params)
 {
 	if (!functor)
 	{
-		setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null functor")));
+	 	setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null functor")));
 		return CURLE_ABORTED_BY_CALLBACK;
 	}
 
@@ -314,18 +325,6 @@ CurlHandle::executeSslCtxFunctor(void * ssl_ctx)
 	}
 
 	return CURLE_ABORTED_BY_CALLBACK;
-}
-
-
-void
-CurlHandle::setException(curlpp::CallbackExceptionBase * e) 
-{
-	if(mException)
-	{
-		delete mException;
-	}
-
-	mException = e;
 }
 
 
