@@ -198,6 +198,7 @@ Makefile \
 examples/Makefile \
 src/Makefile \
 src/curlpp/Makefile \
+src/curlpp/internal/Makefile \
 src/utilspp/Makefile \
 src/utilspp/singleton/Makefile \
 include/Makefile \

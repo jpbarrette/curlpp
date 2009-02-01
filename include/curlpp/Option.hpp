@@ -44,13 +44,13 @@ namespace curlpp
 	* the declaration of an option object.
 	*/
 
-	template<typename OptionType>
+        template<typename OT>
 	class CURLPPAPI Option : public curlpp::OptionBase
 	{
 
 	public:
 
-		typedef OptionType OptionType;
+		typedef OT OptionType;
 
 		typedef typename internal::OptionContainer<OptionType>::ParamType ParamType;
 		typedef typename internal::OptionContainer<OptionType>::ValueType ValueType;
@@ -142,7 +142,7 @@ namespace curlpp
 	* be able to typedef Options. 
 	*/
 
-	template<typename OptionType, CURLoption option>
+        template<typename OptionType, CURLoption opt>
 	class CURLPPAPI OptionTrait : public Option<OptionType>
 	{
 		
@@ -150,7 +150,7 @@ namespace curlpp
 
 	public:
 
-		static const CURLoption option = option;
+		static const CURLoption option = opt;
 
 		/**
 		* The constructor takes the a value to set a handle.
