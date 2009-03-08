@@ -41,7 +41,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include;&quot;$(BOOST_PATH)&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_LIB;BUILDING_CURLPP"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -118,7 +118,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include;&quot;$(BOOST_PATH)&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;CURLPP_STATICLIB;BUILDING_CURLPP"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -181,7 +181,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include;&quot;$(BOOST_PATH)&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_LIB;BUILDING_CURLPP"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -255,7 +255,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include"
+				AdditionalIncludeDirectories="&quot;$(LIBCURL_PATH)\include&quot;;.\;include\curlpp;include;&quot;$(BOOST_PATH)&quot;"
 				PreprocessorDefinitions="WIN32;DEBUG;_LIB;CURLPP_STATICLIB;BUILDING_CURLPP"
 				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
