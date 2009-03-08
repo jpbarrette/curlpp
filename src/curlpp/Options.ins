@@ -1,0 +1,289 @@
+#include "curlpp/Options.hpp"
+
+/*
+ * Use Find what: "typedef.*?\n?.*?\n?.*>\s*(.*);" regex and
+ * Replace with: "template $1;" regex
+ * to generate this file from Options.hpp header file.
+ */
+
+namespace curlpp
+{
+
+namespace options
+{
+
+	/**
+     * Cookie interface.
+     */
+
+#if LIBCURL_VERSION_NUM >= 0x070d01
+    template CookieList;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template CookieList;
+#endif
+#endif
+
+    /**
+     * Behavior options.
+     */
+
+    template Verbose;
+    template Header;
+
+#if LIBCURL_VERSION_NUM >= 0x070A00
+    template NoSignal;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+    template NoSignal;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+    template NoProgress;
+    
+    /**
+     * Callback options. 
+     */
+
+	template WriteFunctionCurlFunction;
+		
+	template WriteFunction;
+
+#ifdef HAVE_BOOST
+    template BoostWriteFunction;
+#endif
+
+    /**
+     * Using this option will reset CURLOPT_WRITEFUNCTION to 
+     * default callback. In fact, use only this option if you only 
+     * want libcURL to use the FILE * given in argument instead 
+     * of stdout. 
+     */
+
+#if LIBCURL_VERSION_NUM >= 0x070907
+    template WriteFile;
+    template WriteStream;
+#else
+	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+		template WriteFile;
+		template WriteStream;
+	#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+
+#if LIBCURL_VERSION_NUM >= 0x070c01
+
+		template ReadFunctionCurlFunction;
+		
+		template ReadFunction;
+
+	#ifdef HAVE_BOOST
+		template BoostReadFunction;
+	#endif
+	#else
+		#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+			template ReadFunction;
+			#ifdef HAVE_BOOST
+				template BoostReadFunction;
+			#endif // HAVE_BOOST
+		#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+    /**
+     * Using this option will reset CURLOPT_READFUNCTION to 
+     * default callback. In fact, use only this option if you only 
+     * want libcURL to use the FILE * given in argument instead 
+     * of stdout. 
+     */
+
+#if LIBCURL_VERSION_NUM >= 0x070907
+    template ReadFile;
+    template ReadStream;
+#else
+	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+		template ReadFile;
+		template ReadStream;
+	#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
+    template ProgressFunction;
+
+#ifdef HAVE_BOOST
+    template BoostProgressFunction;
+#endif
+
+    template HeaderFunction;
+
+#ifdef HAVE_BOOST
+    template BoostHeaderFunction;
+#endif
+
+    template DebugFunction;
+
+#ifdef HAVE_BOOST
+    template BoostDebugFunction;
+#endif
+
+    template SslCtxFunction;
+
+#ifdef HAVE_BOOST
+    template BoostSslCtxFunction;
+#endif
+
+    /**
+     * Error options.
+     */
+
+	template ErrorBuffer;
+
+#ifdef FILE
+    template StdErr;
+#endif
+
+	template FailOnError;
+
+
+    /**
+     * Network options.
+     */
+	
+	template Url;
+    template Proxy;
+    template ProxyPort;
+    template ProxyType;
+    template HttpProxyTunnel;
+    template Interface;
+    template DnsCacheTimeout;
+    template DnsUseGlobalCache;
+    template BufferSize;
+    template Port;
+
+	template TcpNoDelay;
+
+    /**
+     * Names and passwords options.
+     */
+
+    template Netrc;
+    template NetrcFile;
+    template UserPwd;
+    template ProxyUserPwd;
+    template HttpAuth;
+    template ProxyAuth;
+
+    /**
+     * HTTP options.
+     */
+
+    template AutoReferer;
+    template Encoding;
+    template FollowLocation;
+    template UnrestrictedAuth;
+    template MaxRedirs;
+    template Put;
+    template Upload;
+    template Post;
+    template PostFields;
+    template PostFieldSize;
+    template PostFieldSizeLarge;
+    template HttpPost;
+    template Referer;
+    template UserAgent;
+    template HttpHeader;
+    template Http200Aliases;
+    template Cookie;
+    template CookieFile;
+    template CookieJar;
+    template CookieSession;
+    template HttpGet;
+    template HttpVersion;
+
+    /**
+     * FTP options.
+     */
+
+    template FtpPort;
+    template Quote;
+    template PostQuote;
+    template PreQuote;
+    template FtpListOnly;
+    template FtpAppend;
+    template FtpUseEpsv;
+    template FtpFileMethod;
+    template FtpCreateMissingDirs;
+    template FtpResponseTimeout;
+    template FtpSsl;
+    template FtpSslAuth;
+      
+    /**
+     * Protocol options.
+     */
+
+    template TransferText;
+    template Crlf;
+    template Range;
+    template ResumeFrom;
+    template ResumeFromLarge;
+    template CustomRequest;
+    template FileTime;
+    template NoBody;
+    template InfileSize;
+    template InfileSizeLarge;
+    template MaxFileSize;
+    template MaxFileSizeLarge;
+    template TimeCondition;
+    template TimeValue;
+
+    /**
+     * Connection options.
+     */
+
+    template Timeout;
+    template LowSpeedLimit;
+    template LowSpeedTime;
+    template MaxConnects;
+    template ClosePolicy;
+    template FreshConnect;
+    template ForbidReuse;
+    template ConnectTimeout;
+    template IpResolve;
+      
+    /**
+     * SSL and security options.
+     */
+
+    template SslCert;
+    template SslCertType;
+    template SslCertPasswd;
+    template SslKey;
+    template SslKeyType;
+    template SslKeyPasswd;
+    template SslEngine;
+    template SslEngineDefault;
+    template SslVersion;
+    template SslVerifyPeer;
+    template CaInfo;
+    template CaPath;
+    template RandomFile;
+    template EgdSocket;
+    template SslVerifyHost;
+    template SslCipherList;
+    template Krb4Level;
+
+    /**
+     * Others options.
+     */
+
+    template Private;
+    template Krb4Level;
+
+    //Share;
+    //TelnetOptions
+
+
+} // namespace options
+
+
+} // namespace curlpp
+
+#include "./Options.custom.ins"

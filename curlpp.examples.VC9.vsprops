@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<VisualStudioPropertySheet
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="curlpp.examples"
+	OutputDirectory="$(CURLPP_EXAMPLES_OUT_DIR)"
+	IntermediateDirectory="$(CURLPP_EXAMPLES_OUT_DIR)\$(ConfigurationName)"
+	>
+	<Tool
+		Name="VCCLCompilerTool"
+		AdditionalIncludeDirectories="$(LIBCURL_PATH)\include\;$(CURLPP_INCLUDE_PATH)\"
+		PreprocessorDefinitions="CONSOLE;_CONSOLE"
+		UndefinePreprocessorDefinitions="BUILDING_CURLPP"
+		UseFullPaths="false"
+	/>
+	<Tool
+		Name="VCLibrarianTool"
+		AdditionalLibraryDirectories="&quot;$(LIBCURL_PATH)\lib&quot;"
+	/>
+	<Tool
+		Name="VCLinkerTool"
+		OutputFile=""
+		AdditionalLibraryDirectories="&quot;$(CURLPP_LIB_PATH)&quot;"
+	/>
+	<UserMacro
+		Name="CURLPP_EXAMPLES_OUT_DIR"
+		Value=".\out\examples"
+	/>
+	<UserMacro
+		Name="WIN_SDK_PATH"
+		Value="$(WindowsSdkDir)"
+	/>
+</VisualStudioPropertySheet>

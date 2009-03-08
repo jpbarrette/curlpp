@@ -1,0 +1,38 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp", "curlpp.VC8.vcproj", "{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "curlpp.examples", "examples\curlpp.examples.VC8.vcproj", "{47B20498-1AC3-4C23-A168-C2E40610D170}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087} = {DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		DebugDynamic|Win32 = DebugDynamic|Win32
+		DebugStatic|Win32 = DebugStatic|Win32
+		ReleaseDynamic|Win32 = ReleaseDynamic|Win32
+		ReleaseStatic|Win32 = ReleaseStatic|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DebugDynamic|Win32.ActiveCfg = DebugDynamic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DebugDynamic|Win32.Build.0 = DebugDynamic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DebugStatic|Win32.ActiveCfg = DebugStatic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.DebugStatic|Win32.Build.0 = DebugStatic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.ReleaseDynamic|Win32.ActiveCfg = ReleaseDynamic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.ReleaseDynamic|Win32.Build.0 = ReleaseDynamic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.ReleaseStatic|Win32.ActiveCfg = ReleaseStatic|Win32
+		{DD2D30B5-B2CB-4DBC-9BA5-039F8CF7D087}.ReleaseStatic|Win32.Build.0 = ReleaseStatic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.DebugDynamic|Win32.ActiveCfg = DebugDynamic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.DebugDynamic|Win32.Build.0 = DebugDynamic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.DebugStatic|Win32.ActiveCfg = DebugStatic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.DebugStatic|Win32.Build.0 = DebugStatic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.ReleaseDynamic|Win32.ActiveCfg = ReleaseDynamic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.ReleaseDynamic|Win32.Build.0 = ReleaseDynamic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.ReleaseStatic|Win32.ActiveCfg = ReleaseStatic|Win32
+		{47B20498-1AC3-4C23-A168-C2E40610D170}.ReleaseStatic|Win32.Build.0 = ReleaseStatic|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
