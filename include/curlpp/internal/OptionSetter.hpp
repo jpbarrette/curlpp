@@ -25,11 +25,11 @@
 #define CURLPP_OPTION_SETTER_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
-#include "curlpp/internal/OptionContainerType.hpp"
-#include "curlpp/internal/CurlHandle.hpp"
+#include "buildconfig.h"
+#include "OptionContainerType.hpp"
+#include "CurlHandle.hpp"
 
-#include "curlpp/Types.hpp"
+#include "../Types.hpp"
 
 
 namespace curlpp
@@ -502,7 +502,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "curlpp/internal/OptionSetter.inl"
+	#include "OptionSetter.inl"
 #endif
 
 

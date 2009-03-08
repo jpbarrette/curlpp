@@ -24,9 +24,9 @@
 #ifndef CURLPP_OPTION_LIST_HPP
 #define CURLPP_OPTION_LIST_HPP
 
-#include "curlpp/internal/buildconfig.h"
+#include "buildconfig.h"
 
-#include "curlpp/OptionBase.hpp"
+#include "../OptionBase.hpp"
 
 #include <map>
 

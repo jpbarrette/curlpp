@@ -25,13 +25,13 @@
 #define CURLPP_TYPES_HPP
 
 
-#include "curlpp/internal/global.h"
+#include "internal/global.h"
 
 #ifdef HAVE_BOOST
 	#include <boost/function.hpp>
 #endif 
 
-#include "utilspp/Functors.hpp"
+#include <utilspp/Functors.hpp>
 
 
 namespace curlpp

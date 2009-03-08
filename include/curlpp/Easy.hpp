@@ -25,11 +25,11 @@
 #define CURLPP_EASY_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
-#include "curlpp/internal/CurlHandle.hpp"
-#include "curlpp/internal/OptionList.hpp"
+#include "internal/buildconfig.h"
+#include "internal/CurlHandle.hpp"
+#include "internal/OptionList.hpp"
 
-#include "curlpp/Option.hpp"
+#include "Option.hpp"
 
 #include <memory>
 
@@ -164,7 +164,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-#include "curlpp/Easy.inl"
+#include "Easy.inl"
 #endif
 
 // Not quite sure if we shouldn't pass a const handle and clone it instead.

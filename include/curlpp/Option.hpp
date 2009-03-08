@@ -25,10 +25,10 @@
 #define CURLPP_OPTION_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
-#include "curlpp/internal/OptionContainer.hpp"
+#include "internal/buildconfig.h"
+#include "internal/OptionContainer.hpp"
 
-#include "curlpp/OptionBase.hpp"
+#include "OptionBase.hpp"
 
 
 namespace curlpp
@@ -250,7 +250,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-#include "curlpp/Option.inl"
+#include "Option.inl"
 #endif
 
 

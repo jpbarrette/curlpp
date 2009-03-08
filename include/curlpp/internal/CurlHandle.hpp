@@ -25,10 +25,10 @@
 #define CURLPP_CURL_HANDLE_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
+#include "buildconfig.h"
 
-#include "curlpp/Exception.hpp"
-#include "curlpp/Types.hpp"
+#include "../Exception.hpp"
+#include "../Types.hpp"
 
 #include <curl/curl.h>
 
@@ -200,7 +200,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "curlpp/internal/CurlHandle.inl"
+	#include "CurlHandle.inl"
 #endif
 
 

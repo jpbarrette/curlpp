@@ -25,7 +25,7 @@
 #define CURLPP_OPTIONS_HPP
 
 
-#include "curlpp/Option.hpp"
+#include "Option.hpp"
 
 #include <iostream> 
 

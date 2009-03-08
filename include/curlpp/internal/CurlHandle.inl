@@ -26,7 +26,7 @@
 #define CURLPP_CURLHANDLE_INL
 
 
-#include "curlpp/Exception.hpp"
+#include "../Exception.hpp"
 
 
 namespace curlpp

@@ -25,10 +25,10 @@
 #define CURLPP_OPTION_CONTAINER_TYPE_HPP
 
 
-#include "curlpp/internal/SList.hpp"
+#include "SList.hpp"
 
-#include "curlpp/Form.hpp"
-#include "curlpp/Types.hpp"
+#include "../Form.hpp"
+#include "../Types.hpp"
 
 #include <string>
 #include <list>

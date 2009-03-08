@@ -25,7 +25,7 @@
 #define CURLPP_OPTION_BASE_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
+#include "internal/buildconfig.h"
 
 #include <curl/curl.h>
 

@@ -26,9 +26,9 @@
 #define CURLPP_INFO_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
+#include "internal/buildconfig.h"
 
-#include "curlpp/Easy.hpp"
+#include "Easy.hpp"
 
 
 namespace curlpp
@@ -118,7 +118,7 @@ namespace cURLpp = curlpp;
 
 
 #ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "curlpp/Info.inl"
+	#include "Info.inl"
 #endif
 
 

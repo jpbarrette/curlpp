@@ -26,7 +26,7 @@
 #define CURLPP_INFOS_HPP
 
 
-#include "curlpp/Info.hpp"
+#include "Info.hpp"
 
 #include <curl/curl.h>
 

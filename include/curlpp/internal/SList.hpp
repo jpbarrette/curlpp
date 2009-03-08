@@ -25,7 +25,7 @@
 #define CURLPP_SLIST_HPP
 
 
-#include "curlpp/internal/buildconfig.h"
+#include "buildconfig.h"
 
 #include <curl/curl.h>
 

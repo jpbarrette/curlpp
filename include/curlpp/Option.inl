@@ -24,8 +24,8 @@
 #ifndef CURLPP_OPTION_INL
 #define CURLPP_OPTION_INL
 
-#include "curlpp/internal/OptionSetter.hpp"
-#include "curlpp/Exception.hpp"
+#include "internal/OptionSetter.hpp"
+#include "Exception.hpp"
 
 #include <iostream>
 
