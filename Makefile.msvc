@@ -1,0 +1,281 @@
+# Makefile for building curlpp with MSVC
+# Giuseppe "Cowo" Corbelli - cowo.lugbs.linux.it
+# Piotr Dobrogost - pd.curlpp.org (February 2009 - March 2009)
+#
+# Usage:
+# nmake /f makefile.msvc BUILD_CFG=[dynamic|static]-[debug|release]
+#                        RTLIB_CFG=[dynamic|static]-[debug|release]
+#                        LIBCURL_CFG=[dynamic|static]-[debug|release]
+#
+# All options are optional
+# Default for BUILD_CFG is dynamic-release
+# Default for others is the value of BUILD_CFG
+#
+# Should be invoked from curlpp directory
+# Edit the LIBCURL_PATH or set LIBCURL_PATH envvar !
+
+
+# DEFAULTS SECTION - default values of some variables
+#####################################################
+
+LIB_NAME            = curlpp
+LIBCURL_NAME        = libcurl
+DEFAULT_DIR_OUT     = .\out\$(BUILD_CFG)
+DEFAULT_LIBCURL_PATH= c:\program files (x86)\libcurl
+
+DEFAULT_SELF_CONTAINED = yes
+
+DEFAULT_BUILD_TYPE  = dynamic
+DEFAULT_BUILD_MODE  = release
+
+
+!IFNDEF SELF_CONTAINED
+SELF_CONTAINED  	= $(DEFAULT_SELF_CONTAINED)
+!ENDIF
+
+
+!IFNDEF BUILD_CFG
+BUILD_CFG           = $(DEFAULT_BUILD_TYPE)-$(DEFAULT_BUILD_MODE)
+!ENDIF
+
+!IFNDEF RTLIB_CFG
+RTLIB_CFG           = $(BUILD_CFG)
+!ENDIF
+
+!IFNDEF LIBCURL_CFG
+LIBCURL_CFG         = $(BUILD_CFG)
+!ENDIF
+
+
+!IFNDEF LIBCURL_PATH
+LIBCURL_PATH          = $(DEFAULT_LIBCURL_PATH)
+!ENDIF
+
+!IFNDEF DIR_OUT
+DIR_OUT             = $(DEFAULT_DIR_OUT)
+!ENDIF
+DIR_OBJ             = $(DIR_OUT)\obj
+TARGET              = $(LIB_NAME)$(TARGET_SUFFIX)
+
+
+# GLOBAL SECTION - common options needed for DEBUG/RELEASE and DYNAMIC/STATIC variants of builds
+################################################################################################
+
+# BASE entity
+
+# definitions to be used in following compiler part
+
+COMPILER            = cl.exe
+
+C_DEFS              = /DWIN32 /DBUILDING_CURLPP
+!IF "$(SELF_CONTAINED)" == "yes"
+C_DEFS              = $(C_DEFS) /DCURLPP_SELF_CONTAINED
+!ENDIF
+C_INCLUDES          = /I "./include"
+CFLAGS_STD          = $(C_INCLUDES) $(C_DEFS) /nologo /W0 /EHsc /FD /c
+
+CFLAGS_DYNAMIC      = /UCURLPP_STATICLIB
+CFLAGS_STATIC       = /DCURLPP_STATICLIB
+
+CFLAGS_DEBUG        = /D_DEBUG /Od /Gm /Zi /RTC1 /GR
+CFLAGS_RELEASE      = /DNDEBUG /O2 /GR
+
+CFLAGS              =
+
+# compiler part
+
+!IF "$(BUILD_CFG)" == "dynamic-release"
+CFLAGS              = $(CFLAGS) $(CFLAGS_DYNAMIC) $(CFLAGS_RELEASE)
+!ENDIF
+!IF "$(BUILD_CFG)" == "dynamic-debug"
+CFLAGS              = $(CFLAGS) $(CFLAGS_DYNAMIC) $(CFLAGS_DEBUG)
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-release"
+CFLAGS              = $(CFLAGS) $(CFLAGS_STATIC) $(CFLAGS_RELEASE)
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-debug"
+CFLAGS              = $(CFLAGS) $(CFLAGS_STATIC) $(CFLAGS_DEBUG)
+!ENDIF
+
+# definitions to be used in following linker part
+
+LINKER              = link.exe
+
+LFLAGS_STD          = /nologo /libpath:"$(LIBCURL_PATH)/lib"
+
+LFLAGS_DYNAMIC      = /dll /release /debug /incremental:no /opt:noref
+LFLAGS_STATIC       = /lib
+
+LFLAGS              =
+
+# linker part
+
+!IF "$(BUILD_CFG)" == "dynamic-release"
+LFLAGS              = $(LFLAGS) $(LFLAGS_DYNAMIC)
+!ENDIF
+!IF "$(BUILD_CFG)" == "dynamic-debug"
+LFLAGS              = $(LFLAGS) $(LFLAGS_DYNAMIC)
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-release"
+LFLAGS              = $(LFLAGS) $(LFLAGS_STATIC)
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-debug"
+LFLAGS              = $(LFLAGS) $(LFLAGS_STATIC)
+!ENDIF
+
+# RUN-TIME entity
+
+# compiler part
+
+!IF "$(RTLIB_CFG)" == "dynamic-release"
+CFLAGS              = /MD $(CFLAGS)
+!ENDIF
+!IF "$(RTLIB_CFG)" == "dynamic-debug"
+CFLAGS              = /MDd $(CFLAGS)
+!ENDIF
+!IF "$(RTLIB_CFG)" == "static-release"
+CFLAGS              = /MT $(CFLAGS)
+!ENDIF
+!IF "$(RTLIB_CFG)" == "static-debug"
+CFLAGS              = /MTd $(CFLAGS)
+!ENDIF
+
+# linker part
+# none
+
+
+# DEPENDENCIES SECTION
+######################
+
+CFLAGS_DEPENDENCIES = 
+LFLAGS_DEPENDENCIES = 
+
+# LIBCURL
+
+# definitions to be used in following compiler part
+CFLAGS_LIBCURL      = /I "$(LIBCURL_PATH)/include"
+
+# compiler part
+!IF "$(LIBCURL_CFG)" == "dynamic-release"
+CFLAGS              = $(CFLAGS) $(CFLAGS_LIBCURL)
+!ENDIF
+!IF "$(LIBCURL_CFG)" == "dynamic-debug"
+CFLAGS              = $(CFLAGS) $(CFLAGS_LIBCURL)
+!ENDIF
+!IF "$(LIBCURL_CFG)" == "static-release"
+CFLAGS              = $(CFLAGS) $(CFLAGS_LIBCURL)
+!ENDIF
+!IF "$(LIBCURL_CFG)" == "static-debug"
+CFLAGS              = $(CFLAGS) $(CFLAGS_LIBCURL)
+!ENDIF
+
+
+# libcurl configuration - linker part
+!IF "$(LIBCURL_CFG)" == "dynamic-release"
+LFLAGS_DEPENDENCIES = $(LFLAGS_DEPENDENCIES) $(LIBCURL_NAME)$(TARGET_SUFFIX).lib
+!ENDIF
+!IF "$(LIBCURL_CFG)" == "dynamic-debug"
+LFLAGS_DEPENDENCIES = $(LFLAGS_DEPENDENCIES) $(LIBCURL_NAME)$(TARGET_SUFFIX).lib
+!ENDIF
+!IF "$(LIBCURL_CFG)" == "static-release"
+LFLAGS_DEPENDENCIES = $(LFLAGS_DEPENDENCIES) $(LIBCURL_NAME)$(TARGET_SUFFIX).lib
+!ENDIF
+!IF "$(LIBCURL_CFG)" == "static-debug"
+LFLAGS_DEPENDENCIES = $(LFLAGS_DEPENDENCIES) $(LIBCURL_NAME)$(TARGET_SUFFIX).lib
+!ENDIF
+
+# TARGET
+
+# compiler part
+# none
+
+# definitions to be uses in following linker part
+
+LNK_OUT             = /out:$(DIR_OUT)\$(TARGET)
+LNK_OUT_IMP         = /implib:$(DIR_OUT)\$(TARGET).lib
+LNK_OUT_PDB         = /pdb:$(DIR_OUT)\$(TARGET).pdb
+
+# linker part
+!IF "$(BUILD_CFG)" == "dynamic-release"
+LFLAGS              = $(LFLAGS) $(LNK_OUT).dll $(LNK_OUT_IMP) $(LNK_OUT_PDB)
+!ENDIF
+!IF "$(BUILD_CFG)" == "dynamic-debug"
+LFLAGS              = $(LFLAGS) $(LNK_OUT).dll $(LNK_OUT_IMP) $(LNK_OUT_PDB)
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-release"
+LFLAGS              = $(LFLAGS) $(LNK_OUT).lib
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-debug"
+LFLAGS              = $(LFLAGS) $(LNK_OUT).lib
+!ENDIF
+
+!IF "$(BUILD_CFG)" == "dynamic-release"
+TARGET_SUFFIX       = MD
+!ENDIF
+!IF "$(BUILD_CFG)" == "dynamic-debug"
+TARGET_SUFFIX       = MDd
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-release"
+TARGET_SUFFIX       = MT
+!ENDIF
+!IF "$(BUILD_CFG)" == "static-debug"
+TARGET_SUFFIX       = MTd
+!ENDIF
+
+CC            = $(COMPILER) $(CFLAGS) $(CFLAGS_STD)
+LNK           = $(LINKER) $(LFLAGS) $(LFLAGS_DEPENDENCIES) $(LFLAGS_STD) 
+
+X_OBJS= \
+	$(DIR_OBJ)/CurlHandle.o \
+	$(DIR_OBJ)/cURLpp.o \
+	$(DIR_OBJ)/Exception.o \
+	$(DIR_OBJ)/Easy.o \
+	$(DIR_OBJ)/Form.o \
+	$(DIR_OBJ)/Info.o \
+	$(DIR_OBJ)/Multi.o \
+	$(DIR_OBJ)/OptionBase.o \
+	$(DIR_OBJ)/OptionList.o \
+	$(DIR_OBJ)/OptionSetter.o \
+	$(DIR_OBJ)/SList.o \
+
+all : $(DIR_OUT)$(TARGET)
+
+$(DIR_OUT)$(TARGET): $(X_OBJS)
+	$(LNK) $(X_OBJS)
+
+$(X_OBJS): $(DIR_OBJ) $(DIR_OUT)
+
+$(DIR_OBJ):
+	@if not exist "$(DIR_OBJ)" mkdir $(DIR_OBJ)
+
+$(DIR_OUT):
+	@if not exist "$(DIR_OUT)" mkdir $(DIR_OUT)
+
+	
+.SUFFIXES: .cpp .obj
+
+{.\src\curlpp}.cpp{$(DIR_OBJ)\}.o:
+	$(CC) $(CFLAGS) /Fo"$@"  $<
+	
+{.\src\curlpp\internal}.cpp{$(DIR_OBJ)\}.o:
+	$(CC) $(CFLAGS) /Fo"$@"  $<
+
+clean:
+	@-erase /s $(DIR_OUT)\*.dll 2> NUL
+	@-erase /s $(DIR_OUT)\*.exp 2> NUL
+	@-erase /s $(DIR_OUT)\*.idb 2> NUL
+	@-erase /s $(DIR_OUT)\*.lib 2> NUL
+	@-erase /s $(DIR_OUT)\*.o   2> NUL
+	@-erase /s $(DIR_OUT)\*.pch 2> NUL
+	@-erase /s $(DIR_OUT)\*.pdb 2> NUL
+	@-erase /s $(DIR_OUT)\*.res 2> NUL
+	@-erase /s $(DIR_OUT)\*.manifest 2> NUL	
+
+help options usage :
+	@echo "Usage: nmake /f makefile.msvc \
+    BUILD_CFG=[dynamic|static]-[debug|release] \
+	RTLIB_CFG=[dynamic|static]-[debug|release] \
+	LIBCURL_CFG=[dynamic|static]-[debug|release] \
+    All options are optional \
+    Default for BUILD_CFG is dynamic-release \
+    Default for others is the value of BUILD_CFG"
