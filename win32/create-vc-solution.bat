@@ -8,8 +8,14 @@ set VC_VERSION=%1
 set RESTORE=%2
 
 if "%VC_VERSION%" == "" (
-pause You have to give Visual C++ version as the first argument.
-exit)
+@echo on
+@echo Usage:
+@echo create-vc-solution.bat vc_version [/restore]
+@echo
+@echo vc_version - Visual C++ version for the target solution and project files. Valid values are 8 and 9.
+@echo ???please add doc for restore
+pause 
+exit /b 1)
 
 if "%VC_VERSION%" == "7.1" (
 set VC_NAME=Visual Studio 2003
