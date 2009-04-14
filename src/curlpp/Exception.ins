@@ -1,0 +1,38 @@
+#include "curlpp/Exception.hpp"
+
+#include <stdexcept>
+
+namespace curlpp
+{
+
+template
+void curlpp::raiseException<std::exception>(const std::exception &);
+
+template
+void raiseException<std::logic_error>(const std::logic_error &);
+
+template
+void raiseException<std::domain_error>(const std::domain_error &);
+
+template
+void raiseException<std::invalid_argument>(const std::invalid_argument &);
+
+template
+void raiseException<std::length_error>(const std::length_error &);
+
+template
+void raiseException<std::out_of_range>(const std::out_of_range &);
+
+template
+void raiseException<std::runtime_error>(const std::runtime_error &);
+
+template
+void raiseException<std::overflow_error>(const std::overflow_error &);
+
+template
+void raiseException<std::underflow_error>(const std::underflow_error &);
+
+template
+void raiseException<std::range_error>(const std::range_error &);
+
+} // namespace curlpp

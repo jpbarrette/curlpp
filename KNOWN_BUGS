@@ -1,0 +1,1 @@
+autogen.sh doesn't work properly on Mac OS X. It creates invalid Makefiles that can't compile utilspp. 
