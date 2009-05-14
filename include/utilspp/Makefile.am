@@ -1,3 +1,5 @@
+SUBDIRS = functor singleton
+
 pkginclude_HEADERS = \
 	EmptyType.hpp \
 	Functors.hpp \
