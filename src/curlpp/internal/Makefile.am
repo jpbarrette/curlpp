@@ -1,5 +1,4 @@
 noinst_LTLIBRARIES = libinternal.la
-EXTRA_DIST = Makefile.msvc
 
 if MAINTENER_CODE
 maintener_source = 
@@ -12,8 +11,6 @@ sources = \
 	OptionList.cpp \
 	OptionSetter.cpp \
 	SList.cpp \
-	StorageOptions.hpp \
-	autolink.h \
 	${maintener_source}
 
 

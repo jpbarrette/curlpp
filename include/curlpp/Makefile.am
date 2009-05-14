@@ -1,3 +1,5 @@
+SUBDIRS = internal 
+
 pkginclude_HEADERS = \
 	Easy.hpp Easy.inl \
 	Exception.hpp \

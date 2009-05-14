@@ -9,22 +9,14 @@ endif
 INCLUDES = -I$(top_builddir)/include/curlpp -I$(top_builddir)/include
 
 sources = \
-	cURLpp.cpp cURLpp.hpp \
-	Exception.cpp Exception.hpp \
-	Easy.cpp Easy.hpp Easy.inl \
-	Form.cpp Form.hpp \
-	Info.cpp Info.hpp Info.inl \
-	Infos.hpp \
-	Multi.cpp Multi.hpp \
-	NonCopyable.hpp \
-	OptionBase.cpp OptionBase.hpp \
-	OptionContainer.hpp OptionContainer.inl \
-	OptionContainerType.hpp \
-	Option.hpp Option.inl \
-	Options.cpp Options.hpp \
-	StorageOptions.hpp StorageOptions.inl \
-	Types.hpp \
-	TypeTrait.hpp \
+	cURLpp.cpp  \
+	Exception.cpp  \
+	Easy.cpp  \
+	Form.cpp  \
+	Info.cpp \
+	Multi.cpp \
+	OptionBase.cpp \
+	Options.cpp \
 	autolink.h \
 	${maintener_source}
 

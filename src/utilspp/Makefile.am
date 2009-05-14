@@ -1,19 +1,9 @@
-SUBDIRS = singleton
+lib_LTLIBRARIES = libutilspp.la
 
-noinst_LTLIBRARIES = libutilspp.la
+INCLUDES = -I$(top_builddir)/include
 
 libutilspp_la_SOURCES = \
-	clone_ptr.hpp \
-	EmptyType.hpp \
-	Functors.hpp \
-	NonCopyable.hpp \
-	NullType.hpp \
-	Singleton.hpp \
-	SmartPtr.hpp \
-	ThreadingFactoryMutex.hpp ThreadingFactoryMutex.inl \
-	ThreadingSingle.hpp ThreadingSingle.inl \
-	TypeList.hpp \
-	TypeTrait.hpp
+	LifetimeLibrary.cpp \
+	PrivateMembers.cpp
 
-libutilspp_la_LIBADD = ./singleton/libsingleton.la
 
