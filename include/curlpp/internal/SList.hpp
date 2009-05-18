@@ -30,7 +30,7 @@
 #include <curl/curl.h>
 
 #include <list>
-
+#include <string>
 
 namespace curlpp
 {
