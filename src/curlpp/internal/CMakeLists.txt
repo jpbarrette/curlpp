@@ -6,7 +6,7 @@ include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
 
 set(internal_STAT_SRCS ${sources})
 
-kde4_add_library(internal STATIC ${internal_STAT_SRCS})
+add_library(internal STATIC ${internal_STAT_SRCS})
 
 
 ########### install files ###############

@@ -21,7 +21,7 @@ set(utilspp_STAT_SRCS
     TypeList.hpp
     TypeTrait.hpp)
 
-kde4_add_library(utilspp STATIC ${utilspp_STAT_SRCS})
+add_library(utilspp STATIC ${utilspp_STAT_SRCS})
 
 
 ########### install files ###############

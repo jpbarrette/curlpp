@@ -1,19 +1,15 @@
 
-find_package(KDE4 REQUIRED)
+#find_package(boost REQUIRED)
 
-add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
+#include(MacroLibrary)
 
-include(KDE4Defaults)
+#include(ConvenienceLibs.cmake)
 
-include(MacroLibrary)
+#include(ManualStuff.cmake)
 
-include(ConvenienceLibs.cmake)
+#include(ConfigureChecks.cmake)
 
-include(ManualStuff.cmake)
-
-include(ConfigureChecks.cmake)
-
-include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
+#include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
 
 add_subdirectory(src)
 add_subdirectory(include)
@@ -25,7 +21,6 @@ add_subdirectory(doc)
 
 install(FILES  curlpp-config DESTINATION )
 install(FILES  curlpp.pc DESTINATION )
-
 
 
 #original Makefile.am contents follow:
