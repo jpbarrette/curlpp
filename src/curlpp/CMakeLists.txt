@@ -8,7 +8,7 @@ add_subdirectory(internal)
 
 set(curlpp_LIB_SRCS ${sources})
 
-kde4_add_library(curlpp SHARED ${curlpp_LIB_SRCS})
+add_library(curlpp SHARED ${curlpp_LIB_SRCS})
 
 target_link_libraries(curlpp ${KDE4_KDECORE_LIBS} internal)
 
