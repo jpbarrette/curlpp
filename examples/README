@@ -28,6 +28,9 @@ usage.
  Example 20: std::ostream usage.
  Example 21: upload example with std::istream.
  Example 22: Real easy and quick examples.
+ Example 23: Setting request options using iterators to custom container 
+             of curlpp options.
+ Example 24: Binded method functor for DebugFunction example.
 
 
 
