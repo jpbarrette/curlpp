@@ -32,7 +32,7 @@
 #include <sstream>
 #include <iostream>
 
-#include <curlpp/curlpp.hpp>
+#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 

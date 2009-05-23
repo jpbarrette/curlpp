@@ -32,7 +32,7 @@
 
 #include <cstdlib>
 
-#include <curlpp/curlpp.hpp>
+#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Multi.hpp>
 #include <curlpp/Options.hpp>

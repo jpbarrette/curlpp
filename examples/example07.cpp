@@ -12,7 +12,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include <curlpp/curlpp.hpp>
+#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 
 #define CURLPP_ALLOW_NOT_AVAILABLE

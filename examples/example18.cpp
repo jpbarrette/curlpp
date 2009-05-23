@@ -32,7 +32,7 @@
 #include <cstdlib>
 
 #include <boost/bind.hpp>
-#include <curlpp/curlpp.hpp>
+#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
