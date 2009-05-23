@@ -29,6 +29,8 @@ noinst_PROGRAMS = \
 	example19 \
 	example21 \
 	example22 \
+	example23 \
+	example24 \
 	${maintener_programs} ${boost_programs}
 
 
@@ -76,6 +78,10 @@ example20_SOURCES = example20.cpp
 example21_SOURCES = example21.cpp
 
 example22_SOURCES = example22.cpp
+
+example23_SOURCES = example23.cpp
+
+example24_SOURCES = example24.cpp
 
 AM_LDFLAGS = -L../src/curlpp/ -lcurlpp -static 
 
