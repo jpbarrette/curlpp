@@ -3,7 +3,7 @@
 
 #include "curlpp/internal/global.h"
 
-#include "curlpp/curlpp.hpp"
+#include "curlpp/cURLpp.hpp"
 #include "curlpp/Exception.hpp"
 
 #include <cstdlib>
