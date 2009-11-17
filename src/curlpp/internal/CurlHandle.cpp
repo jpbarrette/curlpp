@@ -331,8 +331,12 @@ CurlHandle::executeSslCtxFunctor(void * ssl_ctx)
 void
 CurlHandle::throwException()
 {
-	if(mException) 
-		mException->throwMe();
+  if(mException) 
+  {
+    std::auto_ptr< cURLpp::CallbackExceptionBase > e(mException);
+    mException = NULL;
+    e->throwMe();
+  }
 }
 
 
