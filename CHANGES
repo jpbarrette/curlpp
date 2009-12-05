@@ -1,3 +1,10 @@
+Changes from version 0.7.2 to 0.7.3
+- We now release exception handler after throwing the exeception (no more memory leak)
+- Added binded method functor for DebugFuntion example
+- gcc-4.3 compilation fixes
+- Massive work has been done on MS Visual Studio project files
+- File structure has been changed
+
 Changes from version 0.7.1 to 0.7.2
 - Added utility functions. (operator<< overloading for std::ostreams)
 - Added global.h to distribution
