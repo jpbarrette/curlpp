@@ -78,8 +78,8 @@ int main(int argc, char *argv[])
 			file = fopen(filename, "wb");
 			if(file == NULL)
 			{
-				fprintf(stderr, strerror(errno));
-				return EXIT_FAILURE;
+			  fprintf(stderr, "%s/n", strerror(errno));
+			  return EXIT_FAILURE;
 			}
 		} 
 
