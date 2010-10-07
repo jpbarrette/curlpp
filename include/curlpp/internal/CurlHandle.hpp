@@ -96,7 +96,7 @@ namespace internal
 		* a pointer to a struct curl_slist * or a pointer to a double.
 		*/
 		template<typename T>
-		void getInfo(CURLINFO info, T & value);
+		void getInfo(CURLINFO info, T & value) const;
 
 
 		template<typename FunctorType>

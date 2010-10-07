@@ -58,7 +58,7 @@ CurlHandle::option(OptionType value)
 
 template <typename T>
 void 
-CurlHandle::getInfo(CURLINFO info, T & value)
+CurlHandle::getInfo(CURLINFO info, T & value) const
 {
 	CURLcode code;
 	code = curl_easy_getinfo(mCurl, info, & value);
