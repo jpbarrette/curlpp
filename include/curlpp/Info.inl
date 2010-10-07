@@ -26,14 +26,14 @@
 
 template<CURLINFO info, typename T>
 void
-curlpp::Info<info, T>::get(curlpp::Easy & handle, T & value)
+curlpp::Info<info, T>::get(const curlpp::Easy & handle, T & value)
 {
    curlpp::InfoTypeConverter<T>::get(handle, info, value);
 }
 
 template<CURLINFO info, typename T>
 T
-curlpp::Info<info, T>::get(curlpp::Easy & handle)
+curlpp::Info<info, T>::get(const curlpp::Easy & handle)
 {
   T value;
   curlpp::InfoTypeConverter<T>::get(handle, info, value);
@@ -42,14 +42,14 @@ curlpp::Info<info, T>::get(curlpp::Easy & handle)
 
 template<CURLINFO info, typename T>
 void
-curlpp::NotAvailableInfo<info, T>::get(curlpp::Easy &, T &)
+curlpp::NotAvailableInfo<info, T>::get(const curlpp::Easy &, T &)
 {
   throw curlpp::NotAvailable();
 }
 
 template<CURLINFO info, typename T>
 T
-curlpp::NotAvailableInfo<info, T>::get(curlpp::Easy &)
+curlpp::NotAvailableInfo<info, T>::get(const curlpp::Easy &)
 {
   throw curlpp::NotAvailable();
 }
@@ -58,7 +58,7 @@ curlpp::NotAvailableInfo<info, T>::get(curlpp::Easy &)
 
 template<typename T>
 void
-curlpp::InfoGetter::get(curlpp::Easy & handle, 
+curlpp::InfoGetter::get(const curlpp::Easy & handle, 
 	                CURLINFO info,
  			T & value)
 {
@@ -68,7 +68,7 @@ curlpp::InfoGetter::get(curlpp::Easy & handle,
 
 template<typename T>
 void
-curlpp::InfoTypeConverter<T>::get(curlpp::Easy & handle, 
+curlpp::InfoTypeConverter<T>::get(const curlpp::Easy & handle, 
 				    CURLINFO info,
 				    T & value)
 {

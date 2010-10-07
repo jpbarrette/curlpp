@@ -149,7 +149,7 @@ namespace curlpp
 		* to retreive option.
 		*/
 		template<typename T>
-		void getInfo(CURLINFO info, T & value);
+		void getInfo(CURLINFO info, T & value) const;
 
 		std::auto_ptr<internal::CurlHandle> mCurl;
 
