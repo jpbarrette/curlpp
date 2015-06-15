@@ -4,7 +4,7 @@ if MAINTENER_CODE
 maintener_source = 
 endif
 
-INCLUDES = -I$(top_builddir)/include/curlpp -I$(top_builddir)/include/curlpp/internal -I$(top_builddir)/include
+AM_CPPFLAGS = -I$(top_builddir)/include/curlpp -I$(top_builddir)/include/curlpp/internal -I$(top_builddir)/include
 
 sources = \
 	CurlHandle.cpp \

@@ -1,13 +1,13 @@
-AC_INIT(src/curlpp/cURLpp.cpp)
-dnl AC_CONFIG_AUX_DIR(config)
-AM_CONFIG_HEADER(include/curlpp/config.h)
-AC_PREREQ(2.59)
-
+AC_PREREQ([2.59])
 dnl
 dnl figure out the libcurl version
-VERSION=`sed -ne 's/^#define LIBCURLPP_VERSION "\(.*\)"/\1/p' ${srcdir}/include/curlpp/cURLpp.hpp`
-AM_INIT_AUTOMAKE(curlpp,$VERSION)
-AC_SUBST(VERSION)
+AC_INIT([curlpp], m4_esyscmd_s([sed -ne 's/^#define LIBCURLPP_VERSION "\(.*\)"/\1/p' include/curlpp/cURLpp.hpp]))
+
+AC_CONFIG_SRCDIR(src/curlpp/cURLpp.cpp)
+dnl AC_CONFIG_AUX_DIR(config)
+AM_CONFIG_HEADER(include/curlpp/config.h)
+
+AM_INIT_AUTOMAKE(foreign)
 
 RPM_VERSION=$VERSION
 AC_SUBST(RPM_VERSION)

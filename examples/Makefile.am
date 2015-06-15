@@ -85,7 +85,7 @@ example24_SOURCES = example24.cpp
 
 AM_LDFLAGS = -L../src/curlpp/ -lcurlpp -static 
 
-INCLUDES = -I$(top_builddir)/include
+AM_CPPFLAGS = -I$(top_builddir)/include
 
 
 
