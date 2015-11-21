@@ -46,7 +46,7 @@ cURLpp is true Open Source/Free Software and meet all definitions as such. It me
 
 # Documentation
 
-The programming guide for the 0.5.x and newer versions is [here](guide.pdf). This guide is greatly inspired by the libcURL guide, that I strongly suggest to read. There's also some examples in the "[examples](http://github.com/jpbarrette/curlpp/tree/master/examples)/" source directory of cURLpp.
+The programming guide for the 0.5.x and newer versions is [here](https://github.com/jpbarrette/curlpp/tree/master/doc/guide.pdf). This guide is greatly inspired by the libcURL guide, that I strongly suggest to read. There's also some examples in the "[examples](http://github.com/jpbarrette/curlpp/tree/master/examples)/" source directory of cURLpp.
 
 # Development history
 
