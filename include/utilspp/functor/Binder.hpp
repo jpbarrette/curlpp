@@ -99,7 +99,7 @@ namespace utilspp
     typedef Functor<R, TList> Incoming;
     typedef Functor<R, typename TList::tail> Outgoing;
     
-    return Outgoing(std::auto_ptr<typename Outgoing::Impl>(new BinderFirst<Incoming>(fun, bound)));
+    return Outgoing(std::shared_ptr<typename Outgoing::Impl>(new BinderFirst<Incoming>(fun, bound)));
   }
     
 }
