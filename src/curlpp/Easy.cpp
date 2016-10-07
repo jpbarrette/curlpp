@@ -64,7 +64,7 @@ curlpp::Easy::setOpt(const OptionBase & option)
 
 
 void
-curlpp::Easy::setOpt(std::shared_ptr<OptionBase> option)
+curlpp::Easy::setOpt(std::unique_ptr<OptionBase> option)
 {
 	option->updateHandleToMe(mCurl.get());
 	mOptions.setOpt(option.get());    

@@ -75,7 +75,7 @@ namespace curlpp
 		* This function will set the option value of the OptionBase to the 
 		* handle. 
 		*/
-		virtual void setOpt(std::shared_ptr<OptionBase> option);
+		virtual void setOpt(std::unique_ptr<OptionBase> option);
 
 		/**
 		* This function will set the option value of the OptionBase to the 
