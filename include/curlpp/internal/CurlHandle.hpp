@@ -55,7 +55,7 @@ namespace internal
 		CurlHandle();
 		CurlHandle(CURL * handle);
 
-		std::auto_ptr<CurlHandle> clone() const;
+		std::shared_ptr<CurlHandle> clone() const;
 
 		/**
 		* Calls curl_easy_perform on the handle and throws exceptions on errors.
