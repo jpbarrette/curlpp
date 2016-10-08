@@ -366,11 +366,11 @@
 				Name="utils"
 				>
 				<File
-					RelativePath=".\src\utilspp\singleton\LifetimeLibrary.cpp"
+					RelativePath=".\src\utilspp\LifetimeLibrary.cpp"
 					>
 				</File>
 				<File
-					RelativePath=".\src\utilspp\singleton\PrivateMembers.cpp"
+					RelativePath=".\src\utilspp\PrivateMembers.cpp"
 					>
 				</File>
 			</Filter>
