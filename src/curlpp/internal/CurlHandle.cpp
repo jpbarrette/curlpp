@@ -34,7 +34,7 @@
 
 
 using std::memset;
-using std::auto_ptr;
+using std::shared_ptr;
 
 
 namespace curlpp
@@ -89,12 +89,12 @@ CurlHandle::CurlHandle(CURL * handle)
 }
 
 
-std::auto_ptr<CurlHandle> 
+std::shared_ptr<CurlHandle> 
 CurlHandle::clone() const
 {
 	CURL * cHandle = curl_easy_duphandle(mCurl);
 	runtimeAssert("Error when trying to curl_easy_duphandle() a handle", cHandle != NULL);
-	auto_ptr<CurlHandle> newHandle(new CurlHandle(cHandle));
+	shared_ptr<CurlHandle> newHandle(new CurlHandle(cHandle));
 
 	return newHandle;
 }
@@ -333,7 +333,7 @@ CurlHandle::throwException()
 {
   if(mException) 
   {
-    std::auto_ptr< cURLpp::CallbackExceptionBase > e(mException);
+    std::shared_ptr< cURLpp::CallbackExceptionBase > e(mException);
     mException = NULL;
     e->throwMe();
   }
