@@ -111,7 +111,7 @@ typename Option<OptionType>::ReturnType
 Option<OptionType>::getValue() const
 {
   if(mContainer == NULL)
-    throw UnsetOption(std::string("You are trying to retreive the value of an unset option"));
+    throw UnsetOption("You are trying to retreive the value of an unset option");
 
   return mContainer->getValue();
 }
@@ -145,7 +145,7 @@ OptionTrait<OptionType, option>::updateHandleToMe(internal::CurlHandle * handle)
 {
 	if(this->mContainer == NULL)
 	{
-		throw UnsetOption(std::string("You are trying to set an unset option to a handle"));
+		throw UnsetOption("You are trying to set an unset option to a handle");
 	}	
 
 	internal::OptionSetter<OptionType, option>::setOpt(handle, this->mContainer->getHandleOptionValue());
