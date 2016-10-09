@@ -24,6 +24,8 @@
 #ifndef CURLPP_BINDER_HPP
 #define CURLPP_BINDER_HPP
 
+#include <memory>
+
 namespace utilspp
 {
   template<typename Incoming>

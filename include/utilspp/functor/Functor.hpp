@@ -35,6 +35,8 @@
 #include "FunctorHandler.hpp"
 #include "MemFunHandler.hpp"
 
+#include <memory>
+
 namespace utilspp
 {
   template<typename R, class TList>
