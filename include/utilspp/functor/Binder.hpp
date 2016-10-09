@@ -24,6 +24,8 @@
 #ifndef CURLPP_BINDER_HPP
 #define CURLPP_BINDER_HPP
 
+#include <memory>
+
 namespace utilspp
 {
   template<typename Incoming>
@@ -99,7 +101,8 @@ namespace utilspp
     typedef Functor<R, TList> Incoming;
     typedef Functor<R, typename TList::tail> Outgoing;
     
-    return Outgoing(std::shared_ptr<typename Outgoing::Impl>(new BinderFirst<Incoming>(fun, bound)));
+    std::unique_ptr<typename Outgoing::Impl> impl_ptr(new BinderFirst<Incoming>(fun, bound));
+    return Outgoing(std::move(impl_ptr));
   }
     
 }

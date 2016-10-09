@@ -56,7 +56,7 @@ namespace curlpp
 		* This allow to have a handle, which might have
 		* some option set, but we don't care about them.
 		*/
-		Easy(std::shared_ptr<internal::CurlHandle> handle);
+		Easy(std::unique_ptr<internal::CurlHandle> handle);
 		virtual ~Easy();
 
 		/**
@@ -151,7 +151,7 @@ namespace curlpp
 		template<typename T>
 		void getInfo(CURLINFO info, T & value) const;
 
-		std::shared_ptr<internal::CurlHandle> mCurl;
+		std::unique_ptr<internal::CurlHandle> mCurl;
 
 		internal::OptionList mOptions;
 
