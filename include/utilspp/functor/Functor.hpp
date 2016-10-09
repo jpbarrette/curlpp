@@ -54,13 +54,13 @@ namespace utilspp
       : mImpl()
     {}
 
-    Functor(std::shared_ptr<Impl> impl) 
-      : mImpl(impl)
+    Functor(std::unique_ptr<Impl> impl) 
+      : mImpl(std::move(impl))
     {}
 
     Functor & operator=(const Functor & functor)
     {
-      mImpl = std::shared_ptr<Impl>(functor.mImpl->clone());
+      mImpl = std::unique_ptr<Impl>(std::move(functor.mImpl->clone()));
       return (*this);
     }
 
@@ -142,7 +142,7 @@ namespace utilspp
     {return (*mImpl)(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15);}
 
   private:
-    std::shared_ptr<Impl> mImpl;
+    std::unique_ptr<Impl> mImpl;
   };
   
   template<typename Fun>

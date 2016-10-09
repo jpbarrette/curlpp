@@ -21,11 +21,14 @@
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
+
 #include "curlpp/Easy.hpp"
 #include "curlpp/Options.hpp"
 
 #include "curlpp/internal/global.h"
 #include "curlpp/internal/buildconfig.h"
+
+#include <memory>
 
 
 curlpp::Easy::Easy()
@@ -33,8 +36,8 @@ curlpp::Easy::Easy()
 {}
 
 
-curlpp::Easy::Easy(std::shared_ptr<internal::CurlHandle> handle)
-  : mCurl(handle)
+curlpp::Easy::Easy(std::unique_ptr<internal::CurlHandle> handle)
+    : mCurl(std::move(handle))
 {}
 
 

@@ -33,7 +33,7 @@ namespace utilspp
   // ensure that when we go out of scope, it will delete the 
   // pointer.
   // 
-  // However, contrary to the std::shared_ptr, instead of 
+  // However, contrary to the std::unique_ptr, instead of 
   // transfering the ownership on copy construction, it clones 
   // the content. This means that we can have STL containers
   // that uses that class for managing the pointers.
