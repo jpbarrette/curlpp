@@ -70,7 +70,7 @@ void
 curlpp::Easy::setOpt(std::unique_ptr<OptionBase> option)
 {
 	option->updateHandleToMe(mCurl.get());
-	mOptions.setOpt(option.get());    
+	mOptions.setOpt(option.release());    
 }
 
 
