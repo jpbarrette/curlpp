@@ -1,4 +1,4 @@
-ACLOCAL_AMFLAGS = -I m4
+ACLOCAL_AMFLAGS = ${ACLOCAL_FLAGS} -I m4
 SUBDIRS = src include examples doc 
 EXTRA_DIST = curlpp.VC8.vcproj curlpp.VC8.sln CHANGES curlpp.spec README.win32 win32/*
 

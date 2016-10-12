@@ -57,3 +57,5 @@ examples/example23
 examples/example24
 examples/example25
 
+
+*.exe

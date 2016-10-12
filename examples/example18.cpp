@@ -31,7 +31,9 @@
 #include <sstream>
 #include <cstdlib>
 
+#ifdef HAVE_BOOST
 #include <boost/bind.hpp>
+#endif
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
