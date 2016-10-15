@@ -9,27 +9,17 @@
 Makefile
 Makefile.in
 
-m4/
-aclocal.m4
 aclocal.m4.bak
-autom4te.cache/
-compile
-configure
-config.guess
 config.log
 config.status
-config.sub
 curlpp-config
 curlpp.pc
 curlpp.spec
-depcomp
 include/curlpp/config.h
 include/curlpp/config.h.in
 include/curlpp/stamp-h1
-install-sh
 libtool
-ltmain.sh
-missing
+autom4te.cache/
 
 examples/example01
 examples/example02
