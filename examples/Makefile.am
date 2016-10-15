@@ -2,10 +2,6 @@ if MAINTENER_CODE
 maintener_programs = 
 endif
 
-if HAVE_BOOST
-boost_programs = example18 example20
-endif
-
 EXTRA_DIST = Makefile.msvc
 
 noinst_PROGRAMS = \
@@ -68,10 +64,6 @@ example15_SOURCES = example15.cpp
 example16_SOURCES = example16.cpp
 
 example17_SOURCES = example17.cpp
-
-if HAVE_BOOST
-example18_SOURCES = example18.cpp
-endif
 
 example19_SOURCES = example19.cpp
 
