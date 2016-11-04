@@ -135,6 +135,18 @@ CXXFLAGS="$CXXFLAGS -Werror "
 )
 
 
+AC_MSG_CHECKING([enable C++11 compiler])
+AC_ARG_ENABLE(ewarning,
+[  --enable-ewarning       Build with C++11 compiler [default=yes]],
+[ 
+AC_MSG_RESULT(no)
+],
+[
+AC_MSG_RESULT(yes)
+CXXFLAGS="$CXXFLAGS -std=c++11 "
+]
+)
+
 
 AC_MSG_CHECKING([whether to enable the maintener code])
 AC_ARG_ENABLE(maintener,
