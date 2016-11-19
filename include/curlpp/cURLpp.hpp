@@ -25,8 +25,8 @@
 #ifndef CURLPP_CURLPP_HPP
 #define CURLPP_CURLPP_HPP
 
-#define LIBCURLPP_VERSION "0.7.3"
-#define LIBCURLPP_VERSION_NUM 0x000703
+#define LIBCURLPP_VERSION "0.7.4-beta"
+#define LIBCURLPP_VERSION_NUM 0x000704
 
 
 #include "internal/buildconfig.h"
