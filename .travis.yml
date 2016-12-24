@@ -3,13 +3,14 @@ compiler:
   - clang
   - gcc
 before_install:
-  - sudo add-apt-repositoryp ppa:george-edison55/precise-backports --yes
+  - sudo add-apt-repository ppa:george-edison55/precise-backports --yes
   - sudo apt-get update
 addons:
   apt:
     packages:
     - libcurl4-openssl-dev
     - cmake
+    - cmake-data
 script:
   - cmake -G "Unix Makefiles"
     
