@@ -1,0 +1,20 @@
+README
+  Study the COPYING file for distribution terms and similar.
+
+  Visit the cURLpp web site or mirrors for the latest news:
+
+        http://rrette.com/curlpp.html
+
+  To download the very latest source off the CVS server do this:
+
+    cvs -d :pserver:anonymous@cvs.curlpp.sourceforge.net:/cvsroot/curlpp login
+
+  (just press enter when asked for password)
+
+    cvs -d :pserver:anonymous@cvs.curlpp.sourceforge.net:/cvsroot/curlpp co curlpp 
+
+  (you'll get a directory named curl created, filled with the source code)
+
+    cvs -d :pserver:anonymous@cvs.curlpp.sourceforge.net:/cvsroot/curlpp logout
+        
+  (you're off the hook!)
