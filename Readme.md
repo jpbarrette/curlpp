@@ -1,5 +1,4 @@
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish)
+[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 # Description
 
@@ -84,8 +83,3 @@ cURLpp is meant to be portable, but I can't maintain, all by myself, a project f
 * Cygwin/GCC 2.95/GCC 3.x/GCC 4.x
 * I know there's some people who wants a VC++ project file. I don't want to maintain those VC++ files. I don't want to because I don't have any licence of VC++ and I don't want to buy one. The only way I will make available some Win32 binaries(DLL), is with MinGW. However, if someone is willing to maintain thoses files, it will be my pleasure to make them available.
 
-# Mailing-List
-
-If you have some questions or bugs to submit, you call send an email to the mailing-list. You need to register to the mailing-list before sending any email. However, keep in mind that cURLpp is a C++ wrapper over libcURL, so if you have a libcURL feature's related question, send it to libcURL's mailing-list.
-## Support on Beerpay
-Hey dude! Help me out for a couple of :beers:!
