@@ -16,4 +16,5 @@ addons:
 
 script:
   - cmake -G "Unix Makefiles"
+  - make
     
