@@ -94,3 +94,7 @@ cURLpp is meant to be portable, but I can't maintain, all by myself, a project f
 # Mailing-List
 
 If you have some questions or bugs to submit, you call send an email to the mailing-list. You need to register to the mailing-list before sending any email. However, keep in mind that cURLpp is a C++ wrapper over libcURL, so if you have a libcURL feature's related question, send it to libcURL's mailing-list.
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish)
