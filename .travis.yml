@@ -4,14 +4,15 @@ compiler:
   - clang
   - gcc
 
+before_install:
+  - sudo add-apt-repository ppa:george-edison55/cmake-3.x -y;
+  - sudo apt-get update;
+  - sudo apt-get install cmake cmake-data -y;
+
 addons:
   apt:
-    sources:
-      - george-edison55/cmake-3.x
     packages:
       - libcurl4-openssl-dev
-      - cmake
-      - cmake-data
 
 script:
   - cmake -G "Unix Makefiles"
