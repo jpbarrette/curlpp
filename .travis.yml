@@ -1,5 +1,6 @@
 language: cpp
-script: cmake
+script:
+  - cmake -G "Unix Makefiles"
 compiler:
   - clang
   - gcc
