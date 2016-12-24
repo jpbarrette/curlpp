@@ -1,12 +1,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-# Supporting the project
-
-You can support cURLpp's work via [Salt](https://salt.bountysource.com/teams/curlpp).
+[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish)
 
 # Description
 
-cURLpp is a C++ wrapper for libcURL. libcURL is described as:
+[cURLpp](http://www.curlpp.org) is a C++ wrapper for libcURL. libcURL is described as:
 
 <cite>
 a free and easy-to-use client-side URL transfer library, supporting FTP, FTPS, HTTP, HTTPS, GOPHER, TELNET, DICT, FILE and LDAP. libcurl supports HTTPS certificates, HTTP POST, HTTP PUT, FTP uploading, kerberos, HTTP form based upload, proxies, cookies, user+password authentication, file transfer resume, http proxy tunneling and more!
@@ -27,10 +24,6 @@ First, I need to quote Daniel Stenberg, the maintener of libcURL:
 * It use the C++ standard library structures instead of home made ones.
 * It is exception safe.
 * It is type safe.
-
-# Downloads
-
-See cURLpp's [github](http://github.com/jpbarrette/curlpp) repo for this.
 
 # Documentation
 
@@ -96,5 +89,3 @@ cURLpp is meant to be portable, but I can't maintain, all by myself, a project f
 If you have some questions or bugs to submit, you call send an email to the mailing-list. You need to register to the mailing-list before sending any email. However, keep in mind that cURLpp is a C++ wrapper over libcURL, so if you have a libcURL feature's related question, send it to libcURL's mailing-list.
 ## Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
-
-[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish)
