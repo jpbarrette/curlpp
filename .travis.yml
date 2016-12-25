@@ -9,3 +9,5 @@ addons:
     packages:
       - libcurl4-openssl-dev
 
+before_script:
+  - autoreconf
