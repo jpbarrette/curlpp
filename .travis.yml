@@ -10,4 +10,4 @@ addons:
       - libcurl4-openssl-dev
 
 before_script:
-  - sh autogen.sh
+  - ./autogen.sh
