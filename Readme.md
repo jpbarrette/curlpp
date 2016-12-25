@@ -1,4 +1,4 @@
-[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Beerpay](https://beerpay.io/jpbarrette/curlpp/badge.svg?style=beer-square)](https://beerpay.io/jpbarrette/curlpp)  [![Beerpay](https://beerpay.io/jpbarrette/curlpp/make-wish.svg?style=flat-square)](https://beerpay.io/jpbarrette/curlpp?focus=wish) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![Travis CI](https://img.shields.io/travis/jpbarrette/curlpp.svg)](https://travis-ci.org/jpbarrette/curlpp)
 
 # Description
 

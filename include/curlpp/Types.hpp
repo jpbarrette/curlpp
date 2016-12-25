@@ -27,11 +27,7 @@
 
 #include "internal/global.h"
 
-#ifdef HAVE_BOOST
-	#include <boost/function.hpp>
-#endif 
-
-#include <utilspp/Functors.hpp>
+#include <functional>
 
 
 namespace curlpp
@@ -41,30 +37,12 @@ namespace curlpp
 namespace types
 {
 
-
-	typedef utilspp::Functor< 
-		size_t, 
-		TYPE_LIST_3(char*, size_t, size_t)> WriteFunctionFunctor;
-
-	typedef utilspp::Functor< 
-		size_t, 
-		TYPE_LIST_3(char*, size_t, size_t)> ReadFunctionFunctor;
-
+	typedef std::function< size_t(char*, size_t, size_t) > WriteFunctionFunctor;
+	typedef std::function< size_t(char*, size_t, size_t) > ReadFunctionFunctor;
 	/// DebugFunctor related typedefs
-	typedef utilspp::Functor<
-		int,
-		TYPE_LIST_3(curl_infotype, 
-		char *, 
-		size_t)> DebugFunctionFunctor;
-
-	typedef utilspp::Functor< 
-		CURLcode,
-		TYPE_LIST_1(void *)> SslCtxFunctionFunctor;
-
-	typedef utilspp::Functor<
-		int,
-		TYPE_LIST_4(double, double, double, double)> ProgressFunctionFunctor;
-
+        typedef std::function< int(curl_infotype, char *, size_t) > DebugFunctionFunctor;
+        typedef std::function< CURLcode(void *) > SslCtxFunctionFunctor;
+	typedef std::function< int(double, double, double, double)> ProgressFunctionFunctor;
   
 } // namespace types
 
