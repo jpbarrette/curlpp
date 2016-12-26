@@ -96,7 +96,7 @@ CurlHandle::clone() const
 	runtimeAssert("Error when trying to curl_easy_duphandle() a handle", cHandle != nullptr);
 	unique_ptr<CurlHandle> newHandle(new CurlHandle(cHandle));
 
-	return std::move(newHandle);
+	return newHandle;
 }
 
 
