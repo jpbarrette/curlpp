@@ -65,15 +65,7 @@ namespace types
 		int,
 		TYPE_LIST_4(double, double, double, double)> ProgressFunctionFunctor;
 
-	#ifdef HAVE_BOOST
-		typedef boost::function3<size_t, char*, size_t, size_t> BoostWriteFunction;
-		typedef boost::function3<size_t, char*, size_t, size_t> BoostReadFunction;
-		typedef boost::function3<int, curl_infotype, char *, size_t> BoostDebugFunction;
-		typedef boost::function1<CURLcode, void *> BoostSslCtxFunction;
-		typedef boost::function4<int, double, double, double, double> BoostProgressFunction;
-	#endif
-
-
+  
 } // namespace types
 
 namespace Types = types;
