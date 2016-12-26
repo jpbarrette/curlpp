@@ -2,7 +2,6 @@ if MAINTENER_CODE
 maintener_programs = 
 endif
 
-
 EXTRA_DIST = Makefile.msvc
 
 noinst_PROGRAMS = \
