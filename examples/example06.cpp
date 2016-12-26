@@ -118,8 +118,9 @@ int main(int argc, char *argv[])
 
 		// Set the writer callback to enable cURL 
 		// to write result in a memory area
-		curlpp::types::WriteFunctionFunctor functor(&mWriterChunk, 
-			&WriterMemoryClass::WriteMemoryCallback);
+		using namespace std::placeholders;
+		curlpp::types::WriteFunctionFunctor functor = std::bind(&WriterMemoryClass::WriteMemoryCallback, &mWriterChunk, _1, _2, _3);
+
 		curlpp::options::WriteFunction *test = new curlpp::options::WriteFunction(functor);
 		request.setOpt(test);
 
