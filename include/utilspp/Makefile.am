@@ -1,8 +1,7 @@
-SUBDIRS = functor singleton
+SUBDIRS = singleton
 
 pkginclude_HEADERS = \
 	EmptyType.hpp \
-	Functors.hpp \
 	NonCopyable.hpp \
 	NullType.hpp \
 	Singleton.hpp \

@@ -8,7 +8,11 @@
 *.lai
 Makefile
 Makefile.in
+*~
 
+m4/
+aclocal.m4
+CMakeFiles/
 aclocal.m4.bak
 config.log
 config.status
@@ -47,5 +51,6 @@ examples/example23
 examples/example24
 examples/example25
 
-
 *.exe
+CMakeCache.txt
+

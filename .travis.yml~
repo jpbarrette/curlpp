@@ -1,8 +1,0 @@
-language: cpp
-compiler:
-  - clang
-  - gcc
-addons:
-  apt:
-    packages:
-    - libcurl4-openssl-dev

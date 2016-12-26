@@ -66,8 +66,8 @@ int main(int argc, char *argv[])
 
 		using namespace curlpp::Options;
 		request.setOpt(Verbose(true));
-		request.setOpt(DebugFunction(curlpp::types::DebugFunctionFunctor(&myWindow, 
-			&MyWindow::writeDebug)));
+		using namespace std::placeholders;
+		request.setOpt(DebugFunction(std::bind(&MyWindow::writeDebug, &myWindow, _1, _2, _3)));
 		request.setOpt(Url(url));
 
 		request.perform();
