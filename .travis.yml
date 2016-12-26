@@ -7,12 +7,15 @@ matrix:
     - os: linux
       dist: trusty
       compiler: clang
+      env: NAME="trusty"
     - os: linux
       dist: trusty
       compiler: gcc
+      env: NAME="trusty"
     - os: linux
       dist: precise
       compiler: clang
+      env: NAME="precise"
     - os: osx
       osx_image: xcode7.2
     - os: osx
