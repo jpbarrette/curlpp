@@ -186,12 +186,7 @@ case $host in
     ;;
 esac
 
-dnl BOOST_REQUIRE
-AX_BOOST_BASE([1.33.1])
-AM_CONDITIONAL(HAVE_BOOST, test x$want_boost = xyes)
-
-
-CURLPP_CXXFLAGS="$CURLPP_CXXFLAGS $BOOST_CPPFLAGS"
+CURLPP_CXXFLAGS="$CURLPP_CXXFLAGS"
 AC_SUBST(CURLPP_CXXFLAGS)
 CXXFLAGS="$CXXFLAGS $CURLPP_CXXFLAGS"
 
@@ -210,7 +205,6 @@ include/Makefile \
 include/curlpp/Makefile \
 include/curlpp/internal/Makefile \
 include/utilspp/Makefile \
-include/utilspp/functor/Makefile \
 include/utilspp/singleton/Makefile \
 doc/Makefile 
 )

@@ -44,16 +44,10 @@ set(HeaderFileList
   ${IncludeFolder}utilspp/Singleton.hpp
   ${IncludeFolder}utilspp/TypeTrait.hpp
   ${IncludeFolder}utilspp/clone_ptr.hpp
-  ${IncludeFolder}utilspp/functor/MemFunHandler.hpp
-  ${IncludeFolder}utilspp/functor/FunctorHandler.hpp
-  ${IncludeFolder}utilspp/functor/Binder.hpp
-  ${IncludeFolder}utilspp/functor/FunctorImpl.hpp
-  ${IncludeFolder}utilspp/functor/Functor.hpp
   ${IncludeFolder}utilspp/TypeList.hpp
   ${IncludeFolder}utilspp/NonCopyable.hpp
   ${IncludeFolder}utilspp/SmartPtr.hpp
   ${IncludeFolder}utilspp/ThreadingFactoryMutex.hpp
-  ${IncludeFolder}utilspp/Functors.hpp
   ${IncludeFolder}curlpp/Exception.hpp
   ${IncludeFolder}curlpp/Option.hpp
   ${IncludeFolder}curlpp/Info.hpp

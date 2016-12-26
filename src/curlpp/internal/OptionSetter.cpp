@@ -25,8 +25,6 @@
 #include "curlpp/internal/CurlHandle.hpp"
 #include "curlpp/internal/OptionSetter.hpp"
 
-#include "utilspp/Functors.hpp"
-
 #include <string>
 #include <iostream>
 
