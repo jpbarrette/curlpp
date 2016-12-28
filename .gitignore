@@ -10,6 +10,7 @@ Makefile
 Makefile.in
 *~
 
+build/
 m4/
 aclocal.m4
 CMakeFiles/

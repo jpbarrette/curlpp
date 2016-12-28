@@ -63,7 +63,6 @@ set(HeaderFileList
   ${IncludeFolder}curlpp/Options.hpp
   ${IncludeFolder}curlpp/Multi.hpp
   ${IncludeFolder}curlpp/internal/OptionContainerType.hpp
-  ${IncludeFolder}curlpp/internal/global.h
   ${IncludeFolder}curlpp/internal/buildconfig.h
   ${IncludeFolder}curlpp/internal/OptionContainer.hpp
   ${IncludeFolder}curlpp/internal/SList.hpp
