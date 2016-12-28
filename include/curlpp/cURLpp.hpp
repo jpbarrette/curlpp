@@ -29,7 +29,6 @@
 #define LIBCURLPP_VERSION_NUM 0x000704
 
 
-#include "internal/buildconfig.h"
 
 #include <curl/curl.h>
 
@@ -65,7 +64,7 @@ namespace curlpp
 	* NOTE: you should never call this function twice.
 	*/
 
-	void CURLPPAPI initialize(long flags = CURL_GLOBAL_ALL);
+	void initialize(long flags = CURL_GLOBAL_ALL);
 
 	/**
 	* This function takes care of cleaning up curlpp (also libcURL). 
@@ -75,7 +74,7 @@ namespace curlpp
 	* called in once; it will throw a logic_error if you do otherwise.
 	*/
 
-	void CURLPPAPI terminate();
+	void terminate();
 
 	/**
 	* \depreciated This is an obsolete class. DO NOT use it. 
@@ -98,7 +97,7 @@ namespace curlpp
 	* See curlpp::initialize(long flags) and curlpp:terminate() for more documentation.
 	*/
 
-	class CURLPPAPI Cleanup
+	class Cleanup
 	{
 
 	public:
@@ -117,7 +116,7 @@ namespace curlpp
 	* version (%NN where NN is a two-digit hexadecimal number).
 	*/
 
-	std::string CURLPPAPI escape(const std::string & url);
+	std::string escape(const std::string & url);
 
 	/**
 	* Decodes URL encoded string. 
@@ -130,7 +129,7 @@ namespace curlpp
 	* converted).
 	*/
 
-	std::string CURLPPAPI unescape(const std::string & url);
+	std::string unescape(const std::string & url);
 
 	/**
 	* Portable wrapper for the getenv() function.
@@ -144,7 +143,7 @@ namespace curlpp
 	* systems.
 	*/
 
-	std::string CURLPPAPI getenv(const std::string & name);
+	std::string getenv(const std::string & name);
 
 	/**
 	* Returns  a  human readable string with the version number of libcurl and
@@ -154,7 +153,7 @@ namespace curlpp
 	* installed a newer lib's include files in your system  which may turn
 	* your LIBCURL_VERSION #define value to differ from this result.
 	*/
-	std::string CURLPPAPI libcurlVersion();
+	std::string libcurlVersion();
 
 	/**
 	* This function returns the number of  seconds  since  January 1st  1970,
@@ -213,7 +212,7 @@ namespace curlpp
 	* specified calendar date.
 	*/
 
-	time_t CURLPPAPI getdate(const std::string & date, time_t * now = 0);
+	time_t getdate(const std::string & date, time_t * now = 0);
 
 
 } // namespace curlpp

@@ -1,7 +1,6 @@
 #include "utilspp/singleton/SingletonHolder.hpp"
 #include "utilspp/singleton/CreationStatic.hpp"
 
-#include "curlpp/internal/global.h"
 
 #include "curlpp/cURLpp.hpp"
 #include "curlpp/Exception.hpp"

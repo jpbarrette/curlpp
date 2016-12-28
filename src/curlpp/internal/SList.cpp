@@ -1,12 +1,6 @@
 #include "curlpp/internal/SList.hpp"
-#include "curlpp/internal/global.h"
 
-#if HAVE_OSTREAM
-#  include <ostream>
-#else
-#  include <ostream.h>
-#endif
-
+#include <ostream>
 #include <string>
 
 

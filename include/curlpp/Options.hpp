@@ -330,7 +330,7 @@ namespace options
 namespace cURLpp = curlpp;
 
 
-CURLPPAPI std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
+std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
 
 
 #endif // #ifndef CURLPP_OPTIONS_HPP

@@ -25,8 +25,6 @@
 #include "curlpp/Easy.hpp"
 #include "curlpp/Options.hpp"
 
-#include "curlpp/internal/global.h"
-#include "curlpp/internal/buildconfig.h"
 
 #include <memory>
 

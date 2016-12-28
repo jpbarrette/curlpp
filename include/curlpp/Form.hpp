@@ -25,7 +25,6 @@
 #define CURLPP_FORM_HPP
 
 
-#include "internal/buildconfig.h"
 #include <utilspp/clone_ptr.hpp>
 
 #include <curl/curl.h>
@@ -49,7 +48,7 @@ namespace curlpp
 	* class.
 	*/
 
-	class CURLPPAPI HttpPost
+	class HttpPost
 	{
 
 	public:
@@ -98,7 +97,7 @@ namespace curlpp
 	* to inherit from it to define a type of post.
 	*/
 
-	class CURLPPAPI FormPart
+	class FormPart
 	{
 		friend class HttpPost;
 
@@ -143,7 +142,7 @@ namespace FormParts
 	* HTTP post.
 	*/
 
-	class CURLPPAPI File : public FormPart
+	class File : public FormPart
 	{
 
 	public:
@@ -205,7 +204,7 @@ namespace FormParts
 	* HTTP post.
 	*/
 
-	class CURLPPAPI Content : public FormPart
+	class Content : public FormPart
 	{
 
 	public:

@@ -25,7 +25,6 @@
 #define CURLPP_TYPES_HPP
 
 
-#include "internal/global.h"
 
 #include <functional>
 
