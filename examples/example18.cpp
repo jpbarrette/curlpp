@@ -31,14 +31,13 @@
 #include <sstream>
 #include <cstdlib>
 
-#include <boost/bind.hpp>
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 #include <curlpp/Infos.hpp>
 
-
+		
 struct MethodClass
 {
 private:
