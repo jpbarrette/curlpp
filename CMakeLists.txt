@@ -40,16 +40,8 @@ endfunction(DisplayList)
 # File Lists
 set(HeaderFileList
   ${IncludeFolder}utilspp/EmptyType.hpp
-  ${IncludeFolder}utilspp/singleton/LifetimeWithLongevity.hpp
-  ${IncludeFolder}utilspp/singleton/SingletonHolder.hpp
-  ${IncludeFolder}utilspp/singleton/LifetimeLibrary.hpp
-  ${IncludeFolder}utilspp/singleton/CreationStatic.hpp
-  ${IncludeFolder}utilspp/singleton/CreationUsingNew.hpp
-  ${IncludeFolder}utilspp/singleton/LifetimeDefault.hpp
-  ${IncludeFolder}utilspp/singleton/PrivateMembers.hpp
   ${IncludeFolder}utilspp/NullType.hpp
   ${IncludeFolder}utilspp/ThreadingSingle.hpp
-  ${IncludeFolder}utilspp/Singleton.hpp
   ${IncludeFolder}utilspp/TypeTrait.hpp
   ${IncludeFolder}utilspp/clone_ptr.hpp
   ${IncludeFolder}utilspp/TypeList.hpp
@@ -78,8 +70,6 @@ set(HeaderFileList
 DisplayList("Using Header Files:" "${HeaderFileList}")
 
 set(SourceFileList
-  ${SrcFolder}utilspp/PrivateMembers.cpp
-  ${SrcFolder}utilspp/LifetimeLibrary.cpp
   ${SrcFolder}curlpp/Form.cpp
   ${SrcFolder}curlpp/Exception.cpp
   ${SrcFolder}curlpp/Options.cpp

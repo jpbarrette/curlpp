@@ -1,7 +1,3 @@
-#include "utilspp/singleton/SingletonHolder.hpp"
-#include "utilspp/singleton/CreationStatic.hpp"
-
-
 #include "curlpp/cURLpp.hpp"
 #include "curlpp/Exception.hpp"
 
@@ -12,7 +8,7 @@ namespace
 {
 
 	
-	struct libcURLInstance
+  struct libcURLInstance
   {
     libcURLInstance();
 
