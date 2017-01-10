@@ -1,7 +1,12 @@
 project(curlpp) 
 
-# cmake 3.4 is required for CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
-cmake_minimum_required(VERSION 3.4) 
+if(WIN32)
+    # cmake 3.4 is required for CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
+    cmake_minimum_required(VERSION 3.4)
+else()
+    cmake_minimum_required(VERSION 3.0)
+endif()
+
 set(CMAKE_CXX_STANDARD 11) # C++11...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11

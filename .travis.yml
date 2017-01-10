@@ -29,7 +29,23 @@ addons:
       - libcurl4-openssl-dev
 
 before_script:
-  - ./autogen.sh
+  - mkdir build && cd build
+  - cmake ../
 
 script:
-  - ./configure && make
+  - make
+
+
+install:
+- echo install-----------------------------------------------------------------
+# Download and install libcurl 
+- if [[ $TRAVIS_OS_NAME == "osx" ]]; then
+    brew update;
+    brew install curl;
+  fi
+# install cmake 3.2 for precise
+- if [[ $NAME == "precise" ]]; then
+    sudo add-apt-repository ppa:george-edison55/precise-backports --yes;
+    sudo apt-get update;
+    sudo apt-get install cmake-data cmake;
+  fi  
