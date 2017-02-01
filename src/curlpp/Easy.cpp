@@ -120,6 +120,3 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & request)
 }
 
 
-#if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "./Easy.ins"
-#endif

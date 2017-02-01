@@ -144,6 +144,3 @@ void curlpp::logicAssert(const char * reason, bool isOkay)
      throw curlpp::LogicError(reason);
 }
 
-#if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "./Exception.ins"
-#endif

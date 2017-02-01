@@ -7,24 +7,11 @@
 *.dylib
 *.lai
 Makefile
-Makefile.in
 *~
 
 build/
 m4/
-aclocal.m4
 CMakeFiles/
-aclocal.m4.bak
-config.log
-config.status
-curlpp-config
-curlpp.pc
-curlpp.spec
-include/curlpp/config.h
-include/curlpp/config.h.in
-include/curlpp/stamp-h1
-libtool
-autom4te.cache/
 
 examples/example01
 examples/example02
