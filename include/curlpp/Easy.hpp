@@ -25,7 +25,6 @@
 #define CURLPP_EASY_HPP
 
 
-#include "internal/buildconfig.h"
 #include "internal/CurlHandle.hpp"
 #include "internal/OptionList.hpp"
 
@@ -43,7 +42,7 @@ namespace curlpp
 	* Detailed description.
 	*/
 
-	class CURLPPAPI Easy
+	class Easy
 	{
 
 	public: 
@@ -162,13 +161,10 @@ namespace curlpp
 
 namespace cURLpp = curlpp;
 
-
-#ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
 #include "Easy.inl"
-#endif
 
 // Not quite sure if we shouldn't pass a const handle and clone it instead.
-CURLPPAPI std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & handle);
+std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & handle);
 
 
 #endif // #ifndef CURLPP_EASY_HPP

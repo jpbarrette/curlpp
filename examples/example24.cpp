@@ -82,8 +82,8 @@ int main(int argc, char *argv[])
     
     // Set the debug callback to enable cURL 
     // to write result in a stream
-    curlpp::types::DebugFunctionFunctor functor(utilspp::BindFirst(utilspp::make_functor(&mObject, &MethodClass::debug), &request));
-    curlpp::options::DebugFunction * test = new curlpp::options::DebugFunction(functor);
+    using namespace std::placeholders;
+    curlpp::options::DebugFunction * test = new curlpp::options::DebugFunction(std::bind(&MethodClass::debug, &mObject, &request, _1, _2, _3));
     request.setOpt(test);
     
     // Setting the URL to retrive.

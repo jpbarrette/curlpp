@@ -25,7 +25,6 @@
 #define CURLPP_OPTION_CONTAINER_HPP
 
 
-#include "buildconfig.h"
 #include "OptionContainerType.hpp"
 
 
@@ -44,7 +43,7 @@ namespace internal
 	* This class is used to set an option to a handle and to keep it's value.
 	*/
 	template<class OptionType>
-	class CURLPPAPI OptionContainer
+	class OptionContainer
 	{
 
 	public:
@@ -101,11 +100,7 @@ namespace internal
 
 namespace cURLpp = curlpp;
 
-
-#ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "OptionContainer.inl"
-#endif
-
+#include "OptionContainer.inl"
 
 #endif // #ifndef CURLPP_OPTION_CONTAINER_HPP
 

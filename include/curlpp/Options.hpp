@@ -90,13 +90,8 @@ namespace options
 	typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor, CURLOPT_WRITEFUNCTION>
 		WriteFunction;
 
-	#ifdef HAVE_BOOST
-		typedef curlpp::OptionTrait<curlpp::types::BoostWriteFunction, CURLOPT_WRITEFUNCTION>
-			BoostWriteFunction;
-	#endif
 
-
-	/**
+       /**
 	* Using this option will reset CURLOPT_WRITEFUNCTION to 
 	* default callback. In fact, use only this option if you only 
 	* want libcURL to use the FILE * given in argument instead 
@@ -122,11 +117,6 @@ namespace options
 		typedef curlpp::OptionTrait<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
 			ReadFunction;
 
-	#ifdef HAVE_BOOST
-		typedef curlpp::OptionTrait<curlpp::types::BoostReadFunction, CURLOPT_READFUNCTION>
-			BoostReadFunction;
-
-	#endif
 	#else
 
 	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
@@ -137,10 +127,6 @@ namespace options
 		typedef curlpp::NotAvailableOptionTrait<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
 			ReadFunction;
 
-	#ifdef HAVE_BOOST
-		typedef curlpp::NotAvailableOptionTrait<curlpp::types::BoostReadFunction, CURLOPT_READFUNCTION>
-			BoostReadFunction;
-	#endif // HAVE_BOOST
 	#endif // CURLPP_ALLOW_NOT_AVAILABLE
 
 	#endif // LIBCURL_VERSION_NUM
@@ -166,35 +152,14 @@ namespace options
 	typedef curlpp::OptionTrait<curlpp::types::ProgressFunctionFunctor, CURLOPT_PROGRESSFUNCTION>
 		ProgressFunction;
 
-	#ifdef HAVE_BOOST
-		typedef curlpp::OptionTrait<curlpp::types::BoostProgressFunction, CURLOPT_PROGRESSFUNCTION>
-			BoostProgressFunction;
-	#endif
-
 	typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor, CURLOPT_HEADERFUNCTION>
 		HeaderFunction;
-
-	#ifdef HAVE_BOOST
-		typedef curlpp::OptionTrait<curlpp::types::BoostWriteFunction, CURLOPT_HEADERFUNCTION>
-			BoostHeaderFunction;
-	#endif
 
 	typedef curlpp::OptionTrait<curlpp::types::DebugFunctionFunctor, CURLOPT_DEBUGFUNCTION>
 		DebugFunction;
 
-	#ifdef HAVE_BOOST
-		typedef curlpp::OptionTrait<curlpp::types::BoostDebugFunction, CURLOPT_DEBUGFUNCTION>
-			BoostDebugFunction;
-	#endif
-
 	typedef curlpp::OptionTrait<curlpp::types::SslCtxFunctionFunctor, CURLOPT_SSL_CTX_FUNCTION>
 		SslCtxFunction;
-
-	#ifdef HAVE_BOOST
-		typedef curlpp::OptionTrait<curlpp::types::BoostSslCtxFunction, CURLOPT_SSL_CTX_FUNCTION>
-			BoostSslCtxFunction;
-	#endif
-
 
 	/**
 	* Error options.
@@ -365,7 +330,7 @@ namespace options
 namespace cURLpp = curlpp;
 
 
-CURLPPAPI std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
+std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
 
 
 #endif // #ifndef CURLPP_OPTIONS_HPP

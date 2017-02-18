@@ -25,7 +25,6 @@
 #define CURLPP_CURL_HANDLE_HPP
 
 
-#include "buildconfig.h"
 
 #include "../Exception.hpp"
 #include "../Types.hpp"
@@ -47,7 +46,7 @@ namespace internal
 	* Wrapper for CURL * handle.
 	*/
 
-	class CURLPPAPI CurlHandle
+	class CurlHandle
 	{
 
 	public:
@@ -199,9 +198,6 @@ namespace internal
 namespace cURLpp = curlpp;
 
 
-#ifdef CURLPP_INCLUDE_TEMPLATE_DEFINITIONS
-	#include "CurlHandle.inl"
-#endif
-
+#include "CurlHandle.inl"
 
 #endif // #ifndef CURLPP_CURL_HANDLE_HPP

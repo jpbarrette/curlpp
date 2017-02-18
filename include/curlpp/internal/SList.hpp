@@ -25,7 +25,6 @@
 #define CURLPP_SLIST_HPP
 
 
-#include "buildconfig.h"
 
 #include <curl/curl.h>
 
@@ -44,7 +43,7 @@ namespace internal
 	* This class is binding the curl_slist struct.
 	*/
 
-	class CURLPPAPI SList
+	class SList
 	{
 
 	public:
@@ -87,7 +86,7 @@ namespace internal
 namespace cURLpp = curlpp;
 
 
-std::ostream CURLPPAPI & operator<<(std::ostream & stream, const std::list<std::string> & value);
+std::ostream & operator<<(std::ostream & stream, const std::list<std::string> & value);
 
 
 #endif // #ifndef CURLPP_SLIST_HPP

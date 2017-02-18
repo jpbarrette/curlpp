@@ -25,13 +25,8 @@
 #define CURLPP_TYPES_HPP
 
 
-#include "internal/global.h"
 
-#ifdef HAVE_BOOST
-	#include <boost/function.hpp>
-#endif 
-
-#include <utilspp/Functors.hpp>
+#include <functional>
 
 
 namespace curlpp
@@ -41,39 +36,13 @@ namespace curlpp
 namespace types
 {
 
-
-	typedef utilspp::Functor< 
-		size_t, 
-		TYPE_LIST_3(char*, size_t, size_t)> WriteFunctionFunctor;
-
-	typedef utilspp::Functor< 
-		size_t, 
-		TYPE_LIST_3(char*, size_t, size_t)> ReadFunctionFunctor;
-
+	typedef std::function< size_t(char*, size_t, size_t) > WriteFunctionFunctor;
+	typedef std::function< size_t(char*, size_t, size_t) > ReadFunctionFunctor;
 	/// DebugFunctor related typedefs
-	typedef utilspp::Functor<
-		int,
-		TYPE_LIST_3(curl_infotype, 
-		char *, 
-		size_t)> DebugFunctionFunctor;
-
-	typedef utilspp::Functor< 
-		CURLcode,
-		TYPE_LIST_1(void *)> SslCtxFunctionFunctor;
-
-	typedef utilspp::Functor<
-		int,
-		TYPE_LIST_4(double, double, double, double)> ProgressFunctionFunctor;
-
-	#ifdef HAVE_BOOST
-		typedef boost::function3<size_t, char*, size_t, size_t> BoostWriteFunction;
-		typedef boost::function3<size_t, char*, size_t, size_t> BoostReadFunction;
-		typedef boost::function3<int, curl_infotype, char *, size_t> BoostDebugFunction;
-		typedef boost::function1<CURLcode, void *> BoostSslCtxFunction;
-		typedef boost::function4<int, double, double, double, double> BoostProgressFunction;
-	#endif
-
-
+        typedef std::function< int(curl_infotype, char *, size_t) > DebugFunctionFunctor;
+        typedef std::function< CURLcode(void *) > SslCtxFunctionFunctor;
+	typedef std::function< int(double, double, double, double)> ProgressFunctionFunctor;
+  
 } // namespace types
 
 namespace Types = types;

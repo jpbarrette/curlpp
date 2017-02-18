@@ -1,3 +1,4 @@
 - Need to fix the OptionList::print function.
 - Need to put WriteStream and ReadStream to be exception safe.
-- Need to have better define tests when boost isn't available
+- Need to put WriteStream and ReadStream to be exception safe.
+- Get rid of example 18 and 20

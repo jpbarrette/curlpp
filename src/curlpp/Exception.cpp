@@ -21,7 +21,6 @@
 *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-#include "curlpp/internal/global.h"
 #include "curlpp/Exception.hpp"
 
 curlpp::RuntimeError::~RuntimeError() throw()
@@ -145,6 +144,3 @@ void curlpp::logicAssert(const char * reason, bool isOkay)
      throw curlpp::LogicError(reason);
 }
 
-#if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "./Exception.ins"
-#endif

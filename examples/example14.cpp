@@ -37,6 +37,10 @@
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 
+#if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
+#pragma comment(lib, "Ws2_32.lib")
+#endif // WIN32
+
 int main(int argc, char *argv[])
 {
   if(argc < 3) {

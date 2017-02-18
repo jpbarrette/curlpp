@@ -1,4 +1,3 @@
-#include "curlpp/internal/global.h"
 #include "curlpp/internal/SList.hpp"
 
 #include "curlpp/Info.hpp"

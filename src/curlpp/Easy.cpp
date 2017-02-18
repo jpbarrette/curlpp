@@ -25,8 +25,6 @@
 #include "curlpp/Easy.hpp"
 #include "curlpp/Options.hpp"
 
-#include "curlpp/internal/global.h"
-#include "curlpp/internal/buildconfig.h"
 
 #include <memory>
 
@@ -122,6 +120,3 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & request)
 }
 
 
-#if defined(CURLPP_TEMPLATE_EXPLICIT_INSTANTIATION)
-	#include "./Easy.ins"
-#endif
