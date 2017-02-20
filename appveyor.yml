@@ -23,6 +23,8 @@ environment:
 
 install:
   - git clone https://github.com/Microsoft/vcpkg
+  - md vcpkg\downloads\nuget-3.5.0
+  - appveyor DownloadFile https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -FileName %appveyor_build_folder%\vcpkg\downloads\nuget-3.5.0\nuget.exe
   - cd vcpkg
   - powershell -exec bypass scripts\bootstrap.ps1
   - vcpkg install curl
