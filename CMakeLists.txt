@@ -7,6 +7,12 @@ else()
     cmake_minimum_required(VERSION 3.0)
 endif()
 
+# Conan.io integration
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/conanbuildinfo.cmake)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup()
+endif()
+
 set(CMAKE_CXX_STANDARD 11) # C++11...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
 set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
