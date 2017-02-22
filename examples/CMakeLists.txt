@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
-include(FindPkgConfig)
-pkg_check_modules(CURLPP REQUIRED curlpp)
+include(FindCurlpp)
+find_package(CURLPP REQUIRED curlpp)
 
 set(CMAKE_CXX_STANDARD 11) # C++11...
 set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
