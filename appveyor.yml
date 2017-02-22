@@ -36,7 +36,7 @@ install:
 
 build_script:
     - mkdir build.%BDIR%
-    - conan install --build=missing -s compiler="Visual Studio" -s compiler.version=%PRJ_GEN_VERSION% .
+    - conan install --build=missing -s compiler="Visual Studio" -s compiler.version=%PRJ_GEN_VERSION% -s build_type=%PRJ_CFG% .
     - cd build.%BDIR%
     - cmake .. -G"%PRJ_GEN%"
     - cmake --build . --config %PRJ_CFG% --clean-first

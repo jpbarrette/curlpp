@@ -97,7 +97,7 @@ message(STATUS
 )
 
 add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
-target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
+target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
 target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES})
