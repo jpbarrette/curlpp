@@ -3,8 +3,20 @@ project(curlpp)
 if(WIN32)
     # cmake 3.4 is required for CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS
     cmake_minimum_required(VERSION 3.4)
-else()
-    cmake_minimum_required(VERSION 3.0)
+
+    # c++ 11 support from cmake 3.4 or newer
+    set(CMAKE_CXX_STANDARD 11) # C++11...
+    set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
+    set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
+
+    set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+  else()
+    cmake_minimum_required(VERSION 2.8)
+    # c++11 support for cmake 2.8.12 or newer
+    #
+    # for non-windows platform we try to keep cmake 2.8 support
+    # since entreprise distribution tends to have 2.8 version.
+    add_compile_options(-std=c++11) 
 endif()
 
 # Conan.io integration
@@ -13,11 +25,6 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/conanbuildinfo.cmake)
     conan_basic_setup()
 endif()
 
-set(CMAKE_CXX_STANDARD 11) # C++11...
-set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
-set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
-
-set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
 set(CURLPP_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(CURLPP_BINARY_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
@@ -70,7 +77,6 @@ DisplayList("Using Source Files:" "${SourceFileList}")
 
 message(STATUS "Looking for CURL")
 include(FindCURL)
-cmake_minimum_required(VERSION 3.0)
 find_package(CURL REQUIRED)
 
 if(${CURL_FOUND})
