@@ -78,6 +78,7 @@ file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
 target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
 
