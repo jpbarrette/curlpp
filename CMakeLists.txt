@@ -69,6 +69,11 @@ include_directories(
 #########################################################################################
 # Define Targets
 
+# If building on windows, install path will be in build/winbuild
+if(CMAKE_SYSTEM MATCHES "Windows")
+   set(CMAKE_INSTALL_PREFIX "winbuild")
+endif()
+
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
