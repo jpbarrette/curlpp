@@ -1,6 +1,6 @@
 # This is a comment
 prefix=@prefix@
-exec_prefix=@exec_prefix@
+exec_prefix=@prefix@
 includedir=@includedir@
 
 Name: curlpp

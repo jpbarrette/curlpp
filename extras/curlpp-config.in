@@ -6,7 +6,6 @@
 # $Id: curlpp-config.in,v 1.4 2004/10/05 01:48:40 jpbl Exp $
 #
 prefix=@prefix@
-exec_prefix=@exec_prefix@
 includedir=@includedir@
 
 usage()
