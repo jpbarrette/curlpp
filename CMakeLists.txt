@@ -75,6 +75,12 @@ add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
 target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
+# Making shared and static libraries have the same root name, but different suffixes
+SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
+# Now the library target "curlpp_static" will be named "curlpp.lib" with MS tools.
+# This conflicts with the "curlpp.lib" import library corresponding to "curlpp.dll",
+# so we add a "lib" prefix (which is default on other platforms anyway):
+SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES PREFIX "lib")
 target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
 
 # install headers
