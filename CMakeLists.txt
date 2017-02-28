@@ -24,12 +24,19 @@ if(WIN32)
 
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
   else()
-    cmake_minimum_required(VERSION 2.8)
-    # c++11 support for cmake 2.8.12 or newer
-    #
-    # for non-windows platform we try to keep cmake 2.8 support
-    # since entreprise distribution tends to have 2.8 version.
-    add_compile_options(-std=c++11) 
+    if (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} VERSION_LESS 3.1)
+        cmake_minimum_required(VERSION 2.8)
+        # c++11 support for cmake 2.8.12 - 3.0.x
+        #
+        # for non-windows platform we try to keep cmake 2.8 support
+        # since entreprise distribution tends to have 2.8 version.
+        add_compile_options(-std=c++11)
+    else()
+        # c++ 11 support from cmake 3.1 or newer
+        set(CMAKE_CXX_STANDARD 11) # C++11...
+        set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
+        set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
+    endif()
 endif()
 
 
