@@ -42,3 +42,6 @@ examples/example25
 *.exe
 CMakeCache.txt
 
+conanbuildinfo.cmake
+conaninfo.txt
+bin/

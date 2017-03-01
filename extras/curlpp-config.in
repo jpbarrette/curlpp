@@ -6,7 +6,6 @@
 # $Id: curlpp-config.in,v 1.4 2004/10/05 01:48:40 jpbl Exp $
 #
 prefix=@prefix@
-exec_prefix=@exec_prefix@
 includedir=@includedir@
 
 usage()
@@ -77,7 +76,7 @@ while test $# -gt 0; do
        	echo -L@libdir@ @LDFLAGS@ @LIBS@ `curl-config --libs` -lcurlpp
        	;;
     --static-libs)
-       	echo @libdir_static@/libcurlpp_static.@libext@ @LDFLAGS@ @LIBS@ `curl-config --static-libs`
+       	echo @libdir_static@/libcurlpp.@libext@ @LDFLAGS@ @LIBS@ `curl-config --static-libs`
         ;;
 
     *)
