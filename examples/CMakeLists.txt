@@ -1,11 +1,25 @@
-cmake_minimum_required(VERSION 3.0)
-include(FindCurlpp)
-find_package(CURLPP REQUIRED curlpp)
+cmake_minimum_required(VERSION 2.8)
 
-set(CMAKE_CXX_STANDARD 11) # C++11...
-set(CMAKE_CXX_STANDARD_REQUIRED ON) #...is required...
-set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
+# Conan.io integration
+if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/conanbuildinfo.cmake)
+    include(${CMAKE_CURRENT_SOURCE_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup()
+endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/../extras")
+message(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
+
+
+include(FindCURLpp)
+find_package(CURLPP REQUIRED)
+
+
+# c++11 support for cmake 2.8.12 or newer
+#
+# for non-windows platform we try to keep cmake 2.8 support
+# since entreprise distribution tends to have 2.8 version.
+add_compile_options(-std=c++11) 
+include_directories(${CURLPP_INCLUDE_DIRS})
 
 file(GLOB ExamplesFileList "*.cpp")
 

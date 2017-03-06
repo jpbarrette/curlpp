@@ -2,6 +2,7 @@
 prefix=@prefix@
 exec_prefix=@prefix@
 includedir=@includedir@
+libdir=@libdir@
 
 Name: curlpp
 Description: cURLpp is a libcurl C++ wrapper
