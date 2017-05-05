@@ -78,7 +78,9 @@ include_directories(
 
 # If building on windows, install path will be in build/winbuild
 if(CMAKE_SYSTEM MATCHES "Windows")
-   set(CMAKE_INSTALL_PREFIX "winbuild")
+   if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+      set(CMAKE_INSTALL_PREFIX "winbuild")
+   endif()
 endif()
 
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
