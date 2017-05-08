@@ -29,6 +29,7 @@
 #include <curl/curl.h>
 
 #include <list>
+#include <memory>
 #include <string>
 
 namespace curlpp
@@ -48,13 +49,13 @@ namespace internal
 
 	public:
 
-		SList();
+		SList() : mList(nullptr) {}
 		SList(const SList & rhs);
 
 		/**
 		* The list passed in as an argument is now possessed by the class.
 		*/
-		SList(curl_slist * list);
+		SList(std::unique_ptr<curl_slist> list);
 
 		explicit SList(const std::list<std::string> & list);
 		~SList();
@@ -65,16 +66,15 @@ namespace internal
 		curl_slist * cslist() const;
 		std::list<std::string> list();
 
+        static void buildList(std::unique_ptr<curl_slist> list, std::list<std::string> & value);
+
 	private:
 
 		void set(const std::list<std::string> & list);
-		void update();
 		void clear();
 		void constructFrom(curl_slist * list);
 
 		curl_slist * mList;
-		std::list<std::string> mData;
-
 	};
 
 

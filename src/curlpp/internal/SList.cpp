@@ -1,5 +1,6 @@
 #include "curlpp/internal/SList.hpp"
 
+#include <cassert>
 #include <ostream>
 #include <string>
 
@@ -13,31 +14,22 @@ namespace internal
 
 
 SList::SList(const SList & rhs) 
-	: mList(0)
-	, mData(rhs.mData)
+	: mList(nullptr)
 {
-	update();
+    constructFrom(rhs.mList);
 }
 
 
-SList::SList(curl_slist * list)
-	: mList(list)
-{
-	constructFrom(list);
-}
+SList::SList(std::unique_ptr<curl_slist> list)
+	: mList(list.release())
+{}
 
 
 SList::SList(const std::list<std::string> & rhs)
-	: mList(0)
-	, mData(rhs)
+	: mList(nullptr)
 {
-	update();
+	set(rhs);
 }
-
-
-SList::SList() 
-	: mList(0)
-{}
 
 
 SList::~SList()
@@ -49,48 +41,42 @@ SList::~SList()
 void
 SList::clear()
 {
-	if(mList != 0)
+	if(mList != nullptr)
 	{
 		curl_slist_free_all(mList);
-		mList = 0;
+		mList = nullptr;
 	}
 }
 
 
-void 
+void
 SList::constructFrom(curl_slist * list)
 {
-	mData.clear();
+    // mList needs to be null. This guarantees that we won't
+    // stumble upon bugs like current given list is a portion
+    // of owned list or vice versa, and we endup deleting a
+    // portion of it.
+    //
+    // So, we'll be sure to create a new list.
+    assert(!mList);
 
 	curl_slist * c = list;
 	while(c)
 	{
-		mData.push_back(c->data);
+        mList = curl_slist_append(mList, c->data);
 		c = c->next;
 	}
-
-	update();
 }
 
 
-void 
+void
 SList::set(const std::list<std::string> & list) 
 {
-	mData = list;
-	update();
-}
+    clear();
 
-
-void 
-SList::update() 
-{
-	clear();
-
-	for(std::list<std::string>::const_iterator pos = mData.begin();
-			pos != mData.end();
-			pos++)
+    for(auto& elem : list)
 	{
-		mList = curl_slist_append(mList, (*pos).c_str());
+		mList = curl_slist_append(mList, elem.c_str());
 	}
 }
 
@@ -117,10 +103,33 @@ SList::cslist() const
 
 
 std::list<std::string>
-SList::list() 
+SList::list()
 {
-	return mData;
+    std::list<std::string> returnValue;
+    curl_slist * c = mList;
+	while(c)
+	{
+        returnValue.push_back(c->data);
+        c = c->next;
+	}
+
+    return returnValue;
 }
+
+void SList::buildList(std::unique_ptr<curl_slist> list, std::list<std::string> & value)
+{
+    value.clear();
+
+    SList slist(std::move(list));
+
+    curl_slist * c = slist.mList;
+	while(c)
+	{
+        value.push_back(c->data);
+        c = c->next;
+	}
+}
+
 
 
 
