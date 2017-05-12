@@ -21,7 +21,7 @@ SList::SList(const SList & rhs)
 
 
 SList::SList(curl_slist * list)
-	: mList(NULL)
+	: mList(list)
 {
 	constructFrom(list);
 }
