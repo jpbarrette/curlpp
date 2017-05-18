@@ -2,8 +2,9 @@
 
 #include "curlpp/Info.hpp"
 
-#include <string>
 #include <list>
+#include <memory>
+#include <string>
 
 
 namespace curlpp 
@@ -23,15 +24,15 @@ InfoTypeConverter<std::string>::get(const curlpp::Easy & handle,
 
 
 template<>
-void 
+void
 InfoTypeConverter<std::list<std::string> >::get(const curlpp::Easy & handle,
 						   CURLINFO info,
 						   std::list<std::string> & value)
-{ 
+{
   curl_slist * tmpList = NULL;
   InfoGetter::get(handle, info, tmpList);
-	internal::SList slist(tmpList);
-  value = slist.list();
+
+  internal::SList::buildList(std::unique_ptr<curl_slist>(tmpList), value);
 }
 
 
