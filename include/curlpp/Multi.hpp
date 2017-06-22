@@ -30,6 +30,9 @@
 #include <list>
 #include <map>
 
+#if LIBCURL_VERSION_NUM >= 0x071c00
+#include <vector>
+#endif // LIBCURL_VERSION_NUM
 
 namespace curlpp
 {
@@ -66,6 +69,13 @@ namespace curlpp
 			Msgs;
 		
 		Msgs info();
+
+#if LIBCURL_VERSION_NUM >= 0x070f04
+		long timeout();
+#endif // LIBCURL_VERSION_NUM
+#if LIBCURL_VERSION_NUM >= 0x071c00
+		int wait(int timeout_ms, std::vector<curl_waitfd> &extra_fds = std::vector<curl_waitfd>());
+#endif // LIBCURL_VERSION_NUM
 
 	private:
 
