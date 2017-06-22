@@ -27,7 +27,7 @@
 
 
 #include <functional>
-#include <curl/system.h>
+#include <curl/curl.h>
 
 namespace curlpp
 {
