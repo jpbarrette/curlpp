@@ -129,7 +129,14 @@ curlpp::Multi::timeout()
 
 #if LIBCURL_VERSION_NUM >= 0x071c00
 int
-curlpp::Multi::wait(int timeout_ms, std::vector<curl_waitfd> &extra_fds /* = std::vector<curl_waitfd>() */)
+curlpp::Multi::wait(int timeout_ms)
+{
+  std::vector<curl_waitfd> handles;
+  return wait(timeout_ms, handles);
+}
+
+int
+curlpp::Multi::wait(int timeout_ms, std::vector<curl_waitfd> &extra_fds)
 {
   int numfds;
   CURLMcode code = curl_multi_wait(mMultiHandle, extra_fds.data(), static_cast<int>(extra_fds.size()), timeout_ms, &numfds);

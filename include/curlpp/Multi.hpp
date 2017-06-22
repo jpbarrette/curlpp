@@ -74,7 +74,8 @@ namespace curlpp
 		long timeout();
 #endif // LIBCURL_VERSION_NUM
 #if LIBCURL_VERSION_NUM >= 0x071c00
-		int wait(int timeout_ms, std::vector<curl_waitfd> &extra_fds = std::vector<curl_waitfd>());
+		int wait(int timeout_ms);
+		int wait(int timeout_ms, std::vector<curl_waitfd> &extra_fds);
 #endif // LIBCURL_VERSION_NUM
 
 	private:
