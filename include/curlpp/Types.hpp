@@ -27,7 +27,7 @@
 
 
 #include <functional>
-
+#include <curl/system.h>
 
 namespace curlpp
 {
@@ -39,10 +39,10 @@ namespace types
 	typedef std::function< size_t(char*, size_t, size_t) > WriteFunctionFunctor;
 	typedef std::function< size_t(char*, size_t, size_t) > ReadFunctionFunctor;
 	/// DebugFunctor related typedefs
-        typedef std::function< int(curl_infotype, char *, size_t) > DebugFunctionFunctor;
-        typedef std::function< CURLcode(void *) > SslCtxFunctionFunctor;
-	typedef std::function< int(double, double, double, double)> ProgressFunctionFunctor;
-  
+	typedef std::function< int(curl_infotype, char *, size_t) > DebugFunctionFunctor;
+	typedef std::function< CURLcode(void *) > SslCtxFunctionFunctor;
+	typedef std::function< int(double, double, double, double) > ProgressFunctionFunctor;
+	typedef std::function< int(curl_off_t, curl_off_t, curl_off_t, curl_off_t) > XferInfoFunctionFunctor;
 } // namespace types
 
 namespace Types = types;

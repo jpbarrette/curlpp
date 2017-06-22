@@ -161,6 +161,15 @@ namespace options
 	typedef curlpp::OptionTrait<curlpp::types::SslCtxFunctionFunctor, CURLOPT_SSL_CTX_FUNCTION>
 		SslCtxFunction;
 
+#if LIBCURL_VERSION_NUM >= 0x072000
+	typedef curlpp::OptionTrait<curlpp::types::XferInfoFunctionFunctor, CURLOPT_XFERINFOFUNCTION>
+		XferInfoFunction;
+#else
+#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+	typedef curlpp::NotAvailableOptionTrait<curlpp::types::XferInfoFunctionFunctor> XferInfoFunction;
+#endif // CURLPP_ALLOW_NOT_AVAILABLE
+#endif // LIBCURL_VERSION_NUM
+
 	/**
 	* Error options.
 	*/

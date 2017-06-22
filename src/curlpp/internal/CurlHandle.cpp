@@ -270,6 +270,37 @@ CurlHandle::executeProgressFunctor(double dltotal,
 	return CURLE_ABORTED_BY_CALLBACK;
 }
 
+#if LIBCURL_VERSION_NUM >= 0x072000
+int
+CurlHandle::executeXferInfoFunctor(	curl_off_t dltotal,
+									curl_off_t dlnow,
+									curl_off_t ultotal,
+									curl_off_t ulnow)
+{
+	if (!mXferInfoFunctor)
+	{
+		setException(new CallbackException<curlpp::LogicError>(curlpp::LogicError("Null XferInfo functor")));
+		return CURLE_ABORTED_BY_CALLBACK;
+	}
+
+	try
+	{
+		return mXferInfoFunctor(dltotal, dlnow, ultotal, ulnow);
+	}
+
+	catch (curlpp::CallbackExceptionBase * e)
+	{
+		setException(e);
+	}
+
+	catch (...)
+	{
+		setException(new CallbackException<curlpp::UnknowException>(curlpp::UnknowException()));
+	}
+
+	return CURLE_ABORTED_BY_CALLBACK;
+}
+#endif // LIBCURL_VERSION_NUM
 
 int 
 CurlHandle::executeDebugFunctor(curl_infotype info, char * buffer, size_t size)
