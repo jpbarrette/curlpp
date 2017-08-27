@@ -93,6 +93,17 @@ struct Callbacks
 		return handle->executeProgressFunctor(dltotal, dlnow, ultotal, ulnow);
 	};
 
+#if LIBCURL_VERSION_NUM >= 0x072000
+	static int
+	XferInfoCallback(internal::CurlHandle * handle,
+											curl_off_t dltotal,
+											curl_off_t dlnow,
+											curl_off_t ultotal,
+											curl_off_t ulnow)
+	{
+		return handle->executeXferInfoFunctor(dltotal, dlnow, ultotal, ulnow);
+	};
+#endif // LIBCURL_VERSION_NUM
 
 	static int
 	DebugCallback(CURL *,
@@ -222,6 +233,15 @@ void OptionSetter<curlpp::types::BoostProgressFunction, CURLOPT_PROGRESSFUNCTION
 
 #endif
 
+#if LIBCURL_VERSION_NUM >= 0x072000
+void OptionSetter<curlpp::types::XferInfoFunctionFunctor, CURLOPT_XFERINFOFUNCTION>
+::setOpt(internal::CurlHandle * handle, ParamType value)
+{
+	handle->option(CURLOPT_XFERINFOFUNCTION, Callbacks::XferInfoCallback);
+	handle->option(CURLOPT_XFERINFODATA, handle);
+	handle->setXferInfoFunctor(value);
+}
+#endif // LIBCURL_VERSION_NUM
 
 void OptionSetter<curlpp::types::WriteFunctionFunctor, CURLOPT_HEADERFUNCTION>
 ::setOpt(internal::CurlHandle * handle, ParamType value)

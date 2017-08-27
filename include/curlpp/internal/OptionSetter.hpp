@@ -347,6 +347,28 @@ namespace internal
 
 #endif // #ifdef HAVE_BOOST
 
+#if LIBCURL_VERSION_NUM >= 0x072000
+	/**
+	* Specialization.
+	*/
+
+	template<>
+	class OptionSetter<curlpp::types::XferInfoFunctionFunctor,
+																CURLOPT_XFERINFOFUNCTION>
+	{
+
+	public:
+
+		typedef curlpp::types::XferInfoFunctionFunctor
+			OptionValueType;
+
+		typedef curlpp::internal::OptionContainerType<OptionValueType>::HandleOptionType
+			ParamType;
+
+		static void setOpt(internal::CurlHandle * handle, ParamType value);
+
+	};
+#endif // LIBCURL_VERSION_NUM
 
 	/**
 	* Specialization.
