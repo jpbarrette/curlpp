@@ -113,3 +113,38 @@ curlpp::Multi::info()
   return result;
 }
 
+#if LIBCURL_VERSION_NUM >= 0x070f04
+long
+curlpp::Multi::timeout()
+{
+  long timeout;
+  CURLMcode code = curl_multi_timeout(mMultiHandle, &timeout);
+  if (code != CURLM_OK) {
+    throw curlpp::RuntimeError(curl_multi_strerror(code));
+  }
+
+  return timeout;
+}
+#endif // LIBCURL_VERSION_NUM
+
+#if LIBCURL_VERSION_NUM >= 0x071c00
+int
+curlpp::Multi::wait(int timeout_ms)
+{
+  std::vector<curl_waitfd> handles;
+  return wait(timeout_ms, handles);
+}
+
+int
+curlpp::Multi::wait(int timeout_ms, std::vector<curl_waitfd> &extra_fds)
+{
+  int numfds;
+  CURLMcode code = curl_multi_wait(mMultiHandle, extra_fds.data(), static_cast<int>(extra_fds.size()), timeout_ms, &numfds);
+  if (code != CURLM_OK) {
+    throw curlpp::RuntimeError(curl_multi_strerror(code));
+  }
+
+  return numfds;
+}
+#endif // LIBCURL_VERSION_NUM
+
