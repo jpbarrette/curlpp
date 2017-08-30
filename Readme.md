@@ -20,7 +20,7 @@ First, I need to quote Daniel Stenberg, the maintener of libcURL:
 <cite>You can use libcURL instantly from within your C++ programs. You don't need cURLpp for that, cURLpp just adds an OO'ified layer that libcURL doesn't normally provide.</cite> It means that you need to be sure that you need, or want, cURLpp features. If not, I suggest to use directly the libcURL library. So, what are thoses features that cURLpp offers?
 
 * You can query handles for option values (version 0.5.x and newer only).
-* It use the C++ standard library structures instead of home made ones.
+* It uses the C++ standard library structures instead of home made ones.
 * It is exception safe.
 * It is type safe.
 
