@@ -10,7 +10,7 @@ endif()
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/../extras")
 message(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
 
-include(FindCURLpp)
+include(FindCURLPP)
 find_package(CURLPP REQUIRED)
 
 message(STATUS "Looking for CURL")
