@@ -43,6 +43,12 @@ file(GLOB ExamplesFileList "*.cpp")
 # Create a meta target to create examples
 add_custom_target(build_all_examples COMMENT A target that requires all the examples.)
 
+include_directories(
+  ${CMAKE_CURRENT_SOURCE_DIR}/../include
+  ${CURL_INCLUDE_DIRS}
+)
+
+
 message(STATUS "Creating build rules for Examples:")
 foreach(Example ${ExamplesFileList})
   message(STATUS "\tCreating build rule for ${Example}")

@@ -6,9 +6,11 @@
 #include <curlpp/Infos.hpp>
 #include <string>
 #include <string.h>
+#include <thread>
 #include <iostream>
 #include <sstream>
 #include <unistd.h>
+
 
 
 // Better exception handling: https://stackoverflow.com/questions/7272093/what-happens-when-an-exception-goes-unhandled-in-a-multithreaded-c11-program
@@ -21,25 +23,28 @@ using namespace std;
 void childtask() {
 
 	// HARDCODED URL
-	const char* googleurl = "https://www.google.co.in";
+//    std::string googleurl = "https://www.google.co.in";
+    const char* test_url = "https://httpbin.org/";
 
-	char url[URL_SIZE]={0};
-	strcat(url, googleurl);
-	curlpp::Easy request;
+    curlpp::Easy *request = nullptr;
+    std::stringstream *response = nullptr;
+
 	try {
-		request.setOpt(new curlpp::options::Url(url)); 
-		request.setOpt(new curlpp::options::Verbose(true)); 
-		printf("Requesting to google : \n");
+        request = new curlpp::Easy();
+		request->setOpt(new curlpp::options::Url(test_url));
+		request->setOpt(new curlpp::options::Verbose(true)); 
+		printf("Requesting to google : %s\n", test_url);
 
-		std::stringstream response;
-		request.setOpt(new curlpp::options::WriteStream(response));
-		request.perform();
-		string response_str = response.str();
+		response = new stringstream();;
+		request->setOpt(new curlpp::options::WriteStream(response));
+		request->perform();
+		string response_str = response->str();
 		printf("********\n");
 		printf("\n");
 		printf("Response: %s \n", response_str.c_str());
 		printf("\n");
 		printf("**********\n");
+
 	}
 	catch ( curlpp::LogicError & e ) {
 		printf(" Logic Error: %s \n", e.what());
@@ -47,19 +52,26 @@ void childtask() {
 	catch ( curlpp::RuntimeError & e ) {
 		printf(" Runtime Error: %s \n", e.what());
 	}
+
+    delete request;
+    delete response;
 }
 
 
 int main() {
-	
-	thread childThread[NO_CHILD_THREAD];
 
-    // spawn n threads:
-    for (int i = 0; i < n; i++) {
-        childThread[i] = thread(childtask);
+    curlpp::Cleanup myCleanup;
+
+    std::thread childThread[NO_CHILD_THREAD];
+
+    for (unsigned i = 0; i < 200; ++i) {
+        // spawn n threads:
+        for (int i = 0; i < NO_CHILD_THREAD; i++) {
+            childThread[i] = std::thread(childtask);
+        }
+
+        for (auto& th : childThread) {
+            th.join();
+        }
     }
-
-    for (auto& th : threads) {
-        th.join();
-	}
 }
