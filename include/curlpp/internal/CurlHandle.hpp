@@ -136,6 +136,17 @@ namespace internal
 			mProgressFunctor = functor;
 		}
 
+#if LIBCURL_VERSION_NUM >= 0x072000
+		int executeXferInfoFunctor(	curl_off_t dltotal,
+									curl_off_t dlnow,
+									curl_off_t ultotal,
+									curl_off_t ulnow);
+
+		void setXferInfoFunctor(curlpp::types::XferInfoFunctionFunctor functor)
+		{
+			mXferInfoFunctor = functor;
+		}
+#endif // LIBCURL_VERSION_NUM
 
 		int executeDebugFunctor(curl_infotype, char *, size_t);
 
@@ -183,6 +194,9 @@ namespace internal
 		curlpp::types::WriteFunctionFunctor mHeaderFunctor;
 		curlpp::types::ReadFunctionFunctor mReadFunctor;
 		curlpp::types::ProgressFunctionFunctor mProgressFunctor;
+#if LIBCURL_VERSION_NUM >= 0x072000
+		curlpp::types::XferInfoFunctionFunctor mXferInfoFunctor;
+#endif // LIBCURL_VERSION_NUM
 		curlpp::types::DebugFunctionFunctor mDebugFunctor;
 		curlpp::types::SslCtxFunctionFunctor mSslFunctor;
 		curlpp::CallbackExceptionBase * mException;

@@ -30,7 +30,7 @@ if(WIN32)
         #
         # for non-windows platform we try to keep cmake 2.8 support
         # since entreprise distribution tends to have 2.8 version.
-        add_compile_options(-std=c++11)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
     else()
         # c++ 11 support from cmake 3.1 or newer
         set(CMAKE_CXX_STANDARD 11) # C++11...
@@ -78,7 +78,9 @@ include_directories(
 
 # If building on windows, install path will be in build/winbuild
 if(CMAKE_SYSTEM MATCHES "Windows")
-   set(CMAKE_INSTALL_PREFIX "winbuild")
+   if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+      set(CMAKE_INSTALL_PREFIX "winbuild")
+   endif()
 endif()
 
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
@@ -88,7 +90,12 @@ target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
+target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
 
+
+##################################
+# STATIC VS DYNAMIC LIBRARY
+#
 # Make sure that on unix-platforms shared and static libraries have
 # the same root name, but different suffixes.
 #
@@ -100,7 +107,11 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME ${PROJECT_NA
 # This conflicts with the "curlpp.lib" import library corresponding to "curlpp.dll",
 # so we add a "lib" prefix (which is default on other platforms anyway):
 SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES PREFIX "lib")
-target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
+# Help CMake 2.6.x and lower (not necessary for 2.8 and above, but doesn't hurt):
+SET_TARGET_PROPERTIES(${PROJECT_NAME} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+##################################
+
 
 # install headers
 install(DIRECTORY include/utilspp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/utilspp")
