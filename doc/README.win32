@@ -192,20 +192,11 @@ NOTES
     If you need OpenSSL for Windows platform take a look at http://www.slproweb.com/products/Win32OpenSSL.html
     If you installed OpenSSL downloaded from the above link you'll find .lib files of all four build categories
     in the /lib/vc directory.
-    
-    
-    Building with support for Boost
-    
-    curlpp has ability to use some features from the Boost library. If you want to build curlpp with support for Boost
-    you have to set value of BOOST_PATH user macro to your installation of Boost before building curlpp.
-    This variable is used in the project file for VC9 to find include files of Boost.
-    You also have to define preprocessor symbol HAVE_BOOST. You can do it in
-    Project/Properties/C/C++/Preprocessor/Preprocessor Definitions.
-	
+
 
     Project propery sheets
     
-    All user macros like LIBCURL_PATH, OPENSSL_PATH, BOOST_PATH, CURLPP_INCLUDE_PATH, CURLPP_LIB_PATH, WIN_SDK_DIR,
+    All user macros like LIBCURL_PATH, OPENSSL_PATH, CURLPP_INCLUDE_PATH, CURLPP_LIB_PATH, WIN_SDK_DIR,
 	CURLPP_EXAMPLES_OUT_DIR, etc. 
 	are defined in project property sheet files named 
 	curlpp.common.vsprops   - options and macros used during build of library itself and during build of examples
