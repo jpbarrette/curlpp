@@ -67,11 +67,6 @@ else()
   message(FATAL_ERROR "Could not find CURL")
 endif()
 
-# All following targets should search these directories for headers
-include_directories( 
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${CURL_INCLUDE_DIRS}
-)
 
 #########################################################################################
 # Define Targets
@@ -83,11 +78,17 @@ if(CMAKE_SYSTEM MATCHES "Windows")
    endif()
 endif()
 
+set(CURLPP_INCLUDE_DIRS
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+  ${CURL_INCLUDE_DIRS}
+)
+
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
 target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
+target_include_directories(${PROJECT_NAME} PUBLIC "${CURLPP_INCLUDE_DIRS}")
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
 
@@ -103,6 +104,7 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME ${PROJECT_NA
 # so we add a "lib" prefix (which is default on other platforms anyway):
 SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES PREFIX "lib")
 target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
+target_include_directories(${PROJECT_NAME}_static PUBLIC "${CURLPP_INCLUDE_DIRS}")
 
 # install headers
 install(DIRECTORY include/utilspp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/utilspp")
