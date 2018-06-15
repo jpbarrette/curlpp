@@ -81,13 +81,15 @@ int main(int argc, char* argv[]) {
     std::ostringstream myStream;
     MethodClass mObject(&myStream);
 
-// Set the writer callback to enable cURL
-// to write result in a memory area
+    // Set the writer callback to enable cURL
+    // to write result in a memory area
 #ifdef HAVE_BOOST
-    curlpp::options::BoostWriteFunction* test =
-        new curlpp::options::BoostWriteFunction(
-            boost::bind(&MethodClass::write, &mObject, &request, _1, _2, _3));
-    request.setOpt(test);
+    // These boost functions have been deprecated out
+    /*
+    curlpp::options::BoostWriteFunction *test = new
+    curlpp::options::BoostWriteFunction(boost::bind(&MethodClass::write,
+    &mObject, &request, _1, _2, _3)); request.setOpt(test);
+    */
 #endif /* HAVE_BOOST */
 
     // Setting the URL to retrive.
