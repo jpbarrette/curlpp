@@ -27,7 +27,6 @@
 * 
 */
 
-
 #include <cstdlib>
 #include <cerrno>
 
@@ -36,12 +35,10 @@
 #include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
   if(argc < 2) {
     std::cerr << "Example 12: Wrong number of arguments" << std::endl 
-	      << "Example 12: Usage: example12 url" 
-	      << std::endl;
+              << "Example 12: Usage: example12 url" << std::endl;
     return EXIT_FAILURE;
   }
   
@@ -63,11 +60,9 @@ int main(int argc, char *argv[])
     request.setOpt(new curlpp::options::PostFieldSize(5));
     
     request.perform(); 
-  }
-  catch ( curlpp::LogicError & e ) {
+  } catch (curlpp::LogicError& e) {
     std::cout << e.what() << std::endl;
-  }
-  catch ( curlpp::RuntimeError & e ) {
+  } catch (curlpp::RuntimeError& e) {
     std::cout << e.what() << std::endl;
   }
 

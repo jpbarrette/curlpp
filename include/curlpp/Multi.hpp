@@ -24,7 +24,6 @@
 #ifndef CURLPP_MULTI_HPP
 #define CURLPP_MULTI_HPP
 
-
 #include <curl/multi.h>
 
 #include <list>
@@ -40,19 +39,14 @@ namespace curlpp
 
 	class Easy;
 
-	class Multi
-	{
-
+class Multi {
 	public:
-
-		struct Info 
-		{
+  struct Info {
 			CURLcode code;
 			CURLMSG msg;
 		};
 
 	public:
-
 		Multi();
 		~Multi();
 
@@ -65,8 +59,7 @@ namespace curlpp
 								fd_set * exc_fd_set,
 								int * max_fd);
 
-		typedef std::list<std::pair<const curlpp::Easy *, Multi::Info> >
-			Msgs;
+  typedef std::list<std::pair<const curlpp::Easy*, Multi::Info> > Msgs;
 		
 		Msgs info();
 
@@ -79,15 +72,12 @@ namespace curlpp
 #endif // LIBCURL_VERSION_NUM
 
 	private:
-
 		CURLM * mMultiHandle;
 		std::map<CURL *, const curlpp::Easy *> mHandles;
 	};
 
-
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
-
 
 #endif // #ifndef CURLPP_MULTI_HPP

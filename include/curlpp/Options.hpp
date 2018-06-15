@@ -24,14 +24,14 @@
 #ifndef CURLPP_OPTIONS_HPP
 #define CURLPP_OPTIONS_HPP
 
-
 #include "Option.hpp"
 
 #include <iostream> 
 
-
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
-#define DEF_IF_ALLOW_AVAILABLE (type,option,name) typedef curlpp::NotAvailableOptionTrait<type, option> name;
+#define DEF_IF_ALLOW_AVAILABLE                                               \
+  (type, option, name) typedef curlpp::NotAvailableOptionTrait<type, option> \
+      name;
 #endif
 
 // #begin define OPTION(version,type,option,name) 
@@ -42,14 +42,9 @@
 // #endif
 // #end
 
+namespace curlpp {
 
-namespace curlpp
-{
-
-
-namespace options
-{
-
+namespace options {
 
 	/**
 	* Cookie interface.
@@ -79,7 +74,6 @@ namespace options
 
 	typedef curlpp::OptionTrait<bool, CURLOPT_NOPROGRESS> NoProgress;
 
-
 	/**
 	* Callback options. 
 	*/
@@ -87,9 +81,9 @@ namespace options
 	typedef curlpp::OptionTrait<curl_write_callback, CURLOPT_WRITEFUNCTION>
 		WriteFunctionCurlFunction;
 
-	typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor, CURLOPT_WRITEFUNCTION>
+typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor,
+                            CURLOPT_WRITEFUNCTION>
 		WriteFunction;
-
 
        /**
 	* Using this option will reset CURLOPT_WRITEFUNCTION to 
@@ -104,33 +98,35 @@ namespace options
 	#else
 	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
 		typedef curlpp::NotAvailableOptionTrait<FILE *, CURLOPT_WRITEDATA> WriteFile;
-		typedef curlpp::NotAvailableOptionTrait<std::ostream *, CURLOPT_WRITEDATA> WriteStream;
+typedef curlpp::NotAvailableOptionTrait<std::ostream*, CURLOPT_WRITEDATA>
+    WriteStream;
 	#endif // CURLPP_ALLOW_NOT_AVAILABLE
 	#endif // LIBCURL_VERSION_NUM
-
 
 	#if LIBCURL_VERSION_NUM >= 0x070c01
 
 		typedef curlpp::OptionTrait<curl_read_callback, CURLOPT_READFUNCTION>
 			ReadFunctionCurlFunction;
 
-		typedef curlpp::OptionTrait<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
+typedef curlpp::OptionTrait<curlpp::types::ReadFunctionFunctor,
+                            CURLOPT_READFUNCTION>
 			ReadFunction;
 
 	#else
 
 	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
 
-		typedef curlpp::NotAvailableOptionTrait<curl_read_callback, CURLOPT_READFUNCTION>
+typedef curlpp::NotAvailableOptionTrait<curl_read_callback,
+                                        CURLOPT_READFUNCTION>
 			ReadFunctionCurlFunction;
 
-		typedef curlpp::NotAvailableOptionTrait<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
+typedef curlpp::NotAvailableOptionTrait<curlpp::types::ReadFunctionFunctor,
+                                        CURLOPT_READFUNCTION>
 			ReadFunction;
 
 	#endif // CURLPP_ALLOW_NOT_AVAILABLE
 
 	#endif // LIBCURL_VERSION_NUM
-
 
 	/**
 	* Using this option will reset CURLOPT_READFUNCTION to 
@@ -145,20 +141,25 @@ namespace options
 	#else
 	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
 		typedef curlpp::NotAvailableOptionTrait<FILE *, CURLOPT_READDATA> ReadFile;
-		typedef curlpp::NotAvailableOptionTrait<std::istream *, CURLOPT_READDATA> ReadStream;
+typedef curlpp::NotAvailableOptionTrait<std::istream*, CURLOPT_READDATA>
+    ReadStream;
 	#endif // CURLPP_ALLOW_NOT_AVAILABLE
 	#endif // LIBCURL_VERSION_NUM
 
-	typedef curlpp::OptionTrait<curlpp::types::ProgressFunctionFunctor, CURLOPT_PROGRESSFUNCTION>
+typedef curlpp::OptionTrait<curlpp::types::ProgressFunctionFunctor,
+                            CURLOPT_PROGRESSFUNCTION>
 		ProgressFunction;
 
-	typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor, CURLOPT_HEADERFUNCTION>
+typedef curlpp::OptionTrait<curlpp::types::WriteFunctionFunctor,
+                            CURLOPT_HEADERFUNCTION>
 		HeaderFunction;
 
-	typedef curlpp::OptionTrait<curlpp::types::DebugFunctionFunctor, CURLOPT_DEBUGFUNCTION>
+typedef curlpp::OptionTrait<curlpp::types::DebugFunctionFunctor,
+                            CURLOPT_DEBUGFUNCTION>
 		DebugFunction;
 
-	typedef curlpp::OptionTrait<curlpp::types::SslCtxFunctionFunctor, CURLOPT_SSL_CTX_FUNCTION>
+typedef curlpp::OptionTrait<curlpp::types::SslCtxFunctionFunctor,
+                            CURLOPT_SSL_CTX_FUNCTION>
 		SslCtxFunction;
 
 #if LIBCURL_VERSION_NUM >= 0x072000
@@ -182,7 +183,6 @@ namespace options
 
 	typedef curlpp::OptionTrait<bool, CURLOPT_FAILONERROR> FailOnError;
 
-
 	/**
 	* Network options.
 	*/
@@ -194,12 +194,12 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_HTTPPROXYTUNNEL> HttpProxyTunnel;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_INTERFACE> Interface;
 	typedef curlpp::OptionTrait<long, CURLOPT_DNS_CACHE_TIMEOUT> DnsCacheTimeout;
-	typedef curlpp::OptionTrait<bool, CURLOPT_DNS_USE_GLOBAL_CACHE> DnsUseGlobalCache;
+typedef curlpp::OptionTrait<bool, CURLOPT_DNS_USE_GLOBAL_CACHE>
+    DnsUseGlobalCache;
 	typedef curlpp::OptionTrait<long, CURLOPT_BUFFERSIZE> BufferSize;
 	typedef curlpp::OptionTrait<long, CURLOPT_PORT> Port;
 
 	typedef curlpp::OptionTrait<bool, CURLOPT_TCP_NODELAY> TcpNoDelay;
-
 
 	/**
 	* Names and passwords options.
@@ -211,7 +211,6 @@ namespace options
 	typedef curlpp::OptionTrait<std::string, CURLOPT_PROXYUSERPWD> ProxyUserPwd;
 	typedef curlpp::OptionTrait<long, CURLOPT_HTTPAUTH> HttpAuth;
 	typedef curlpp::OptionTrait<long, CURLOPT_PROXYAUTH> ProxyAuth;
-
 
 	/**
 	* HTTP options.
@@ -227,12 +226,15 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_POST> Post;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_POSTFIELDS> PostFields;
 	typedef curlpp::OptionTrait<long, CURLOPT_POSTFIELDSIZE> PostFieldSize;
-	typedef curlpp::OptionTrait<curl_off_t, CURLOPT_POSTFIELDSIZE_LARGE> PostFieldSizeLarge;
+typedef curlpp::OptionTrait<curl_off_t, CURLOPT_POSTFIELDSIZE_LARGE>
+    PostFieldSizeLarge;
 	typedef curlpp::OptionTrait<curlpp::Forms, CURLOPT_HTTPPOST> HttpPost;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_REFERER> Referer;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_USERAGENT> UserAgent;
-	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_HTTPHEADER> HttpHeader;
-	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_HTTP200ALIASES> Http200Aliases;
+typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_HTTPHEADER>
+    HttpHeader;
+typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_HTTP200ALIASES>
+    Http200Aliases;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_COOKIE> Cookie;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_COOKIEFILE> CookieFile;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_COOKIEJAR> CookieJar;
@@ -240,24 +242,25 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_HTTPGET> HttpGet;
 	typedef curlpp::OptionTrait<long, CURLOPT_HTTP_VERSION> HttpVersion;
 
-
 	/**
 	* FTP options.
 	*/
 
 	typedef curlpp::OptionTrait<std::string, CURLOPT_FTPPORT> FtpPort;
 	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_QUOTE> Quote;
-	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_POSTQUOTE> PostQuote;
+typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_POSTQUOTE>
+    PostQuote;
 	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_PREQUOTE> PreQuote;
 	typedef curlpp::OptionTrait<bool, CURLOPT_FTPLISTONLY> FtpListOnly;
 	typedef curlpp::OptionTrait<bool, CURLOPT_FTPAPPEND> FtpAppend;
 	typedef curlpp::OptionTrait<bool, CURLOPT_FTP_USE_EPSV> FtpUseEpsv;
 	typedef curlpp::OptionTrait<long, CURLOPT_FTP_FILEMETHOD> FtpFileMethod;
-	typedef curlpp::OptionTrait<bool, CURLOPT_FTP_CREATE_MISSING_DIRS> FtpCreateMissingDirs;
-	typedef curlpp::OptionTrait<bool, CURLOPT_FTP_RESPONSE_TIMEOUT> FtpResponseTimeout;
+typedef curlpp::OptionTrait<bool, CURLOPT_FTP_CREATE_MISSING_DIRS>
+    FtpCreateMissingDirs;
+typedef curlpp::OptionTrait<bool, CURLOPT_FTP_RESPONSE_TIMEOUT>
+    FtpResponseTimeout;
 	typedef curlpp::OptionTrait<curl_ftpssl, CURLOPT_FTP_SSL> FtpSsl;
 	typedef curlpp::OptionTrait<curl_ftpauth, CURLOPT_FTPSSLAUTH> FtpSslAuth;
-
 
 	/**
 	* Protocol options.
@@ -267,17 +270,19 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_CRLF> Crlf;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_RANGE> Range;
 	typedef curlpp::OptionTrait<long, CURLOPT_RESUME_FROM> ResumeFrom;
-	typedef curlpp::OptionTrait<curl_off_t, CURLOPT_RESUME_FROM_LARGE> ResumeFromLarge;
+typedef curlpp::OptionTrait<curl_off_t, CURLOPT_RESUME_FROM_LARGE>
+    ResumeFromLarge;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_CUSTOMREQUEST> CustomRequest;
 	typedef curlpp::OptionTrait<bool, CURLOPT_FILETIME> FileTime;
 	typedef curlpp::OptionTrait<bool, CURLOPT_NOBODY> NoBody;
 	typedef curlpp::OptionTrait<long, CURLOPT_INFILESIZE> InfileSize;
-	typedef curlpp::OptionTrait<curl_off_t, CURLOPT_INFILESIZE_LARGE> InfileSizeLarge;
+typedef curlpp::OptionTrait<curl_off_t, CURLOPT_INFILESIZE_LARGE>
+    InfileSizeLarge;
 	typedef curlpp::OptionTrait<long, CURLOPT_MAXFILESIZE> MaxFileSize;
-	typedef curlpp::OptionTrait<curl_off_t, CURLOPT_MAXFILESIZE_LARGE> MaxFileSizeLarge;
+typedef curlpp::OptionTrait<curl_off_t, CURLOPT_MAXFILESIZE_LARGE>
+    MaxFileSizeLarge;
 	typedef curlpp::OptionTrait<bool, CURLOPT_TIMECONDITION> TimeCondition;
 	typedef curlpp::OptionTrait<long, CURLOPT_TIMEVALUE> TimeValue;
-
 
 	/**
 	* Connection options.
@@ -292,7 +297,6 @@ namespace options
 	typedef curlpp::OptionTrait<bool, CURLOPT_FORBID_REUSE> ForbidReuse;
 	typedef curlpp::OptionTrait<long, CURLOPT_CONNECTTIMEOUT> ConnectTimeout;
 	typedef curlpp::OptionTrait<long, CURLOPT_IPRESOLVE> IpResolve;
-
 
 	/**
 	* SSL and security options.
@@ -316,7 +320,6 @@ namespace options
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSL_CIPHER_LIST> SslCipherList;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
 
-
 	/**
 	* Other options.
 	*/
@@ -324,22 +327,17 @@ namespace options
 	typedef curlpp::OptionTrait<void *, CURLOPT_PRIVATE> Private;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
 
-
 	//Share;
 	//TelnetOptions
-
 
 } // namespace options
 
 	namespace Options = options;
 
-
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
 
-
 std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
-
 
 #endif // #ifndef CURLPP_OPTIONS_HPP

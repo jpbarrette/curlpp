@@ -27,27 +27,22 @@
 #include <string>
 #include <iostream>
 
+namespace curlpp {
 
-namespace curlpp
-{
+namespace internal {
 
-
-namespace internal
-{
-
-	
-struct Callbacks
-{
-	static size_t 
-	WriteCallback(char * buffer, size_t size, size_t nitems, internal::CurlHandle * handle)
-	{
+struct Callbacks {
+  static size_t WriteCallback(char* buffer,
+                              size_t size,
+                              size_t nitems,
+                              internal::CurlHandle* handle) {
 		return handle->executeWriteFunctor(buffer, size, nitems);
 	};
 
-
-	static size_t
-	StreamWriteCallback(char * buffer, size_t size, size_t nitems, std::ostream * stream)
-	{
+  static size_t StreamWriteCallback(char* buffer,
+                                    size_t size,
+                                    size_t nitems,
+                                    std::ostream* stream) {
 		size_t realwrote = size * nitems;
 		stream->write(buffer, static_cast<std::streamsize>(realwrote));
 		if(!(*stream))
@@ -56,24 +51,24 @@ struct Callbacks
 		return realwrote;
 	};
 
-
-	static size_t
-	HeaderCallback(char * buffer, size_t size, size_t nitems, internal::CurlHandle * handle)
-	{
+  static size_t HeaderCallback(char* buffer,
+                               size_t size,
+                               size_t nitems,
+                               internal::CurlHandle* handle) {
 		return handle->executeHeaderFunctor(buffer, size, nitems);
 	};
 
-
-	static size_t
-	ReadCallback(char * buffer, size_t size, size_t nitems, internal::CurlHandle * handle)
-	{
+  static size_t ReadCallback(char* buffer,
+                             size_t size,
+                             size_t nitems,
+                             internal::CurlHandle* handle) {
 		return handle->executeReadFunctor(buffer, size, nitems);
 	};
 
-
-	static size_t
-	StreamReadCallback(char * buffer, size_t size, size_t nitems, std::istream * stream)
-	{
+  static size_t StreamReadCallback(char* buffer,
+                                   size_t size,
+                                   size_t nitems,
+                                   std::istream* stream) {
 		stream->read(buffer, static_cast<std::streamsize>(size * nitems));
 		size_t realread = stream->gcount();
 		if(!realread && !(*stream))
@@ -82,14 +77,11 @@ struct Callbacks
 		return realread;
 	};
 
-
-	static int
-	ProgressCallback(internal::CurlHandle * handle, 
+  static int ProgressCallback(internal::CurlHandle* handle,
 											double dltotal, 
 											double dlnow, 
 											double ultotal, 
-											double ulnow)
-	{
+                              double ulnow) {
 		return handle->executeProgressFunctor(dltotal, dlnow, ultotal, ulnow);
 	};
 
@@ -110,83 +102,71 @@ struct Callbacks
 									curl_infotype type,
 									char * data,
 									size_t size,
-									internal::CurlHandle * handle)
-	{
+                           internal::CurlHandle* handle) {
 		return handle->executeDebugFunctor(type, data, size);
 	};
 
-
-	static CURLcode 
-	SslCtxCallback(CURL *,
+  static CURLcode SslCtxCallback(CURL*,
 										void * ssl_ctx,
-										internal::CurlHandle * handle)
-	{
+                                 internal::CurlHandle* handle) {
 		return handle->executeSslCtxFunctor(ssl_ctx);
 	};
-
 };
 
-
-void OptionSetter<curlpp::Forms, CURLOPT_HTTPPOST>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::Forms, CURLOPT_HTTPPOST>::setOpt(
+    internal::CurlHandle* handle,
+    ParamType value) {
 	handle->option(CURLOPT_HTTPPOST, value.cHttpPost());
 };
 
-
-void OptionSetter<curlpp::types::WriteFunctionFunctor, CURLOPT_WRITEFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::WriteFunctionFunctor,
+                  CURLOPT_WRITEFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                 ParamType value) {
 	handle->option(CURLOPT_WRITEFUNCTION, Callbacks::WriteCallback);
 	handle->option(CURLOPT_WRITEDATA, handle);
 	handle->setWriteFunctor(value);
 };
 
-
 #ifdef HAVE_BOOST
 
-void OptionSetter<curlpp::types::BoostWriteFunction, CURLOPT_WRITEFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::BoostWriteFunction,
+                  CURLOPT_WRITEFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                 ParamType value) {
 	handle->option(CURLOPT_WRITEFUNCTION, Callbacks::WriteCallback);
 	handle->option(CURLOPT_WRITEDATA, handle);
-	handle->setWriteFunctor(curlpp::types::WriteFunctionFunctor(&value,
-		&curlpp::types::BoostWriteFunction::operator()));
+  handle->setWriteFunctor(curlpp::types::WriteFunctionFunctor(
+      &value, &curlpp::types::BoostWriteFunction::operator()));
 };
 
 #endif
 
-
-void OptionSetter<FILE *, CURLOPT_WRITEDATA>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<FILE*, CURLOPT_WRITEDATA>::setOpt(
+    internal::CurlHandle* handle,
+    ParamType value) {
 	handle->option(CURLOPT_WRITEFUNCTION, (void *)NULL);
 	handle->option(CURLOPT_WRITEDATA, value);
 };
 
-
-void OptionSetter<std::ostream *, CURLOPT_WRITEDATA>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<std::ostream*, CURLOPT_WRITEDATA>::setOpt(
+    internal::CurlHandle* handle,
+    ParamType value) {
 	handle->option(CURLOPT_WRITEFUNCTION, (void *)Callbacks::StreamWriteCallback);
 	handle->option(CURLOPT_WRITEDATA, value);
 };
 
-
-void OptionSetter<curlpp::types::ReadFunctionFunctor, CURLOPT_READFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::ReadFunctionFunctor,
+                  CURLOPT_READFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                ParamType value) {
 	handle->option(CURLOPT_READFUNCTION, Callbacks::ReadCallback);
 	handle->option(CURLOPT_READDATA, handle);
 	handle->setReadFunctor(value);
 };
 
-
 #ifdef HAVE_BOOST
 
-void OptionSetter<curlpp::types::BoostReadFunction, CURLOPT_READFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::BoostReadFunction,
+                  CURLOPT_READFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                ParamType value) {
 	handle->option(CURLOPT_READFUNCTION, Callbacks::ReadCallback);
 	handle->option(CURLOPT_READDATA, handle);
 	handle->setReadFunctor(value);
@@ -194,38 +174,34 @@ void OptionSetter<curlpp::types::BoostReadFunction, CURLOPT_READFUNCTION>
 
 #endif
 
-
-void OptionSetter<FILE *, CURLOPT_READDATA>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<FILE*, CURLOPT_READDATA>::setOpt(internal::CurlHandle* handle,
+                                                   ParamType value) {
 	handle->option(CURLOPT_READFUNCTION, (void *)NULL);
 	handle->option(CURLOPT_READDATA, value);
 };
 
-
-
-void OptionSetter<std::istream *, CURLOPT_READDATA>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<std::istream*, CURLOPT_READDATA>::setOpt(
+    internal::CurlHandle* handle,
+    ParamType value) {
 	handle->option(CURLOPT_READFUNCTION, (void *)Callbacks::StreamReadCallback);
 	handle->option(CURLOPT_READDATA, value);
 };
 
-
-void OptionSetter<curlpp::types::ProgressFunctionFunctor, CURLOPT_PROGRESSFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::ProgressFunctionFunctor,
+                  CURLOPT_PROGRESSFUNCTION>::setOpt(internal::CurlHandle*
+                                                        handle,
+                                                    ParamType value) {
 	handle->option(CURLOPT_PROGRESSFUNCTION, Callbacks::ProgressCallback);
 	handle->option(CURLOPT_PROGRESSDATA, handle);
 	handle->setProgressFunctor(value);
 };
 
-
 #ifdef HAVE_BOOST
 
-void OptionSetter<curlpp::types::BoostProgressFunction, CURLOPT_PROGRESSFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::BoostProgressFunction,
+                  CURLOPT_PROGRESSFUNCTION>::setOpt(internal::CurlHandle*
+                                                        handle,
+                                                    ParamType value) {
 	handle->option(CURLOPT_PROGRESSFUNCTION, Callbacks::ProgressCallback);
 	handle->option(CURLOPT_PROGRESSDATA, handle);
 	handle->setProgressFunctor(value);
@@ -251,12 +227,11 @@ void OptionSetter<curlpp::types::WriteFunctionFunctor, CURLOPT_HEADERFUNCTION>
 	handle->setHeaderFunctor(value);
 };
 
-
 #ifdef HAVE_BOOST
 
-void OptionSetter<curlpp::types::BoostWriteFunction, CURLOPT_HEADERFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::BoostWriteFunction,
+                  CURLOPT_HEADERFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                  ParamType value) {
 	handle->option(CURLOPT_HEADERFUNCTION, Callbacks::HeaderCallback);
 	handle->option(CURLOPT_HEADERDATA, handle);
 	handle->setHeaderFunctor(value);
@@ -264,21 +239,19 @@ void OptionSetter<curlpp::types::BoostWriteFunction, CURLOPT_HEADERFUNCTION>
 
 #endif
 
-
-void OptionSetter<curlpp::types::DebugFunctionFunctor, CURLOPT_DEBUGFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::DebugFunctionFunctor,
+                  CURLOPT_DEBUGFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                 ParamType value) {
 	handle->option(CURLOPT_DEBUGFUNCTION, Callbacks::DebugCallback);
 	handle->option(CURLOPT_DEBUGDATA, handle);
 	handle->setDebugFunctor(value);
 };
 
-
 #ifdef HAVE_BOOST
 
-void OptionSetter<curlpp::types::BoostDebugFunction, CURLOPT_DEBUGFUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::BoostDebugFunction,
+                  CURLOPT_DEBUGFUNCTION>::setOpt(internal::CurlHandle* handle,
+                                                 ParamType value) {
 	handle->option(CURLOPT_DEBUGFUNCTION, Callbacks::DebugCallback);
 	handle->option(CURLOPT_DEBUGDATA, handle);
 	handle->setDebugFunctor(value);
@@ -286,31 +259,28 @@ void OptionSetter<curlpp::types::BoostDebugFunction, CURLOPT_DEBUGFUNCTION>
 
 #endif
 
-
-void OptionSetter<curlpp::types::SslCtxFunctionFunctor, CURLOPT_SSL_CTX_FUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::SslCtxFunctionFunctor,
+                  CURLOPT_SSL_CTX_FUNCTION>::setOpt(internal::CurlHandle*
+                                                        handle,
+                                                    ParamType value) {
 	handle->option(CURLOPT_SSL_CTX_FUNCTION, Callbacks::SslCtxCallback);
 	handle->option(CURLOPT_SSL_CTX_DATA, handle);
 	handle->setSslCtxFunctor(value);
 };
 
-
 #ifdef HAVE_BOOST
 
-void OptionSetter<curlpp::types::BoostSslCtxFunction, CURLOPT_SSL_CTX_FUNCTION>
-::setOpt(internal::CurlHandle * handle, ParamType value)
-{
+void OptionSetter<curlpp::types::BoostSslCtxFunction,
+                  CURLOPT_SSL_CTX_FUNCTION>::setOpt(internal::CurlHandle*
+                                                        handle,
+                                                    ParamType value) {
 	handle->option(CURLOPT_SSL_CTX_FUNCTION, Callbacks::SslCtxCallback);
 	handle->option(CURLOPT_SSL_CTX_DATA, handle);
 	handle->setSslCtxFunctor(value);
 };
 
 #endif
-
 
 }// namespace internal
 
-
 }// namespace curlpp
-

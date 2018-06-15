@@ -24,29 +24,21 @@
 #ifndef CURLPP_SLIST_HPP
 #define CURLPP_SLIST_HPP
 
-
-
 #include <curl/curl.h>
 
 #include <list>
 #include <memory>
 #include <string>
 
-namespace curlpp
-{
+namespace curlpp {
 
-
-namespace internal
-{
-
+namespace internal {
 
 	/**
 	* This class is binding the curl_slist struct.
 	*/
 
-	class SList
-	{
-
+class SList {
 	public:
 
 		SList() : mList(nullptr) {}
@@ -69,7 +61,6 @@ namespace internal
         static void buildList(std::unique_ptr<curl_slist> list, std::list<std::string> & value);
 
 	private:
-
 		void set(const std::list<std::string> & list);
 		void clear();
 		void constructFrom(curl_slist * list);
@@ -77,16 +68,13 @@ namespace internal
 		curl_slist * mList;
 	};
 
-
 } // namespace internal
-
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
 
-
-std::ostream & operator<<(std::ostream & stream, const std::list<std::string> & value);
-
+std::ostream& operator<<(std::ostream& stream,
+                         const std::list<std::string>& value);
 
 #endif // #ifndef CURLPP_SLIST_HPP
