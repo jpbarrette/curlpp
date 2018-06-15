@@ -22,21 +22,21 @@
  */
 
 /**
-* \file
-* WriteFunction option using free function.
-* Writing to FILE*
-*
-*/
+ * \file
+ * WriteFunction option using free function.
+ * Writing to FILE*
+ *
+ */
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
-#include <cstdlib>
-#include <cstdio>
-#include <cstring>
 #include <cerrno>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
 
 /// Callback must be declared static, otherwise it won't link...
 size_t WriteCallback(char* ptr, size_t size, size_t nmemb, void* f) {

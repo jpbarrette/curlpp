@@ -22,20 +22,20 @@
  */
 
 /**
-* \file
-* WriteFunction option using functor.
-* Writing to FILE*
-*
-*/
+ * \file
+ * WriteFunction option using functor.
+ * Writing to FILE*
+ *
+ */
 
-#include <cstdlib>
 #include <cstdio>
+#include <cstdlib>
 #include <cstring>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 #define MAX_FILE_LENGTH 20000
 

@@ -34,9 +34,9 @@
 namespace curlpp {
 
 /**
-* Easy class.
-* Detailed description.
-*/
+ * Easy class.
+ * Detailed description.
+ */
 
 class Easy {
  public:
@@ -45,84 +45,84 @@ class Easy {
   Easy();
 
   /**
-  * This allow to have a handle, which might have
-  * some option set, but we don't care about them.
-  */
+   * This allow to have a handle, which might have
+   * some option set, but we don't care about them.
+   */
   Easy(std::unique_ptr<internal::CurlHandle> handle);
   virtual ~Easy();
 
   /**
-  * it will call the curl_easy_perform function will all the options
-  * previously set for this handle.
-  */
+   * it will call the curl_easy_perform function will all the options
+   * previously set for this handle.
+   */
   void perform();
 
   /**
-  * This function will set the option value of the OptionBase
-  * to the handle.
-  */
+   * This function will set the option value of the OptionBase
+   * to the handle.
+   */
   virtual void setOpt(const OptionBase& option);
 
   /**
-  * This function will set the option value of the OptionBase to the
-  * handle.
-  */
+   * This function will set the option value of the OptionBase to the
+   * handle.
+   */
   virtual void setOpt(std::unique_ptr<OptionBase> option);
 
   /**
-  * This function will set the option value of the OptionBase to the
-  * handle.
-  *
-  * Note: be carefull when using this function, see
-  * curlpp::OptionList::setOpt(OptionBase * option) function for more
-  * details.
-  */
+   * This function will set the option value of the OptionBase to the
+   * handle.
+   *
+   * Note: be carefull when using this function, see
+   * curlpp::OptionList::setOpt(OptionBase * option) function for more
+   * details.
+   */
   virtual void setOpt(OptionBase* option);
 
   /**
-  * This function will create OptionTrait class with the value given and call
-  * virtual void setOpt(const OptionBase & option) with it.
-  */
+   * This function will create OptionTrait class with the value given and call
+   * virtual void setOpt(const OptionBase & option) with it.
+   */
   template <typename OptionTrait>
   void setOpt(typename OptionTrait::ParamType);
 
   /**
-  * Setting options from custom container with curlpp options.
-  */
+   * Setting options from custom container with curlpp options.
+   */
   template <typename InputIterator>
   void setOpt(InputIterator first, InputIterator last);
 
   /**
-  * This function will get the current option value of the corresponding
-  * OptionBase. Note that if the option is not set, the option passed in
-  * parameter will be cleared. (See Option::getOpt for more details)
-  */
+   * This function will get the current option value of the corresponding
+   * OptionBase. Note that if the option is not set, the option passed in
+   * parameter will be cleared. (See Option::getOpt for more details)
+   */
   void getOpt(OptionBase* option) const;
 
   /**
-  * This function will get the current option value of the corresponding
-  * OptionBase. Note that if the option is not set, the option passed in
-  * parameter will be cleared. (See Option::getOpt for more details)
-  */
+   * This function will get the current option value of the corresponding
+   * OptionBase. Note that if the option is not set, the option passed in
+   * parameter will be cleared. (See Option::getOpt for more details)
+   */
   void getOpt(OptionBase& option) const;
 
   /**
-  * Get all options.
-  */
+   * Get all options.
+   */
   // template<typename OutputIterator>
   // void getOptions(OutputIterator out);
 
   /*
-  * This function empties the option collection and reset all options
-  * to their default value
-  */
+   * This function empties the option collection and reset all options
+   * to their default value
+   */
   virtual void reset();
 
   /**
-  * This function will return the cURL * handle.
-  * DO NOT use this, unless you REALLY know what you
-  * are doing.
-  */
+   * This function will return the cURL * handle.
+   * DO NOT use this, unless you REALLY know what you
+   * are doing.
+   */
   CURL* getHandle() const;
 
   internal::CurlHandle& getCurlHandle() { return *mCurl; }
@@ -130,15 +130,15 @@ class Easy {
 
  private:
   /**
-  * This function will call the setOpt on each options
-  * contained by * the option list passed in argument.
-  */
+   * This function will call the setOpt on each options
+   * contained by * the option list passed in argument.
+   */
   virtual void setOpt(const internal::OptionList& options);
 
   /**
-  * This is the function that curlpp::InfoGetter will call
-  * to retreive option.
-  */
+   * This is the function that curlpp::InfoGetter will call
+   * to retreive option.
+   */
   template <typename T>
   void getInfo(CURLINFO info, T& value) const;
 

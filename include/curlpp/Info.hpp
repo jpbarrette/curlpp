@@ -29,10 +29,10 @@
 namespace curlpp {
 
 /**
-* This class is responsible of retreiving the Info from
-* a handle. This is the class you use when you want to do
-* so.
-*/
+ * This class is responsible of retreiving the Info from
+ * a handle. This is the class you use when you want to do
+ * so.
+ */
 
 template <CURLINFO info, typename T>
 struct Info {
@@ -41,9 +41,9 @@ struct Info {
 };
 
 /**
-* This class is used when an info is not available for the
-* current libcURL version.
-*/
+ * This class is used when an info is not available for the
+ * current libcURL version.
+ */
 
 template <CURLINFO info, typename T>
 struct NotAvailableInfo : Info<info, T> {
@@ -52,11 +52,11 @@ struct NotAvailableInfo : Info<info, T> {
 };
 
 /**
-* This is the class you need to specialize if you use
-* a special type that libcURL is not aware of. This class
-* need to call curlpp::InfoGetter::get function. See
-* curlpp::InfoGetter for more information.
-*/
+ * This is the class you need to specialize if you use
+ * a special type that libcURL is not aware of. This class
+ * need to call curlpp::InfoGetter::get function. See
+ * curlpp::InfoGetter for more information.
+ */
 
 template <typename T>
 struct InfoTypeConverter {
@@ -85,13 +85,13 @@ void InfoTypeConverter<double>::get(const curlpp::Easy& handle,
                                     double& value);
 
 /**
-* This is the only class that is authorized to retreive
-* info from a curlpp::Easy class. So, this is the class
-* you need to use when you specialize the class
-* curlpp::InfoTypeConverter. This class is in fact used
-* as a proxy, just to be sure that nobody access curlpp::Easy's
-* private data.
-*/
+ * This is the only class that is authorized to retreive
+ * info from a curlpp::Easy class. So, this is the class
+ * you need to use when you specialize the class
+ * curlpp::InfoTypeConverter. This class is in fact used
+ * as a proxy, just to be sure that nobody access curlpp::Easy's
+ * private data.
+ */
 
 struct InfoGetter {
   template <typename T>

@@ -22,20 +22,20 @@
  */
 
 /**
-* \file
-* Multi demo.
-*
-*/
+ * \file
+ * Multi demo.
+ *
+ */
 
 #include <iostream>
 
 #include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
+#include <curlpp/Exception.hpp>
 #include <curlpp/Multi.hpp>
 #include <curlpp/Options.hpp>
-#include <curlpp/Exception.hpp>
+#include <curlpp/cURLpp.hpp>
 
 #if defined(_WIN32) || defined(__WIN32__) || defined(WIN32)
 #pragma comment(lib, "Ws2_32.lib")

@@ -8,40 +8,40 @@
 
 namespace curlpp {
 
-template<>
+template <>
 void InfoTypeConverter<std::string>::get(const curlpp::Easy& handle,
-				      CURLINFO info,
+                                         CURLINFO info,
                                          std::string& value) {
-  char * tmp;
+  char* tmp;
   InfoGetter::get(handle, info, tmp);
   value = tmp;
 }
 
-template<>
+template <>
 void InfoTypeConverter<std::list<std::string> >::get(
     const curlpp::Easy& handle,
-						   CURLINFO info,
+    CURLINFO info,
     std::list<std::string>& value) {
-  curl_slist * tmpList = NULL;
+  curl_slist* tmpList = NULL;
   InfoGetter::get(handle, info, tmpList);
 
   internal::SList::buildList(std::unique_ptr<curl_slist>(tmpList), value);
 }
 
-template<>
+template <>
 void InfoTypeConverter<long>::get(const curlpp::Easy& handle,
-			       CURLINFO info,
+                                  CURLINFO info,
                                   long& value) {
   InfoGetter::get(handle, info, value);
 }
 
-template<>
+template <>
 void InfoTypeConverter<double>::get(const curlpp::Easy& handle,
-				 CURLINFO info,
+                                    CURLINFO info,
                                     double& value) {
   curl_off_t tmp;
   InfoGetter::get(handle, info, tmp);
   value = (double)tmp;
 }
 
-} // namespace curlpp
+}  // namespace curlpp

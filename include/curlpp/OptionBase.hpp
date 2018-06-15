@@ -35,8 +35,8 @@ class CurlHandle;
 
 /**
  * This is the parent of the curlpp::option class.
-       *
-       * This is only used to be able to stock a list of options.
+ *
+ * This is only used to be able to stock a list of options.
  */
 
 class OptionBase {

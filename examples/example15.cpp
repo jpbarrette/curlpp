@@ -22,17 +22,17 @@
  */
 
 /**
-* \file
-* Using options.
-*
-*/
+ * \file
+ * Using options.
+ *
+ */
 
-#include <string>
 #include <iostream>
+#include <string>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 int main(int, char**) {
   try {

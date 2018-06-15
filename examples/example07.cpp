@@ -1,19 +1,19 @@
 /**
-* \file
-* Cookies.
-*
-*/
+ * \file
+ * Cookies.
+ *
+ */
 
-#include <string>
-#include <sstream>
-#include <vector>
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
 
 #include <cstdlib>
 #include <ctime>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
+#include <curlpp/cURLpp.hpp>
 
 #define CURLPP_ALLOW_NOT_AVAILABLE
 

@@ -41,7 +41,7 @@ struct ThreadingSingle {
 
   typedef T VolatileType;
 };
-}
+}  // namespace utilspp
 
 #include "utilspp/ThreadingSingle.inl"
 

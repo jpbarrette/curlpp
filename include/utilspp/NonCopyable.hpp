@@ -32,6 +32,6 @@ class NonCopyable {
  private:
   NonCopyable(const NonCopyable& r) {}
 };
-}
+}  // namespace utilspp
 
 #endif

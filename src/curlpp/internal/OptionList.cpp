@@ -79,6 +79,6 @@ void OptionList::insert(const OptionList::mapType& other) {
   }
 }
 
-}  // namespace curlpp
-
 }  // namespace internal
+
+}  // namespace curlpp

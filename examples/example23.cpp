@@ -1,14 +1,15 @@
 /**
-* \file
-* Setting request options using iterators to custom container of curlpp options.
-*
-*/
+ * \file
+ * Setting request options using iterators to custom container of curlpp
+ * options.
+ *
+ */
 
 #include <vector>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 using namespace curlpp::options;
 

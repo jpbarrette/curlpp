@@ -1061,6 +1061,6 @@ struct PointerOnFunction<V (*)(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J, K)> {
 
   typedef TYPE_LIST_15(W, X, Y, Z, A, B, C, D, E, F, G, H, I, J, K) ParamList;
 };
-}
+}  // namespace utilspp
 
 #endif

@@ -26,6 +26,6 @@
 
 namespace utilspp {
 struct EmptyType {};
-}
+}  // namespace utilspp
 
 #endif

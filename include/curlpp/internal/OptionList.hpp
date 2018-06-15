@@ -33,63 +33,63 @@ namespace curlpp {
 namespace internal {
 
 /**
-* This class can keep a set of option_container it's used to keep all the
-* option set on a handle.
-*/
+ * This class can keep a set of option_container it's used to keep all the
+ * option set on a handle.
+ */
 
 class OptionList {
  public:
   typedef std::map<CURLoption, curlpp::OptionBase*> mapType;
 
   /**
-  * This construction initialize an empty list of options.
-  */
+   * This construction initialize an empty list of options.
+   */
   OptionList();
 
   /**
-  * This contructor initialize his list by calling the
-  * option_container<T>::clone() function.
-  */
+   * This contructor initialize his list by calling the
+   * option_container<T>::clone() function.
+   */
   OptionList(const OptionList& rhs);
 
   virtual ~OptionList();
 
   /**
-  * This function will add an option to the list. Note that if the
-  * option is allready contained by the list, the option value of this
-  * option will be overrided by the new value.
-  *
-  * Note: The option memory will be owned by the request, so when the
-  * request will be deleted, the option will be deleted too. It is
-  * suggested to not referer at all further in the code to the option
-  * instance passed as an argument.
-  */
+   * This function will add an option to the list. Note that if the
+   * option is allready contained by the list, the option value of this
+   * option will be overrided by the new value.
+   *
+   * Note: The option memory will be owned by the request, so when the
+   * request will be deleted, the option will be deleted too. It is
+   * suggested to not referer at all further in the code to the option
+   * instance passed as an argument.
+   */
   virtual void setOpt(OptionBase* option);
 
   /**
-  * This function will add an option to the list. Note that if the
-  * option is allready contained by the list, the option value of this
-  * option will be overrided by the new value.
-  */
+   * This function will add an option to the list. Note that if the
+   * option is allready contained by the list, the option value of this
+   * option will be overrided by the new value.
+   */
   virtual void setOpt(const OptionBase& option);
 
   /**
-  * This function will call the setOpt on each options
-  * contained by * the option list passed in argument.
-  */
+   * This function will call the setOpt on each options
+   * contained by * the option list passed in argument.
+   */
   virtual void setOpt(const OptionList& options);
 
   /**
-  * This function will get the current option value of the corresponding
-  * OptionBase. Note that if the option is not set, the option passed in
-  * parameter will be cleared. (See Option::getOpt for more details)
-  */
+   * This function will get the current option value of the corresponding
+   * OptionBase. Note that if the option is not set, the option passed in
+   * parameter will be cleared. (See Option::getOpt for more details)
+   */
   virtual void getOpt(OptionBase* option) const;
 
   /**
-  * all the options contained by the class will be deleted and we will
-  * clone the rhs option_container and store them in the class.
-  */
+   * all the options contained by the class will be deleted and we will
+   * clone the rhs option_container and store them in the class.
+   */
   // OptionList & operator=(const OptionList & rhs);
 
  private:

@@ -22,18 +22,18 @@
  */
 
 /**
-* \file
-* Write function using free function as a callback.
-*
-*/
+ * \file
+ * Write function using free function as a callback.
+ *
+ */
 
 #include <cstdlib>
 #include <cstring>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 #define MAX_FILE_LENGTH 20000
 

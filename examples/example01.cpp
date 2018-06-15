@@ -22,18 +22,18 @@
  */
 
 /**
-* \file
-* Setting and copying options.
-*
-*/
+ * \file
+ * Setting and copying options.
+ *
+ */
 
-#include <string>
-#include <sstream>
 #include <iostream>
+#include <sstream>
+#include <string>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
 #include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 namespace {
 const long MyPort = 80;

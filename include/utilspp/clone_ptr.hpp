@@ -88,6 +88,6 @@ class clone_ptr {
  private:
   T* value_;
 };
-}
+}  // namespace utilspp
 
 #endif

@@ -10,7 +10,7 @@ struct libcURLInstance {
 
   ~libcURLInstance() { curlpp::terminate(); }
 };
-}
+}  // namespace
 
 void curlpp::initialize(long flags) {
   CURLcode code;

@@ -142,6 +142,6 @@ class SharedPtr {
  private:
   CountingBodyPolicy* mContent;
 };
-}
+}  // namespace utilspp
 
 #endif

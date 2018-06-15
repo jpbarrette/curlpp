@@ -22,18 +22,18 @@
  */
 
 /**
-* \file
-* Simple POST demo.
-*
-*/
+ * \file
+ * Simple POST demo.
+ *
+ */
 
-#include <cstdlib>
 #include <cerrno>
+#include <cstdlib>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 int main(int argc, char* argv[]) {
   if (argc < 2) {

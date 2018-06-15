@@ -22,19 +22,19 @@
  */
 
 /**
-* \file
-* WriteFunction using streams.
-*
-*/
+ * \file
+ * WriteFunction using streams.
+ *
+ */
 
-#include <sstream>
 #include <cstdlib>
+#include <sstream>
 
-#include <curlpp/cURLpp.hpp>
 #include <curlpp/Easy.hpp>
-#include <curlpp/Options.hpp>
 #include <curlpp/Exception.hpp>
 #include <curlpp/Infos.hpp>
+#include <curlpp/Options.hpp>
+#include <curlpp/cURLpp.hpp>
 
 struct MethodClass {
  private:

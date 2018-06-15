@@ -34,7 +34,7 @@ struct ThreadingFactoryMutex {
 
   typedef T VolatileType;
 };
-}
+}  // namespace utilspp
 
 #include "utilspp/ThreadingFactoryMutex.inl"
 

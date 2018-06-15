@@ -190,7 +190,7 @@ template <class THead, class TTail, class T>
 struct erase<TypeList<THead, TTail>, T> {
   typedef TypeList<THead, typename erase<TTail, T>::Result> Result;
 };
-}
-}
+}  // namespace tl
+}  // namespace utilspp
 
 #endif

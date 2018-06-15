@@ -1,44 +1,44 @@
 /*
-*    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
-*
-*    Permission is hereby granted, free of charge, to any person obtaining
-*    a copy of this software and associated documentation files
-*    (curlpp), to deal in the Software without restriction,
-*    including without limitation the rights to use, copy, modify, merge,
-*    publish, distribute, sublicense, and/or sell copies of the Software,
-*    and to permit persons to whom the Software is furnished to do so,
-*    subject to the following conditions:
-*
-*    The above copyright notice and this permission notice shall be included
-*    in all copies or substantial portions of the Software.
-*
-*    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-*    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-*    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-*    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-*    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-*    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-*    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
+ *    Copyright (c) <2002-2009> <Jean-Philippe Barrette-LaPierre>
+ *
+ *    Permission is hereby granted, free of charge, to any person obtaining
+ *    a copy of this software and associated documentation files
+ *    (curlpp), to deal in the Software without restriction,
+ *    including without limitation the rights to use, copy, modify, merge,
+ *    publish, distribute, sublicense, and/or sell copies of the Software,
+ *    and to permit persons to whom the Software is furnished to do so,
+ *    subject to the following conditions:
+ *
+ *    The above copyright notice and this permission notice shall be included
+ *    in all copies or substantial portions of the Software.
+ *
+ *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+ *    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ *    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ *    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ *    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ *    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+ *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 #ifndef CURLPP_EXCEPTION_HPP
 #define CURLPP_EXCEPTION_HPP
 
 #include <curl/curl.h>
 
-#include <string>
 #include <stdexcept>
+#include <string>
 
 namespace curlpp {
 
 /**
-* This class is a parent to all curlpp's RuntimeErrors.
-*
-* This class takes a const std::string & as argument for it's parent:
-* std::runtime_errors.
-* This class is thrown when curlpp is encountering an error, but for runtime
-* considerations, "unpredictable" by the library user.
-*/
+ * This class is a parent to all curlpp's RuntimeErrors.
+ *
+ * This class takes a const std::string & as argument for it's parent:
+ * std::runtime_errors.
+ * This class is thrown when curlpp is encountering an error, but for runtime
+ * considerations, "unpredictable" by the library user.
+ */
 
 class RuntimeError : public std::runtime_error {
  public:
@@ -48,14 +48,14 @@ class RuntimeError : public std::runtime_error {
 };
 
 /**
-* This class is a parent to all curlpp's RuntimeErrors.
-*
-* This class takes a const std::string & as argument for it's parent:
-* std::runtime_errors.
-* This class is thrown when curlpp is encountering an error, but for logic
-* considerations, "predictable" by the library user. Predictable means
-* that the library user is missusing the library.
-*/
+ * This class is a parent to all curlpp's RuntimeErrors.
+ *
+ * This class takes a const std::string & as argument for it's parent:
+ * std::runtime_errors.
+ * This class is thrown when curlpp is encountering an error, but for logic
+ * considerations, "predictable" by the library user. Predictable means
+ * that the library user is missusing the library.
+ */
 
 class LogicError : public std::logic_error {
  public:
@@ -65,13 +65,12 @@ class LogicError : public std::logic_error {
 };
 
 /**
-* This is a class derived from curlpp::RuntimeError.
-*
-* It takes a const char * and a CURLcode as arguments. This class is thrown when
-* libcurl is
-* returning an error with a CURLcode, but for runtime considerations,
-* "unpredictable" by the library user.
-*/
+ * This is a class derived from curlpp::RuntimeError.
+ *
+ * It takes a const char * and a CURLcode as arguments. This class is thrown
+ * when libcurl is returning an error with a CURLcode, but for runtime
+ * considerations, "unpredictable" by the library user.
+ */
 
 class LibcurlRuntimeError : public curlpp::RuntimeError {
  public:
@@ -79,8 +78,8 @@ class LibcurlRuntimeError : public curlpp::RuntimeError {
   LibcurlRuntimeError(const char* reason, CURLcode code);
 
   /**
-  * Returns the CURLcode that libcurl returned.
-  */
+   * Returns the CURLcode that libcurl returned.
+   */
   CURLcode whatCode() const throw();
 
  private:
@@ -88,12 +87,12 @@ class LibcurlRuntimeError : public curlpp::RuntimeError {
 };
 
 /*
-* This is a class derived from curlpp::LogicError, that takes a const
-* char * and a CURLcode as arguments. This class is thrown when libcurl is
-* returning an error with a CURLcode,  but for logic considerations,
-* "predictable" by the library user. Predictable means that the library
-* user is missusing the library.
-*/
+ * This is a class derived from curlpp::LogicError, that takes a const
+ * char * and a CURLcode as arguments. This class is thrown when libcurl is
+ * returning an error with a CURLcode,  but for logic considerations,
+ * "predictable" by the library user. Predictable means that the library
+ * user is missusing the library.
+ */
 
 class LibcurlLogicError : public curlpp::LogicError {
  public:
@@ -101,8 +100,8 @@ class LibcurlLogicError : public curlpp::LogicError {
   LibcurlLogicError(const char* reason, CURLcode code);
 
   /*
-  * return the CURLcode that libcurl returned
-  */
+   * return the CURLcode that libcurl returned
+   */
   CURLcode whatCode() const throw();
 
  private:
@@ -110,9 +109,9 @@ class LibcurlLogicError : public curlpp::LogicError {
 };
 
 /**
-* This exception is thrown when you try to retreive a value for an
-* unset option.
-*/
+ * This exception is thrown when you try to retreive a value for an
+ * unset option.
+ */
 
 class UnsetOption : public curlpp::RuntimeError {
  public:
@@ -121,9 +120,9 @@ class UnsetOption : public curlpp::RuntimeError {
 };
 
 /**
-* This exception is thrown when you try to instantiate an option
-* that isn't available for your current libcURL version.
-*/
+ * This exception is thrown when you try to instantiate an option
+ * that isn't available for your current libcURL version.
+ */
 
 class NotAvailable : public curlpp::LogicError {
  public:
@@ -131,9 +130,9 @@ class NotAvailable : public curlpp::LogicError {
 };
 
 /**
-* This exception is thrown when an exception is thrown within
-* a callback without the curlpp::raiseException function.
-*/
+ * This exception is thrown when an exception is thrown within
+ * a callback without the curlpp::raiseException function.
+ */
 
 class UnknowException : public curlpp::RuntimeError {
  public:
@@ -141,9 +140,9 @@ class UnknowException : public curlpp::RuntimeError {
 };
 
 /**
-* This exception is thrown by the curlpp::raiseException function.
-* It's used to throw exceptions within callbacks
-*/
+ * This exception is thrown by the curlpp::raiseException function.
+ * It's used to throw exceptions within callbacks
+ */
 
 class CallbackExceptionBase : public curlpp::RuntimeError {
  protected:
@@ -156,9 +155,9 @@ class CallbackExceptionBase : public curlpp::RuntimeError {
 };
 
 /**
-* This exception is thrown by the curlpp::raiseException function.
-* It's used to throw exceptions within callbacks
-*/
+ * This exception is thrown by the curlpp::raiseException function.
+ * It's used to throw exceptions within callbacks
+ */
 
 template <typename ExceptionType>
 class CallbackException : public CallbackExceptionBase {
@@ -176,10 +175,10 @@ class CallbackException : public CallbackExceptionBase {
 };
 
 /**
-* This function is the function to be called within callbacks
-* if you want an exception to be thrown at the
-* curlpp::Easy::perform function call level.
-*/
+ * This function is the function to be called within callbacks
+ * if you want an exception to be thrown at the
+ * curlpp::Easy::perform function call level.
+ */
 
 template <typename T>
 void raiseException(const T& e) {
@@ -192,41 +191,41 @@ CallbackException<T>* createCallbackException(const T& e) {
 }
 
 /**
-* if CURLcode is not equal to CURLE_OK, it throws a
-* curlpp::LibcurlRuntimeError with the reason and the code. It's used
-* in inline function, because throwing an exception is heavy in binary
-* code, something we don't want in inline functions.
-*/
+ * if CURLcode is not equal to CURLE_OK, it throws a
+ * curlpp::LibcurlRuntimeError with the reason and the code. It's used
+ * in inline function, because throwing an exception is heavy in binary
+ * code, something we don't want in inline functions.
+ */
 
 void libcurlRuntimeAssert(const std::string& reason, CURLcode code);
 void libcurlRuntimeAssert(const char* reason, CURLcode code);
 
 /**
-* if CURLcode is not equal to CURLE_OK, it throws a
-* curlpp::LibcurlLogicError with the reason and the code. It's used
-* in inline function, because throwing an exception is heavy in binary
-* code, something we don't want in inline functions.
-*/
+ * if CURLcode is not equal to CURLE_OK, it throws a
+ * curlpp::LibcurlLogicError with the reason and the code. It's used
+ * in inline function, because throwing an exception is heavy in binary
+ * code, something we don't want in inline functions.
+ */
 
 void libcurlLogicAssert(const std::string& reason, CURLcode code);
 void libcurlLogicAssert(const char* reason, CURLcode code);
 
 /**
-* if isOkay is false, it throws a curlpp::RuntimeError
-* with the reason. It's used in inline function, because throwing
-* an exception is heavy in binary code, something we don't want in
-* an inline function.
-*/
+ * if isOkay is false, it throws a curlpp::RuntimeError
+ * with the reason. It's used in inline function, because throwing
+ * an exception is heavy in binary code, something we don't want in
+ * an inline function.
+ */
 
 void runtimeAssert(const std::string& reason, bool isOkay);
 void runtimeAssert(const char* reason, bool isOkay);
 
 /**
-* if is_true is false, it throws a curlpp::LogicError with
-* the reason. It's used in inline function, because throwing
-* an exception is heavy in binary code, something we don't
-* want in an inline function.
-*/
+ * if is_true is false, it throws a curlpp::LogicError with
+ * the reason. It's used in inline function, because throwing
+ * an exception is heavy in binary code, something we don't
+ * want in an inline function.
+ */
 
 void logicAssert(const std::string& reason, bool isOkay);
 void logicAssert(const char* reason, bool isOkay);

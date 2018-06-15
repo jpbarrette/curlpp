@@ -29,22 +29,22 @@
 #include "../Form.hpp"
 #include "../Types.hpp"
 
-#include <string>
 #include <list>
+#include <string>
 
 namespace curlpp {
 
 namespace internal {
 
 /**
-* Defines types connected with the type of the option.
-*
-* To be able to operate on option's values we have to define
-* value of what type do we
-* accept as an argument (ParamType),
-* store (ValueType),
-* return (ReturnType).
-*/
+ * Defines types connected with the type of the option.
+ *
+ * To be able to operate on option's values we have to define
+ * value of what type do we
+ * accept as an argument (ParamType),
+ * store (ValueType),
+ * return (ReturnType).
+ */
 
 template <typename OptionType>
 struct OptionContainerType {
@@ -58,17 +58,17 @@ struct OptionContainerType {
   typedef OptionType ReturnType;
 
   /**
-  * This typedef is the type usable by the OptionSetter::setOpt to
-  * eventually call curl_easy_setopt().
-  */
+   * This typedef is the type usable by the OptionSetter::setOpt to
+   * eventually call curl_easy_setopt().
+   */
   typedef OptionType& HandleOptionType;
 };
 
 /**
-* Specialization of template<typename OptionType>	struct
-* OptionContainerType.
-*
-*/
+ * Specialization of template<typename OptionType>	struct
+ * OptionContainerType.
+ *
+ */
 
 template <typename OptionType>
 struct OptionContainerType<OptionType*> {
@@ -79,10 +79,10 @@ struct OptionContainerType<OptionType*> {
 };
 
 /**
-* Specialization of template<typename OptionType>	struct
-* OptionContainerType.
-*
-*/
+ * Specialization of template<typename OptionType>	struct
+ * OptionContainerType.
+ *
+ */
 
 template <>
 struct OptionContainerType<std::string> {
@@ -94,10 +94,10 @@ struct OptionContainerType<std::string> {
 };
 
 /**
-* Specialization of template<typename OptionType>	struct
-* OptionContainerType.
-*
-*/
+ * Specialization of template<typename OptionType>	struct
+ * OptionContainerType.
+ *
+ */
 
 template <>
 struct OptionContainerType<std::list<std::string> > {
@@ -109,10 +109,10 @@ struct OptionContainerType<std::list<std::string> > {
 };
 
 /**
-* Specialization of template<typename OptionType>	struct
-* OptionContainerType.
-*
-*/
+ * Specialization of template<typename OptionType>	struct
+ * OptionContainerType.
+ *
+ */
 
 template <>
 struct OptionContainerType<curlpp::Forms> {
@@ -123,10 +123,10 @@ struct OptionContainerType<curlpp::Forms> {
 };
 
 /**
-* Specialization of template<typename OptionType>	struct
-* OptionContainerType.
-*
-*/
+ * Specialization of template<typename OptionType>	struct
+ * OptionContainerType.
+ *
+ */
 
 //   template<>
 //   struct OptionContainerType<std::ostream *>
