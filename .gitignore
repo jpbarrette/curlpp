@@ -12,6 +12,7 @@ Makefile
 build/
 m4/
 CMakeFiles/
+.vs/
 
 examples/example01
 examples/example02
