@@ -165,6 +165,17 @@ namespace FormParts
 
 		/**
 		* initialize a File part. "name" is the name of the field. 
+		* "filename" is the string that holds the filename. 
+		* "contentType" is the MIME type of the file.
+		* "displayName" is the file name to use in the form field.
+		*/
+		File(const char * name, 
+			const char * filename, 
+			const char * contentType,
+			const char * displayName);
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
 		* "filename" is the string that holds the filename.
 		*/
 		File(const std::string & name, 
@@ -178,6 +189,17 @@ namespace FormParts
 		File(const std::string & name, 
 			const std::string & filename,
 			const std::string & contentType);
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
+		* "filename" is the string that holds the filename. 
+		* "contentType" is the MIME type of the file.
+		* "displayName" is the file name to use in the form field.
+		*/
+		File(const std::string & name, 
+			const std::string & filename,
+			const std::string & contentType,
+			const std::string & displayName);
 
 		virtual ~File();
 
@@ -193,8 +215,9 @@ namespace FormParts
 
 	private:
 
-		const std::string mFilename; 
+		const std::string mFilename;
 		const std::string mContentType;
+		const std::string mDisplayFilename;
 
 	};
 

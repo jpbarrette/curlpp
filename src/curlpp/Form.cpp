@@ -107,21 +107,36 @@ curlpp::FormPart::FormPart(const std::string & name)
 curlpp::FormParts::File::File(const char * name, const char * filename)
   : FormPart(name)
   , mFilename(filename)
+  , mDisplayFilename(filename)
 {}
 
 curlpp::FormParts::File::~File()
 {}
 
-curlpp::FormParts::File::File(const char * name, const char * filename, const char * contentType)
+curlpp::FormParts::File::File(const char * name,
+			      const char * filename,
+			      const char * contentType)
   : FormPart(name)
   , mFilename(filename)
   , mContentType(contentType)
+  , mDisplayFilename(filename)
+{}
+
+curlpp::FormParts::File::File(const char * name,
+			      const char * filename,
+			      const char * contentType,
+			      const char * displayName)
+  : FormPart(name)
+  , mFilename(filename)
+  , mContentType(contentType)
+  , mDisplayFilename(displayName)
 {}
 
 curlpp::FormParts::File::File(const std::string & name, 
 			      const std::string & filename)
   : FormPart(name)
   , mFilename(filename)
+  , mDisplayFilename(filename)
 {}
   
 curlpp::FormParts::File::File(const std::string & name, 
@@ -130,6 +145,17 @@ curlpp::FormParts::File::File(const std::string & name,
   : FormPart(name)
   , mFilename(filename)
   , mContentType(contentType)
+  , mDisplayFilename(filename)
+{}
+
+curlpp::FormParts::File::File(const std::string & name, 
+			      const std::string & filename,
+			      const std::string & contentType,
+			      const std::string & displayName)
+  : FormPart(name)
+  , mFilename(filename)
+  , mContentType(contentType)
+  , mDisplayFilename(displayName)
 {}
 
 curlpp::FormParts::File *
@@ -151,6 +177,8 @@ curlpp::FormParts::File::add(::curl_httppost ** first,
 		 mName.c_str(), 
 		 CURLFORM_FILE,
 		 mFilename.c_str(),
+		 CURLFORM_FILENAME,
+		 mDisplayFilename.c_str(),
 		 CURLFORM_END );
   }
   else {
@@ -160,6 +188,8 @@ curlpp::FormParts::File::add(::curl_httppost ** first,
 		 mName.c_str(), 
 		 CURLFORM_FILE,
 		 mFilename.c_str(),
+		 CURLFORM_FILENAME,
+		 mDisplayFilename.c_str(),
 		 CURLFORM_CONTENTTYPE,
 		 mContentType.c_str(),
 		 CURLFORM_END);
