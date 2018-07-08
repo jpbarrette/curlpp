@@ -196,6 +196,60 @@ curlpp::FormParts::File::add(::curl_httppost ** first,
   }
 }
 
+curlpp::FormParts::MemFile::MemFile(const std::string & name,
+				    const std::string & content,
+				    const std::string & contentType,
+				    const std::string & displayName)
+  : FormPart(name)
+  , mContent(content)
+  , mContentType(contentType)
+  , mDisplayFilename(displayName)
+{}
+
+curlpp::FormParts::MemFile::~MemFile()
+{}
+
+curlpp::FormParts::MemFile *
+curlpp::FormParts::MemFile::clone() const
+{
+   return new curlpp::FormParts::MemFile(* this);
+}
+
+void
+curlpp::FormParts::MemFile::add(::curl_httppost ** first,
+				::curl_httppost ** last)
+{
+  // One instance = One curl_httppost, so we don't
+  // need to duplicate the memory.
+  if(mContentType.empty()) {
+    curl_formadd(first,
+		 last,
+		 CURLFORM_PTRNAME,
+		 mName.c_str(),
+		 CURLFORM_BUFFERPTR,
+		 mContent.c_str(),
+		 CURLFORM_BUFFERLENGTH,
+		 mContent.size(),
+		 CURLFORM_FILENAME,
+		 mDisplayFilename.c_str(),
+		 CURLFORM_END );
+  }
+  else {
+    curl_formadd(first,
+		 last,
+		 CURLFORM_PTRNAME, 
+		 mName.c_str(), 
+		 CURLFORM_BUFFERPTR,
+		 mContent.c_str(),
+		 CURLFORM_BUFFERLENGTH,
+		 mContent.size(),
+		 CURLFORM_FILENAME,
+		 mDisplayFilename.c_str(),
+		 CURLFORM_CONTENTTYPE,
+		 mContentType.c_str(),
+		 CURLFORM_END);
+  }
+}
 
 curlpp::FormParts::Content::Content(const char * name, 
 				    const char * content)

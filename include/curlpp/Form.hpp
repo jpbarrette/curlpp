@@ -223,6 +223,48 @@ namespace FormParts
 
 
 	/**
+	* This class is a file post in memory. It will send a file in the
+	* HTTP post whose contents are stored in memory.
+	*/
+
+	class MemFile : public FormPart
+	{
+
+	public:
+
+		/**
+		* initialize a File part. "name" is the name of the field. 
+		* "content" is the string that holds the contents of the file.
+		* "contentType" is the MIME type of the file.
+		* "displayName" is the file name to use in the form field.
+		*/
+		MemFile(const std::string & name, 
+			const std::string & content,
+			const std::string & contentType,
+			const std::string & displayName);
+
+		virtual ~MemFile();
+
+		/**
+		* This function will return a copy of the instance.
+		*/
+		virtual MemFile * clone() const;
+
+	private:
+
+		void add(::curl_httppost ** first, 
+			::curl_httppost ** last);
+
+	private:
+
+		const std::string mContent;
+		const std::string mContentType;
+		const std::string mDisplayFilename;
+
+	};
+
+
+	/**
 	* This class is a file post. It will send a file in the
 	* HTTP post.
 	*/
