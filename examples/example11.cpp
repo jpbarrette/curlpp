@@ -65,7 +65,6 @@ int main(int argc, char *argv[])
 
 	try
 	{
-		curlpp::Cleanup cleaner;
 		curlpp::Easy request;
 
 		/// Set the writer callback to enable cURL to write result in a memory area

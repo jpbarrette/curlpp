@@ -83,7 +83,6 @@ int main(int argc, char *argv[])
   char *url = argv[1];
   
   try {
-    curlpp::Cleanup cleaner;
     curlpp::Easy request;
 
     std::ostringstream myStream;

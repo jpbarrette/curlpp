@@ -49,7 +49,6 @@ int main(int argc, char *argv[])
   char *url = argv[1];
   
   try {
-    curlpp::Cleanup cleaner;
     curlpp::Easy request;
 
     // Set the writer callback to enable cURL 
