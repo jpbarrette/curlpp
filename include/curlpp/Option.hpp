@@ -70,7 +70,7 @@ namespace curlpp
 
 		/**
 		* The constructor will contain an unset option value.
-		* Note that if you try to retreive the value of this option
+		* Note that if you try to retrieve the value of this option
 		* before calling the curlpp::Option::setValue function it will
 		* throw a UnsetOption exception.
 		*/
@@ -94,14 +94,14 @@ namespace curlpp
 		* This function will return the value that this option was set to.
 		*
 		* Note: if you didn't set any value by the curlpp::Option::setValue function,
-		* or the handle option value, retreived by the curlpp::Option::updateMeToHandle
+		* or the handle option value, retrieved by the curlpp::Option::updateMeToHandle
 		* function, is a unset value, it will throw a UnsetOption exception.
 		*/
 		typename Option<OptionType>::ReturnType getValue() const;
 
 		/**
 		* This function will reset the option value. That means that if you try to
-		* retreive the value of this option, or if you try to set this option to a
+		* retrieve the value of this option, or if you try to set this option to a
 		* handle, it will throw an UnsetOption exception.
 		*/
 		virtual void clear();
@@ -158,7 +158,7 @@ namespace curlpp
 
 		/**
 		* The constructor will contain an unset option value.
-		* Note that if you try to retreive the value of this option
+		* Note that if you try to retrieve the value of this option
 		* before calling the curlpp::Option::setValue function it will
 		* throw a UnsetOption exception.
 		*/
@@ -220,7 +220,7 @@ namespace curlpp
 
 		/**
 		* The constructor will contain an unset option value.
-		* Note that if you try to retreive the value of this option
+		* Note that if you try to retrieve the value of this option
 		* before calling the curlpp::Option::setValue function it will
 		* throw a UnsetOption exception.
 		*/

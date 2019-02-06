@@ -96,7 +96,7 @@ namespace curlpp
 
 
 	/**
-	* This is the only class that is authorized to retreive 
+	* This is the only class that is authorized to retrieve
 	* info from a curlpp::Easy class. So, this is the class
 	* you need to use when you specialize the class
 	* curlpp::InfoTypeConverter. This class is in fact used
