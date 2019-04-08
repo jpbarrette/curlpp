@@ -1,4 +1,4 @@
-project(curlpp) 
+project(curlpp)
 
 
 # In response to CMake 3.0 generating warnings regarding policy CMP0042,
@@ -67,12 +67,6 @@ else()
   message(FATAL_ERROR "Could not find CURL")
 endif()
 
-# All following targets should search these directories for headers
-include_directories( 
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-  ${CURL_INCLUDE_DIRS}
-)
-
 #########################################################################################
 # Define Targets
 
@@ -87,6 +81,12 @@ file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
 target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
+target_include_directories(${PROJECT_NAME}
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CURL_INCLUDE_DIRS}
+    )
+
 set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
@@ -95,7 +95,7 @@ add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
 # the same root name, but different suffixes.
 #
 #  (solution taken from https://cmake.org/Wiki/CMake_FAQ#How_do_I_make_my_shared_and_static_libraries_have_the_same_root_name.2C_but_different_suffixes.3F)
-# 
+#
 # Making shared and static libraries have the same root name, but different suffixes
 SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 # Now the library target "curlpp_static" will be named "curlpp.lib" with MS tools.
@@ -103,6 +103,11 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME ${PROJECT_NA
 # so we add a "lib" prefix (which is default on other platforms anyway):
 SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES PREFIX "lib")
 target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
+target_include_directories(${PROJECT_NAME}_static
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${CURL_INCLUDE_DIRS}
+    )
 
 # install headers
 install(DIRECTORY include/utilspp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/utilspp")
