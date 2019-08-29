@@ -314,7 +314,6 @@ namespace options
 	typedef curlpp::OptionTrait<long, CURLOPT_SSL_VERIFYHOST> SslVerifyHost;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSL_CIPHER_LIST> SslCipherList;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
-	typedef curlpp::OptionTrait<long, CURLOPT_USE_SSL> UseSsl;
 
 
 	/**
