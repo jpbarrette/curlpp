@@ -31,6 +31,7 @@ usage.
  Example 23: Setting request options using iterators to custom container 
              of curlpp options.
  Example 24: Binded method functor for DebugFunction example.
-
+ Example 25: Send e-mail over SMTP.
+ 
 
 

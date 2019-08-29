@@ -251,6 +251,14 @@ namespace options
 
 
 	/**
+	* SMTP options.
+	*/
+
+	typedef curlpp::OptionTrait<std::string, CURLOPT_MAIL_AUTH> MailAuth;
+	typedef curlpp::OptionTrait<std::string, CURLOPT_MAIL_FROM> MailFrom;
+	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_MAIL_RCPT> MailRcpt;
+
+	/**
 	* Protocol options.
 	*/
 
@@ -306,6 +314,7 @@ namespace options
 	typedef curlpp::OptionTrait<long, CURLOPT_SSL_VERIFYHOST> SslVerifyHost;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSL_CIPHER_LIST> SslCipherList;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
+	typedef curlpp::OptionTrait<long, CURLOPT_USE_SSL> UseSsl;
 
 
 	/**
