@@ -1,6 +1,8 @@
 *.Po
 *.o
 *.a
+*.so
+*.so.*
 *.la
 *.lo
 *.Plo
@@ -42,7 +44,11 @@ examples/example25
 
 *.exe
 CMakeCache.txt
+cmake_install.cmake
 
 conanbuildinfo.cmake
 conaninfo.txt
 bin/
+
+extras/curlpp-config
+extras/curlpp.pc
