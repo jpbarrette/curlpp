@@ -145,7 +145,7 @@ namespace curlpp
 
 		/**
 		* This is the function that curlpp::InfoGetter will call
-		* to retreive option.
+		* to retrieve option.
 		*/
 		template<typename T>
 		void getInfo(CURLINFO info, T & value) const;

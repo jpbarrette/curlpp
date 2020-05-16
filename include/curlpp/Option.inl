@@ -111,7 +111,7 @@ typename Option<OptionType>::ReturnType
 Option<OptionType>::getValue() const
 {
   if(mContainer == NULL)
-    throw UnsetOption("You are trying to retreive the value of an unset option");
+    throw UnsetOption("You are trying to retrieve the value of an unset option");
 
   return mContainer->getValue();
 }

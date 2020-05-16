@@ -134,7 +134,7 @@ namespace curlpp
 
 
 	/**
-	* This exception is thrown when you try to retreive a value for an
+	* This exception is thrown when you try to retrieve a value for an
 	* unset option.
 	*/
 
