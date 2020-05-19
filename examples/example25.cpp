@@ -84,7 +84,7 @@ int main(int argc, char *argv[])
 		request.setOpt(new Verbose(true));
 		request.setOpt(new Url(smtpUrl));
 		request.setOpt(new MailFrom(fromAddress));
-		request.setOpt(new MailRcpt(recepients));
+		request.setOpt(new MailRcpt(recipients));
 		request.setOpt(new ReadStream(&dataStream));
 		request.setOpt(new InfileSize(size));
 		request.setOpt(new Upload(true));
