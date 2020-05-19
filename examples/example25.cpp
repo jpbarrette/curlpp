@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 	long size = dataStream.str().size();
 
 	std::list<std::string> recipients;
-	recepients.push_back(toAddress);
+	recipients.push_back(toAddress);
 	recepients.push_back(ccAddress);
 
 	try
