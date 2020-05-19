@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 
 	std::list<std::string> recipients;
 	recipients.push_back(toAddress);
-	recepients.push_back(ccAddress);
+	recipients.push_back(ccAddress);
 
 	try
 	{
