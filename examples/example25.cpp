@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 		<< mailText;
 	long size = dataStream.str().size();
 
-	std::list<std::string> recepients;
+	std::list<std::string> recipients;
 	recepients.push_back(toAddress);
 	recepients.push_back(ccAddress);
 
@@ -102,4 +102,3 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
-
