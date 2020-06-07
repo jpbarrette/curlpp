@@ -10,6 +10,10 @@ if(POLICY CMP0042)
     set(CMAKE_MACOSX_RPATH TRUE)
 endif()
 
+if(POLICY CMP0077)
+    cmake_policy(SET CMP0077 NEW) # CMake options behaviour
+endif()
+
 # for unix platform, define install directories.
 include(GNUInstallDirs)
 
