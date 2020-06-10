@@ -10,6 +10,10 @@ if(POLICY CMP0042)
     set(CMAKE_MACOSX_RPATH TRUE)
 endif()
 
+if(POLICY CMP0077)
+    cmake_policy(SET CMP0077 NEW) # CMake option behaviour
+endif()
+
 # for unix platform, define install directories.
 include(GNUInstallDirs)
 
@@ -56,7 +60,6 @@ add_subdirectory(extras)
 # Seems simple.
 
 message(STATUS "Looking for CURL")
-include(FindCURL)
 find_package(CURL REQUIRED)
 
 if(CURL_FOUND)
@@ -85,9 +88,13 @@ endif()
 
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
-add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
-target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
-set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
+
+option(CURLPP_BUILD_SHARED_LIBS "Build shared libraries" ON)
+if(CURLPP_BUILD_SHARED_LIBS)
+   add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
+   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
+   set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
+endif()
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
 
@@ -108,8 +115,11 @@ target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
 install(DIRECTORY include/utilspp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/utilspp")
 install(DIRECTORY include/curlpp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/curlpp")
 
-install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_static
+if(CURLPP_BUILD_SHARED_LIBS)
+install(TARGETS ${PROJECT_NAME}
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+endif()
+install(TARGETS ${PROJECT_NAME}_static
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
