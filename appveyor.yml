@@ -2,11 +2,13 @@ version: '0.7.4.{build}'
 
 environment:
     matrix:
-      - PRJ_GEN: "Visual Studio 12 2013 Win64"
+      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+        PRJ_GEN: "Visual Studio 12 2013 Win64"
         BDIR: msvc2013
         PRJ_CFG: Release
         PRJ_GEN_VERSION: 12
-      - PRJ_GEN: "Visual Studio 14 2015 Win64"
+      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+        PRJ_GEN: "Visual Studio 14 2015 Win64"
         BDIR: msvc2015
         PRJ_CFG: Release
         PRJ_GEN_VERSION: 14
@@ -15,16 +17,13 @@ environment:
         BDIR: msvc2017
         PRJ_CFG: Release
         PRJ_GEN_VERSION: 15
-      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-        PRJ_GEN: "Visual Studio 16 2019 Win64"
-        BDIR: msvc2019
-        PRJ_CFG: Release
-        PRJ_GEN_VERSION: 16
-      - PRJ_GEN: "Visual Studio 12 2013 Win64"
+      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+        PRJ_GEN: "Visual Studio 12 2013 Win64"
         BDIR: msvc2013
         PRJ_CFG: Debug
         PRJ_GEN_VERSION: 12
-      - PRJ_GEN: "Visual Studio 14 2015 Win64"
+      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2015
+        PRJ_GEN: "Visual Studio 14 2015 Win64"
         BDIR: msvc2015
         PRJ_CFG: Debug
         PRJ_GEN_VERSION: 14
@@ -33,11 +32,6 @@ environment:
         BDIR: msvc2017
         PRJ_CFG: Debug
         PRJ_GEN_VERSION: 15
-      - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-        PRJ_GEN: "Visual Studio 16 2019 Win64"
-        BDIR: msvc2019
-        PRJ_CFG: Debug
-        PRJ_GEN_VERSION: 16
 
 install:
       - cmd: echo "Downloading conan..."
