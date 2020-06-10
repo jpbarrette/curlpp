@@ -11,7 +11,7 @@ if(POLICY CMP0042)
 endif()
 
 if(POLICY CMP0077)
-    cmake_policy(SET CMP0077 NEW) # CMake options behaviour
+    cmake_policy(SET CMP0077 NEW) # CMake option behaviour
 endif()
 
 # for unix platform, define install directories.
