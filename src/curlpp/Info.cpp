@@ -12,9 +12,12 @@ template <>
 void InfoTypeConverter<std::string>::get(const curlpp::Easy& handle,
                                          CURLINFO info,
                                          std::string& value) {
-  char* tmp;
+  char * tmp = NULL;
   InfoGetter::get(handle, info, tmp);
-  value = tmp;
+  if (tmp == NULL)
+    value.clear();
+  else
+    value = tmp;
 }
 
 template <>
