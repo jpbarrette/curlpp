@@ -204,7 +204,7 @@ void OptionSetter<std::istream *, CURLOPT_READDATA>
 void OptionSetter<curlpp::types::ProgressFunctionFunctor, CURLOPT_PROGRESSFUNCTION>
 ::setOpt(internal::CurlHandle * handle, ParamType value)
 {
-	handle->option(CURLOPT_NOPROGRESS, FALSE);
+	handle->option(CURLOPT_NOPROGRESS, 0L);
 	handle->option(CURLOPT_PROGRESSFUNCTION, Callbacks::ProgressCallback);
 	handle->option(CURLOPT_PROGRESSDATA, handle);
 	handle->setProgressFunctor(value);
@@ -216,6 +216,7 @@ void OptionSetter<curlpp::types::ProgressFunctionFunctor, CURLOPT_PROGRESSFUNCTI
 void OptionSetter<curlpp::types::BoostProgressFunction, CURLOPT_PROGRESSFUNCTION>
 ::setOpt(internal::CurlHandle * handle, ParamType value)
 {
+	handle->option(CURLOPT_NOPROGRESS, 0L);
 	handle->option(CURLOPT_PROGRESSFUNCTION, Callbacks::ProgressCallback);
 	handle->option(CURLOPT_PROGRESSDATA, handle);
 	handle->setProgressFunctor(value);
