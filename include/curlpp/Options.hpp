@@ -203,6 +203,10 @@ typedef curlpp::OptionTrait<long, CURLOPT_PORT> Port;
 
 typedef curlpp::OptionTrait<bool, CURLOPT_TCP_NODELAY> TcpNoDelay;
 
+typedef curlpp::OptionTrait<bool, CURLOPT_TCP_KEEPALIVE> TcpKeepAlive;
+typedef curlpp::OptionTrait<long, CURLOPT_TCP_KEEPIDLE> TcpKeepAliveIdleDelay;
+typedef curlpp::OptionTrait<long, CURLOPT_TCP_KEEPINTVL> TcpKeepAliveInterval;
+
 /**
  * Names and passwords options.
  */
