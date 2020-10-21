@@ -1,7 +1,7 @@
 /**
 * \file
 * Setting request options using iterators to custom container of curlpp options.
-* 
+*
 */
 
 #include <vector>
@@ -15,12 +15,10 @@ using namespace curlpp::options;
 
 int main(int, char **)
 {
-
 	try
 	{
-
-		// That's all that is needed to do cleanup of used resources (RAII style).
-		curlpp::Cleanup myCleanup;
+		// curlpp::cleanup is deprecated.
+		curlpp::initialize();
 
 		// Our request to be sent.
 		curlpp::Easy myRequest;
@@ -37,9 +35,7 @@ int main(int, char **)
 		// Send request and get a result.
 		// By default the result goes to standard output.
 		myRequest.perform();
-
 	}
-
 
 	catch(curlpp::RuntimeError & e)
 	{
@@ -50,6 +46,7 @@ int main(int, char **)
 	{
 		std::cout << e.what() << std::endl;
 	}
-    
-  return 0;
+
+	curlpp::terminate();
+	return 0;
 }
