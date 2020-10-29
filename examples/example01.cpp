@@ -49,10 +49,6 @@ int main(int, char **)
 {
 	try
 	{
-		// This is marked deprecated.
-		// curlpp::Cleanup myCleanup;
-
-		// Use this instead.
 		curlpp::initialize();
 
 		// First easy example.
@@ -170,8 +166,7 @@ int main(int, char **)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	
-	// :Cleanup is deprecated, so do this for cleanup.
+
 	curlpp::terminate();
 
 	return 0;
