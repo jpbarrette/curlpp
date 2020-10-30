@@ -45,19 +45,19 @@ typedef curlpp::Info<CURLINFO_PRETRANSFER_TIME, double> PreTransferTime;
 typedef curlpp::Info<CURLINFO_STARTTRANSFER_TIME, double> StartTransferTime;
 typedef curlpp::Info<CURLINFO_REDIRECT_TIME, double> RedirectTime;
 typedef curlpp::Info<CURLINFO_REDIRECT_COUNT, long> RedirectCount;
-typedef curlpp::Info<CURLINFO_SIZE_UPLOAD, double> SizeUpload;
-typedef curlpp::Info<CURLINFO_SIZE_DOWNLOAD, double> SizeDownload;
-typedef curlpp::Info<CURLINFO_SPEED_DOWNLOAD, double> SpeedDownload;
-typedef curlpp::Info<CURLINFO_SPEED_UPLOAD, double> SpeedUpload;
+typedef curlpp::Info<CURLINFO_SIZE_UPLOAD_T, double> SizeUpload;
+typedef curlpp::Info<CURLINFO_SIZE_DOWNLOAD_T, double> SizeDownload;
+typedef curlpp::Info<CURLINFO_SPEED_DOWNLOAD_T, double> SpeedDownload;
+typedef curlpp::Info<CURLINFO_SPEED_UPLOAD_T, double> SpeedUpload;
 typedef curlpp::Info<CURLINFO_HEADER_SIZE, long> HeaderSize;
 typedef curlpp::Info<CURLINFO_REQUEST_SIZE, long> RequestSize;
 typedef curlpp::Info<CURLINFO_SSL_VERIFYRESULT, long> SslVerifyResult;
 #if LIBCURL_VERSION_NUM >= 0x070c03
 typedef curlpp::Info<CURLINFO_SSL_ENGINES, std::list<std::string> > SslEngines;
 #endif
-typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_DOWNLOAD, double>
+typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_DOWNLOAD_T, double>
     ContentLengthDownload;
-typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_UPLOAD, double>
+typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_UPLOAD_T, double>
     ContentLengthUpload;
 typedef curlpp::Info<CURLINFO_CONTENT_TYPE, std::string> ContentType;
 typedef curlpp::Info<CURLINFO_HTTPAUTH_AVAIL, long> HttpAuthAvail;
