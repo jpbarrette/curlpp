@@ -1,5 +1,5 @@
 [requires]
-libcurl/7.50.3@bincrafters/stable
+libcurl/7.73.0
 
 [generators]
 cmake
