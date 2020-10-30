@@ -45,3 +45,10 @@ CMakeCache.txt
 conanbuildinfo.cmake
 conaninfo.txt
 bin/
+/.vscode/*
+/conan.lock
+/conanbuildinfo.txt
+*.vcxproj*
+/examples/Examples/x64/Debug
+projects/
+/graph_info.json
