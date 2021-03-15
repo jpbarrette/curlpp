@@ -108,7 +108,7 @@ curlpp::Easy::reset ()
 	mOptions.setOpt(internal::OptionList());
 }
 
-
+namespace curlpp {
 std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & request)
 {
   // Quick clone that doesn't copy options, only the curl handle.
@@ -117,6 +117,7 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & request)
   r.perform();
 
   return stream;
+}
 }
 
 

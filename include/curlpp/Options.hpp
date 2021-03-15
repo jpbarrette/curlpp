@@ -324,13 +324,13 @@ namespace options
 
 	namespace Options = options;
 
+	std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
+
 
 } // namespace curlpp
 
 namespace cURLpp = curlpp;
 
-
-std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url);
 
 
 #endif // #ifndef CURLPP_OPTIONS_HPP

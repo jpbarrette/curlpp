@@ -156,11 +156,6 @@ namespace curlpp
 
 	};
 
-
-} // namespace curlpp
-
-namespace cURLpp = curlpp;
-
 #include "Easy.inl"
 
 // Not quite sure if we shouldn't pass a const handle and clone it instead.
@@ -168,3 +163,10 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::Easy & handle);
 
 
 #endif // #ifndef CURLPP_EASY_HPP
+
+
+} // namespace curlpp
+
+namespace cURLpp = curlpp;
+
+
