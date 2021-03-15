@@ -25,6 +25,7 @@
 #include "curlpp/Options.hpp"
 #include "curlpp/Easy.hpp"
 
+namespace curlpp{
 std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & url)
 {
   curlpp::Easy request;
@@ -33,4 +34,5 @@ std::ostream & operator<<(std::ostream & stream, const curlpp::options::Url & ur
   stream << request;
 
   return stream;
+}
 }
