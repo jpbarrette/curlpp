@@ -27,6 +27,14 @@ if(WIN32)
     set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
 
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
+    
+    option(CURLPP_STATIC_CRT "Set to ON to build curlpp with static CRT on Windows (/MT)." OFF)
+    if(CURLPP_STATIC_CRT)
+      set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+      set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /MT")
+      set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /MTd")
+    endif()
+    
   else()
     if (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} VERSION_LESS 3.1)
         cmake_minimum_required(VERSION 2.8)
