@@ -89,7 +89,7 @@ endif()
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
 file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 
-option(CURLPP_BUILD_SHARED_LIBS "Build shared libraries" ON)
+option(CURLPP_BUILD_SHARED_LIBS "Build shared libraries" OFF)
 if(CURLPP_BUILD_SHARED_LIBS)
    add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
    target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
