@@ -26,10 +26,10 @@
 
 curlpp::OptionBase::OptionBase(CURLoption option)
   : mOption(option)
-{};
+{}
 
 curlpp::OptionBase::~OptionBase()
-{};
+{}
 
 bool curlpp::OptionBase::operator<(const curlpp::OptionBase & rhs) const 
 {
