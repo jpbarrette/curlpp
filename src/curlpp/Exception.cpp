@@ -72,15 +72,15 @@ curlpp::LibcurlLogicError::LibcurlLogicError(const char * reason, CURLcode code)
 
 curlpp::UnsetOption::UnsetOption(const std::string & reason)
     : curlpp::RuntimeError(reason)
-{};
+{}
 
 curlpp::UnsetOption::UnsetOption(const char * reason)
     : curlpp::RuntimeError(reason)
-{};
+{}
 
 curlpp::NotAvailable::NotAvailable()
     : curlpp::LogicError("This option was not available at compile time.")
-{};
+{}
 
 curlpp::UnknowException::UnknowException() 
   : curlpp::RuntimeError("An unknown exception was thrown within a callback")
