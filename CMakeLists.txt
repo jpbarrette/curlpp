@@ -76,7 +76,10 @@ if(CURL_FOUND)
   message(STATUS "Using CURL include dir(s): ${CURL_INCLUDE_DIRS}")
   message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
 else()
-  message(FATAL_ERROR "Could not find CURL")
+  message(STATUS "Fetching CURL")
+  include(FetchContent)
+  FetchContent_Declare(CURL GIT_REPOSITORY https://github.com/curl/curl.git)
+  FetchContent_MakeAvailable(CURL)
 endif()
 
 # All following targets should search these directories for headers
