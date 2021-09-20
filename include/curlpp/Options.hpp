@@ -249,6 +249,14 @@ namespace options
 	typedef curlpp::OptionTrait<curl_ftpssl, CURLOPT_FTP_SSL> FtpSsl;
 	typedef curlpp::OptionTrait<curl_ftpauth, CURLOPT_FTPSSLAUTH> FtpSslAuth;
 
+	/**
+	 * SMTP options.
+	 */
+
+	typedef curlpp::OptionTrait<std::string, CURLOPT_MAIL_FROM> MailFrom;
+	typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_MAIL_RCPT> MailRcpt;
+
+
 
 	/**
 	* Protocol options.
