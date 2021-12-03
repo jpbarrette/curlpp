@@ -3,6 +3,7 @@ configure.in is a good example to add curlpp to your project
 Note that example 22 is contains the easiest and shorter examples of cURLpp 
 usage.
 
+ Example 00: Minimal example for fetching a site.
  Example 01: This example is made to show you how you can use the Options.
  Example 02: an upload example.
  Example 03: verbose callback example.
