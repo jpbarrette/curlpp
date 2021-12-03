@@ -1,4 +1,4 @@
-project(curlpp) 
+project(curlpp)
 
 
 # In response to CMake 3.0 generating warnings regarding policy CMP0042,
@@ -27,7 +27,7 @@ if(WIN32)
     set(CMAKE_CXX_EXTENSIONS OFF) #...without compiler extensions like gnu++11
 
     set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
-    
+
     option(CURLPP_STATIC_CRT "Set to ON to build curlpp with static CRT on Windows (/MT)." OFF)
     if(CURLPP_STATIC_CRT)
       set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -35,7 +35,7 @@ if(WIN32)
       set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /MTd")
       add_definitions("-DCURL_STATICLIB")
     endif()
-    
+
   else()
     if (${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION} VERSION_LESS 3.1)
         cmake_minimum_required(VERSION 2.8)
@@ -83,7 +83,7 @@ else()
 endif()
 
 # All following targets should search these directories for headers
-include_directories( 
+include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include
   ${CURL_INCLUDE_DIRS}
 )
@@ -104,17 +104,19 @@ file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 option(CURLPP_BUILD_SHARED_LIBS "Build shared libraries" ON)
 if(CURLPP_BUILD_SHARED_LIBS)
    add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
+   target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
    target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
    set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
 endif()
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
+target_include_directories(${PROJECT_NAME}_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
 
 # Make sure that on unix-platforms shared and static libraries have
 # the same root name, but different suffixes.
 #
 #  (solution taken from https://cmake.org/Wiki/CMake_FAQ#How_do_I_make_my_shared_and_static_libraries_have_the_same_root_name.2C_but_different_suffixes.3F)
-# 
+#
 # Making shared and static libraries have the same root name, but different suffixes
 SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME ${PROJECT_NAME})
 # Now the library target "curlpp_static" will be named "curlpp.lib" with MS tools.
@@ -134,4 +136,3 @@ install(TARGETS ${PROJECT_NAME}
 endif()
 install(TARGETS ${PROJECT_NAME}_static
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
-
