@@ -19,6 +19,8 @@ foreach(Example ${ExamplesFileList})
   get_filename_component(ExampleName ${Example} NAME_WE)
   # Define example executable
   add_executable(${ExampleName} ${Example})
+  # Add curlpp include dir
+  target_include_directories(${ExampleName} PRIVATE ${CURLPP_INCLUDE_DIRS})
   # Link example against curlpp
   target_link_libraries(${ExampleName} ${CURLPP_LDFLAGS})
   # make the meta target depend on this example.
