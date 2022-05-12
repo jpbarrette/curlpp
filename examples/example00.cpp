@@ -22,7 +22,7 @@ int main(int, char **)
 		curlpp::Easy myRequest;
 
 		// Set the URL.
-		myRequest.setOpt<Url>("http://example.com");
+		myRequest.setOpt<curlpp::options::Url>("http://example.com");
 
 		// Send request and get a result.
 		// By default the result goes to standard output.
