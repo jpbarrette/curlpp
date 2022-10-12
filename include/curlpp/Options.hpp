@@ -297,6 +297,8 @@ namespace options
 	* SSL and security options.
 	*/
 
+	typedef curlpp::OptionTrait<long, CURLOPT_USE_SSL> UseSsl;
+	typedef curlpp::OptionTrait<long, CURLOPT_SSL_OPTIONS> SslOptions;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSLCERT> SslCert;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSLCERTTYPE> SslCertType;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSLCERTPASSWD> SslCertPasswd;
