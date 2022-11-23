@@ -100,7 +100,7 @@ namespace curlpp
 	* so.
 	*/
 
-	template<CURLINFO info, typename T = InfoType<info>::Type>
+	template<CURLINFO info, typename T = typename InfoType<info>::Type>
 	struct Info 
 	{
 		static void get(const Easy& handle, T & value);
@@ -120,7 +120,21 @@ namespace curlpp
 		static T get(const Easy& handle);
 	};
 
+	/**
+	* This is the only class that is authorized to retrieve
+	* info from a curlpp::Easy class. So, this is the class
+	* you need to use when you specialize the class
+	* curlpp::InfoTypeConverter. This class is in fact used
+	* as a proxy, just to be sure that nobody access curlpp::Easy's 
+	* private data.
+	*/
 
+	struct InfoGetter
+	{
+		template<typename T>
+		static void get(const Easy& handle, CURLINFO info, T& value);
+	};
+	
 	/**
 	* This is the class you need to specialize if you use
 	* a special type that libcURL is not aware of. This class
@@ -166,22 +180,6 @@ namespace curlpp
 			value = internal::SList(tmpList).list();
 		}
 	};
-
-	/**
-	* This is the only class that is authorized to retrieve
-	* info from a curlpp::Easy class. So, this is the class
-	* you need to use when you specialize the class
-	* curlpp::InfoTypeConverter. This class is in fact used
-	* as a proxy, just to be sure that nobody access curlpp::Easy's 
-	* private data.
-	*/
-
-	struct InfoGetter
-	{
-		template<typename T>
-		static void get(const Easy& handle, CURLINFO info, T& value);
-	};
-
 
 } // namespace curlpp
 
