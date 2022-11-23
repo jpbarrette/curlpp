@@ -42,36 +42,43 @@ namespace infos
 
 
 	typedef curlpp::Info<CURLINFO_EFFECTIVE_URL, std::string> EffectiveUrl;
-	typedef curlpp::Info<CURLINFO_RESPONSE_CODE, long> ResponseCode;
-	typedef curlpp::Info<CURLINFO_HTTP_CONNECTCODE, long> HttpConnectCode;
-	typedef curlpp::Info<CURLINFO_FILETIME, long> FileTime;
-	typedef curlpp::Info<CURLINFO_TOTAL_TIME, double> TotalTime;
-	typedef curlpp::Info<CURLINFO_NAMELOOKUP_TIME, double> NameLookupTime;
-	typedef curlpp::Info<CURLINFO_CONNECT_TIME, double> ConnectTime;
-	typedef curlpp::Info<CURLINFO_PRETRANSFER_TIME, double> PreTransferTime;
-	typedef curlpp::Info<CURLINFO_STARTTRANSFER_TIME, double> StartTransferTime;
-	typedef curlpp::Info<CURLINFO_REDIRECT_TIME, double> RedirectTime;
-	typedef curlpp::Info<CURLINFO_REDIRECT_COUNT, long> RedirectCount;
-	typedef curlpp::Info<CURLINFO_SIZE_UPLOAD, double> SizeUpload;
-	typedef curlpp::Info<CURLINFO_SIZE_DOWNLOAD, double> SizeDownload;
-	typedef curlpp::Info<CURLINFO_SPEED_DOWNLOAD, double> SpeedDownload;
-	typedef curlpp::Info<CURLINFO_SPEED_UPLOAD, double> SpeedUpload;
-	typedef curlpp::Info<CURLINFO_HEADER_SIZE, long> HeaderSize;
-	typedef curlpp::Info<CURLINFO_REQUEST_SIZE, long> RequestSize;
-	typedef curlpp::Info<CURLINFO_SSL_VERIFYRESULT, long> SslVerifyResult;
+	typedef curlpp::Info<CURLINFO_RESPONSE_CODE> ResponseCode;
+	typedef curlpp::Info<CURLINFO_HTTP_CONNECTCODE> HttpConnectCode;
+	typedef curlpp::Info<CURLINFO_FILETIME> FileTime;
+	typedef curlpp::Info<CURLINFO_FILETIME_T> FileTimeT;
+	typedef curlpp::Info<CURLINFO_TOTAL_TIME> TotalTime;
+	typedef curlpp::Info<CURLINFO_NAMELOOKUP_TIME> NameLookupTime;
+	typedef curlpp::Info<CURLINFO_CONNECT_TIME> ConnectTime;
+	typedef curlpp::Info<CURLINFO_PRETRANSFER_TIME> PreTransferTime;
+	typedef curlpp::Info<CURLINFO_STARTTRANSFER_TIME> StartTransferTime;
+	typedef curlpp::Info<CURLINFO_REDIRECT_TIME> RedirectTime;
+	typedef curlpp::Info<CURLINFO_REDIRECT_COUNT> RedirectCount;
+	typedef curlpp::Info<CURLINFO_SIZE_UPLOAD> SizeUpload;
+	typedef curlpp::Info<CURLINFO_SIZE_UPLOAD_T> SizeUploadT;
+	typedef curlpp::Info<CURLINFO_SIZE_DOWNLOAD> SizeDownload;
+	typedef curlpp::Info<CURLINFO_SIZE_DOWNLOAD_T> SizeDownloadT;
+	typedef curlpp::Info<CURLINFO_SPEED_DOWNLOAD> SpeedDownload;
+	typedef curlpp::Info<CURLINFO_SPEED_DOWNLOAD_T> SpeedDownloadT;
+	typedef curlpp::Info<CURLINFO_SPEED_UPLOAD> SpeedUpload;
+	typedef curlpp::Info<CURLINFO_SPEED_UPLOAD_T> SpeedUploadT;
+	typedef curlpp::Info<CURLINFO_HEADER_SIZE> HeaderSize;
+	typedef curlpp::Info<CURLINFO_REQUEST_SIZE> RequestSize;
+	typedef curlpp::Info<CURLINFO_SSL_VERIFYRESULT> SslVerifyResult;
 #if LIBCURL_VERSION_NUM >= 0x070c03
 	typedef curlpp::Info<CURLINFO_SSL_ENGINES, std::list<std::string> > SslEngines;
-#endif 
-	typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_DOWNLOAD, double> ContentLengthDownload;
-	typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_UPLOAD, double> ContentLengthUpload;
+#endif
+	typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_DOWNLOAD> ContentLengthDownload;
+	typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_DOWNLOAD_T> ContentLengthDownloadT;
+	typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_UPLOAD> ContentLengthUpload;
+	typedef curlpp::Info<CURLINFO_CONTENT_LENGTH_UPLOAD_T> ContentLengthUploadT;
 	typedef curlpp::Info<CURLINFO_CONTENT_TYPE, std::string> ContentType;
-	typedef curlpp::Info<CURLINFO_HTTPAUTH_AVAIL, long> HttpAuthAvail;
-	typedef curlpp::Info<CURLINFO_PROXYAUTH_AVAIL, long> ProxyAuthAvail;
+	typedef curlpp::Info<CURLINFO_HTTPAUTH_AVAIL> HttpAuthAvail;
+	typedef curlpp::Info<CURLINFO_PROXYAUTH_AVAIL> ProxyAuthAvail;
 #if LIBCURL_VERSION_NUM >= 0x070c02
-	typedef curlpp::Info<CURLINFO_OS_ERRNO, long> OsErrno;
+	typedef curlpp::Info<CURLINFO_OS_ERRNO> OsErrno;
 #endif
 #if LIBCURL_VERSION_NUM >= 0x070c03
-	typedef curlpp::Info<CURLINFO_NUM_CONNECTS, long> NumConnects;
+	typedef curlpp::Info<CURLINFO_NUM_CONNECTS> NumConnects;
 #endif
 
 #if LIBCURL_VERSION_NUM >= 0x070e01
@@ -80,8 +87,7 @@ namespace infos
 #ifdef CURLPP_ALLOW_NOT_AVAILABLE
 	// This curlinfo text must be specified, so we specify something
 	// that we know will be there.
-	typedef curlpp::NotAvailableInfo<CURLINFO_EFFECTIVE_URL,
-		std::list<std::string> > CookieList;
+	typedef curlpp::NotAvailableInfo<CURLINFO_EFFECTIVE_URL, std::list<std::string> > CookieList;
 #endif
 #endif
 
