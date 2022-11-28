@@ -33,6 +33,66 @@
 namespace curlpp
 {
 
+	/**
+	* this struct is type help to check the right type is used CURLINFO_XXXX
+	* using `CURLINFO_TYPEMASK` mask
+	*
+	* rmq : `CURLINFO_SLIST` and CURLINFO_PTR have the same value, so a specialtized
+	* struct is need for each CURLINFO_XXX using this type
+	*/
+
+	template<CURLINFO info, uint32_t type_mask = (info& CURLINFO_TYPEMASK)>
+	struct InfoType;
+
+	template<CURLINFO info>
+	struct InfoType<info, CURLINFO_STRING> {
+		using Type = char*;
+	};
+
+	template<CURLINFO info>
+	struct InfoType<info, CURLINFO_LONG> {
+		using Type = long;
+	};
+
+	template<CURLINFO info>
+	struct InfoType<info, CURLINFO_DOUBLE> {
+		using Type = double;
+	};
+
+	template<CURLINFO info>
+	struct InfoType<info, CURLINFO_OFF_T> {
+		using Type = curl_off_t;
+	};
+
+	template<CURLINFO info>
+	struct InfoType<info, CURLINFO_SOCKET> {
+		using Type = curl_socket_t;
+	};
+
+	template<>
+	struct InfoType<CURLINFO_COOKIELIST, CURLINFO_SLIST> {
+		using Type = curl_slist*;
+	};
+
+	template<>
+	struct InfoType<CURLINFO_SSL_ENGINES, CURLINFO_SLIST> {
+		using Type = curl_slist*;
+	};
+
+	template<>
+	struct InfoType<CURLINFO_CERTINFO, CURLINFO_PTR> {
+		using Type = curl_certinfo*;
+	};
+
+	template<>
+	struct InfoType<CURLINFO_TLS_SESSION, CURLINFO_PTR> {
+		using Type = curl_tlssessioninfo*;
+	};
+
+	template<>
+	struct InfoType<CURLINFO_TLS_SSL_PTR, CURLINFO_PTR> {
+		using Type = curl_tlssessioninfo*;
+	};
 
 	/**
 	* This class is responsible of retreiving the Info from
@@ -40,11 +100,11 @@ namespace curlpp
 	* so.
 	*/
 
-	template<CURLINFO info, typename T>
+	template<CURLINFO info, typename T = typename InfoType<info>::Type>
 	struct Info 
 	{
-		static void get(const curlpp::Easy & handle, T & value);
-		static T get(const curlpp::Easy & handle);
+		static void get(const Easy& handle, T & value);
+		static T get(const Easy& handle);
 	};
 
 
@@ -56,44 +116,9 @@ namespace curlpp
 	template<CURLINFO info, typename T>
 	struct NotAvailableInfo : Info<info, T>
 	{
-		static void get(const curlpp::Easy & handle, T & value);
-		static T get(const curlpp::Easy & handle);
+		static void get(const Easy& handle, T& value);
+		static T get(const Easy& handle);
 	};
-
-
-	/**
-	* This is the class you need to specialize if you use
-	* a special type that libcURL is not aware of. This class
-	* need to call curlpp::InfoGetter::get function. See 
-	* curlpp::InfoGetter for more information.
-	*/
-
-	template<typename T>
-	struct InfoTypeConverter
-	{
-		static void get(const curlpp::Easy & handle, CURLINFO info, T & value);
-	}; 
-
-
-	template<>
-	void InfoTypeConverter<std::string>
-		::get(const curlpp::Easy & handle, CURLINFO info, std::string & value);
-
-
-	template<>
-	void InfoTypeConverter<std::list<std::string> >
-		::get(const curlpp::Easy & handle, CURLINFO info, std::list<std::string> & value);
-
-
-	template<>
-	void InfoTypeConverter<long>
-		::get(const curlpp::Easy & handle, CURLINFO info, long & value);
-
-
-	template<>
-	void InfoTypeConverter<double>
-		::get(const curlpp::Easy & handle, CURLINFO info, double & value);
-
 
 	/**
 	* This is the only class that is authorized to retrieve
@@ -107,9 +132,54 @@ namespace curlpp
 	struct InfoGetter
 	{
 		template<typename T>
-		static void get(const curlpp::Easy & handle, CURLINFO info, T & value);
+		static void get(const Easy& handle, CURLINFO info, T& value);
+	};
+	
+	/**
+	* This is the class you need to specialize if you use
+	* a special type that libcURL is not aware of. This class
+	* need to call curlpp::InfoGetter::get function. See 
+	* curlpp::InfoGetter for more information.
+	*/
+	template<CURLINFO info, typename T>
+	struct InfoTypeConverter;
+
+	/**
+	* InfoTypeConverter specialized to use type deduced from CURLINFO
+	*/
+	template<CURLINFO info>
+	struct InfoTypeConverter<info, typename InfoType<info>::Type>
+	{
+		using Type = typename InfoType<info>::Type;
+
+		static void get(const Easy& handle, Type& value) {
+			InfoGetter::get<Type>(handle, info, value);
+		}
+	}; 
+
+	/**
+	* InfoTypeConverter specialized to convert char* to std::string
+	*/
+	template<CURLINFO info>
+	struct InfoTypeConverter<info, std::string> 
+	{
+		static void get(const Easy& handle, std::string& value) {
+			auto tmp = Info<info, char*>::get(handle);
+			value = tmp ? tmp : "";
+		}
 	};
 
+	/**
+	* InfoTypeConverter specialized to convert curl_slist* to std::list<std::string>
+	*/
+	template<CURLINFO info>
+	struct InfoTypeConverter<info, std::list<std::string>> 
+	{
+		static void get(const Easy& handle, std::list<std::string>& value) {
+			auto tmpList = Info<info, curl_slist*>::get(handle);
+			value = internal::SList(tmpList).list();
+		}
+	};
 
 } // namespace curlpp
 

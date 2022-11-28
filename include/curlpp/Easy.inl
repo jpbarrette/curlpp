@@ -25,7 +25,7 @@
 template<typename T>
 void curlpp::Easy::getInfo(CURLINFO info, T & value) const
 {
-  mCurl->getInfo(info, value);
+  mCurl->getInfo<T>(info, value);
 }
 
 
