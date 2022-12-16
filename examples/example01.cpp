@@ -1,22 +1,22 @@
 /*
  *    Copyright (c) <2002-2005> <Jean-Philippe Barrette-LaPierre>
- *    
+ *
  *    Permission is hereby granted, free of charge, to any person obtaining
- *    a copy of this software and associated documentation files 
- *    (curlpp), to deal in the Software without restriction, 
+ *    a copy of this software and associated documentation files
+ *    (curlpp), to deal in the Software without restriction,
  *    including without limitation the rights to use, copy, modify, merge,
  *    publish, distribute, sublicense, and/or sell copies of the Software,
- *    and to permit persons to whom the Software is furnished to do so, 
+ *    and to permit persons to whom the Software is furnished to do so,
  *    subject to the following conditions:
- *    
+ *
  *    The above copyright notice and this permission notice shall be included
  *    in all copies or substantial portions of the Software.
- *    
+ *
  *    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
  *    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
- *    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
- *    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
- *    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+ *    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+ *    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+ *    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  *    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
  *    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
@@ -24,7 +24,7 @@
 /**
 * \file
 * Setting and copying options.
-* 
+*
 */
 
 
@@ -42,14 +42,14 @@ namespace
 const long MyPort = 80;
 }
 
-/** 
+/**
  * This example is made to show you how you can use the Options.
  */
 int main(int, char **)
 {
 	try
 	{
-		curlpp::Cleanup myCleanup;
+		curlpp::initialize();
 
 		// First easy example.
 		{
@@ -65,11 +65,11 @@ int main(int, char **)
 
 		// More elaborate example.
 		{
-		  // What the previous example done there was simply 
+		  // What the previous example done there was simply
 		  // to create a curlpp::Easy class, which is the basic
 		  // object in cURLpp, and then set the Url option.
-		  // curlpp::options classes are the primitives that allow to specify 
-		  // values to the requests. 
+		  // curlpp::options classes are the primitives that allow to specify
+		  // values to the requests.
 		  curlpp::options::Url myUrl(std::string("http://example.com"));
 		  curlpp::Easy myRequest;
 		  myRequest.setOpt(myUrl);
@@ -81,7 +81,7 @@ int main(int, char **)
 		  myRequest.perform();
 
 		  // If we wanted to put the content of the URL within a string stream
-		  // (or any type of std::ostream, for that matter), like the first example, 
+		  // (or any type of std::ostream, for that matter), like the first example,
 		  // we would use the WriteStrem option like this:
 		  std::ostringstream os;
 		  curlpp::options::WriteStream ws(&os);
@@ -112,23 +112,23 @@ int main(int, char **)
 		myRequest.setOpt(*mytest);
 
 		// You can reuse the base option for other type of option
-		// and set the option to the request. but first, don't forget 
-		// to delete the previous memory. You can delete it since the 
+		// and set the option to the request. but first, don't forget
+		// to delete the previous memory. You can delete it since the
 		// option is internally duplicated for the request.
 		delete mytest;
 		mytest = myPort.clone();
 		myRequest.setOpt(*mytest);
 		delete mytest;
 
-		// You can clone an option directly to the same type of 
+		// You can clone an option directly to the same type of
 		// option.
 		curlpp::options::Url *myUrl3 = myUrl.clone();
 		myRequest.setOpt(myUrl3);
-		// Now myUrl3 is owned by the request we will NOT use 
+		// Now myUrl3 is owned by the request we will NOT use
 		// it anymore.
 
 
-		// You don't need to declare an option if you just want 
+		// You don't need to declare an option if you just want
 		// to use it once.
 		myRequest.setOpt(curlpp::options::Url("example.com"));
 
@@ -166,6 +166,8 @@ int main(int, char **)
 	{
 		std::cout << e.what() << std::endl;
 	}
-    
-  return 0;
+
+	curlpp::terminate();
+
+	return 0;
 }

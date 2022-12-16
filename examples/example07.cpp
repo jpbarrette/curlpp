@@ -1,7 +1,7 @@
 /**
 * \file
 * Cookies.
-* 
+*
 */
 
 #include <string>
@@ -117,7 +117,7 @@ main(void)
 {
 	try
 	{
-		curlpp::Cleanup myCleanup;
+        curlpp::initialize();
 		curlpp::Easy exEasy;
 		std::vector<std::string> cookieList;
 
@@ -171,4 +171,5 @@ main(void)
 		std::cout << e.what() << std::endl;
 		exit(EXIT_FAILURE);
 	}
+    curlpp::terminate();
 }
