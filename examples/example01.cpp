@@ -75,20 +75,20 @@ int main(int, char **)
 		  myRequest.setOpt(myUrl);
 
 		  // Now that all the options we wanted to set are there, we need to
-		  // actually do the request. the "perform" method does actually that.
+		  // actually do the request. The "perform" method does exactly that.
 		  // With that call, the request will be done and the content of that URL
 		  // will be printed in std::cout (which is the default).
 		  myRequest.perform();
 
 		  // If we wanted to put the content of the URL within a string stream
 		  // (or any type of std::ostream, for that matter), like the first example, 
-		  // we would use the WriteStrem option like this:
+		  // we would use the WriteStream option like this:
 		  std::ostringstream os;
 		  curlpp::options::WriteStream ws(&os);
 		  myRequest.setOpt(ws);
 		  myRequest.perform();
 
-		  // There is some shorcut within curlpp that allow you to write shorter code
+		  // There is some shortcut within curlpp that allow you to write shorter code
 		  // like this:
 		  os << myRequest;
 
@@ -112,7 +112,7 @@ int main(int, char **)
 		myRequest.setOpt(*mytest);
 
 		// You can reuse the base option for other type of option
-		// and set the option to the request. but first, don't forget 
+		// and set the option to the request. But first, don't forget 
 		// to delete the previous memory. You can delete it since the 
 		// option is internally duplicated for the request.
 		delete mytest;
