@@ -15,12 +15,12 @@ BUILDING CURLPP WITH MSVC
 
 BUILDING CURLPP
 
-You can build curlpp in three different ways
+You can build curlpp in four different ways
 
 A. from within MS Visual Studio IDE
 B. using msbuild tool and solution files
 C. using namke and makefile
-
+D. using vcpkg
 
 A. and B.
 
@@ -106,6 +106,18 @@ C. Building using nmake
 	Default for BUILD_CFG is dynamic-release.
 	Default for others is the value of BUILD_CFG.
 	Edit the LIBCURL_PATH or set LIBCURL_PATH envvar!
+
+D. Building using vcpkg
+
+	You can build and install curlpp using [vcpkg](https://github.com/Microsoft/vcpkg/) dependency manager:
+
+		git clone https://github.com/Microsoft/vcpkg.git
+		cd vcpkg
+		./bootstrap-vcpkg.sh
+		./vcpkg integrate install
+		./vcpkg install curlpp
+
+	The curlpp port in vcpkg is kept up to date by Microsoft team members and community contributors. If the version is out of date, please [create an issue or pull request](https://github.com/Microsoft/vcpkg) on the vcpkg repository.
 
 
 NOTES
