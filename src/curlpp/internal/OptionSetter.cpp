@@ -75,7 +75,7 @@ struct Callbacks
 	StreamReadCallback(char * buffer, size_t size, size_t nitems, std::istream * stream)
 	{
 		stream->read(buffer, static_cast<std::streamsize>(size * nitems));
-		size_t realread = stream->gcount();
+		size_t realread = static_cast<size_t>(stream->gcount());
 		if (stream->fail() && !stream->eof())
 			realread = CURL_READFUNC_ABORT;
 
