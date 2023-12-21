@@ -48,7 +48,6 @@ int main(int argc, char *argv[])
   char *url = argv[1];
   
   try {
-    curlpp::Cleanup cleaner;
     curlpp::Easy request;
     
     request.setOpt(new curlpp::options::Url(url)); 

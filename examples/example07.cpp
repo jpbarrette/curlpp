@@ -117,7 +117,6 @@ main(void)
 {
 	try
 	{
-		curlpp::Cleanup myCleanup;
 		curlpp::Easy exEasy;
 		std::vector<std::string> cookieList;
 

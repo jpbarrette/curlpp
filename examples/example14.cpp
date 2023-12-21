@@ -54,8 +54,6 @@ int main(int argc, char *argv[])
   char *url2 = argv[2];
   
   try {
-    curlpp::Cleanup cleaner;
-    
     curlpp::Easy request1;
     curlpp::Easy request2;
     

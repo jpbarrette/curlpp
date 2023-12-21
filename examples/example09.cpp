@@ -64,7 +64,6 @@ int main(int argc, char *argv[])
   MyWindow myWindow;
   try
   {
-      curlpp::Cleanup cleaner;
       curlpp::Easy request;
       
       using namespace curlpp::Options;

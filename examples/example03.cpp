@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
 
 	try 
 	{
-		curlpp::Cleanup cleaner;
 		curlpp::Easy request;
 
 		using namespace curlpp::Options;

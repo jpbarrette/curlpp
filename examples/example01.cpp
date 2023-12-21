@@ -49,8 +49,6 @@ int main(int, char **)
 {
 	try
 	{
-		curlpp::Cleanup myCleanup;
-
 		// First easy example.
 		{
 		  // The first easiest example is to retreive the content of
