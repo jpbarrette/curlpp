@@ -104,13 +104,15 @@ file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
 option(CURLPP_BUILD_SHARED_LIBS "Build shared libraries" ON)
 if(CURLPP_BUILD_SHARED_LIBS)
    add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
-   target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
-   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
+   add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
+   target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
+   target_link_libraries(${PROJECT_NAME} PUBLIC CURL::libcurl ${CONAN_LIBS})
    set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
 endif()
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
-target_include_directories(${PROJECT_NAME}_static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
+add_library(${PROJECT_NAME}::${PROJECT_NAME}_static ALIAS ${PROJECT_NAME}_static)
+target_include_directories(${PROJECT_NAME}_static PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
 
 # Make sure that on unix-platforms shared and static libraries have
 # the same root name, but different suffixes.
@@ -126,13 +128,17 @@ SET_TARGET_PROPERTIES(${PROJECT_NAME}_static PROPERTIES PREFIX "lib")
 target_link_libraries(${PROJECT_NAME}_static ${CURL_LIBRARIES} ${CONAN_LIBS})
 
 # install headers
-install(DIRECTORY include/utilspp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/utilspp")
-install(DIRECTORY include/curlpp/ DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/curlpp")
+install(FILES "${PROJECT_SOURCE_DIR}/cmake/curlppConfig.cmake" DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/curlpp")
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 if(CURLPP_BUILD_SHARED_LIBS)
-install(TARGETS ${PROJECT_NAME}
-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  install(TARGETS curlpp EXPORT curlppTargets INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 endif()
-install(TARGETS ${PROJECT_NAME}_static
-        ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
+  install(TARGETS curlpp_static EXPORT curlppTargets INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  
+install(
+    EXPORT curlppTargets
+    DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/curlpp"
+    NAMESPACE curlpp::
+)
+
