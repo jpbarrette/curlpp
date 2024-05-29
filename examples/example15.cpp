@@ -40,8 +40,6 @@ int main(int, char **)
 {
   try
   {
-      curlpp::Cleanup myCleanup;
-      
       // Creation of the URL option.
       curlpp::Easy myRequest;
       myRequest.setOpt(new curlpp::options::Url(std::string("https://example.com")));

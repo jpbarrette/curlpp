@@ -18,10 +18,6 @@ int main(int, char **)
 
 	try
 	{
-
-		// That's all that is needed to do cleanup of used resources (RAII style).
-		curlpp::Cleanup myCleanup;
-
 		// Our request to be sent.
 		curlpp::Easy myRequest;
 

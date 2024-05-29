@@ -72,7 +72,6 @@ int main(int argc, char *argv[])
 	char buf[50];
 	try
 	{
-		curlpp::Cleanup cleaner;
 		curlpp::Easy request;
 
 		std::list<std::string> headers;

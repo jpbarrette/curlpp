@@ -111,12 +111,8 @@ intialize. Check the man page of \verb+curl_global_init+ for more details on fla
 When the program no longer uses cURLpp, it should call \verb+cURLpp::terminate()+, 
 which is the opposite of the init call. It will then do the operations needed 
 to cleanup the resources that the \verb+cURLpp::initialize()+ call initialized. 
-
 Repeated calls to \verb+cURLpp::initialize()+ and \verb+cURLpp::terminate()+ must not be made. 
-They must only be called once each. The cURLpp::Cleanup class can be used to do this. It will
-call the \verb+cURLpp::initialize()+ function in its constructor and \verb+cURLpp::terminate()+
-in its destructor.  Check example01.cpp in the examples/ directory of
-the source distribution for an example. 
+They must only be called once each.
 
 \section{Handle the Easy cURLpp}
 
@@ -268,8 +264,6 @@ int main()
 {
   try
     {
-      cURLpp::Cleanup myCleanup;
-
       // Creation of the URL option.
       cURLpp::Options::Url myUrl(
         std::string("http://example.com"));
