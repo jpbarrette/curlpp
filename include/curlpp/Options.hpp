@@ -259,6 +259,28 @@ namespace options
 
 
 	/**
+	* SMTP options.
+	*/
+
+	#if LIBCURL_VERSION_NUM >= 0x071900
+		typedef curlpp::OptionTrait<std::string, CURLOPT_MAIL_AUTH> MailAuth;
+	#else
+	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+		typedef curlpp::NotAvailableOptionTrait<std::string, CURLOPT_MAIL_AUTH> MailAuth;
+	#endif
+	#endif
+	#if LIBCURL_VERSION_NUM >= 0x071400
+		typedef curlpp::OptionTrait<std::string, CURLOPT_MAIL_FROM> MailFrom;
+		typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_MAIL_RCPT> MailRcpt;
+	#else
+	#ifdef CURLPP_ALLOW_NOT_AVAILABLE
+		typedef curlpp::OptionTrait<std::string, CURLOPT_MAIL_FROM> MailFrom;
+		typedef curlpp::OptionTrait<std::list<std::string>, CURLOPT_MAIL_RCPT> MailRcpt;
+	#endif
+	#endif
+
+
+	/**
 	* Protocol options.
 	*/
 
