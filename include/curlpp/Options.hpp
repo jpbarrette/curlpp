@@ -341,7 +341,6 @@ namespace options
 	typedef curlpp::OptionTrait<std::string, CURLOPT_KRB4LEVEL> Krb4Level;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSLKEYPASSWD> SslKeyPasswd;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_SSLCERTPASSWD> SslCertPasswd;
-	typedef curlpp::OptionTrait<curl_closepolicy, CURLOPT_CLOSEPOLICY> ClosePolicy;
 	typedef curlpp::OptionTrait<curl_ftpssl, CURLOPT_FTP_SSL> FtpSsl;
 	typedef curlpp::OptionTrait<long, CURLOPT_FTP_RESPONSE_TIMEOUT> FtpResponseTimeout;
 	typedef curlpp::OptionTrait<bool, CURLOPT_FTPAPPEND> FtpAppend;
