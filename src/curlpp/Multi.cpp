@@ -96,6 +96,22 @@ curlpp::Multi::fdset(fd_set * read, fd_set * write, fd_set * exc, int * max)
   }
 }
 
+void curlpp::Multi::wait(int timeout_ms, struct curl_waitfd extra_fds[], unsigned int extra_nfds, int * numfds) {
+  CURLMcode code = curl_multi_wait(mMultiHandle, extra_fds, extra_nfds, timeout_ms, numfds);
+  if (code != CURLM_OK) {
+    throw curlpp::RuntimeError(curl_multi_strerror(code));
+  }
+}
+
+#if LIBCURL_VERSION_NUM >= 0x074200
+void curlpp::Multi::poll(int timeout_ms, struct curl_waitfd extra_fds[], unsigned int extra_nfds, int * numfds) {
+  CURLMcode code = curl_multi_poll(mMultiHandle, extra_fds, extra_nfds, timeout_ms, numfds);
+  if (code != CURLM_OK) {
+    throw curlpp::RuntimeError(curl_multi_strerror(code));
+  }
+}
+#endif
+
 curlpp::Multi::Msgs
 curlpp::Multi::info()
 {

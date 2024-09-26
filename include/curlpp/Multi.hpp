@@ -62,6 +62,12 @@ namespace curlpp
 								fd_set * exc_fd_set,
 								int * max_fd);
 
+		void wait(int timeout_ms, struct curl_waitfd extra_fds[] = nullptr, unsigned int extra_nfds = 0, int * numfds = nullptr);
+		
+#if LIBCURL_VERSION_NUM >= 0x074200
+		void poll(int timeout_ms, struct curl_waitfd extra_fds[] = nullptr, unsigned int extra_nfds = 0, int * numfds = nullptr);
+#endif
+
 		typedef std::list<std::pair<const curlpp::Easy *, Multi::Info> >
 			Msgs;
 		
