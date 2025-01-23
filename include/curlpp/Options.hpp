@@ -198,7 +198,9 @@ namespace options
 
 	typedef curlpp::OptionTrait<long, CURLOPT_NETRC> Netrc;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_NETRC_FILE> NetrcFile;
+	typedef curlpp::OptionTrait<std::string, CURLOPT_PASSWORD> Password;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_USERPWD> UserPwd;
+	typedef curlpp::OptionTrait<std::string, CURLOPT_USERNAME> Username;
 	typedef curlpp::OptionTrait<std::string, CURLOPT_PROXYUSERPWD> ProxyUserPwd;
 	typedef curlpp::OptionTrait<long, CURLOPT_HTTPAUTH> HttpAuth;
 	typedef curlpp::OptionTrait<long, CURLOPT_PROXYAUTH> ProxyAuth;
