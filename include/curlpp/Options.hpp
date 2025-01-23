@@ -300,6 +300,7 @@ namespace options
 	*/
 
 	typedef curlpp::OptionTrait<long, CURLOPT_TIMEOUT> Timeout;
+	typedef curlpp::OptionTrait<long, CURLOPT_TIMEOUT_MS> TimeoutMs;
 	typedef curlpp::OptionTrait<long, CURLOPT_LOW_SPEED_LIMIT> LowSpeedLimit;
 	typedef curlpp::OptionTrait<long, CURLOPT_LOW_SPEED_TIME> LowSpeedTime;
 	typedef curlpp::OptionTrait<long, CURLOPT_MAXCONNECTS> MaxConnects;
