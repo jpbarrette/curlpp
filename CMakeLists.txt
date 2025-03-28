@@ -69,7 +69,7 @@ add_subdirectory(extras)
 # Seems simple.
 
 message(STATUS "Looking for CURL")
-find_package(CURL REQUIRED)
+find_package(CURL)
 
 if(CURL_FOUND)
   message(STATUS "Found CURL version: ${CURL_VERSION_STRING}")
