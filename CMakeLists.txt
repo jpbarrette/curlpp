@@ -1,3 +1,4 @@
+cmake_minimum_required(VERSION 3.13.4)
 project(curlpp)
 
 
@@ -134,7 +135,10 @@ install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 if(CURLPP_BUILD_SHARED_LIBS)
   install(TARGETS curlpp EXPORT curlppTargets INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 endif()
-  install(TARGETS curlpp_static EXPORT curlppTargets INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  install(TARGETS curlpp_static 
+            EXPORT curlppTargets 
+            INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+            ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR})
   
 install(
     EXPORT curlppTargets
