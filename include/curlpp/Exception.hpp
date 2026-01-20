@@ -39,7 +39,7 @@ namespace curlpp
 	/**
 	* This class is a parent to all curlpp's RuntimeErrors.
 	*
-	* This class takes a const std::string & as argument for it's parent: std::runtime_errors. 
+	* This class takes a const std::string & as argument for its parent: std::runtime_errors. 
 	* This class is thrown when curlpp is encountering an error, but for runtime 
 	* considerations, "unpredictable" by the library user.
 	*/
@@ -59,7 +59,7 @@ namespace curlpp
 	/**
 	* This class is a parent to all curlpp's RuntimeErrors.
 	*
-	* This class takes a const std::string & as argument for it's parent: std::runtime_errors. 
+	* This class takes a const std::string & as argument for its parent: std::runtime_errors. 
 	* This class is thrown when curlpp is encountering an error, but for logic 
 	* considerations, "predictable" by the library user. Predictable means 
 	* that the library user is missusing the library.

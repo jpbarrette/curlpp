@@ -100,7 +100,7 @@ if(CMAKE_SYSTEM MATCHES "Windows")
 endif()
 
 file(GLOB_RECURSE HeaderFileList "${CMAKE_CURRENT_SOURCE_DIR}/include/*")
-file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*")
+file(GLOB_RECURSE SourceFileList "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 
 option(CURLPP_BUILD_SHARED_LIBS "Build shared libraries" ON)
 if(CURLPP_BUILD_SHARED_LIBS)
@@ -145,4 +145,9 @@ install(
     DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/curlpp"
     NAMESPACE curlpp::
 )
+
+option(CURLPP_BUILD_MODULES "Build C++ module" OFF)
+if(CURLPP_BUILD_MODULES)
+  add_subdirectory(src/curlpp)
+endif()
 
