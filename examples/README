@@ -33,6 +33,6 @@ usage.
              of curlpp options.
  Example 24: Binded method functor for DebugFunction example.
  Example 25: Send e-mail over SMTP.
- 
+ Example 26: Multi interface using multi poll/wait
 
 
