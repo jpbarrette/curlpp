@@ -44,8 +44,8 @@
 int main(int argc, char *argv[])
 {
   if(argc < 3) {
-    std::cerr << "Example 13: Wrong number of arguments" << std::endl 
-	      << "Example 13: Usage: example13 url1 url2" 
+    std::cerr << "Example 14: Wrong number of arguments" << std::endl 
+	      << "Example 14: Usage: example13 url1 url2" 
 	      << std::endl;
     return EXIT_FAILURE;
   }
